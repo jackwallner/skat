@@ -8,8 +8,8 @@ Fills gaps the earlier metadata/setup scripts left behind:
   - supportUrl on every version localization (fallback to en-US)
   - review contact email aligned with review_information/
 
-App Privacy nutrition labels still have no public ASC API , see
-docs/asc-submission-checklist.md for the answers to fill in the web UI.
+App Privacy nutrition labels still have no public ASC API. Upload the prepared
+answers with scripts/upload-app-privacy.sh after creating FASTLANE_SESSION.
 """
 from __future__ import annotations
 
@@ -170,7 +170,7 @@ def main() -> int:
     else:
         print("review detail contact email ok")
 
-    print("done , next: fill App Privacy in ASC web UI if not already, then:")
+    print("done , next: publish App Privacy with scripts/upload-app-privacy.sh, then:")
     print("  python3 scripts/asc-submit-for-review.py")
     return 0
 
