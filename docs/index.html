@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="256x256" href="icon_256.png" />
+    <link rel="apple-touch-icon" href="icon_256.png" />
+    <title>Skat Trainer: Skat üben und lernen</title>
+    <meta
+      name="description"
+      content="Skat üben in kurzen Einheiten: Karten, Reizen, Spielarten, Drücken und Stichspiel. Kostenlos, ohne Konto und für alle, die sicherer in die nächste Runde gehen wollen."
+    />
+    <link rel="canonical" href="https://jackwallner.com/ios/skat/" />
+    <meta
+      name="keywords"
+      content="Skat üben, Skat lernen, Skat Regeln, Reizen, Trumpf, Grand, Null, Drücken, Stichspiel, Quiz, iPhone"
+    />
+    <meta property="og:title" content="Skat Trainer: Skat üben und lernen" />
+    <meta
+      property="og:description"
+      content="Kurze Skat-Übungen für Karten, Reizen, Drücken und sichere Entscheidungen am Tisch."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jackwallner.com/ios/skat/" />
+    <meta
+      property="og:image"
+      content="https://jackwallner.github.io/skat/appstore-screenshot-01.png"
+    />
+    <meta property="og:site_name" content="Skat Trainer" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Skat Trainer: Skat üben und lernen" />
+    <meta
+      name="twitter:description"
+      content="Karten, Spielarten, Drück-Strategie und Stichentscheidungen in kurzen Skat-Übungen."
+    />
+    <meta
+      name="twitter:image"
+      content="https://jackwallner.github.io/skat/appstore-screenshot-01.png"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Skat Trainer: Skat üben",
+        "operatingSystem": "iOS",
+        "applicationCategory": "EducationalApplication",
+        "offers": [
+          {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Kostenlos mit vier Übungsräumen, Lernkarten, Handanalyse und Serien"
+          },
+          {
+            "@type": "Offer",
+            "price": "1.99",
+            "priceCurrency": "USD",
+            "description": "Skat+ monatlich, zusätzliche Übungen in jedem Raum und der Meistertisch"
+          },
+          {
+            "@type": "Offer",
+            "price": "9.99",
+            "priceCurrency": "USD",
+            "description": "Skat+ jährlich, dieselben Inhalte mit jährlicher Abrechnung"
+          },
+          {
+            "@type": "Offer",
+            "price": "29.99",
+            "priceCurrency": "USD",
+            "description": "Skat+ dauerhaft, einmaliger Kauf"
+          }
+        ],
+        "description": "Skat Trainer vermittelt Skat in kurzen Übungen mit vier Räumen: Karten & Reizen, Spielarten, Drücken und Stichspiel. Kostenlos nutzbar, mit optionalem Skat+.",
+        "url": "https://jackwallner.com/ios/skat/",
+        "downloadUrl": "https://apps.apple.com/de/",
+        "screenshot": "https://jackwallner.github.io/skat/appstore-screenshot-01.png",
+        "softwareVersion": "1.0",
+        "author": {
+          "@type": "Person",
+          "name": "Jack Wallner"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "ratingCount": "1"
+        }
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+          "Helvetica Neue", sans-serif;
+        color: #1d1d1f;
+        background: #fafafa;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      .container {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Nav */
+      nav {
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        background: rgba(250, 250, 250, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      nav .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #1d1d1f;
+      }
+
+      .nav-brand img {
+        width: 32px;
+        height: 32px;
+        border-radius: 7px;
+      }
+
+      .nav-brand span {
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .nav-link {
+        font-size: 14px;
+        text-decoration: none;
+        background: #1d1d1f;
+        color: #fff;
+        padding: 8px 18px;
+        border-radius: 980px;
+        font-weight: 500;
+        transition: opacity 0.15s;
+      }
+
+      .nav-link:hover {
+        opacity: 0.85;
+      }
+
+      /* Hero */
+      .hero {
+        text-align: center;
+        padding: 100px 24px 64px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+        font-weight: 700;
+        letter-spacing: -1.5px;
+        line-height: 1.08;
+        margin-bottom: 16px;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(135deg, #21594a, #2f9670);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero .tagline {
+        font-size: 19px;
+        color: #6e6e73;
+        line-height: 1.5;
+        max-width: 440px;
+        margin: 0 auto 12px;
+      }
+
+      .hero .platforms {
+        font-size: 13px;
+        color: #86868b;
+        letter-spacing: 0.3px;
+        margin-bottom: 36px;
+      }
+
+      .download-btn {
+        display: inline-block;
+        background: #1d1d1f;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 14px 36px;
+        border-radius: 980px;
+        text-decoration: none;
+        transition: opacity 0.15s;
+      }
+
+      .download-btn:hover {
+        opacity: 0.85;
+      }
+
+      /* Screenshot showcase */
+      .showcase {
+        padding: 0 0 80px;
+      }
+
+      .showcase-scroll {
+        display: flex;
+        gap: 24px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        scrollbar-width: none;
+      }
+
+      .showcase-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .showcase-card {
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow:
+          0 2px 8px rgba(0, 0, 0, 0.06),
+          0 16px 48px rgba(0, 0, 0, 0.08);
+      }
+
+      .showcase-card img {
+        height: 540px;
+        display: block;
+      }
+
+      /* Features */
+      .features {
+        padding: 80px 0;
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .features-header {
+        text-align: center;
+        margin-bottom: 56px;
+      }
+
+      .features-header h2 {
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+
+      .features-header p {
+        font-size: 17px;
+        color: #6e6e73;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(0, 0, 0, 0.06);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .feature-card {
+        background: #fff;
+        padding: 36px 32px;
+      }
+
+      .feature-card .label {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: #86868b;
+        margin-bottom: 10px;
+      }
+
+      .feature-card .label.skat-plus {
+        color: #21594a;
+      }
+
+      .feature-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        margin-bottom: 8px;
+      }
+
+      .feature-card p {
+        font-size: 14px;
+        color: #6e6e73;
+        line-height: 1.55;
+      }
+
+      /* Privacy */
+      .privacy {
+        padding: 80px 0;
+      }
+
+      .privacy .container {
+        max-width: 640px;
+        text-align: center;
+      }
+
+      .privacy .lockup {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: #f5f5f7;
+        margin-bottom: 20px;
+      }
+
+      .privacy .lockup svg {
+        width: 22px;
+        height: 22px;
+        fill: none;
+        stroke: #1d1d1f;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .privacy h2 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 12px;
+      }
+
+      .privacy p {
+        font-size: 17px;
+        color: #6e6e73;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .privacy a {
+        font-size: 15px;
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .privacy a:hover {
+        text-decoration: underline;
+      }
+
+      /* More Info */
+      .more-info {
+        padding: 64px 24px;
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .more-info-header {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .more-info-header h2 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+
+      .more-info-header p {
+        font-size: 17px;
+        color: #6e6e73;
+      }
+
+      .more-info-content {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .more-info-section {
+        margin-bottom: 40px;
+      }
+
+      .more-info-section h3 {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: #86868b;
+        margin-bottom: 12px;
+      }
+
+      .more-info-section p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #1d1d1f;
+        margin-bottom: 12px;
+      }
+
+      .more-info-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      .more-info-section strong {
+        font-weight: 600;
+      }
+
+      .specs-table {
+        width: 100%;
+        font-size: 14px;
+        border-collapse: collapse;
+        margin-top: 16px;
+      }
+
+      .specs-table td {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .specs-table td:first-child {
+        color: #86868b;
+        width: 140px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Disclaimer */
+      .disclaimer {
+        padding: 40px 24px 0;
+      }
+
+      .disclaimer .container {
+        max-width: 720px;
+      }
+
+      .disclaimer p {
+        font-size: 12px;
+        line-height: 1.6;
+        color: #86868b;
+        text-align: center;
+      }
+
+      /* CTA */
+      .cta {
+        text-align: center;
+        padding: 64px 24px 80px;
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .cta h2 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 6px;
+      }
+
+      .cta p {
+        font-size: 15px;
+        color: #86868b;
+        margin-bottom: 28px;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px 24px;
+        font-size: 12px;
+        color: #86868b;
+      }
+
+      footer a {
+        color: #86868b;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      footer a:hover {
+        color: #1d1d1f;
+      }
+
+      footer .divider {
+        margin: 4px 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 72px 20px 48px;
+        }
+        .hero h1 {
+          font-size: 36px;
+          letter-spacing: -1px;
+        }
+        .hero .tagline {
+          font-size: 17px;
+        }
+
+        .showcase-card img {
+          height: 400px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .features-header h2 {
+          font-size: 28px;
+        }
+        .privacy h2,
+        .cta h2 {
+          font-size: 26px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .showcase-card img {
+          height: 360px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <a class="nav-brand" href="./">
+          <img src="icon_256.png" alt="Skat Trainer" />
+          <span>Skat Trainer</span>
+        </a>
+        <a class="nav-link" href="https://apps.apple.com/de/">Laden</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <h1>Bereit für <span>den nächsten Stich</span></h1>
+      <p class="tagline">
+        Karten lesen, reizen, drücken und Stiche spielen, in kurzen Übungen.
+        Ohne Gegner, ohne Zeitdruck, ohne Druck.
+      </p>
+      <p class="platforms">
+        iPhone &middot; Vier Übungsräume &middot; Offline nutzbar
+      </p>
+      <a class="download-btn" href="https://apps.apple.com/de/"
+        >Kostenlos laden</a
+      >
+    </section>
+
+    <section class="showcase">
+      <div class="showcase-scroll">
+        <div class="showcase-card">
+          <img
+            src="appstore-screenshot-01.png"
+            alt="Kurze Übung. &middot; Eine Skat-Übungsrunde läuft"
+          />
+        </div>
+        <div class="showcase-card">
+          <img
+            src="appstore-screenshot-02.png"
+            alt="Hand lesen. &middot; Fünf Karten der passenden Spielart zuordnen"
+          />
+        </div>
+        <div class="showcase-card">
+          <img
+            src="appstore-screenshot-03.png"
+            alt="Drücken. &middot; Eine Zwölf-Karten-Hand mit Erklärung zur Entscheidung"
+          />
+        </div>
+        <div class="showcase-card">
+          <img
+            src="appstore-screenshot-04.png"
+            alt="Stich mit Plan. &middot; Eine Entscheidung mit sichtbarer Bedienpflicht"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <div class="features-header">
+          <h2>Vier Räume, eine Gewohnheit</h2>
+          <p>Die Grundlagen sind kostenlos. Skat+ bringt mehr Übungen dazu.</p>
+        </div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="label">Karten &amp; Reizen</span>
+          <h3>Die Karten verstehen</h3>
+          <p>
+            Kartenwerte, Farben, Reizen und Spielaufbau, dazu die Regeln, die
+            neuen Spielern am häufigsten im Weg stehen.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label">Spielarten</span>
+          <h3>Das richtige Spiel erkennen</h3>
+          <p>
+            Trumpf, Grand, Null und die Kartenfolge, die aus einer Hand einen
+            guten Spielplan macht.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label">Hand lesen</span>
+          <h3>Die Struktur erkennen</h3>
+          <p>
+            Fünf Karten sehen und die Spielart erkennen, bevor du dich
+            festlegst.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label">Drücken</span>
+          <h3>Zwei Karten mit Plan drücken</h3>
+          <p>
+            Zwölf Karten ordnen, zwei Karten auswählen und die Entscheidung mit
+            der Erklärung des Trainers vergleichen.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label">Stichspiel</span>
+          <h3>Bedienpflicht sicher anwenden</h3>
+          <p>
+            Trumpf bedienen, Stiche planen, Ausspiel lesen und wichtige Karten
+            im richtigen Moment spielen.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label">Lernkarten</span>
+          <h3>Die Erklärung folgt sofort</h3>
+          <p>
+            Wischkarten, die eine Regel erklären, statt nur die Antwort zu
+            prüfen.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label skat-plus">Zusatzübungen &middot; Skat+</span>
+          <h3>Mehr Wiederholungen pro Raum</h3>
+          <p>
+            Ein zusätzlicher Übungssatz in allen vier Räumen, mit neuen Fragen,
+            Händen und Entscheidungen.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label skat-plus">Der Meistertisch &middot; Skat+</span>
+          <h3>Über die Grundlagen hinaus</h3>
+          <p>
+            Anspruchsvolle Drück-Strategie, Verteidigung, Endspiel und Übungen
+            für erfahrene Spieler.
+          </p>
+        </div>
+        <div class="feature-card">
+          <span class="label">Lernserien</span>
+          <h3>Zwischen den Runden üben</h3>
+          <p>
+            Lernserien, Fehlerwiederholung und Raumfortschritt halten die
+            wichtigen Fähigkeiten bereit.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy">
+      <div class="container">
+        <div class="lockup">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+        </div>
+        <h2>Kein Konto, keine Cloud</h2>
+        <p>
+          Skat Trainer speichert Fortschritt und Einstellungen auf deinem
+          iPhone. Es gibt keine Anmeldung, keine Werbung und keinen Verkauf
+          deiner Daten. Erinnerungen werden lokal auf deinem Gerät geplant.
+          Apple verarbeitet Käufe, RevenueCat erhält nur die nötigen Kennungen
+          für Skat+.
+        </p>
+        <a href="privacy-policy.html">Datenschutz &rarr;</a>
+      </div>
+    </section>
+
+    <section class="more-info">
+      <div class="container">
+        <div class="more-info-header">
+          <h2>Mehr erfahren</h2>
+          <p>Wie die App funktioniert und warum das wichtig ist.</p>
+        </div>
+        <div class="more-info-content">
+          <div class="more-info-section">
+            <h3>Die Idee</h3>
+            <p>
+              Viele lernen Skat am Tisch und haben bis zur nächsten Runde kaum
+              Gelegenheit zum Üben. Kartenwerte werden unsicher, Drückkarten zur
+              Bauchentscheidung und Stiche hektisch.
+            </p>
+            <p>
+              Skat Trainer bringt diese Wiederholungen ohne Tisch. Karten lesen,
+              Spielart wählen, zwei Karten drücken und Stiche planen, überall
+              und in wenigen Minuten.
+            </p>
+          </div>
+
+          <div class="more-info-section">
+            <h3>Skat+</h3>
+            <p>
+              Alle vier Räume bleiben dauerhaft kostenlos. Skat+ ergänzt mehr:
+              1,99 $ pro Monat oder 9,99 $ pro Jahr, jeweils mit einer Woche
+              kostenloser Probe, oder 29,99 $ einmalig.
+            </p>
+            <p>
+              <strong>Zusatzübungen.</strong> Ein zweiter Satz Fragen, Hände und
+              Entscheidungen in jedem Raum.
+            </p>
+            <p>
+              <strong>Der Meistertisch.</strong> Anspruchsvolle Drück-Strategie,
+              Verteidigung, Endspiel und Expertenwissen.
+            </p>
+          </div>
+
+          <div class="more-info-section">
+            <h3>Technik</h3>
+            <table class="specs-table">
+              <tr>
+                <td>Plattform</td>
+                <td>iOS 17+</td>
+              </tr>
+              <tr>
+                <td>Sprache</td>
+                <td>Swift 6 with strict concurrency</td>
+              </tr>
+              <tr>
+                <td>Frameworks</td>
+                <td>SwiftUI &middot; StoreKit 2 &middot; RevenueCat</td>
+              </tr>
+              <tr>
+                <td>Daten</td>
+                <td>Kein Konto, Fortschritt auf dem Gerät</td>
+              </tr>
+              <tr>
+                <td>Speicher</td>
+                <td>Lokale Einstellungen, Übungen in der App</td>
+              </tr>
+              <tr>
+                <td>Offline</td>
+                <td>Jede Übung funktioniert ohne Netzwerk</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="more-info-section">
+            <h3>Was zählt</h3>
+            <p>
+              <strong>Regeln vor Reflexen.</strong> Übungen trennen Kartenwerte,
+              Spielarten, Drücken, Bedienpflicht und Stellung am Tisch.
+            </p>
+            <p>
+              <strong>Eigene Lehrbeispiele.</strong> Jede Hand und jede Frage
+              ist für das Lernen geschrieben, nicht aus einem veröffentlichten
+              Spiel kopiert.
+            </p>
+            <p>
+              <strong>Wirklich kurze Runden.</strong> Eine Übung passt in eine
+              freie Minute und bleibt trotzdem konkret.
+            </p>
+            <p>
+              <strong>Kostenlos heißt kostenlos.</strong> Die vier Räume sind
+              ohne Zahlung vollständig. Skat+ ergänzt Umfang und
+              anspruchsvollere Inhalte.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="disclaimer">
+      <div class="container">
+        <p>
+          Skat Trainer ist eine unabhängige Skat-Lernapp. Hausregeln können
+          abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Üben, bevor du spielst</h2>
+      <p>
+        Kostenlos im App Store. Vier Übungsräume, kein Konto. Skat+ optional.
+      </p>
+      <a class="download-btn" href="https://apps.apple.com/de/"
+        >Kostenlos laden</a
+      >
+    </section>
+
+    <footer>
+      <div class="divider">&copy; 2026 Jack Wallner</div>
+      <div>
+        <a href="support.html">Hilfe</a>
+        <a href="privacy-policy.html">Datenschutz</a>
+      </div>
+    </footer>
+  </body>
+</html>

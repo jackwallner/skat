@@ -1,0 +1,14 @@
+{
+  "name": "Skat Trainer",
+  "slug": "skat",
+  "module": "SkatTrainer",
+  "bundle_id": "com.jackwallner.skat",
+  "membership": "Skat+",
+  "name_status": "needs_aso_review",
+  "revenuecat_public_key": "appl_hCITKfPBvZWFXEfrHDEsRuvAAYy",
+  "app_store_id": null,
+  "aso_brief": "docs/research/aso-skat.md",
+  "source_product": "CardPort practice template",
+  "source_game": "Skat",
+  "template": "card-app-template"
+}

@@ -1,0 +1,92 @@
+{
+  "identifier": "F8E7D6C5-1111-4222-8333-A4B5C6D7E8F9",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "29.99",
+      "familyShareable": false,
+      "internalID": "21750006",
+      "localizations": [
+        {
+          "description": "Alle Räume und Übungen dauerhaft",
+          "displayName": "Skat+ Dauerhaft",
+          "locale": "de_DE"
+        }
+      ],
+      "productID": "com.jackwallner.skat.lifetime",
+      "referenceName": "Skat+ Lifetime",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {
+    "_applicationInternalID": "0",
+    "_developerTeamID": "YXG4MP6W39",
+    "_failTransactionsEnabled": false,
+    "_locale": "de_DE",
+    "_storefront": "GER",
+    "_storeKitErrors": []
+  },
+  "subscriptionGroups": [
+    {
+      "id": "21750001",
+      "localizations": [],
+      "name": "Skat+",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "1.99",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "21750002",
+          "introductoryOffer": {
+            "internalID": "21750004",
+            "paymentMode": "free",
+            "subscriptionPeriod": "P1W"
+          },
+          "localizations": [
+            {
+              "description": "Alle Räume und Übungen, monatlich abgerechnet",
+              "displayName": "Skat+ Monatlich",
+              "locale": "de_DE"
+            }
+          ],
+          "productID": "com.jackwallner.skat.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Skat+ Monthly",
+          "subscriptionGroupID": "21750001",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "9.99",
+          "familyShareable": false,
+          "groupNumber": 1,
+          "internalID": "21750003",
+          "introductoryOffer": {
+            "internalID": "21750005",
+            "paymentMode": "free",
+            "subscriptionPeriod": "P1W"
+          },
+          "localizations": [
+            {
+              "description": "Alle Räume und Übungen, jährlich abgerechnet",
+              "displayName": "Skat+ Jährlich",
+              "locale": "de_DE"
+            }
+          ],
+          "productID": "com.jackwallner.skat.yearly",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "Skat+ Yearly",
+          "subscriptionGroupID": "21750001",
+          "type": "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version": {
+    "major": 4,
+    "minor": 0
+  }
+}
