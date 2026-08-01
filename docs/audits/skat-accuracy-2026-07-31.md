@@ -19,8 +19,8 @@ Skat.
 
 Die Unit-Tests decken eindeutige IDs, gültige Antwortindizes, freie Räume,
 Skat+-Extras, die Sperre des Meistertischs, die Filterung der Kurzrunde und
-die Eindeutigkeit generierter Hände ab. Die App-Store-ID wird nach dem
-Anlegen des ASC-Eintrags ergänzt. Der Bewertungsdialog erscheint erst nach
+die Eindeutigkeit generierter Hände ab. Die App-Store-ID 6796913722 ist im
+Bewertungslink hinterlegt. Der Bewertungsdialog erscheint erst nach
 der Zufriedenheitsfrage.
 
 ## Vor Veröffentlichung

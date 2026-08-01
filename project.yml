@@ -8,6 +8,11 @@ options:
     iOS: "17.0"
   createIntermediateGroups: true
   lastUpgradeCheck: "1600"
+  developmentLanguage: de
+  developmentRegion: de
+  knownRegions:
+    - Base
+    - de
 settings:
   base:
     SWIFT_VERSION: "6.0"

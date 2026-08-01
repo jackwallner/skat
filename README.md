@@ -8,7 +8,7 @@ und kein vollständiges Mehrspieler-Spiel.
 
 - Anzeigename: Skat Trainer
 - Bundle-ID: `com.jackwallner.skat`
-- App-Store-ID: wird nach Anlegen des ASC-Eintrags ergänzt
+- App-Store-ID: `6796913722`
 - Version: `1.0`
 - Website: <https://jackwallner.github.io/skat/>
 - Hilfe: <https://jackwallner.github.io/skat/support>

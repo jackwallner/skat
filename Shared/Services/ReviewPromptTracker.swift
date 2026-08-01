@@ -2,8 +2,7 @@ import Foundation
 import StoreKit
 
 enum AppStoreLinks {
-    /// Filled once the Skat Trainer App Store record is created.
-    static let appStoreID: String? = nil
+    static let appStoreID: String? = "6796913722"
 
     /// The write-a-review page. No storefront prefix: the App Store resolves
     /// the bare app id into the viewer's own storefront, and hardcoding one

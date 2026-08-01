@@ -25,7 +25,7 @@ und bewahre die Trennung zwischen kostenlos und Skat+.
 
 Der Review-Ablauf ist endgültig. Nach der dritten abgeschlossenen positiven
 Übung fragt `ReviewPromptSheet`, ob die App Freude macht. Ja öffnet die
-Bewertungsseite, sobald die App-Store-ID eingetragen ist, Nein öffnet den
+Bewertungsseite, sobald die App-Store-ID 6796913722 eingetragen ist, Nein öffnet den
 Feedback-Entwurf. Ohne ID verwendet die Ja-Schaltfläche Apples In-App-
 Bewertungsdialog. Unzufriedene Spieler sehen keine Bewertungsaufforderung.
 
