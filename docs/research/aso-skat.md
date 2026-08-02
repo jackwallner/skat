@@ -73,12 +73,15 @@ können mindestens 24 Stunden vor Ablauf gekündigt werden.
 
 | Locale | Native reviewer | Query evidence | Translation status | Approved date |
 | --- | --- | --- | --- | --- |
-| de-DE | Jack, Produktprüfung | Produktumfang und Keyword-Matrix oben | Deutsch gesetzt, native Review empfohlen | 2026-08-01 |
-| übrige unterstützte Locales | Jack, Produktprüfung | Deutsche Fallback-Metadaten | Deutsch gesetzt, lokale Review vor Veröffentlichung empfohlen | 2026-08-01 |
+| de-DE | Jack, Produktprüfung | Produktumfang und Keyword-Matrix oben | Deutsch gesetzt, native Review empfohlen | 2026-08-02 |
+| en-US, en-GB, en-CA, en-AU | Native copy review required | Product scope and keyword matrix above | English storefront copy prepared, native review recommended | 2026-08-02 |
+| fr-FR, fr-CA, es-ES, es-MX, it, pt-BR, pt-PT, nl-NL, pl | Native copy review required | Product scope and keyword matrix above | Localized storefront copy prepared, native review recommended | 2026-08-02 |
+| übrige unterstützte Locales | Native copy review required | Product scope and keyword matrix above | Localized title fields and storefront copy prepared, native review recommended | 2026-08-02 |
 
-Der Nutzer hat eine deutsche Version angefordert. Deshalb enthalten alle
-vorbereiteten Storefront-Ordner dieselbe deutsche, inhaltlich geprüfte
-Fallback-Fassung statt einer unmarkierten Mischung aus Quelltexten.
+Die App-Oberfläche bleibt bewusst deutsch. Die Storefront-Metadaten werden
+wie bei Mahj und Bridge in allen 50 ASC-Locales erzeugt. Die Übersetzungen
+liegen reproduzierbar in scripts/generate_metadata_all.py. Vor der
+Veröffentlichung ist eine native Sprachprüfung für jede Locale eingeplant.
 
 ## Screenshot and experiment plan
 

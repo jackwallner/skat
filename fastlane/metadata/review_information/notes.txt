@@ -1,1 +1,1 @@
-
+Keine Anmeldung erforderlich. Die App ist eine deutsche Skat-Lernapp ohne Konto, Gegner oder Mehrspielerfunktion. Skat+ kann im Simulator mit der lokalen Mitgliedschaftsüberschreibung geprüft werden.

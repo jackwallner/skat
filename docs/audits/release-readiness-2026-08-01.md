@@ -1,16 +1,16 @@
-# Release-Readiness-Audit, 1. August 2026
+# Release-Readiness-Audit, 2. August 2026
 
 ## Ergebnis
 
 Die App ist ein funktionsfähiger CardPort-Port der Mahj-Produktoberfläche für
 deutsches Skat-Training. Sie ist kein vollständiges Mehrspieler-Skatspiel.
-Build 19 ist hochgeladen, die Einreichung wartet noch auf veröffentlichte
+Build 21 ist hochgeladen, die Einreichung wartet noch auf veröffentlichte
 App-Privacy-Antworten.
 
 ## Geprüft und bestanden
 
 - CardPort-Identität und Template-Parität: bestanden.
-- Metadaten- und ASO-Validierung: 50 ASC-Locale mit deutschem Fallback.
+- Metadaten- und ASO-Validierung: 50 ASC-Locale mit lokalisiertem Storefront-Copy.
 - XcodeGen-Projekt: Entwicklungssprache und Region `de`.
 - Build auf `agent-skat`: erfolgreich.
 - Tests auf `agent-skat`: 52 bestanden, 0 fehlgeschlagen.
@@ -24,7 +24,7 @@ App-Privacy-Antworten.
 
 - App: `Skat Trainer: Skat üben`.
 - App-Store-ID: `6796913722`.
-- Version 1.0: `PREPARE_FOR_SUBMISSION`, Build 19 ist angehängt und `VALID`.
+- Version 1.0: `PREPARE_FOR_SUBMISSION`, Build 21 ist angehängt und `VALID`.
 - App-Info- und Versions-Metadaten: 50 Locales vorhanden.
 - Deutsche Screenshots: 6 auf `APP_IPHONE_67` hochgeladen.
 - Altersfreigabe, Kategorie, Preise, Verfügbarkeiten und Testangebote sind
@@ -44,5 +44,6 @@ App-Privacy-Antworten.
 - Die App wurde noch nicht zur Prüfung eingereicht. Nach Veröffentlichung der
   App-Privacy-Antworten kann der bestehende Review-Entwurf eingereicht werden.
 - Für den interaktiven ASC-Web-Login wird noch eine `FASTLANE_SESSION` benötigt.
-- Die 50 Storefront-Locale verwenden derzeit deutsches Fallback-Copy. Das ist
-  keine unabhängige Übersetzung in 50 Sprachen.
+- Die 50 Storefront-Locale werden jetzt reproduzierbar mit lokalisiertem Copy
+  aus scripts/generate_metadata_all.py erzeugt. Native Sprachprüfung vor
+  Veröffentlichung bleibt empfohlen.

@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,kort,tyskt kortspel,lär,bud,trumf,grand,null,utspel,stick,quiz,strategi,regler

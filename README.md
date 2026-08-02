@@ -20,6 +20,7 @@ und kein vollständiges Mehrspieler-Spiel.
 
 ```sh
 xcodegen generate
+python3 scripts/generate_metadata_all.py
 python3 scripts/validate_metadata.py
 xcodebuild -project SkatTrainer.xcodeproj -scheme SkatTrainer \
   -destination 'platform=iOS Simulator,id=<agent-skat-udid>' \

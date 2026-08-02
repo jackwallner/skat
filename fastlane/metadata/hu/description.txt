@@ -1,38 +1,25 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+Získejte jistotu ve Skatu během krátkých a soustředěných lekcí.
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer mění nejdůležitější témata pro začátečníky na jasné cvičné otázky. Bez soupeřů, časovače a účtu. Každá odpověď vysvětlí co je správně a proč.
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+ČTYŘI BEZPLATNÉ TRÉNINKOVÉ MÍSTNOSTI
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+KARTY A LICITACE
+Poznejte 32karetní balíček Skatu, hodnoty karet, barvy, licitaci, Skat a základy každého rozdání.
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+TYPY HRY
+Rozpoznávejte trumf, Grand a Null. Propojte karty s herním plánem a procvičujte pravidla za každým rozhodnutím.
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+ODKLÁDÁNÍ A ŠTYCHY
+Vyberte dvě karty k odložení a procvičujte povinnost přiznat barvu, trumf, výnos a plánování štychů.
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
+SKAT+ (VOLITELNÉ)
+Čtyři základní místnosti zůstávají zdarma. Skat+ přidává nové hry, opakování chyb, 90sekundovou výzvu, další cvičení a Mistrovský stůl.
 
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
+VYTVOŘENO PRO UČENÍ
+Karty s posunutím vysvětlují pravidlo na zadní straně. Série, výukové hry a jasná zpětná vazba pomáhají zapamatovat si vše u stolu.
 
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
+Skat Trainer je nezávislá výuková aplikace. Domácí pravidla se mohou lišit, proto se na nich u stolu dohodněte.
 
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+PŘEDPLATNÉ A NÁKUPY
+Skat+ nabízí měsíční předplatné za 1,99 $ nebo roční za 9,99 $, obě s týdenní bezplatnou zkouškou. Trvalý přístup stojí 29,99 $ jako jednorázový nákup. Předplatné se obnovuje automaticky, pokud jej nezrušíte alespoň 24 hodin před koncem období. Podmínky, standardní EULA Apple: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Zásady ochrany soukromí: https://jackwallner.github.io/skat/privacy-policy.

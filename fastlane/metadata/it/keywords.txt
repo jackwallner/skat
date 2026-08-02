@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,carte,gioco tedesco,imparare,aste,atout,grand,null,scarto,prese,quiz,strategia,regole

@@ -1,38 +1,25 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+Podejmuj pewniejsze decyzje w Skacie podczas krótkich, skupionych sesji.
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer zamienia najważniejsze zagadnienia dla początkujących w jasne pytania. Bez przeciwników, zegara i konta. Każda odpowiedź wyjaśnia co jest poprawne i dlaczego.
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+CZTERY DARMOWE POKOJE ĆWICZEŃ
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+KARTY I LICYTACJA
+Poznaj 32-kartową talię Skata, wartości kart, kolory, licytację, Skata i podstawy każdego rozdania.
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+RODZAJE GRY
+Rozpoznawaj atut, Grand i Null. Dopasuj karty do planu gry i ćwicz zasady stojące za każdą decyzją.
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+ODKŁADANIE I LEWY
+Wybierz dwie karty do odłożenia, ćwicz dokładanie do koloru, atut, wyjście i planowanie lew.
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
+SKAT+ (OPCJONALNIE)
+Cztery podstawowe pokoje pozostają bezpłatne. Skat+ dodaje nowe rozdania, powtórkę błędów, wyzwanie na 90 sekund, dodatkowe ćwiczenia i Stół mistrzów.
 
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
+STWORZONE DO NAUKI
+Przesuwane karty wyjaśniają zasady na odwrocie. Serie, ręce szkoleniowe i jasny feedback pomagają zapamiętać wiedzę przy stole.
 
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
+Skat Trainer to niezależna aplikacja edukacyjna. Zasady domowe mogą się różnić, dlatego ustalcie je przy stole.
 
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+SUBSKRYPCJE I ZAKUPY
+Skat+ oferuje automatycznie odnawianą subskrypcję miesięczną za 1,99 $ lub roczną za 9,99 $, obie z tygodniowym bezpłatnym okresem próbnym. Stały dostęp kosztuje 29,99 $ w jednorazowym zakupie. Płatność jest pobierana z konta Apple po potwierdzeniu. Warunki, standardowa umowa Apple: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Polityka prywatności: https://jackwallner.github.io/skat/privacy-policy.

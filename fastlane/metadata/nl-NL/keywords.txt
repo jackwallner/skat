@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,kaarten,duits kaartspel,leren,bieden,troef,grand,null,afleggen,slagen,quiz,strategie,regels

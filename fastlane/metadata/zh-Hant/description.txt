@@ -1,38 +1,13 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+用短時、專注的練習提升你在Skat中的判斷力。
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer把初學者最需要掌握的內容變成清晰的練習題。不需要對手、計時器或帳號。每個答案都會說明什麼是正確的，以及為什麼。
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+四個免費練習室
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+學習32張Skat牌、牌面價值、花色、叫牌、底牌以及每一局的基礎。識別主牌、Grand和Null，選擇兩張墊牌，並練習跟牌、首攻和墩牌計畫。
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+Skat+增加全新牌局、錯題重練、90秒挑戰、額外練習和大師桌。四個基礎練習室始終免費。
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+可滑動的教練卡片會在背面解說規則。地方規則可能不同，請在牌桌上先確認共同規則。
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
-
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
-
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
-
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+Skat+提供自動續訂的每月訂閱，每月1.99美元，或每年9.99美元的年度訂閱，兩者均含一週免費試用。永久存取權為29.99美元一次購買。除非在目前週期結束前至少24小時取消，否則訂閱會自動續訂。使用條款，Apple標準EULA：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/。隱私權政策：https://jackwallner.github.io/skat/privacy-policy.
