@@ -1,38 +1,25 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+Kısa ve odaklı oturumlarla Skat kararlarında ustalaşın.
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer, yeni başlayanların en çok ihtiyaç duyduğu konuları anlaşılır alıştırma sorularına dönüştürür. Rakip, sayaç veya hesap gerekmez. Her yanıt neyin doğru olduğunu ve nedenini açıklar.
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+DÖRT ÜCRETSİZ ALIŞTIRMA ODASI
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+KARTLAR VE İHALE
+32 kartlık Skat destesini, kart değerlerini, renkleri, ihaleyi, Skat'ı ve her elin temellerini öğrenin.
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+OYUN TÜRLERİ
+Kozu, Grand ve Null'ı tanıyın. Kartları oyun planıyla ilişkilendirin ve kararların arkasındaki kuralları çalışın.
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+KART ATMA VE EL ALMA
+Atmak için iki kart seçin, renk takip etmeyi, kozu, çıkışı ve el planlamasını çalışın.
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
+SKAT+ (İSTEĞE BAĞLI)
+Dört temel oda ücretsiz kalır. Skat+ yeni eller, hataları tekrar etme, 90 saniyelik meydan okuma, ek alıştırmalar ve Ustalar Masası ekler.
 
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
+ÖĞRENMEK İÇİN TASARLANDI
+Kaydırılabilir koçluk kartları kuralı arka yüzünde açıklar. Seriler, öğretici eller ve net geri bildirim masa başında hatırlamayı kolaylaştırır.
 
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
+Skat Trainer bağımsız bir öğrenme uygulamasıdır. Ev kuralları değişebilir, bu yüzden masada ortak kuralları belirleyin.
 
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+ABONELİKLER VE SATIN ALMALAR
+Skat+, ayda $1,99 veya yılda $9,99 karşılığında otomatik yenilenen abonelik olarak sunulur. İkisinde de bir haftalık ücretsiz deneme vardır. Kalıcı erişim $29,99 tek seferlik satın almadır. Abonelik dönem bitmeden en az 24 saat önce iptal edilmezse yenilenir. Kullanım koşulları, Apple standart EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Gizlilik politikası: https://jackwallner.github.io/skat/privacy-policy.

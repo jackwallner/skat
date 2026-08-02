@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,ਤਾਸ਼,ਸਿੱਖੋ,ਬੋਲੀ,ਟਰੰਪ,ਚਾਲ,ਕੁਇਜ਼

@@ -1,38 +1,9 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+Rèn luyện quyết định chơi Skat qua những buổi học ngắn và tập trung.
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer biến những nội dung quan trọng nhất cho người mới thành các câu hỏi luyện tập rõ ràng. Không có đối thủ, đồng hồ hay tài khoản. Mỗi câu trả lời giải thích cả điều đúng lẫn lý do.
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+Học bộ bài Skat 32 lá, giá trị lá bài, chất, đấu giá, Skat và nền tảng của mỗi ván. Nhận biết chủ, Grand và Null, chọn hai lá để bỏ, rồi luyện theo chất, lượt ra bài và các lần.
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+Bốn phòng cơ bản vẫn miễn phí. Skat+ thêm những bộ bài mới, ôn lại lỗi sai, thử thách 90 giây, bài tập bổ sung và Bàn cao thủ. Thẻ huấn luyện giải thích luật ở mặt sau.
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
-
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
-
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
-
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
-
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
-
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+Luật địa phương có thể khác nhau, vì vậy hãy thống nhất luật tại bàn. Skat+ có gói tháng $1,99 hoặc gói năm $9,99 tự động gia hạn, cả hai có một tuần dùng thử miễn phí. Quyền truy cập vĩnh viễn giá $29,99. Điều khoản: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Quyền riêng tư: https://jackwallner.github.io/skat/privacy-policy.

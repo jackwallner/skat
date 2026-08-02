@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,சீட்டுகள்,கற்றல்,ஏலம்,ட்ரிக்

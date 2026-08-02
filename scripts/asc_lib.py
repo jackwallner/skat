@@ -52,7 +52,8 @@ def load_credentials() -> tuple[str, str, str]:
         key_path = os.environ.get("ASC_KEY_PATH")
     if not all([key_id, issuer_id, key_path]):
         raise SystemExit("error: set ASC_API_KEY_ID, ASC_ISSUER_ID, ASC_KEY_PATH")
-    return key_id, issuer_id, key_path
+    resolved_key_path = os.path.expandvars(os.path.expanduser(key_path))
+    return key_id, issuer_id, resolved_key_path
 
 
 def bearer_token(key_id: str, issuer_id: str, key_path: str) -> str:

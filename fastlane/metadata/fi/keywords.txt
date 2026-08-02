@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,kortit,saksalainen peli,opi,tarjous,valtti,grand,null,poisheitto,tikit,visa,säännöt

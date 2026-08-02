@@ -1,38 +1,20 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+짧고 집중력 있는 세션으로 Skat의 판단력을 키워 보세요.
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer는 초보자에게 가장 필요한 내용을 명확한 연습 문제로 바꿔 줍니다. 상대방, 타이머, 계정이 필요 없습니다. 모든 답변은 무엇이 맞는지뿐 아니라 그 이유도 설명합니다.
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+무료 연습실 네 곳
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+카드와 입찰
+32장 Skat 덱, 카드 가치, 무늬, 입찰, Skat과 각 라운드의 기본을 배웁니다.
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+게임 종류와 카드 버리기
+트럼프, Grand, Null을 구분하고 열두 장 중 두 장을 선택해 트레이너의 설명과 비교합니다.
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+트릭 플레이
+무늬 따라내기, 트럼프, 첫 카드와 트릭 계획을 연습합니다.
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
+Skat+ 선택 사항
+기본 연습실 네 곳은 계속 무료입니다. 새 핸드, 오답 복습, 90초 도전, 추가 문제와 마스터 테이블을 제공합니다.
 
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
-
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
-
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+구독 및 구입
+월 $1.99 또는 연 $9.99의 자동 갱신 구독, 두 상품 모두 1주 무료 체험, 또는 $29.99 일회성 영구 이용권을 이용할 수 있습니다. 구독은 기간 종료 24시간 전까지 취소하지 않으면 갱신됩니다. 이용 약관, Apple 표준 EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. 개인정보 처리방침: https://jackwallner.github.io/skat/privacy-policy.

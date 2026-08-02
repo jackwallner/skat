@@ -1,38 +1,25 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+Progressez au Skat grâce à des séances courtes et ciblées.
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer transforme les notions essentielles pour débuter en questions claires. Sans adversaire, sans chronomètre et sans compte. Chaque réponse explique ce qui est juste et pourquoi.
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+QUATRE SALLES D'ENTRAÎNEMENT GRATUITES
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+CARTES ET ENCHÈRES
+Découvrez le jeu de 32 cartes, la valeur des cartes, les couleurs, les enchères, le Skat et les bases de chaque donne.
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+TYPES DE JEU
+Reconnaissez l'atout, le Grand et le Null. Reliez les cartes à un plan de jeu et entraînez-vous aux règles qui orientent chaque décision.
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+ÉCART ET PLIS
+Choisissez deux cartes à écarter, puis pratiquez fournir, jouer l'atout, entamer et planifier les plis.
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
+SKAT+ (OPTIONNEL)
+Les quatre salles de base restent gratuites. Skat+ ajoute des mains inédites, la reprise des erreurs, un défi de 90 secondes, des exercices supplémentaires et la Table des maîtres.
 
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
+CONÇU POUR APPRENDRE
+Les cartes de coaching expliquent la règle au verso. Les séries, les mains pédagogiques et les retours clairs aident à retenir les notions à la table.
 
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
+Skat Trainer est une application d'apprentissage indépendante. Les règles de maison peuvent varier, convenez donc des règles à la table.
 
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+ABONNEMENTS ET ACHATS
+Skat+ est proposé avec un abonnement mensuel renouvelé automatiquement à 1,99 $ par mois ou annuel à 9,99 $ par an, chacun avec un essai gratuit d'une semaine. Un accès permanent est aussi disponible pour 29,99 $ en achat unique. Le paiement est débité de votre compte Apple lors de la confirmation. Les abonnements se renouvellent automatiquement sauf annulation au moins 24 heures avant la fin de la période. Conditions d'utilisation, EULA standard d'Apple : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Politique de confidentialité : https://jackwallner.github.io/skat/privacy-policy.

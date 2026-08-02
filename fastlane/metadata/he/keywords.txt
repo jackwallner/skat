@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+סקאט,קלפים,לימוד,הכרזה,טראמפ,grand,null,לקיחות

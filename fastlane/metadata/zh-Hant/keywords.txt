@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,紙牌,德國牌戲,學習,叫牌,主牌,grand,null,墊牌,墩牌,問答,策略,規則

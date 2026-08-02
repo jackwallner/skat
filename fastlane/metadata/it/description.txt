@@ -1,38 +1,25 @@
-Skat Trainer macht dich sicherer in der nächsten Runde. Übe Karten, Reizen, Spielarten, Drücken und Stichspiel in kurzen, klaren Einheiten. Jede Antwort erklärt nicht nur was stimmt, sondern auch warum.
+Rendi più sicure le tue decisioni a Skat con sessioni brevi e mirate.
 
-Skat Trainer ist für Anfänger und Wiedereinsteiger gedacht. Ohne Gegner, ohne Zeitdruck und ohne Konto. Du übst genau die Entscheidung, die am Tisch sicherer werden soll.
+Skat Trainer trasforma gli argomenti più importanti per chi inizia in domande chiare. Senza avversari, timer o account. Ogni risposta spiega cosa è giusto e perché.
 
-VIER KOSTENLOSE ÜBUNGSRÄUME
+QUATTRO STANZE DI ALLENAMENTO GRATUITE
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+CARTE E ASTE
+Impara il mazzo da 32 carte, il valore delle carte, i semi, le aste, lo Skat e le basi di ogni mano.
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+TIPI DI GIOCO
+Riconosci atout, Grand e Null. Collega le carte a un piano di gioco e pratica le regole dietro ogni scelta.
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+SCARTO E PRESE
+Scegli due carte da scartare e allenati a rispondere al seme, usare l'atout, uscire e pianificare le prese.
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
+SKAT+ (OPZIONALE)
+Le quattro stanze di base restano gratuite. Skat+ aggiunge mani nuove, ripasso degli errori, una sfida a tempo di 90 secondi, esercizi extra e il Tavolo dei maestri.
 
-SKAT+ (optionale Mitgliedschaft)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt neue Wiederholungen:
+PENSATO PER IMPARARE
+Le schede da scorrere spiegano la regola sul retro. Serie, mani didattiche e feedback chiaro aiutano a ricordare quando torni al tavolo.
 
-ENDLOS ÜBEN erzeugt immer neue, eindeutige Kartenstrukturen für fokussiertes Training.
+Skat Trainer è un'app indipendente per imparare. Le regole della casa possono variare, quindi concordatele al tavolo.
 
-FEHLER WIEDERHOLEN merkt sich verpasste Antworten und bringt sie nach einem Lernplan zurück.
-
-ZEIT-CHALLENGE gibt dir 90 Sekunden für eine persönliche Bestleistung.
-
-ZUSATZÜBUNGEN bringen eigene Fragen in jeden Anfängerraum.
-
-DER MEISTERTISCH öffnet anspruchsvollere Übungen zu Drücken, Verteidigung, Endspiel und Spielstrategie.
-
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien halten dich dabei. Eigene Lehrhände machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerndes Monatsabonnement für 1,99 $ pro Monat oder Jahresabonnement für 9,99 $ pro Jahr verfügbar, jeweils mit einer kostenlosen Probe von einer Woche. Alternativ gibt es den dauerhaften Zugang für 29,99 $ als einmaligen Kauf. Die Zahlung wird bei der Kaufbestätigung über deinen Apple Account abgerechnet. Abonnements verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ablauf gekündigt werden. Verwalten oder kündigen kannst du sie in den Account-Einstellungen deines Geräts. Nutzungsbedingungen nach Apples Standard-EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzerklärung: https://jackwallner.github.io/skat/privacy-policy.
+ABBONAMENTI E ACQUISTI
+Skat+ offre un abbonamento mensile con rinnovo automatico a $1,99 al mese o annuale a $9,99 all'anno, entrambi con una prova gratuita di una settimana. È disponibile anche l'accesso permanente a $29,99 con acquisto singolo. Il pagamento viene addebitato sul tuo account Apple alla conferma. Gli abbonamenti si rinnovano automaticamente salvo annullamento almeno 24 ore prima della fine del periodo. Termini d'uso, EULA standard Apple: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Informativa sulla privacy: https://jackwallner.github.io/skat/privacy-policy.

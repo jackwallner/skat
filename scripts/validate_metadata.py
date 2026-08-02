@@ -64,6 +64,8 @@ def main() -> int:
                 errors.append(f"{locale}/{field}.txt is {measured} {unit}, limit is {limit}")
             if "—" in text:
                 errors.append(f"{locale}/{field}.txt contains an em dash")
+            if "\\n" in text:
+                errors.append(f"{locale}/{field}.txt contains a literal newline escape")
             if field.endswith("_url") and not is_url(text):
                 errors.append(f"{locale}/{field}.txt is not an https URL: {text}")
             lowered = text.casefold()
@@ -74,6 +76,27 @@ def main() -> int:
     en_name = value("en-US", "name")
     if args.expected_product.casefold() not in en_name.casefold():
         errors.append(f"en-US/name.txt does not contain {args.expected_product!r}")
+
+    localized_name_values = {
+        value(locale, "name")
+        for locale in locales
+        if value(locale, "name")
+    }
+    localized_description_values = {
+        value(locale, "description")
+        for locale in locales
+        if value(locale, "description")
+    }
+    if len(localized_name_values) < 10:
+        errors.append("store names look like a single-language fallback")
+    if len(localized_description_values) < 10:
+        errors.append("store descriptions look like a single-language fallback")
+
+    for locale in ("en-US", "fr-FR", "es-ES", "ja", "zh-Hans"):
+        if value(locale, "name") == value("de-DE", "name"):
+            errors.append(f"{locale}/name.txt is still the German storefront name")
+        if value(locale, "description") == value("de-DE", "description"):
+            errors.append(f"{locale}/description.txt is still the German storefront description")
 
     if errors:
         print(f"Metadata validation failed with {len(errors)} error(s):")

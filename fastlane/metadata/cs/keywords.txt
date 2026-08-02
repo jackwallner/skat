@@ -1,1 +1,1 @@
-skat,lernen,üben,karten,reizen,trumpf,grand,null,drücken,stich,quiz,strategie,regeln
+skat,karty,německá hra,učení,licitace,trumf,grand,null,odklad,štychy,kvíz,strategie,pravidla
