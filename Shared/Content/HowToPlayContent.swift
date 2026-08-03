@@ -40,9 +40,9 @@ enum HowToPlayContent {
             id: "primer-reizen",
             icon: "arrow.up.right.circle.fill",
             title: "Reizen und Spiel ansagen",
-            body: "Die Spieler reizen mit möglichen Spielwerten. Wer die höchste Ansage hält, übernimmt das Spiel, nimmt den Skat auf und sagt die Spielart an.",
+            body: "Die Spieler reizen mit möglichen Spielwerten: 18, 20, 22, 23, 24 und weiter. Wer die höchste Ansage hält, übernimmt das Spiel, nimmt den Skat auf und sagt die Spielart an.",
             tiles: [.c(11), .s(11), .h(14)],
-            tip: "Reize nur so hoch, wie dein Blatt und dein Plan es tragen."
+            tip: "Die 18 ist das kleinste Gebot. Reize nur so hoch, wie dein Blatt und dein Plan es tragen."
         ),
         HowToPlayPage(
             id: "primer-skat",

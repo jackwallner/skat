@@ -63,6 +63,36 @@ enum CardBasicsContent {
             backTitle: "Aufnehmen, dann drücken",
             backBody: "Der Alleinspieler nimmt die zwei Skatkarten auf und hat dadurch zwölf Karten. Danach legt er zwei Karten verdeckt zurück, bevor das Spiel beginnt."
         ),
+        Flashcard(
+            id: "karten-grundwerte",
+            frontTitle: "Die Grundwerte",
+            frontTiles: [.d(11), .h(11), .s(11), .c(11)],
+            frontSubtitle: "Jede Spielart hat ihren Wert",
+            backTitle: "Karo 9, Herz 10, Pik 11, Kreuz 12",
+            backBody: "Der Grundwert hängt von der angesagten Farbe ab: Karo 9, Herz 10, Pik 11 und Kreuz 12. Der Grand hat den Grundwert 24. Das Nullspiel hat feste Werte und wird nicht multipliziert."
+        ),
+        Flashcard(
+            id: "karten-spitzen",
+            frontTitle: "Spitzen zählen",
+            frontTiles: [.c(11), .s(11), .h(11)],
+            frontSubtitle: "Mit oder ohne den Kreuz-Buben",
+            backTitle: "Grundwert mal Spitzen plus Spiel",
+            backBody: "Gezählt wird immer beim Kreuz-Buben. Hältst du ihn, spielst du mit so vielen Spitzen, wie du Trümpfe lückenlos von oben besitzt. Fehlt er dir, spielst du ohne so viele, wie dir von oben lückenlos fehlen. Der Spielwert ist der Grundwert mal der Summe aus Spitzen und dem Spiel selbst."
+        ),
+        Flashcard(
+            id: "karten-reizwerte",
+            frontTitle: "Die Reizwerte",
+            frontSubtitle: "18, 20, 22, 23, 24 und weiter",
+            backTitle: "18 ist das niedrigste Gebot",
+            backBody: "Gereizt wird nur mit Zahlen, die als Spielwert wirklich vorkommen: 18, 20, 22, 23, 24, 27, 30, 33, 35, 36 und so weiter. Die 18 ist das kleinste mögliche Gebot, denn Karo mit oder ohne einer Spitze ergibt 9 mal 2."
+        ),
+        Flashcard(
+            id: "karten-reizablauf",
+            frontTitle: "Wer reizt wen?",
+            frontSubtitle: "Mittelhand, Vorhand, Hinterhand",
+            backTitle: "Vorhand hält oder passt",
+            backBody: "Mittelhand reizt Vorhand an. Vorhand antwortet ja, solange sie den Wert halten will, sonst passt sie. Wer übrig bleibt, wird von Hinterhand weitergereizt. Reize nur so hoch, wie dein Blatt den Spielwert wirklich trägt."
+        ),
     ]
 
     static let cardQuiz: [QuizQuestion] = [
@@ -123,6 +153,29 @@ enum CardBasicsContent {
             choices: ["Mindestens 61 Augen", "Mindestens fünf Stiche", "Keinen Stich"],
             answerIndex: 2,
             explanation: "Im Null gibt es keine Augenwertung. Der Alleinspieler gewinnt nur, wenn er keinen Stich erhält."
+        ),
+        QuizQuestion(
+            id: "karten-quiz-9",
+            prompt: "Was ist das niedrigste mögliche Gebot beim Reizen?",
+            choices: ["17", "18", "20"],
+            answerIndex: 1,
+            explanation: "Die 18 ist der kleinste vorkommende Spielwert: Grundwert 9 für Karo mal zwei für eine Spitze und das Spiel."
+        ),
+        QuizQuestion(
+            id: "karten-quiz-10",
+            prompt: "Welchen Grundwert hat ein Kreuzspiel?",
+            tiles: [.c(14)],
+            choices: ["9", "12", "24"],
+            answerIndex: 1,
+            explanation: "Die Grundwerte lauten Karo 9, Herz 10, Pik 11 und Kreuz 12. Der Grand steht mit 24 darüber."
+        ),
+        QuizQuestion(
+            id: "karten-quiz-11",
+            prompt: "Bei welcher Karte beginnt das Zählen der Spitzen?",
+            tiles: [.c(11), .s(11), .h(11), .d(11)],
+            choices: ["Beim Kreuz-Buben", "Beim Karo-Buben", "Beim Kreuz-Ass"],
+            answerIndex: 0,
+            explanation: "Die Spitzen werden immer vom Kreuz-Buben aus gezählt, entweder mit ihm oder ohne ihn."
         ),
     ]
 }

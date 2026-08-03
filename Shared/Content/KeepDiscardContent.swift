@@ -9,7 +9,7 @@ enum KeepDiscardContent {
             frontTiles: [.h(14), .h(7), .c(13)],
             frontSubtitle: "Herz ist angespielt",
             backTitle: "Herz muss folgen",
-            backBody: "Wenn du Herz hältst, musst du Herz bedienen. Der Herz-König darf nicht gespielt werden, solange noch eine Herzkarte auf deiner Hand liegt.",
+            backBody: "Wenn du Herz hältst, musst du Herz bedienen. Der Kreuz-König darf nicht gespielt werden, solange noch eine Herzkarte auf deiner Hand liegt.",
             choice: CardChoice("Herz bedienen", "Eine fremde Farbe spielen", answerIndex: 0)
         ),
         Flashcard(
@@ -45,7 +45,7 @@ enum KeepDiscardContent {
             frontTiles: [.c(14), .c(7), .s(11)],
             frontSubtitle: "Kein Trumpf im Null",
             backTitle: "Das Ass bleibt hoch",
-            backBody: "Im Null sind die Buben keine Trümpfe. Die normale Kartenreihenfolge gilt, und das Ass ist die höchste Karte der Farbe.",
+            backBody: "Im Null sind die Buben keine Trümpfe. Innerhalb der Farbe gilt Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Das Ass bleibt die höchste Karte, und die Zehn rutscht unter den Buben.",
             choice: CardChoice("Ass ist hoch", "Bube ist Trumpf", answerIndex: 0)
         ),
         Flashcard(

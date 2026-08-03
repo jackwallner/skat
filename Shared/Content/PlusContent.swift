@@ -107,7 +107,7 @@ enum PlusContent {
             frontTiles: [.h(14), .h(7), .c(11)],
             frontSubtitle: "Herz ist die Spielidee",
             backTitle: "Trumpfstruktur vor Einzelkarte",
-            backBody: "Die Herz-Karten gehören zur Trumpffarbe. Eine einzelne kleine Fremdfarbe ist dagegen nur dann wertvoll, wenn sie einen konkreten Stichplan hat.",
+            backBody: "Im Herzspiel gehören die Herz-Karten und der Kreuz-Bube zusammen zum Trumpf, denn alle vier Buben sind Trumpf. Genau diese Struktur hältst du zusammen. Eine einzelne kleine Karte in einer Seitenfarbe ist dagegen nur mit einem konkreten Stichplan wertvoll.",
             choice: CardChoice("Herzstruktur halten", "Farbe sofort zerreißen", answerIndex: 0)
         ),
         Flashcard(

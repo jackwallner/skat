@@ -143,7 +143,7 @@ enum MoreContent {
             tiles: [.c(14), .c(13), .c(11)],
             choices: ["Ass", "Bube", "König"],
             answerIndex: 0,
-            explanation: "Im Null gilt die normale Reihenfolge. Das Ass ist hoch und die Buben sind keine Trümpfe."
+            explanation: "Im Null gilt eine eigene Reihenfolge: Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Das Ass ist hoch und die Buben sind keine Trümpfe."
         ),
         QuizQuestion(
             id: "mehr-stich-quiz-6",
@@ -174,8 +174,8 @@ enum MoreContent {
         Flashcard(
             id: "mehr-entscheidung-1",
             frontTitle: "Kleine Farbe abwerfen",
-            frontTiles: [.h(14), .c(11), .c(7)],
-            frontSubtitle: "Du hast kein Herz",
+            frontTiles: [.c(7), .s(9), .d(8)],
+            frontSubtitle: "Herz ist angespielt, du hast kein Herz",
             backTitle: "Frei wählen ist legal",
             backBody: "Wenn Herz angespielt ist und du kein Herz hältst, darfst du eine andere Farbe oder Trumpf spielen. Eine kleine Seitenkarte kann die richtige Schonung sein.",
             choice: CardChoice("Frei wählen", "Herz muss folgen", answerIndex: 0)
@@ -201,10 +201,10 @@ enum MoreContent {
         Flashcard(
             id: "mehr-entscheidung-4",
             frontTitle: "Stich auswerten",
-            frontTiles: [.c(14), .d(14), .c(10)],
-            frontSubtitle: "Trumpf liegt im Stich",
+            frontTiles: [.d(14), .d(10), .c(11)],
+            frontSubtitle: "Karo ist angespielt, ein Bube liegt im Stich",
             backTitle: "Trumpf schlägt Seitenfarbe",
-            backBody: "Auch ein kleiner Trumpf gewinnt gegen ein Ass einer Seitenfarbe. Erst der Trumpfrang, dann die Augen zählen.",
+            backBody: "Der Kreuz-Bube ist im Farbspiel und im Grand Trumpf. Er gewinnt den Stich gegen das Karo-Ass, obwohl das Ass mehr Augen zählt. Erst der Trumpfrang, dann die Augen zählen.",
             choice: CardChoice("Trumpf gewinnt", "Ass gewinnt immer", answerIndex: 0)
         ),
     ]
@@ -227,16 +227,16 @@ enum MoreContent {
         QuizQuestion(
             id: "mehr-regel-3",
             prompt: "Was bedeutet Schneider im Farbspiel oder Grand?",
-            choices: ["Eine Gewinnstufe mit höchstens 30 Augen für die Gegner", "Ein Spiel ohne Trumpf", "Ein Spiel mit offenem Skat"],
+            choices: ["Eine Gewinnstufe mit höchstens 30 Augen für die verlierende Partei", "Ein Spiel ohne Trumpf", "Ein Spiel mit offenem Skat"],
             answerIndex: 0,
-            explanation: "Schneider bedeutet, dass die Gegenspieler höchstens 30 Augen erreichen. Das verändert die Gewinnstufe und damit den Spielwert."
+            explanation: "Schneider bedeutet, dass die verlierende Partei höchstens 30 Augen erreicht. Das gilt für die Gegenspieler, wenn der Alleinspieler gewinnt, und ebenso für den Alleinspieler selbst, wenn er mit höchstens 30 Augen verliert."
         ),
         QuizQuestion(
             id: "mehr-regel-4",
             prompt: "Was ist bei einem Handspiel anders?",
             choices: ["Der Skat wird nicht aufgenommen", "Es gibt keine Trümpfe", "Es spielen nur zwei Personen"],
             answerIndex: 0,
-            explanation: "Beim Handspiel bleibt der Skat liegen. Der Alleinspieler drückt zwei Karten, ohne die beiden Karten vorher zu sehen."
+            explanation: "Beim Handspiel bleibt der Skat ungesehen liegen. Der Alleinspieler drückt gar nicht und spielt mit seinen zehn Karten. Die Augen im Skat zählen ihm am Ende trotzdem."
         ),
         QuizQuestion(
             id: "mehr-regel-5",
@@ -251,6 +251,28 @@ enum MoreContent {
             choices: ["Augen in den eigenen Stichen", "Der Spielwert allein", "Nur die Anzahl der Trümpfe"],
             answerIndex: 0,
             explanation: "Der Spielwert beschreibt die Ansage. Gewonnen wird der Grand mit mindestens 61 Augen in den eigenen Stichen."
+        ),
+        QuizQuestion(
+            id: "mehr-regel-7",
+            prompt: "Wie hoch ist der feste Wert von Null ouvert?",
+            choices: ["35", "46", "59"],
+            answerIndex: 1,
+            explanation: "Die Nullspiele haben feste Werte: Null 23, Null Hand 35, Null ouvert 46 und Null ouvert Hand 59. Sie werden nicht mit Spitzen multipliziert."
+        ),
+        QuizQuestion(
+            id: "mehr-regel-8",
+            prompt: "Du hältst Kreuz-Bube, Pik-Bube und Herz-Bube, aber nicht den Karo-Buben. Mit wie vielen Spitzen spielst du?",
+            tiles: [.c(11), .s(11), .h(11)],
+            choices: ["Mit einer", "Mit dreien", "Ohne zwei"],
+            answerIndex: 1,
+            explanation: "Vom Kreuz-Buben abwärts besitzt du drei Trümpfe lückenlos. Erst beim Karo-Buben reißt die Reihe, also spielst du mit dreien."
+        ),
+        QuizQuestion(
+            id: "mehr-regel-9",
+            prompt: "Was bedeutet Schwarz?",
+            choices: ["Die verlierende Partei bekommt keinen einzigen Stich", "Die Gegner bleiben unter 30 Augen", "Der Alleinspieler spielt ohne Skat"],
+            answerIndex: 0,
+            explanation: "Schwarz ist die höchste Gewinnstufe: Die verlierende Partei erhält überhaupt keinen Stich. Schneider verlangt dagegen nur höchstens 30 Augen."
         ),
     ]
 }

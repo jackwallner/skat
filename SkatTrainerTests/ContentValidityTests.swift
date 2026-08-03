@@ -156,6 +156,86 @@ final class ContentValidityTests: XCTestCase {
         }
     }
 
+    /// Every player-visible string, so a rules assertion can be checked once
+    /// against the whole app rather than per drill type.
+    private var allPlayerFacingCopy: [String] {
+        var copy: [String] = []
+        for room in DrillLibrary.rooms {
+            copy += [room.name, room.tagline]
+            for drill in room.drills {
+                copy += [drill.title, drill.subtitle]
+                switch drill.kind {
+                case .flashcards(let cards):
+                    copy += cards.flatMap { [$0.frontTitle, $0.frontSubtitle ?? "", $0.backTitle, $0.backBody] }
+                case .quiz(let questions):
+                    copy += questions.flatMap { [$0.prompt, $0.explanation] + $0.choices }
+                case .handMatch(let questions):
+                    copy += questions.map(\.explanation)
+                case .discard(let scenarios):
+                    copy += scenarios.flatMap { [$0.situation, $0.reasoning, $0.tip] }
+                }
+            }
+        }
+        copy += HowToPlayContent.pages.flatMap { [$0.title, $0.body, $0.tip ?? ""] }
+        copy += HandCategory.allCases.map(\.howToSpot)
+        return copy
+    }
+
+    /// In Skat "die normale Reihenfolge" means Ass, Zehn, König, Dame, Neun,
+    /// Acht, Sieben. That order is right for a Farbspiel and for the side
+    /// suits of a Grand, but it is WRONG for Null, where the Zehn drops below
+    /// the Bube (Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben). Teaching
+    /// the normal order in a Null sentence is a rules error, so no single
+    /// string may ever contain both ideas.
+    func testNullCopyNeverClaimsTheNormalCardOrder() {
+        for text in allPlayerFacingCopy where text.localizedCaseInsensitiveContains("null") {
+            XCTAssertFalse(
+                text.localizedCaseInsensitiveContains("normale Reihenfolge")
+                    || text.localizedCaseInsensitiveContains("normale Kartenreihenfolge"),
+                "Null copy claims the normal card order, which is wrong for Null: \(text)"
+            )
+        }
+    }
+
+    /// In a Handspiel the declarer never picks the Skat up and never discards.
+    /// The Skat's card points simply count for them at scoring.
+    func testHandGameCopyNeverClaimsADiscard() {
+        for text in allPlayerFacingCopy where text.localizedCaseInsensitiveContains("handspiel") {
+            XCTAssertFalse(
+                text.localizedCaseInsensitiveContains("drückt zwei"),
+                "Handspiel copy claims a discard; a Hand game has none: \(text)"
+            )
+        }
+    }
+
+    /// The generated trick drill decides Bedienpflicht by comparing printed
+    /// suits. A Bube is trump in a Farbspiel and in a Grand, so it does not
+    /// belong to the suit printed on it and would make the generated question
+    /// false. The generator must therefore never deal one.
+    func testGeneratedTrickItemsNeverDealAJack() {
+        let items = EndlessPractice.items(for: .trickPlay, count: 400)
+        XCTAssertEqual(items.count, 400)
+        for item in items {
+            XCTAssertFalse(
+                item.tiles.contains(where: \.isJack),
+                "Generated trick item deals a Bube, which is trump and not a member of its printed suit: \(item.prompt)"
+            )
+        }
+    }
+
+    /// The values a trainer must actually state, each pinned to the drill that
+    /// teaches it, so a future content edit cannot quietly drop them.
+    func testCoreSkatValuesAreTaughtSomewhere() {
+        let corpus = allPlayerFacingCopy.joined(separator: "\n")
+        for fact in ["Karo 9", "Herz 10", "Pik 11", "Kreuz 12", "24", "23", "18", "61"] {
+            XCTAssertTrue(corpus.contains(fact), "No drill teaches the value \(fact)")
+        }
+        XCTAssertTrue(
+            corpus.localizedCaseInsensitiveContains("Spitzen"),
+            "Spielwert is referenced but Spitzen are never explained"
+        )
+    }
+
     func testHowToPlayPagesHaveUniqueIDsAndValidCards() {
         let pages = HowToPlayContent.pages
         XCTAssertFalse(pages.isEmpty)

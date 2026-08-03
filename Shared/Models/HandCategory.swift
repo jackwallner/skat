@@ -43,7 +43,7 @@ enum HandCategory: String, Codable, CaseIterable, Identifiable, Sendable {
         case .grand:
             return "Im Grand sind nur die vier Buben Trumpf. Die übrigen Farben werden normal bedient."
         case .nullspiel:
-            return "Im Null gibt es keinen Trumpf und keine Augen. Das Ziel ist, keinen Stich zu bekommen."
+            return "Im Null gibt es keinen Trumpf und keine Augen. Die Farbe läuft Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Das Ziel ist, keinen Stich zu bekommen."
         case .farbe:
             return "Wer eine angespielte Farbe hat, muss sie bedienen. Erst ohne diese Farbe darfst du frei wählen."
         case .stich:

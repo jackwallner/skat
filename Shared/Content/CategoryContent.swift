@@ -24,8 +24,8 @@ enum CategoryContent {
             frontTitle: "Null",
             frontTiles: [.c(7), .d(8), .h(9), .s(10)],
             frontSubtitle: "Kein Trumpf, kein Stich",
-            backTitle: "Das Ass ist hoch",
-            backBody: "Im Nullspiel gibt es keinen Trumpf und keine Augen. Die normale Reihenfolge gilt, das Ass ist hoch. Der Alleinspieler darf keinen Stich bekommen."
+            backTitle: "Ass, König, Dame, Bube, Zehn",
+            backBody: "Im Nullspiel gibt es keinen Trumpf und keine Augen. Innerhalb jeder Farbe gilt eine eigene Reihenfolge: Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Die Zehn steht hier unter dem Buben. Der Alleinspieler darf keinen Stich bekommen."
         ),
         Flashcard(
             id: "spielarten-bedienpflicht",
