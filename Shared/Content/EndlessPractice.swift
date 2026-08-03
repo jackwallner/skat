@@ -89,8 +89,15 @@ enum EndlessPractice {
         var items: [QuickItem] = []
         while items.count < count {
             let lead = Suit.allCases.randomElement() ?? .hearts
+            // Never deal a Bube here. This drill decides Bedienpflicht purely
+            // by comparing printed suits, and in a Farbspiel or Grand a Bube is
+            // TRUMP, not a member of the suit printed on it. Holding only the
+            // Herz-Bube when Herz is led means you cannot follow Herz at all,
+            // which is the exact opposite of what a printed-suit comparison
+            // would conclude. Excluding Buben keeps every generated question
+            // true in a Farbspiel, a Grand and a Null alike.
             let card = PlayingCard.standard(
-                rank: PlayingCard.skatRanks.randomElement() ?? 10,
+                rank: PlayingCard.skatRanks.filter { $0 != 11 }.randomElement() ?? 10,
                 suit: Suit.allCases.randomElement() ?? .clubs
             )
             let follows = card.suit == lead
