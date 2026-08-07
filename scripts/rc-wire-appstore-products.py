@@ -62,37 +62,34 @@ def request(method: str, path: str, body: dict | None = None) -> dict:
         raise RuntimeError(f"{method} {path} -> {e.code}: {e.read().decode()[:400]}")
 
 
-def ensure_entitlement(pid: str, membership: str) -> dict:
-    """Return the entitlement products should hang off.
+def entitlements_to_feed(pid: str, membership: str) -> list[dict]:
+    """Every entitlement the products should grant.
 
-    Prefer `pro`, the fleet's canonical key. These projects were scaffolded
-    with the player-facing name as the key instead, and RevenueCat allows
-    neither editing a lookup_key nor (in at least one project) creating `pro`:
-    the create 409s on a `pro` the list endpoint never returns. So fall back to
-    whatever single entitlement the project exposes; the app treats any active
-    entitlement as membership rather than matching one hardcoded key.
+    There is one paid tier, so products hang off all of them. That matters
+    because these projects were scaffolded with the player-facing name as the
+    lookup_key (`skat`), which RevenueCat will not let you edit, while
+    older shipped binaries check `pro`. Granting both keys means any build,
+    old or new, unlocks on a purchase.
     """
     entitlements = request("GET", f"/projects/{pid}/entitlements?limit=50")["items"]
-    existing = next((e for e in entitlements if e["lookup_key"] == ENTITLEMENT), None)
-    if existing:
-        print(f"entitlement {ENTITLEMENT} exists: {existing['id']}")
-        return existing
-    try:
-        created = request("POST", f"/projects/{pid}/entitlements", {
-            "lookup_key": ENTITLEMENT,
-            "display_name": membership,
-        })
-        print(f"created entitlement {ENTITLEMENT} ({created['id']})")
-        return created
-    except RuntimeError as e:
-        if "already_exists" not in str(e) and "already an entitlement" not in str(e):
-            raise
-    if len(entitlements) != 1:
-        sys.exit(f"cannot pick an entitlement: {[e['lookup_key'] for e in entitlements]}")
-    fallback = entitlements[0]
-    print(f"WARNING: using entitlement '{fallback['lookup_key']}' ({fallback['id']}); "
-          f"'{ENTITLEMENT}' is reserved but invisible to the API")
-    return fallback
+    if not any(e["lookup_key"] == ENTITLEMENT for e in entitlements):
+        try:
+            created = request("POST", f"/projects/{pid}/entitlements", {
+                "lookup_key": ENTITLEMENT,
+                "display_name": membership,
+            })
+            print(f"created entitlement {ENTITLEMENT} ({created['id']})")
+            entitlements.append(created)
+        except RuntimeError as e:
+            # RevenueCat's uniqueness index has been seen claiming `pro`
+            # already exists while every read endpoint denies it. Transient:
+            # retrying later succeeded. Not fatal, the app accepts any
+            # active entitlement.
+            if "already_exists" not in str(e) and "already an entitlement" not in str(e):
+                raise
+            print(f"WARNING: RevenueCat refuses to create '{ENTITLEMENT}' but does not "
+                  f"return it either; retry later")
+    return entitlements
 
 
 def main() -> None:
@@ -127,21 +124,21 @@ def main() -> None:
             print(f"product exists: {identifier} ({product['id']})")
         products[suffix] = product
 
-    entitlement = ensure_entitlement(pid, membership)
-    attached = request(
-        "GET", f"/projects/{pid}/entitlements/{entitlement['id']}/products?limit=50"
-    )["items"]
-    attached_ids = {p["id"] for p in attached}
-    missing = [p["id"] for p in products.values() if p["id"] not in attached_ids]
-    if missing:
-        request(
-            "POST",
-            f"/projects/{pid}/entitlements/{entitlement['id']}/actions/attach_products",
-            {"product_ids": missing},
-        )
-        print(f"attached {len(missing)} product(s) to entitlement {entitlement['lookup_key']}")
-    else:
-        print(f"entitlement {entitlement['lookup_key']} already holds every product")
+    for entitlement in entitlements_to_feed(pid, membership):
+        attached = request(
+            "GET", f"/projects/{pid}/entitlements/{entitlement['id']}/products?limit=50"
+        )["items"]
+        attached_ids = {p["id"] for p in attached}
+        missing = [p["id"] for p in products.values() if p["id"] not in attached_ids]
+        if missing:
+            request(
+                "POST",
+                f"/projects/{pid}/entitlements/{entitlement['id']}/actions/attach_products",
+                {"product_ids": missing},
+            )
+            print(f"attached {len(missing)} product(s) to entitlement {entitlement['lookup_key']}")
+        else:
+            print(f"entitlement {entitlement['lookup_key']} already holds every product")
 
     offerings = request("GET", f"/projects/{pid}/offerings?limit=50")["items"]
     offering = next((o for o in offerings if o.get("is_current")), offerings[0])
