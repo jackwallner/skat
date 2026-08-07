@@ -74,6 +74,14 @@ struct OnboardingView: View {
             footer
         }
         .background(Theme.background)
+        // Resolve the product before the price slot is on screen. `start()`
+        // already asks at launch, but on a cold or slow network the answer can
+        // still be in flight when someone swipes through four pages in three
+        // seconds, and the trial step has to show a real billed amount by the
+        // time it appears - it no longer has an invented one to fall back on.
+        .task(id: page) {
+            await subscriptions.ensureOfferings()
+        }
         .sheet(isPresented: $showPaywallFallback, onDismiss: paywallDismissed) {
             PaywallView()
         }
@@ -197,7 +205,12 @@ struct OnboardingView: View {
                 .foregroundStyle(Theme.gold)
                 .frame(width: 92, height: 92)
                 .background(Theme.gold.opacity(0.14), in: Circle())
-            Text("\(Membership.name) kostenlos testen")
+            // Not "kostenlos testen". App Review 3.1.2(c) rejected this screen
+            // for promoting the free trial more conspicuously than the billed
+            // amount, and a 30pt headline saying "free" was the largest such
+            // element on it. The trial is still offered - once, on the button,
+            // under the price - which is where it converts anyway.
+            Text("\(Membership.name) freischalten")
                 .font(Theme.display(30))
                 .foregroundStyle(Theme.ink)
                 .multilineTextAlignment(.center)
@@ -220,21 +233,26 @@ struct OnboardingView: View {
             Text(text)
                 .font(.subheadline)
                 .foregroundStyle(Theme.ink)
+                // Wrap rather than truncate: three of these four lines were
+                // clipped mid-word ("bleibt dauerh...") in the review build.
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 
     /// The billed amount, shown prominently at the point of purchase (App Review
     /// 3.1.2(c) flagged that it wasn't clearly and conspicuously displayed).
     private var yearlyPrice: String {
-        PaywallPricing.price(subscriptions, .yearly)
+        PaywallPricing.priceText(subscriptions, .yearly)
     }
 
     /// One concise line, matching the approved fleet pattern (StatScout): trial
     /// length, price, that it renews, how to cancel. The EULA behind the Terms
     /// link carries the full legalese; this is the point-of-purchase micro copy.
     private var yearlyDisclosure: String {
-        let price = PaywallPricing.price(subscriptions, .yearly)
-        return "7 Tage kostenlos, danach \(price). Verlängert sich automatisch, bis du kündigst."
+        guard let price = PaywallPricing.price(subscriptions, .yearly) else {
+            return "Inklusive 7 Tagen kostenlos. Verlängert sich automatisch, bis du kündigst."
+        }
+        return "Abrechnung: \(price), inklusive 7 Tagen kostenlos. Verlängert sich automatisch, bis du kündigst."
     }
 
     // MARK: - Footer (identical geometry on every page: zero-shift CTA)
@@ -266,7 +284,7 @@ struct OnboardingView: View {
             // every page anyway, so the CTA still never shifts.
             VStack(spacing: 2) {
                 Text(yearlyPrice)
-                    .font(Theme.display(22))
+                    .font(Theme.display(26).weight(.bold))
                     .foregroundStyle(Theme.ink)
                 Text(yearlyDisclosure)
                     .font(.caption2)

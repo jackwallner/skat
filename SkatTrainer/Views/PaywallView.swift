@@ -66,12 +66,12 @@ struct PaywallContent: View {
 
     private var planCards: some View {
         VStack(spacing: 10) {
-            planCard(.yearly, title: "Jährlich", price: PaywallPricing.price(subscriptions, .yearly),
-                     detail: "7 Tage kostenlos, danach jährliche Abrechnung. Verlängert sich automatisch.", badge: "BESTER WERT")
-            planCard(.lifetime, title: "Dauerhaft", price: PaywallPricing.price(subscriptions, .lifetime),
+            planCard(.yearly, title: "Jährlich", price: PaywallPricing.priceText(subscriptions, .yearly),
+                     detail: "Jährliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch.", badge: "BESTER WERT")
+            planCard(.lifetime, title: "Dauerhaft", price: PaywallPricing.priceText(subscriptions, .lifetime),
                      detail: "Einmalige Zahlung. Kein Abonnement, keine Verlängerung.", badge: "EINMALIG")
-            planCard(.monthly, title: "Monatlich", price: PaywallPricing.price(subscriptions, .monthly),
-                     detail: "7 Tage kostenlos, danach monatliche Abrechnung. Verlängert sich automatisch.", badge: nil)
+            planCard(.monthly, title: "Monatlich", price: PaywallPricing.priceText(subscriptions, .monthly),
+                     detail: "Monatliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch.", badge: nil)
         }
     }
 
@@ -120,28 +120,56 @@ struct PaywallContent: View {
     }
 }
 
-/// Price and terms strings, live from StoreKit when RevenueCat has loaded and
-/// falling back to the configured prices so the screen is never blank.
+/// Price and terms strings, live from StoreKit.
+///
+/// There is deliberately no hardcoded price fallback. These used to fall back
+/// to "$9.99 / Jahr" when RevenueCat had not loaded, and that is exactly what
+/// the reviewer was shown: a dollar amount, in a German-language app, that the
+/// German storefront would never charge. A price the store did not give us is
+/// worse than no price at all, so an unresolved product renders the loading
+/// placeholder and the disclosure drops the amount rather than inventing one.
 @MainActor
 enum PaywallPricing {
-    static func price(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String {
-        let base = subscriptions.package(for: plan)?.storeProduct.localizedPriceString
-        switch plan {
-        case .yearly: return "\(base ?? "$9.99") / Jahr"
-        case .monthly: return "\(base ?? "$1.99") / Monat"
-        case .lifetime: return base ?? "$29.99 einmalig"
+    /// Shown in the amount's place until StoreKit answers.
+    static let placeholder = "Preis wird geladen …"
+
+    /// The localized billed amount, or nil while the product is still in flight.
+    static func price(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String? {
+        guard let base = subscriptions.package(for: plan)?.storeProduct.localizedPriceString else {
+            return nil
         }
+        switch plan {
+        case .yearly: return "\(base) / Jahr"
+        case .monthly: return "\(base) / Monat"
+        case .lifetime: return base
+        }
+    }
+
+    /// The same, ready to render: the amount or the placeholder.
+    static func priceText(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String {
+        price(subscriptions, plan) ?? placeholder
     }
 
     /// One concise point-of-purchase line: price, trial, auto-renew, cancel.
     /// The full legalese lives in the EULA behind the Terms link.
+    ///
+    /// Subordinate to the billed amount above it by design (3.1.2(c)): the
+    /// trial is mentioned once, in caption type, under a price line set in
+    /// display type.
     static func terms(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String {
-        let amount = price(subscriptions, plan)
+        guard let amount = price(subscriptions, plan) else {
+            switch plan {
+            case .lifetime:
+                return "Einmalige Zahlung. Kein Abonnement, keine automatische Verlängerung."
+            case .yearly, .monthly:
+                return "Inklusive 7 Tagen kostenlos. Verlängert sich automatisch. Kündige mindestens 24 Stunden vor Ablauf."
+            }
+        }
         switch plan {
         case .lifetime:
             return "\(amount) einmalig. Kein Abonnement, keine automatische Verlängerung."
         case .yearly, .monthly:
-            return "7 Tage kostenlos, danach \(amount). Verlängert sich automatisch. Kündige mindestens 24 Stunden vor Ablauf."
+            return "Abrechnung: \(amount), inklusive 7 Tagen kostenlos. Verlängert sich automatisch. Kündige mindestens 24 Stunden vor Ablauf."
         }
     }
 }
@@ -169,8 +197,8 @@ struct PaywallView: View {
                     // (App Review 3.1.2(c)): the reviewer flagged that it wasn't
                     // clearly and conspicuously displayed. It has to stay the
                     // largest pricing element here, above the trial fine print.
-                    Text(PaywallPricing.price(subscriptions, selectedPlan))
-                        .font(Theme.display(22))
+                    Text(PaywallPricing.priceText(subscriptions, selectedPlan))
+                        .font(Theme.display(26).weight(.bold))
                         .foregroundStyle(Theme.ink)
                     Text(PaywallPricing.terms(subscriptions, selectedPlan))
                         .font(.caption)
