@@ -223,6 +223,12 @@ struct OnboardingView: View {
         }
     }
 
+    /// The billed amount, shown prominently at the point of purchase (App Review
+    /// 3.1.2(c) flagged that it wasn't clearly and conspicuously displayed).
+    private var yearlyPrice: String {
+        PaywallPricing.price(subscriptions, .yearly)
+    }
+
     /// One concise line, matching the approved fleet pattern (StatScout): trial
     /// length, price, that it renews, how to cancel. The EULA behind the Terms
     /// link carries the full legalese; this is the point-of-purchase micro copy.
@@ -252,15 +258,24 @@ struct OnboardingView: View {
             .frame(height: 30)
             .opacity(onTrialPage ? 1 : 0)
             .disabled(!onTrialPage)
-            // Disclosure slot, also reserved. Small and tertiary: present at the
-            // point of purchase (3.1.2) without shouting.
-            Text(yearlyDisclosure)
-                .font(.caption2)
-                .foregroundStyle(Theme.inkTertiary)
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(height: 30)
-                .opacity(onTrialPage ? 1 : 0)
+            // Pricing slot, also reserved. The billed amount is the conspicuous
+            // element (App Review 3.1.2(c) flagged that it wasn't clearly
+            // displayed); the disclosure under it stays small and tertiary.
+            // minHeight, not a fixed height: the German disclosure wraps to two
+            // or three lines depending on the device, and the slot renders on
+            // every page anyway, so the CTA still never shifts.
+            VStack(spacing: 2) {
+                Text(yearlyPrice)
+                    .font(Theme.display(22))
+                    .foregroundStyle(Theme.ink)
+                Text(yearlyDisclosure)
+                    .font(.caption2)
+                    .foregroundStyle(Theme.inkTertiary)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(minHeight: 48)
+            .opacity(onTrialPage ? 1 : 0)
             Button {
                 primaryAction()
             } label: {
