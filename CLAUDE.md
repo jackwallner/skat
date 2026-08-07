@@ -37,7 +37,16 @@ Die lokale StoreKit-Konfiguration enthält:
 - `com.jackwallner.skat.yearly`, 9,99 $ pro Jahr, eine Woche Probe
 - `com.jackwallner.skat.lifetime`, 29,99 $ einmalig
 
-Die RevenueCat-Berechtigung bleibt aus Kompatibilitätsgründen `pro`. Der
+Die RevenueCat-Berechtigung in diesem Projekt heißt `Skat+`, nicht wie sonst
+in der Flotte `pro`: RevenueCat lässt einen `lookup_key` nicht ändern und
+verweigert hier das Anlegen von `pro`. `SubscriptionService.apply(_:)` wertet
+deshalb jede aktive Berechtigung als Mitgliedschaft, statt einen einzelnen
+Schlüssel zu vergleichen. Die Produkte gehören zum App-Store-Eintrag und
+hängen an der Berechtigung sowie an den Paketen `$rc_monthly`, `$rc_annual`
+und `$rc_lifetime` des aktuellen Angebots; `scripts/rc-wire-appstore-products.py`
+erledigt das idempotent. Das Projekt hatte nur Test-Store-Produkte, was ein
+Angebot ohne Pakete und einen toten Kaufknopf ergibt, also nach jeder
+Store-Änderung das SDK-seitige Angebot prüfen. Der
 Spielername lautet `Skat+`. Der öffentliche RevenueCat-Schlüssel steht in
 `Shared/Services/SubscriptionService.swift`. Der Simulator-Schutz muss
 erhalten bleiben, damit der Produktionsschlüssel `appl_` nie in einem
