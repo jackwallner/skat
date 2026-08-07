@@ -28,7 +28,16 @@ from asc_lib import (
 )
 
 V2_API = "https://api.appstoreconnect.apple.com/v2"
-READY_STATES = frozenset({"PREPARE_FOR_SUBMISSION", "READY_FOR_REVIEW"})
+# States a product version can be in and still need to travel with the binary.
+# The rejected ones matter on a resubmit: canceling a submission drops every
+# product version it carried to DEVELOPER_REJECTED, and leaving them out of the
+# next submission ships the app with its purchases unreviewed.
+READY_STATES = frozenset({
+    "PREPARE_FOR_SUBMISSION",
+    "READY_FOR_REVIEW",
+    "DEVELOPER_REJECTED",
+    "REJECTED",
+})
 
 
 def v2_list_all(client: ASCClient, path: str) -> list[dict]:

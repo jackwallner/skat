@@ -28,6 +28,11 @@ EDITABLE_STATES = frozenset(
         "REJECTED",
         "METADATA_REJECTED",
         "WAITING_FOR_REVIEW",
+        # Staged into a reviewSubmission but not yet submitted. Still editable,
+        # and a resubmit run has to be able to find it again: adding the version
+        # as a submission item is what moves it here, so without this state a
+        # second pass over the same submission reports "no editable version".
+        "READY_FOR_REVIEW",
     }
 )
 
