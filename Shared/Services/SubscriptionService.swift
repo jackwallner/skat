@@ -91,12 +91,21 @@ final class SubscriptionService: NSObject, ObservableObject {
     /// Offerings can still be in flight when a player reaches the trial CTA on
     /// a cold, slow network. Give them one more chance to land before we call
     /// the products missing, so the button isn't dead on a fast tapper.
+    ///
+    /// Checks packages, not just the offering: a misconfigured RevenueCat
+    /// offering returns successfully with zero packages, which used to report
+    /// ready and then throw productsUnavailable at the purchase call.
     @discardableResult
     func ensureOfferings() async -> Bool {
         guard isConfigured else { return false }
-        if offerings?.current != nil { return true }
+        if hasPurchasablePackages { return true }
         await loadOfferings()
-        return offerings?.current != nil
+        return hasPurchasablePackages
+    }
+
+    private var hasPurchasablePackages: Bool {
+        guard let offering = offerings?.current else { return false }
+        return !offering.availablePackages.isEmpty
     }
 
     func purchase(_ package: Package?) async throws -> PurchaseOutcome {
@@ -136,8 +145,13 @@ final class SubscriptionService: NSObject, ObservableObject {
         apply(info)
     }
 
+    /// There is one paid tier, so any active entitlement means Skat+.
+    /// The fleet's canonical key is `pro`, but this project's entitlement is
+    /// keyed `Skat+` and RevenueCat will not let a lookup_key be edited;
+    /// matching a single hardcoded key is how someone who just paid stays
+    /// locked out of what they bought.
     private func apply(_ info: CustomerInfo) {
-        let entitled = info.entitlements["pro"]?.isActive == true
+        let entitled = !info.entitlements.active.isEmpty
         let override = UserDefaults.standard.bool(forKey: localOverrideKey)
         isPro = entitled || override
     }
