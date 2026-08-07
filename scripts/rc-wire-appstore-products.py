@@ -122,6 +122,14 @@ def main() -> None:
             print(f"created product {identifier} ({product['id']})")
         else:
             print(f"product exists: {identifier} ({product['id']})")
+        # Creating with type `one_time` records a non_renewing_subscription,
+        # which expires. Lifetime must be non_consumable or the purchase stops
+        # granting the entitlement. The create type is not honoured, the update
+        # is, so correct it after the fact.
+        if kind == "one_time" and product["type"] != "non_consumable":
+            product = request("POST", f"/projects/{pid}/products/{product['id']}",
+                              {"type": "non_consumable"})
+            print(f"corrected {identifier} to non_consumable")
         products[suffix] = product
 
     for entitlement in entitlements_to_feed(pid, membership):
