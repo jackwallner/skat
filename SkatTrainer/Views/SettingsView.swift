@@ -14,6 +14,7 @@ struct SettingsView: View {
     @State private var restoreMessage: String?
     /// Non-nil while the review funnel is up; the value is where it opens.
     @State private var reviewPromptStep: ReviewPromptSheet.Step?
+    @State private var pendingNativeReviewAfterDismiss = false
 
     var body: some View {
         NavigationStack {
@@ -50,9 +51,9 @@ struct SettingsView: View {
                     }
                 }
             }
-            .sheet(item: $reviewPromptStep) { step in
+            .sheet(item: $reviewPromptStep, onDismiss: requestPendingNativeReview) { step in
                 ReviewPromptSheet(initialStep: step) { outcome in
-                    if outcome == .enjoyedMaybeLater { requestReview() }
+                    pendingNativeReviewAfterDismiss = outcome == .enjoyedMaybeLater
                 }
             }
             .alert("Wiederherstellen", isPresented: .init(
@@ -83,6 +84,12 @@ struct SettingsView: View {
                 Text("Deine Serie, abgeschlossenen Übungen und Übungshistorie werden gelöscht. Käufe bleiben erhalten.")
             }
         }
+    }
+
+    private func requestPendingNativeReview() {
+        guard pendingNativeReviewAfterDismiss else { return }
+        pendingNativeReviewAfterDismiss = false
+        requestReview()
     }
 
     private var appearanceSection: some View {

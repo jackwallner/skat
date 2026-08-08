@@ -16,6 +16,7 @@ struct DrillCompleteView: View {
     @State private var recorded = false
     @State private var celebrate = false
     @State private var confettiTrigger = 0
+    @State private var pendingNativeReviewAfterDismiss = false
 
     var body: some View {
         VStack(spacing: 22) {
@@ -82,7 +83,7 @@ struct DrillCompleteView: View {
             progress.recordSession(drillID: drill.id)
             recordPositiveMoment()
         }
-        .sheet(isPresented: $showReviewPrompt) {
+        .sheet(isPresented: $showReviewPrompt, onDismiss: requestPendingNativeReview) {
             ReviewPromptSheet(onFinish: handleReviewOutcome)
         }
     }
@@ -100,9 +101,12 @@ struct DrillCompleteView: View {
     }
 
     private func handleReviewOutcome(_ outcome: ReviewPromptDismissOutcome) {
-        // "Yes" then "Maybe later" is the one case worth spending Apple's
-        // native prompt on: they're warm, and the system sheet is one tap.
-        guard outcome == .enjoyedMaybeLater else { return }
+        pendingNativeReviewAfterDismiss = outcome == .enjoyedMaybeLater
+    }
+
+    private func requestPendingNativeReview() {
+        guard pendingNativeReviewAfterDismiss else { return }
+        pendingNativeReviewAfterDismiss = false
         requestReview()
     }
 

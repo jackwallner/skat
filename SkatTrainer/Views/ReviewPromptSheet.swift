@@ -1,5 +1,4 @@
 import SwiftUI
-import StoreKit
 import UIKit
 
 /// How the funnel ended, so the host knows whether to fire `requestReview()`.
@@ -16,8 +15,6 @@ enum ReviewPromptDismissOutcome: Sendable {
 /// they get a feedback box that mails us instead. That's the whole trick, and
 /// it's why the App Store rating only ever hears from happy players.
 struct ReviewPromptSheet: View {
-    @Environment(\.requestReview) private var requestReview
-
     enum Step: Identifiable {
         case enjoyment, reviewPitch, feedback
 
@@ -114,11 +111,7 @@ struct ReviewPromptSheet: View {
             VStack(spacing: 10) {
                 Button {
                     ReviewPromptTracker.markOpenedWriteReview()
-                    if let url = AppStoreLinks.writeReviewURL {
-                        UIApplication.shared.open(url)
-                    } else {
-                        requestReview()
-                    }
+                    UIApplication.shared.open(AppStoreLinks.writeReviewURL)
                     finish(.openedWriteReview)
                 } label: {
                     Text("Im App Store bewerten").primaryCTA()

@@ -2,15 +2,12 @@ import Foundation
 import StoreKit
 
 enum AppStoreLinks {
-    static let appStoreID: String? = "6796913722"
+    static let appStoreID = "6796913722"
 
     /// The write-a-review page. No storefront prefix: the App Store resolves
     /// the bare app id into the viewer's own storefront, and hardcoding one
     /// only risks sending a UK player to the US store.
-    static var writeReviewURL: URL? {
-        guard let appStoreID else { return nil }
-        return URL(string: "https://apps.apple.com/app/id\(appStoreID)?action=write-review")
-    }
+    static let writeReviewURL = URL(string: "https://apps.apple.com/app/id\(appStoreID)?action=write-review")!
 
     static let feedbackEmail = "jackwallner+m@gmail.com"
 }
