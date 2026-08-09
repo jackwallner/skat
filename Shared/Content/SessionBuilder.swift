@@ -10,6 +10,36 @@ struct QuickItem: Identifiable, Sendable {
     let explanation: String
     let sourceLabel: String
     let roomID: String
+    /// The persistence row this answer contributes to. Most authored items use
+    /// their own id. Procedural daily items can share one bounded rollup row.
+    let trackingID: String
+    /// False for one-off generated prompts that can never be scheduled back
+    /// into Fix My Mistakes.
+    let isReviewable: Bool
+
+    init(
+        id: String,
+        prompt: String,
+        tiles: [PlayingCard],
+        choices: [String],
+        answerIndex: Int,
+        explanation: String,
+        sourceLabel: String,
+        roomID: String,
+        trackingID: String? = nil,
+        isReviewable: Bool = true
+    ) {
+        self.id = id
+        self.prompt = prompt
+        self.tiles = tiles
+        self.choices = choices
+        self.answerIndex = answerIndex
+        self.explanation = explanation
+        self.sourceLabel = sourceLabel
+        self.roomID = roomID
+        self.trackingID = trackingID ?? id
+        self.isReviewable = isReviewable
+    }
 }
 
 /// Builds the mixed session from choice-gradeable material. Plain reference
@@ -29,6 +59,13 @@ enum SessionBuilder {
         kind: .flashcards([])
     )
 
+    static let gameNightPrepDrill = Drill(
+        id: "game-night-prep",
+        title: "Game Night Prep",
+        subtitle: "A five-minute mix for your next table",
+        kind: .flashcards([])
+    )
+
     static func quickSession(count: Int = 10, seen: Set<String>, missed: Set<String>, includePro: Bool) -> [QuickItem] {
         let pool = choicePool(includePro: includePro)
 
@@ -42,15 +79,49 @@ enum SessionBuilder {
             .sorted { $0.key < $1.key }
             .flatMap(\.value)
             .prefix(count)
-        return picked.map(reshuffled)
+        return picked.map(prepared)
     }
 
     static func reviewSession(ids: [String], includePro: Bool) -> [QuickItem] {
         let pool = Dictionary(choicePool(includePro: includePro).map { ($0.id, $0) }) { first, _ in first }
-        return ids.compactMap { pool[$0] }.map(reshuffled)
+        return ids.compactMap { pool[$0] }.map(prepared)
     }
 
-    private static func reshuffled(_ item: QuickItem) -> QuickItem {
+    /// A member's pre-game session. Due mistakes lead, then the weakest room,
+    /// then unseen material. The final tier keeps the session full for a new
+    /// player who has not built enough history to personalize yet.
+    static func gameNightPrep(
+        count: Int = 10,
+        seen: Set<String>,
+        missed: Set<String>,
+        dueIDs: [String],
+        weakestRoomID: String?
+    ) -> [QuickItem] {
+        let due = Set(dueIDs)
+        let pool = choicePool(includePro: true)
+
+        func tier(_ item: QuickItem) -> Int {
+            if due.contains(item.id) { return 0 }
+            if missed.contains(item.id) { return 1 }
+            if item.roomID == weakestRoomID { return 2 }
+            if !seen.contains(item.id) { return 3 }
+            return 4
+        }
+
+        return Dictionary(grouping: pool.shuffled(), by: tier)
+            .sorted { $0.key < $1.key }
+            .flatMap(\.value)
+            .prefix(count)
+            .map(prepared)
+    }
+
+    /// Used by deterministic daily features to draw from a particular room
+    /// without exposing locked content to callers that did not request it.
+    static func choiceItems(in roomID: String, includePro: Bool) -> [QuickItem] {
+        choicePool(includePro: includePro).filter { $0.roomID == roomID }
+    }
+
+    static func prepared(_ item: QuickItem) -> QuickItem {
         let shuffled = ChoiceShuffle.shuffledChoices(labels: item.choices, answerIndex: item.answerIndex, seed: item.id)
         return QuickItem(
             id: item.id,
@@ -60,7 +131,9 @@ enum SessionBuilder {
             answerIndex: shuffled.answerIndex,
             explanation: item.explanation,
             sourceLabel: item.sourceLabel,
-            roomID: item.roomID
+            roomID: item.roomID,
+            trackingID: item.trackingID,
+            isReviewable: item.isReviewable
         )
     }
 

@@ -19,8 +19,13 @@ struct RoomView: View {
         ScrollView {
             VStack(spacing: 14) {
                 header
-                ForEach(room.drills) { drill in
-                    drillRow(drill)
+                LazyVGrid(
+                    columns: [GridItem(.adaptive(minimum: 320), spacing: 14)],
+                    spacing: 14
+                ) {
+                    ForEach(room.drills) { drill in
+                        drillRow(drill)
+                    }
                 }
                 if lockedCount > 0 {
                     upsell
@@ -28,6 +33,8 @@ struct RoomView: View {
             }
             .padding(.horizontal)
             .padding(.bottom, 24)
+            .frame(maxWidth: Theme.wideContentWidth)
+            .frame(maxWidth: .infinity)
         }
         .background(Theme.background)
         .navigationTitle(room.name)
