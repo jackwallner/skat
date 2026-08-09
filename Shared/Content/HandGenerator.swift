@@ -66,7 +66,10 @@ enum HandGenerator {
         let explanation: String
     }
 
-    private static func deal(_ target: HandCategory) -> [PlayingCard]? {
+    private static func deal<R: RandomNumberGenerator>(
+        _ target: HandCategory,
+        using generator: inout R
+    ) -> [PlayingCard]? {
         let cards: [PlayingCard]
         switch target {
         case .grand:
@@ -93,17 +96,29 @@ enum HandGenerator {
     }
 
     static func hand(for target: HandCategory, attempts: Int = 120) -> GeneratedHand? {
+        var generator = SystemRandomNumberGenerator()
+        return hand(for: target, attempts: attempts, using: &generator)
+    }
+
+    /// The seeded variant. A dated challenge has to deal the SAME original hand
+    /// on every device, so every source of randomness inside has to come from
+    /// the caller's generator, not from the system one.
+    static func hand<R: RandomNumberGenerator>(
+        for target: HandCategory,
+        attempts: Int = 120,
+        using generator: inout R
+    ) -> GeneratedHand? {
         for _ in 0..<attempts {
-            guard let cards = deal(target), category(for: cards) == target else { continue }
+            guard let cards = deal(target, using: &generator), category(for: cards) == target else { continue }
             let distractors = generatableCategories
                 .filter { $0 != target && !fits(cards, $0) }
-                .shuffled()
+                .shuffled(using: &generator)
                 .prefix(3)
             guard distractors.count >= 2 else { continue }
             return GeneratedHand(
                 tiles: cards.racked,
                 answer: target,
-                choices: ([target] + distractors).shuffled(),
+                choices: ([target] + distractors).shuffled(using: &generator),
                 explanation: explain(cards, answer: target)
             )
         }
@@ -111,9 +126,25 @@ enum HandGenerator {
     }
 
     static func batch(count: Int) -> [GeneratedHand] {
+        var generator = SystemRandomNumberGenerator()
+        return batch(count: count, using: &generator)
+    }
+
+    /// A reproducible batch for a dated shared challenge. The same app build
+    /// and seed produce the same original hands on every device, which is what
+    /// lets every member answer the same daily challenge without a server.
+    static func batch(count: Int, seed: String) -> [GeneratedHand] {
+        var generator = StableSeededGenerator(seed: seed)
+        return batch(count: count, using: &generator)
+    }
+
+    private static func batch<R: RandomNumberGenerator>(
+        count: Int,
+        using generator: inout R
+    ) -> [GeneratedHand] {
         var targets: [HandCategory] = []
-        while targets.count < count { targets += generatableCategories.shuffled() }
-        return targets.prefix(count).compactMap { hand(for: $0) }.shuffled()
+        while targets.count < count { targets += generatableCategories.shuffled(using: &generator) }
+        return targets.prefix(count).compactMap { hand(for: $0, using: &generator) }.shuffled(using: &generator)
     }
 
     static func explain(_ cards: [PlayingCard], answer: HandCategory) -> String {

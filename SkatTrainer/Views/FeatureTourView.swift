@@ -84,6 +84,8 @@ struct FeatureTourView: View {
             }
         }
         .padding()
+        .frame(maxWidth: Theme.readableContentWidth)
+        .frame(maxWidth: .infinity)
         .background(Theme.background)
         .overlay { ConfettiBurst(trigger: confettiTrigger, origin: .init(x: 0.5, y: 0.35)) }
         .fullScreenCover(isPresented: $showQuickSession, onDismiss: onDone) {

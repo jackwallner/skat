@@ -30,6 +30,32 @@ enum WhatsNew {
 
     static let releases: [WhatsNewRelease] = [
         WhatsNewRelease(
+            version: "1.2.0",
+            headline: "Ein besserer Rhythmus fuer den Skatabend",
+            items: [
+                WhatsNewItem(
+                    id: "skat-minute",
+                    icon: "calendar.badge.clock",
+                    title: "Skat-Minute",
+                    body: "Loese taeglich dieselben fuenf Fragen wie alle anderen Mitglieder, teile dein Ergebnis und halte einen nachsichtigen Rhythmus von fuenf Tagen pro Woche.",
+                    isPlus: true
+                ),
+                WhatsNewItem(
+                    id: "game-night-prep",
+                    icon: "person.2.fill",
+                    title: "Game Night Prep",
+                    body: "Choose your usual Skatabend and get a five-minute session built from your mistakes and weakest room when it matters.",
+                    isPlus: true
+                ),
+                WhatsNewItem(
+                    id: "ipad",
+                    icon: "ipad.landscape",
+                    title: "Made for iPad",
+                    body: "Practice at the table with a native iPad layout in portrait or landscape."
+                ),
+            ]
+        ),
+        WhatsNewRelease(
             version: "1.0",
             headline: "Skat lernen, eine Runde nach der anderen",
             items: [

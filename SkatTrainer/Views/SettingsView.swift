@@ -78,6 +78,7 @@ struct SettingsView: View {
                 Button("Zurücksetzen", role: .destructive) {
                     progress.resetAll()
                     PracticeRecordStore.shared.resetAll()
+                    SkatMinuteStore.shared.resetAll()
                 }
                 Button("Abbrechen", role: .cancel) {}
             } message: {
@@ -109,6 +110,13 @@ struct SettingsView: View {
             Toggle("Tägliche Erinnerung", isOn: $settings.reminderEnabled)
             if settings.reminderEnabled {
                 DatePicker("Erinnerungszeit", selection: $settings.reminderTime, displayedComponents: .hourAndMinute)
+            }
+            if subscriptions.isPro {
+                NavigationLink {
+                    GameNightPrepView()
+                } label: {
+                    Label("Game Night Prep", systemImage: "person.2.fill")
+                }
             }
         }
     }
