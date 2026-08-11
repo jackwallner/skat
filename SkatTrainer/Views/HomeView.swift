@@ -402,15 +402,15 @@ struct HomeView: View {
             title: "Skat\nMinute",
             icon: "calendar.badge.clock",
             color: Theme.coral,
-            badge: minuteStore.result(for: Date()).map { "\($0.score)/\($0.total) today" } ?? "Daily"
+            badge: minuteStore.result(for: Date()).map { "\($0.score)/\($0.total) heute" } ?? "Täglich"
         ) {
             SkatMinuteView()
         }
         trainingTile(
-            title: "Game Night\nPrep",
+            title: "Skatabend\nplanen",
             icon: "person.2.fill",
             color: Theme.plum,
-            badge: settings.gameNightReminderEnabled ? settings.gameNightDay.displayName : "Weekly"
+            badge: settings.gameNightReminderEnabled ? settings.gameNightDay.displayName : "Wöchentlich"
         ) {
             GameNightPrepView()
         }

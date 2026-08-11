@@ -32,10 +32,10 @@ struct SkatMinuteView: View {
                 .frame(width: 68, height: 68)
                 .background((todayResult == nil ? Theme.coral : Theme.jade).opacity(0.13), in: Circle())
             VStack(spacing: 5) {
-                Text("Today's Skat-Minute")
+                Text("Die Skat-Minute von heute")
                     .font(Theme.display(27))
                     .foregroundStyle(Theme.ink)
-                Text("Fuenf eigene Fragen taeglich fuer alle Mitglieder: zwei Blattlesen, eine Druecken-Entscheidung und zwei Stichspiel-Fragen.")
+                Text("Fünf eigene Fragen täglich für alle Mitglieder: zwei Blattlesen, eine Drück-Entscheidung und zwei Stichspiel-Fragen.")
                     .font(.subheadline)
                     .foregroundStyle(Theme.inkSecondary)
                     .multilineTextAlignment(.center)
@@ -45,13 +45,13 @@ struct SkatMinuteView: View {
                 NavigationLink {
                     SkatMinuteResultView(result: todayResult)
                 } label: {
-                    Text("View Today's \(todayResult.score)/\(todayResult.total)").primaryCTA()
+                    Text("Ergebnis ansehen: \(todayResult.score)/\(todayResult.total)").primaryCTA()
                 }
             } else {
                 NavigationLink {
                     QuickSessionView(skatMinute: challenge)
                 } label: {
-                    Text("Start Today's Challenge").primaryCTA(color: Theme.coral)
+                    Text("Heutige Runde starten").primaryCTA(color: Theme.coral)
                 }
             }
         }
@@ -64,11 +64,11 @@ struct SkatMinuteView: View {
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("YOUR WEEK")
+                    Text("DEINE WOCHE")
                         .font(.caption.weight(.heavy))
                         .kerning(1.4)
                         .foregroundStyle(Theme.inkSecondary)
-                    Text(completed >= 5 ? "Weekly goal complete" : "\(completed) of 5 practiced")
+                    Text(completed >= 5 ? "Wochenziel geschafft" : "\(completed) von 5 geübt")
                         .font(.headline)
                         .foregroundStyle(Theme.ink)
                 }
@@ -90,7 +90,7 @@ struct SkatMinuteView: View {
                         .frame(width: 34, height: 34)
                 }
             }
-            Text("Any five days count. Miss one, catch up from the archive, and keep the week alive.")
+            Text("Es zählen fünf beliebige Tage. Verpasst du einen, hol ihn im Archiv nach und die Woche bleibt heil.")
                 .font(.caption)
                 .foregroundStyle(Theme.inkSecondary)
         }
@@ -101,7 +101,7 @@ struct SkatMinuteView: View {
     private var archive: some View {
         let dates = store.archiveDates()
         return VStack(alignment: .leading, spacing: 10) {
-            Text("ARCHIVE")
+            Text("ARCHIV")
                 .font(.caption.weight(.heavy))
                 .kerning(1.4)
                 .foregroundStyle(Theme.inkSecondary)
@@ -136,7 +136,7 @@ struct SkatMinuteView: View {
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Theme.ink)
                 Spacer()
-                Text(result.map { "\($0.score)/\($0.total)" } ?? "Play")
+                Text(result.map { "\($0.score)/\($0.total)" } ?? "Spielen")
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(result == nil ? Theme.coral : Theme.jade)
                     .monospacedDigit()
@@ -171,10 +171,10 @@ struct SkatMinuteResultView: View {
                 breakdown
                 weeklyCard
                 ShareLink(item: result.shareText) {
-                    Label("Share Result", systemImage: "square.and.arrow.up")
+                    Label("Ergebnis teilen", systemImage: "square.and.arrow.up")
                         .primaryCTA(color: Theme.coral)
                 }
-                Button("Done") {
+                Button("Fertig") {
                     if let onDone { onDone() } else { dismiss() }
                 }
                 .font(.headline)
@@ -209,12 +209,12 @@ struct SkatMinuteResultView: View {
                         .font(Theme.display(34))
                         .foregroundStyle(Theme.jade)
                         .monospacedDigit()
-                    Text("right")
+                    Text("richtig")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Theme.inkSecondary)
                 }
             }
-            Text(result.score == result.total ? "Perfect minute!" : "Minute complete")
+            Text(result.score == result.total ? "Perfekte Minute!" : "Minute geschafft")
                 .font(Theme.display(28))
                 .foregroundStyle(Theme.ink)
             Text("Skat-Minute \(result.shortDate)")
@@ -228,7 +228,7 @@ struct SkatMinuteResultView: View {
 
     private var breakdown: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("BY SKILL")
+            Text("NACH FÄHIGKEIT")
                 .font(.caption.weight(.heavy))
                 .kerning(1.4)
                 .foregroundStyle(Theme.inkSecondary)
@@ -260,10 +260,10 @@ struct SkatMinuteResultView: View {
                 .frame(width: 38, height: 38)
                 .background((completed >= 5 ? Theme.jade : Theme.coral).opacity(0.12), in: Circle())
             VStack(alignment: .leading, spacing: 2) {
-                Text(completed >= 5 ? "Weekly goal complete" : "\(completed) of 5 this week")
+                Text(completed >= 5 ? "Wochenziel geschafft" : "\(completed) von 5 in dieser Woche")
                     .font(.headline)
                     .foregroundStyle(Theme.ink)
-                Text("Any five days keep the rhythm going.")
+                Text("Fünf beliebige Tage halten den Rhythmus.")
                     .font(.caption)
                     .foregroundStyle(Theme.inkSecondary)
             }

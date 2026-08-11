@@ -36,13 +36,13 @@ final class AppSettings: ObservableObject {
 
         var displayName: String {
             switch self {
-            case .sunday: return "Sunday"
-            case .monday: return "Monday"
-            case .tuesday: return "Tuesday"
-            case .wednesday: return "Wednesday"
-            case .thursday: return "Thursday"
-            case .friday: return "Friday"
-            case .saturday: return "Saturday"
+            case .sunday: return "Sonntag"
+            case .monday: return "Montag"
+            case .tuesday: return "Dienstag"
+            case .wednesday: return "Mittwoch"
+            case .thursday: return "Donnerstag"
+            case .friday: return "Freitag"
+            case .saturday: return "Samstag"
             }
         }
     }
@@ -203,8 +203,8 @@ final class AppSettings: ObservableObject {
         center.removePendingNotificationRequests(withIdentifiers: [Self.gameNightReminderID])
 
         let content = UNMutableNotificationContent()
-        content.title = "Your game night prep is ready"
-        content.body = "Five personalized minutes now can make the table feel calmer later."
+        content.title = "Deine Skatabend-Vorbereitung steht bereit"
+        content.body = "Fünf persönliche Minuten jetzt, und der Tisch fühlt sich später ruhiger an."
         content.sound = .default
         content.userInfo = [AppNotification.routeKey: AppNotification.gameNightPrepValue]
 
