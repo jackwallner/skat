@@ -32,9 +32,9 @@ Unzufriedene Spieler sehen keine Bewertungsaufforderung.
 
 Die lokale StoreKit-Konfiguration enthält:
 
-- `com.jackwallner.skat.monthly`, 1,99 $ pro Monat, eine Woche Probe
-- `com.jackwallner.skat.yearly`, 9,99 $ pro Jahr, eine Woche Probe
-- `com.jackwallner.skat.lifetime`, 29,99 $ einmalig
+- `com.jackwallner.skat.monthly`, 6,99 $ pro Monat, eine Woche Probe
+- `com.jackwallner.skat.yearly`, 29,99 $ pro Jahr, eine Woche Probe
+- `com.jackwallner.skat.lifetime`, 69,99 $ einmalig
 
 Dieses Projekt hat zwei Berechtigungen, `pro` und `Skat+`, und jedes Produkt
 hängt an beiden. Das Gerüst hat die Berechtigung nach dem Spielernamen

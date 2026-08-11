@@ -6,4 +6,7 @@ Aprèn la baralla de 32 cartes, els valors, els pals, la subhasta, l'Skat i les 
 
 Les quatre sales bàsiques continuen sent gratuïtes. Skat+ afegeix mans noves, repàs d'errors, un repte de 90 segons, exercicis extra i la Taula dels mestres. Les targetes lliscables expliquen la regla al darrere.
 
-Les regles de casa poden variar, així que acordeu-les a la taula. Skat+ ofereix una subscripció mensual de renovació automàtica per 1,99 $ o anual per 9,99 $, ambdues amb una prova gratuïta d'una setmana. L'accés permanent costa 29,99 $. Condicions: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Privadesa: https://jackwallner.github.io/skat/privacy-policy.
+Les regles de casa poden variar, així que acordeu-les a la taula.
+
+SUBSCRIPCIONS
+Skat+ està disponible com a subscripció de renovació automàtica (mensual o anual, totes dues amb 7 dies de prova gratuïta) o com a compra única Lifetime. Els preus es mostren a l'app abans de comprar i varien segons la regió. El pagament es carrega al teu Apple ID en confirmar. Les subscripcions es renoven automàticament llevat que les cancel·lis com a mínim 24 hores abans que acabi el període actual. Gestiona-les o cancel·la-les quan vulguis a Configuració → Apple ID → Subscripcions. Condicions d'ús (CLUF estàndard d'Apple): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Política de privadesa: https://jackwallner.github.io/skat/privacy-policy.

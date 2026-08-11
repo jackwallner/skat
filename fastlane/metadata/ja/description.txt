@@ -10,4 +10,6 @@ Skat+では新しいハンド、間違いの復習、90秒チャレンジ、追�
 
 スワイプできるカードの裏面でルールを説明します。ハウスルールは異なる場合があるため、テーブルで確認してください。
 
-Skat+は月額1.99ドルまたは年額9.99ドルの自動更新サブスクリプションで利用でき、どちらも1週間の無料トライアル付きです。永久アクセスは29.99ドルの買い切りです。利用規約: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/。プライバシーポリシー: https://jackwallner.github.io/skat/privacy-policy.
+サブスクリプションについて
+Skat+ は自動更新サブスクリプション（月額または年額、どちらも7日間の無料トライアル付き）、または買い切りの Lifetime としてご利用いただけます。価格は購入前にアプリ内に表示され、地域によって異なります。購入確定時に Apple ID に請求されます。現在の期間が終了する24時間以上前に解約しない限り、サブスクリプションは自動更新されます。設定 → Apple ID → サブスクリプションでいつでも管理・解約できます。 利用規約（Apple標準のEULA）: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ プライバシーポリシー: https://jackwallner.github.io/skat/privacy-policy
+プライバシーポリシー：https://jackwallner.github.io/skat/privacy-policy

@@ -67,15 +67,21 @@ struct PaywallContent: View {
     private var planCards: some View {
         VStack(spacing: 10) {
             planCard(.yearly, title: "Jährlich", price: PaywallPricing.priceText(subscriptions, .yearly),
-                     detail: "Jährliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch.", badge: "BESTER WERT")
-            planCard(.lifetime, title: "Dauerhaft", price: PaywallPricing.priceText(subscriptions, .lifetime),
-                     detail: "Einmalige Zahlung. Kein Abonnement, keine Verlängerung.", badge: "EINMALIG")
+                     perMonth: PaywallPricing.perMonthEquivalent(subscriptions),
+                     anchor: PaywallPricing.monthlyAnchor(subscriptions),
+                     detail: "Jährliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch.",
+                     badge: PaywallPricing.savingsBadge(subscriptions))
             planCard(.monthly, title: "Monatlich", price: PaywallPricing.priceText(subscriptions, .monthly),
+                     perMonth: nil, anchor: nil,
                      detail: "Monatliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch.", badge: nil)
+            planCard(.lifetime, title: "Dauerhaft", price: PaywallPricing.priceText(subscriptions, .lifetime),
+                     perMonth: nil, anchor: nil,
+                     detail: "Einmalige Zahlung. Kein Abonnement, keine Verlängerung.", badge: "EINMALIG")
         }
     }
 
-    private func planCard(_ plan: PaywallPlan, title: String, price: String, detail: String, badge: String?) -> some View {
+    private func planCard(_ plan: PaywallPlan, title: String, price: String, perMonth: String?,
+                          anchor: String?, detail: String, badge: String?) -> some View {
         let isSelected = selectedPlan == plan
         return Button {
             selectedPlan = plan
@@ -102,9 +108,24 @@ struct PaywallContent: View {
                         .multilineTextAlignment(.leading)
                 }
                 Spacer(minLength: 8)
-                Text(price)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(Theme.ink)
+                VStack(alignment: .trailing, spacing: 1) {
+                    Text(price)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(Theme.ink)
+                    if let perMonth {
+                        HStack(spacing: 5) {
+                            if let anchor {
+                                Text(anchor)
+                                    .font(.caption2)
+                                    .foregroundStyle(Theme.inkTertiary)
+                                    .strikethrough(true, color: Theme.inkTertiary)
+                            }
+                            Text(perMonth)
+                                .font(.caption2)
+                                .foregroundStyle(Theme.inkSecondary)
+                        }
+                    }
+                }
             }
             .padding(14)
             .background(
@@ -135,7 +156,7 @@ enum PaywallPricing {
 
     /// The localized billed amount, or nil while the product is still in flight.
     static func price(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String? {
-        guard let base = subscriptions.package(for: plan)?.storeProduct.localizedPriceString else {
+        guard let base = subscriptions.paywallPrice(for: plan)?.localized else {
             return nil
         }
         switch plan {
@@ -148,6 +169,38 @@ enum PaywallPricing {
     /// The same, ready to render: the amount or the placeholder.
     static func priceText(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String {
         price(subscriptions, plan) ?? placeholder
+    }
+
+    static func perMonthEquivalent(_ subscriptions: SubscriptionService) -> String? {
+        guard let product = subscriptions.paywallPrice(for: .yearly) else { return nil }
+        let monthly = product.amount / 12
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = product.locale
+        guard let text = formatter.string(from: monthly as NSDecimalNumber) else { return nil }
+        return "\(text) / Monat"
+    }
+
+    static func monthlyAnchor(_ subscriptions: SubscriptionService) -> String? {
+        guard let product = subscriptions.paywallPrice(for: .monthly) else { return nil }
+        return "\(product.localized) / Monat"
+    }
+
+    static func savingsPercent(_ subscriptions: SubscriptionService) -> Int? {
+        guard let yearly = subscriptions.paywallPrice(for: .yearly),
+              let monthly = subscriptions.paywallPrice(for: .monthly) else { return nil }
+        let twelveMonths = monthly.amount * 12
+        guard twelveMonths > 0, yearly.amount < twelveMonths else { return nil }
+        var rounded = Decimal()
+        var raw = (twelveMonths - yearly.amount) / twelveMonths * 100
+        NSDecimalRound(&rounded, &raw, 0, .plain)
+        let percent = NSDecimalNumber(decimal: rounded).intValue
+        return percent > 0 ? percent : nil
+    }
+
+    static func savingsBadge(_ subscriptions: SubscriptionService) -> String {
+        guard let percent = savingsPercent(subscriptions) else { return "BESTER WERT" }
+        return "SPARE \(percent) %"
     }
 
     /// One concise point-of-purchase line: price, trial, auto-renew, cancel.
@@ -240,6 +293,7 @@ struct PaywallView: View {
             .onChange(of: subscriptions.isPro) { _, isPro in
                 if isPro { dismiss() }
             }
+            .task { await subscriptions.ensureOfferings() }
         }
     }
 
