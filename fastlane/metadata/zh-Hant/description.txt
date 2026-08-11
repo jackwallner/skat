@@ -10,4 +10,6 @@ Skat+增加全新牌局、錯題重練、90秒挑戰、額外練習和大師桌�
 
 可滑動的教練卡片會在背面解說規則。地方規則可能不同，請在牌桌上先確認共同規則。
 
-Skat+提供自動續訂的每月訂閱，每月1.99美元，或每年9.99美元的年度訂閱，兩者均含一週免費試用。永久存取權為29.99美元一次購買。除非在目前週期結束前至少24小時取消，否則訂閱會自動續訂。使用條款，Apple標準EULA：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/。隱私權政策：https://jackwallner.github.io/skat/privacy-policy.
+訂閱說明
+Skat+ 提供自動續訂訂閱（每月或每年，兩者皆含 7 天免費試用）或一次買斷 Lifetime。價格會在購買前顯示於 App 內，並因地區而異。確認購買時將由你的 Apple ID 扣款。除非在目前週期結束前至少 24 小時取消，否則訂閱會自動續訂。你可隨時在「設定 → Apple ID → 訂閱項目」中管理或取消。 使用條款（Apple 標準 EULA）：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ 隱私權政策：https://jackwallner.github.io/skat/privacy-policy
+隱私權政策：https://jackwallner.github.io/skat/privacy-policy

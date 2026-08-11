@@ -17,4 +17,5 @@ Skat+ 선택 사항
 기본 연습실 네 곳은 계속 무료입니다. 새 핸드, 오답 복습, 90초 도전, 추가 문제와 마스터 테이블을 제공합니다.
 
 구독 및 구입
-월 $1.99 또는 연 $9.99의 자동 갱신 구독, 두 상품 모두 1주 무료 체험, 또는 $29.99 일회성 영구 이용권을 이용할 수 있습니다. 구독은 기간 종료 24시간 전까지 취소하지 않으면 갱신됩니다. 이용 약관, Apple 표준 EULA: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. 개인정보 처리방침: https://jackwallner.github.io/skat/privacy-policy.
+Skat+는 자동 갱신 구독(월간 또는 연간, 모두 7일 무료 체험 포함) 또는 일회성 Lifetime 구입으로 이용할 수 있습니다. 가격은 구입 전 앱에 표시되며 지역에 따라 다릅니다. 결제는 확인 시 Apple ID로 청구됩니다. 현재 기간 종료 최소 24시간 전에 취소하지 않으면 구독이 자동으로 갱신됩니다. 설정 → Apple ID → 구독에서 언제든지 관리하거나 취소할 수 있습니다. 이용 약관(Apple 표준 EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. 개인정보 처리방침: https://jackwallner.github.io/skat/privacy-policy.
+개인정보 처리방침: https://jackwallner.github.io/skat/privacy-policy

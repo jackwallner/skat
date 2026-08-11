@@ -6,4 +6,8 @@ Skat Trainer把初学者最需要掌握的内容变成清晰的练习题。不�
 
 四个基础练习室始终免费。Skat+增加全新牌局、错题重练、90秒挑战、额外练习和大师桌。可滑动的教练卡片会在背面解释规则。
 
-地方规则可能不同，请在牌桌上先确认共同规则。Skat+提供自动续订的月度订阅，每月1.99美元，或年度订阅，每年9.99美元，两者均含一周免费试用。永久访问权为29.99美元一次购买。使用条款：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/。隐私政策：https://jackwallner.github.io/skat/privacy-policy.
+地方规则可能不同，请在牌桌上先确认共同规则。
+
+订阅说明
+Skat+ 提供自动续期订阅（每月或每年，两者均含 7 天免费试用）或一次性买断 Lifetime。价格会在购买前显示于 App 内，并因地区而异。确认购买时将从你的 Apple ID 扣款。除非在当前周期结束前至少 24 小时取消，否则订阅会自动续期。你可随时在“设置 → Apple ID → 订阅”中管理或取消。 使用条款（Apple 标准 EULA）：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ 隐私政策：https://jackwallner.github.io/skat/privacy-policy
+隐私政策：https://jackwallner.github.io/skat/privacy-policy

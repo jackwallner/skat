@@ -241,15 +241,15 @@ struct OnboardingView: View {
 
     /// The billed amount, shown prominently at the point of purchase (App Review
     /// 3.1.2(c) flagged that it wasn't clearly and conspicuously displayed).
-    private var yearlyPrice: String {
-        PaywallPricing.priceText(subscriptions, .yearly)
+    private var monthlyPrice: String {
+        PaywallPricing.priceText(subscriptions, .monthly)
     }
 
     /// One concise line, matching the approved fleet pattern (StatScout): trial
     /// length, price, that it renews, how to cancel. The EULA behind the Terms
     /// link carries the full legalese; this is the point-of-purchase micro copy.
-    private var yearlyDisclosure: String {
-        guard let price = PaywallPricing.price(subscriptions, .yearly) else {
+    private var monthlyDisclosure: String {
+        guard let price = PaywallPricing.price(subscriptions, .monthly) else {
             return "Inklusive 7 Tagen kostenlos. Verlängert sich automatisch, bis du kündigst."
         }
         return "Abrechnung: \(price), inklusive 7 Tagen kostenlos. Verlängert sich automatisch, bis du kündigst."
@@ -283,10 +283,10 @@ struct OnboardingView: View {
             // or three lines depending on the device, and the slot renders on
             // every page anyway, so the CTA still never shifts.
             VStack(spacing: 2) {
-                Text(yearlyPrice)
+                Text(monthlyPrice)
                     .font(Theme.display(26).weight(.bold))
                     .foregroundStyle(Theme.ink)
-                Text(yearlyDisclosure)
+                Text(monthlyDisclosure)
                     .font(.caption2)
                     .foregroundStyle(Theme.inkTertiary)
                     .multilineTextAlignment(.center)
@@ -355,12 +355,12 @@ struct OnboardingView: View {
         Task {
             defer { purchasing = false }
             await subscriptions.ensureOfferings()
-            guard let yearly = subscriptions.package(for: .yearly) else {
+            guard let monthly = subscriptions.package(for: .monthly) else {
                 showPaywallFallback = true
                 return
             }
             do {
-                let outcome = try await subscriptions.purchase(yearly)
+                let outcome = try await subscriptions.purchase(monthly)
                 switch outcome {
                 case .purchased:
                     startTour()
