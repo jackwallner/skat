@@ -22,7 +22,7 @@ struct SkatMinuteResult: Codable, Identifiable, Sendable {
 
     var shareText: String {
         let grid = answers.map { $0 ? "🟩" : "⬜️" }.joined()
-        return "Skat-Minute \(shortDate): \(score)/\(total)\n\(grid)\nCan you beat me? \(AppStoreLinks.productURL.absoluteString)"
+        return "Skat-Minute \(shortDate): \(score)/\(total)\n\(grid)\nSchaffst du mehr? \(AppStoreLinks.productURL.absoluteString)"
     }
 }
 

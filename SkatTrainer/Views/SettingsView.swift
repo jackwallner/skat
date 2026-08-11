@@ -115,7 +115,7 @@ struct SettingsView: View {
                 NavigationLink {
                     GameNightPrepView()
                 } label: {
-                    Label("Game Night Prep", systemImage: "person.2.fill")
+                    Label("Skatabend-Vorbereitung", systemImage: "person.2.fill")
                 }
             }
         }

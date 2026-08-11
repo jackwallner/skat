@@ -24,7 +24,7 @@ struct GameNightPrepView: View {
                 NavigationLink {
                     QuickSessionView(gameNightPrep: sessionItems)
                 } label: {
-                    Text("Start My Five-Minute Prep").primaryCTA(color: Theme.plum)
+                    Text("Fünf Minuten vorbereiten").primaryCTA(color: Theme.plum)
                 }
             }
             .padding()
@@ -32,17 +32,17 @@ struct GameNightPrepView: View {
             .frame(maxWidth: .infinity)
         }
         .background(Theme.background)
-        .navigationTitle("Game Night Prep")
+        .navigationTitle("Skatabend-Vorbereitung")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Notifications are off", isPresented: $settings.reminderPermissionDenied) {
-            Button("Open Settings") {
+        .alert("Mitteilungen sind aus", isPresented: $settings.reminderPermissionDenied) {
+            Button("Einstellungen öffnen") {
                 if let url = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(url)
                 }
             }
-            Button("Not now", role: .cancel) {}
+            Button("Jetzt nicht", role: .cancel) {}
         } message: {
-            Text("Skat Trainer cannot send reminders until notifications are turned on in iOS Settings.")
+            Text("Skat Trainer kann keine Erinnerungen senden, solange Mitteilungen in den iOS-Einstellungen aus sind.")
         }
     }
 
@@ -53,10 +53,10 @@ struct GameNightPrepView: View {
                 .foregroundStyle(Theme.plum)
                 .frame(width: 68, height: 68)
                 .background(Theme.plum.opacity(0.13), in: Circle())
-            Text("Walk in ready")
+            Text("Vorbereitet an den Tisch")
                 .font(Theme.display(28))
                 .foregroundStyle(Theme.ink)
-            Text("Set your usual Skatabend. The reminder opens a fresh session built from your mistakes, weakest room, and material you have not seen yet.")
+            Text("Lege deinen üblichen Skatabend fest. Die Erinnerung öffnet eine frische Runde aus deinen Fehlern, deinem schwächsten Raum und Material, das du noch nicht gesehen hast.")
                 .font(.subheadline)
                 .foregroundStyle(Theme.inkSecondary)
                 .multilineTextAlignment(.center)
@@ -71,30 +71,30 @@ struct GameNightPrepView: View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("WEEKLY REMINDER")
+                    Text("WÖCHENTLICHE ERINNERUNG")
                         .font(.caption.weight(.heavy))
                         .kerning(1.4)
                         .foregroundStyle(Theme.inkSecondary)
-                    Text(settings.gameNightReminderEnabled ? "Prep is scheduled" : "Choose your game night")
+                    Text(settings.gameNightReminderEnabled ? "Vorbereitung ist geplant" : "Wähle deinen Skatabend")
                         .font(.headline)
                         .foregroundStyle(Theme.ink)
                 }
                 Spacer()
-                Toggle("Weekly game night reminder", isOn: $settings.gameNightReminderEnabled)
+                Toggle("Wöchentliche Erinnerung an den Skatabend", isOn: $settings.gameNightReminderEnabled)
                     .labelsHidden()
             }
             Divider().overlay(Theme.rule)
-            Picker("Game Night", selection: $settings.gameNightDay) {
+            Picker("Skatabend", selection: $settings.gameNightDay) {
                 ForEach(AppSettings.GameNightDay.allCases) { day in
                     Text(day.displayName).tag(day)
                 }
             }
             DatePicker(
-                "Prep Reminder",
+                "Erinnerung",
                 selection: $settings.gameNightReminderTime,
                 displayedComponents: .hourAndMinute
             )
-            Text("At that time each \(settings.gameNightDay.displayName), the notification opens directly into your personalized practice session.")
+            Text("Zu dieser Zeit öffnet die Mitteilung jeden \(settings.gameNightDay.displayName) direkt deine persönliche Übungsrunde.")
                 .font(.caption)
                 .foregroundStyle(Theme.inkSecondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -112,7 +112,7 @@ struct GameNightPrepView: View {
                 .frame(width: 40, height: 40)
                 .background(Theme.coral.opacity(0.13), in: Circle())
             VStack(alignment: .leading, spacing: 3) {
-                Text("What today's prep targets")
+                Text("Darauf zielt die Vorbereitung")
                     .font(.headline)
                     .foregroundStyle(Theme.ink)
                 Text(personalizationCopy(weakest))
@@ -128,14 +128,14 @@ struct GameNightPrepView: View {
 
     private func personalizationCopy(_ weakest: PracticeRecordStore.RoomStat?) -> String {
         if records.dueCount > 0, let weakest {
-            return "\(records.dueCount) due mistake\(records.dueCount == 1 ? "" : "s") first, then extra work in \(weakest.name)."
+            return "\(records.dueCount) fällige\(records.dueCount == 1 ? "r Fehler" : " Fehler") zuerst, danach Extra-Übung in \(weakest.name)."
         }
         if records.dueCount > 0 {
-            return "\(records.dueCount) due mistake\(records.dueCount == 1 ? "" : "s") first, followed by material you have not seen yet."
+            return "\(records.dueCount) fällige\(records.dueCount == 1 ? "r Fehler" : " Fehler") zuerst, danach Material, das du noch nicht gesehen hast."
         }
         if let weakest {
-            return "Extra work in \(weakest.name), followed by a balanced mix from the other rooms."
+            return "Extra-Übung in \(weakest.name), danach eine ausgewogene Mischung aus den anderen Räumen."
         }
-        return "A balanced member mix now. As you answer more questions, this session will zero in on your real weak spots."
+        return "Jetzt eine ausgewogene Mitglieder-Mischung. Je mehr Fragen du beantwortest, desto genauer trifft diese Runde deine echten Schwachstellen."
     }
 }

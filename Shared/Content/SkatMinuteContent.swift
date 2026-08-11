@@ -10,7 +10,7 @@ enum SkatMinuteCategory: String, CaseIterable, Codable, Identifiable, Sendable {
     var title: String {
         switch self {
         case .handReading: return "Blattlesen"
-        case .druecken: return "Druecken"
+        case .druecken: return "Drücken"
         case .stichspiel: return "Stichspiel"
         }
     }
@@ -39,14 +39,14 @@ struct SkatMinuteChallenge: Identifiable, Sendable {
     var items: [QuickItem] { questions.map(\.item) }
 }
 
-/// Ein gemeinsamer Fragensatz pro Kalendertag: zwei generierte Blattlesen, eine Drueck-Entscheidung und zwei Stichspiel-Fragen. Die Blaetter entstehen prozedural aus demselben Klassifizierer, der auch die endlose Uebung bewertet; Druecken und Stichspiel stammen aus den eigenen Lehrinhalten der App. Der Tagesschluessel ist das ganze Protokoll: kein Konto, kein Server, keine Bestenliste.
+/// Ein gemeinsamer Fragensatz pro Kalendertag: zwei generierte Blattlesen, eine Drück-Entscheidung und zwei Stichspiel-Fragen. Die Blätter entstehen prozedural aus demselben Klassifizierer, der auch die endlose Übung bewertet; Drücken und Stichspiel stammen aus den eigenen Lehrinhalten der App. Der Tagesschlüssel ist das ganze Protokoll: kein Konto, kein Server, keine Bestenliste.
 enum SkatMinuteContent {
     static let questionCount = 5
 
     static let drill = Drill(
         id: "skat-minute",
         title: "Skat-Minute",
-        subtitle: "Die taegliche Fuenf-Fragen-Runde",
+        subtitle: "Die tägliche Runde mit fünf Fragen",
         kind: .quiz([]),
         isPlus: true
     )
@@ -124,12 +124,12 @@ enum SkatMinuteContent {
 
         let item = QuickItem(
             id: "skat-minute-druecken-\(dayKey)",
-            prompt: "\(scenario.situation) Welche beiden Karten drueckst du?",
+            prompt: "\(scenario.situation) Welche beiden Karten drückst du?",
             tiles: scenario.deal,
             choices: [answer] + distractors,
             answerIndex: 0,
             explanation: scenario.reasoning,
-            sourceLabel: "Skat-Minute: Druecken",
+            sourceLabel: "Skat-Minute: Drücken",
             roomID: "discard-room",
             trackingID: "skat-minute-druecken",
             isReviewable: false

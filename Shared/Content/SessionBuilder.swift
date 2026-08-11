@@ -61,8 +61,8 @@ enum SessionBuilder {
 
     static let gameNightPrepDrill = Drill(
         id: "game-night-prep",
-        title: "Game Night Prep",
-        subtitle: "A five-minute mix for your next table",
+        title: "Skatabend-Vorbereitung",
+        subtitle: "Eine Fünf-Minuten-Mischung für deinen nächsten Tisch",
         kind: .flashcards([])
     )
 
