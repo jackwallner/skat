@@ -1,1 +1,1 @@
-karten,reizen,trumpf,grand,null,drücken,stich,kartenspiel,skatblatt,anfänger,skatregeln,training
+karten,reizen,trumpf,grand,null,drücken,stich,doppelkopf,skatblatt,anfänger,skatregeln,training
