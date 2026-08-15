@@ -39,7 +39,7 @@ struct SettingsView: View {
                     Button("Fertig") { dismiss() }
                 }
             }
-            .sheet(isPresented: $showPaywall) { PaywallView() }
+            .sheet(isPresented: $showPaywall) { PaywallView(source: "skat_settings_sheet") }
             .sheet(isPresented: $showWhatsNew) {
                 if let release = WhatsNew.currentRelease {
                     WhatsNewSheet(release: release) {

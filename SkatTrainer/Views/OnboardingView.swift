@@ -82,8 +82,12 @@ struct OnboardingView: View {
         .task(id: page) {
             await subscriptions.ensureOfferings()
         }
+        .onChange(of: page) { _, newPage in
+            guard newPage == lastPage else { return }
+            subscriptions.trackPaywallImpression(id: "skat_onboarding_trial", oncePerSession: true)
+        }
         .sheet(isPresented: $showPaywallFallback, onDismiss: paywallDismissed) {
-            PaywallView()
+            PaywallView(source: "skat_onboarding_fallback")
         }
         .alert("Kaufproblem", isPresented: .init(
             get: { purchaseError != nil },
