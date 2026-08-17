@@ -9,85 +9,141 @@
         color-scheme: light dark;
       }
       body {
-        max-width: 760px;
+        margin: 0;
+        padding: 32px 20px 64px;
+        font:
+          16px/1.65 -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        color: #202124;
+        background: #fafafa;
+      }
+      main {
+        max-width: 780px;
         margin: 0 auto;
-        padding: 40px 24px 80px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.65;
       }
       h1 {
-        color: #176b5c;
+        line-height: 1.15;
       }
       h2 {
-        margin-top: 36px;
+        margin-top: 32px;
+      }
+      p,
+      li {
+        color: #565960;
       }
       a {
-        color: #176b5c;
+        color: #0868c7;
       }
-      .muted {
-        color: #70665c;
+      .date,
+      footer {
+        color: #73757a;
+        font-size: 14px;
+      }
+      .nav {
+        margin-bottom: 28px;
+        font-size: 14px;
+      }
+      .card {
+        margin-top: 30px;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid #e3e3e6;
+        border-radius: 14px;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          color: #f5f5f7;
+          background: #111214;
+        }
+        p,
+        li {
+          color: #c8c9cc;
+        }
+        .date,
+        footer {
+          color: #a1a1a6;
+        }
+        .card {
+          background: #1c1c1e;
+          border-color: #38383a;
+        }
+        a {
+          color: #6ab0ff;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>Nutzungsbedingungen</h1>
-    <p class="muted"><em>Zuletzt aktualisiert: 1. August 2026</em></p>
-    <p>
-      Mit der Nutzung von Skat Trainer stimmst du diesen Bedingungen und Apples
-      <a
-        href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
-        >Standard-Lizenzvereinbarung für Endnutzer</a
-      >
-      zu.
-    </p>
-
-    <h2>Was Skat Trainer bietet</h2>
-    <p>
-      Skat Trainer bietet Skat-Übungen, Erklärungen und eigene Lehrbeispiele.
-      Die App ist kein vollständiges Mehrspieler-Spiel, kein Schiedsrichter,
-      kein Glücksspielangebot und keine Garantie für ein bestimmtes Ergebnis.
-      Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam
-      vereinbarte Regel.
-    </p>
-
-    <h2>Abonnements und Käufe</h2>
-    <p>
-      Skat+ ist als automatisch verlängerndes Monats- oder Jahresabonnement
-      verfügbar, jeweils mit einer einwöchigen kostenlosen Probe, sofern Apple
-      sie anbietet, oder als einmaliger dauerhafter Kauf. Apple belastet deinen
-      Apple Account, sobald der Kauf bestätigt wurde. Ein Abonnement verlängert
-      sich automatisch, sofern du es nicht mindestens 24 Stunden vor Ablauf des
-      aktuellen Zeitraums kündigst. Abonnements verwaltest oder kündigst du in
-      den Einstellungen deines Apple Accounts. Berechtigte Käufe kannst du in
-      den Einstellungen der App wiederherstellen.
-    </p>
-
-    <h2>Inhalte und geistiges Eigentum</h2>
-    <p>
-      Skat Trainer und die eigenen Inhalte gehören Jack Wallner oder seinen
-      Lizenzgebern. Du darfst die App für persönliche, nicht kommerzielle
-      Übungen verwenden. Du darfst die App oder ihre Inhalte nicht kopieren,
-      weitergeben, zurückentwickeln oder weiterverkaufen, außer soweit das
-      anwendbare Recht es erlaubt.
-    </p>
-
-    <h2>Verfügbarkeit und Haftungshinweise</h2>
-    <p>
-      Die App wird in der jeweils verfügbaren Form bereitgestellt. Funktionen
-      können geändert, verbessert oder eingestellt werden. Soweit gesetzlich
-      zulässig, wird Skat Trainer ohne Garantien bereitgestellt. Für Verluste
-      durch das Vertrauen auf eine Übungserklärung oder durch eine
-      Dienstunterbrechung haften wir nicht.
-    </p>
-
-    <h2>Kontakt</h2>
-    <p>
-      Fragen zu diesen Bedingungen kannst du an
-      <a href="mailto:jackwallner+m@gmail.com">jackwallner+m@gmail.com</a>
-      senden.
-    </p>
-    <p>
-      <a href="https://jackwallner.github.io/skat/">Zurück zu Skat Trainer</a>
-    </p>
+    <main>
+      <nav class="nav">
+        <a href="index.html">Zurück zu Skat Trainer</a> ·
+        <a href="support.html">Support</a> ·
+        <a href="privacy-policy.html">Datenschutz</a> ·
+        <a href="terms.html">Nutzungsbedingungen</a>
+      </nav>
+      <h1>Nutzungsbedingungen</h1>
+      <p class="date">Zuletzt aktualisiert: 17. August 2026</p>
+      <h2>Vereinbarung</h2>
+      <p>
+        Mit der Nutzung von Skat Trainer stimmst du diesen Bedingungen und
+        Apples
+        <a
+          href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
+          >Standard-Lizenzvereinbarung für Endnutzer</a
+        >
+        zu.
+      </p>
+      <h2>Was Skat Trainer bietet</h2>
+      <p>
+        Skat Trainer bietet Übungsaufgaben, Erklärungen und eigene
+        Lehrbeispiele. Die App ist kein vollständiges Mehrspieler-Spiel, kein
+        Schiedsrichter, kein Glücksspielangebot und keine Garantie für ein
+        bestimmtes Ergebnis. Hausregeln können abweichen.
+      </p>
+      <h2>Skat+ Käufe</h2>
+      <p>
+        Skat+ umfasst ein automatisch verlängerndes Monatsabonnement, ein
+        automatisch verlängerndes Jahresabonnement und einen einmaligen
+        dauerhaften Kauf. Preise, Zeiträume und eine mögliche einwöchige
+        kostenlose Probe werden vor dem Kauf angezeigt. Eine Probe gilt nur für
+        berechtigte Accounts, wenn Apple sie anzeigt. Apple belastet deinen
+        Apple Account bei Bestätigung des Kaufs. Abonnements verlängern sich
+        automatisch, sofern du sie nicht mindestens 24 Stunden vor Ablauf des
+        aktuellen Zeitraums kündigst. Die Verlängerung wird innerhalb der
+        letzten 24 Stunden belastet. Du verwaltest oder kündigst Abonnements in
+        den Einstellungen deines Apple Accounts. Rückerstattungen beantragst du
+        bei <a href="https://reportaproblem.apple.com/">Apple</a>. Berechtigte
+        Käufe kannst du in der App wiederherstellen.
+      </p>
+      <h2>Inhalte</h2>
+      <p>
+        Skat Trainer und die eigenen Inhalte gehören Jack Wallner oder seinen
+        Lizenzgebern. Du darfst die App für persönliche, nicht kommerzielle
+        Übungen verwenden. Du darfst die App oder ihre Inhalte nicht kopieren,
+        weitergeben, zurückentwickeln oder weiterverkaufen, außer soweit das
+        anwendbare Recht es erlaubt.
+      </p>
+      <h2>Änderungen</h2>
+      <p>
+        Wir können diese Bedingungen ändern, wenn sich die App oder ihre Dienste
+        ändern. Die aktuelle Fassung steht auf dieser Seite.
+      </p>
+      <div class="card">
+        <strong>Kontakt</strong>
+        <p>
+          Fragen kannst du an
+          <a href="mailto:jackwallner+m@gmail.com">jackwallner+m@gmail.com</a>
+          senden.
+        </p>
+      </div>
+      <footer>
+        <a href="index.html">Startseite</a> ·
+        <a href="support.html">Support</a> ·
+        <a href="privacy-policy.html">Datenschutz</a> ·
+        <a href="terms.html">Nutzungsbedingungen</a>
+      </footer>
+    </main>
   </body>
 </html>
