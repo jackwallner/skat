@@ -912,3 +912,44 @@ Have metadata, website, scripts, and What’s New consume that manifest or fail 
 ## Bottom line
 
 The product fundamentals are promising, but the next agent should start with commerce reconciliation and source-of-truth cleanup. The current simulator override, zero-revenue production snapshot, stale release tooling, and inconsistent website schema create too much false confidence to optimize paywall copy first. Once those are controlled, the highest-value experiment is a free-first onboarding flow with consistent plan presentation, measured through first-session completion, trial start, paid conversion, and D7 retention.
+
+## Activity and success context, 2026-08-23
+
+Classification: **low-scale monetizing**. Confidence: **low**. Trend: **no ASC comparison displayed**.
+
+ASC release state: `iOS 1.2.2 Ready for Distribution`. ASC evidence: [Analytics Overview](https://appstoreconnect.apple.com/apps/6796913722/analytics/overview?dateSpec=d90), selected range `dateSpec=d90`.
+RevenueCat evidence: [Project Overview](https://app.revenuecat.com/projects/e0bf13d7/overview), production mode, selected range `Last 28 days, 2026-07-27 through 2026-08-23`.
+
+### Observed activity
+
+| Source | Metric | Value | Window or comparison |
+| --- | --- | ---: | --- |
+| ASC | First-time downloads | 13 | 90-day Analytics Overview |
+| ASC | Redownloads | 1 | 90-day Analytics Overview |
+| ASC | Conversion rate | 1.78% | comparison not displayed |
+| ASC | Proceeds | $2 | 90-day Analytics Overview |
+| ASC | In-app purchases | 2 | 90-day Analytics Overview |
+| RevenueCat | New customers | 18 | last 28 days |
+| RevenueCat | Active customers | 31 | last 28 days |
+| RevenueCat | Active trials | 1 | current total |
+| RevenueCat | Active subscriptions | 0 | current total |
+| RevenueCat | MRR | $0 | current total |
+| RevenueCat | Revenue | $15 | last 28 days |
+
+A missing value above means the source did not expose that metric in this read-only snapshot. It is not a zero.
+
+### Interpretation and implementation focus
+
+Skat has 13 ASC first-time downloads, 2 ASC paying users and in-app purchases, 18 RevenueCat new customers, and $15 of RevenueCat revenue, but no active subscription. The current signal may be lifetime or another non-renewing product. Reconcile the catalog and entitlement mapping before experimenting, then test the free-first practice loop with a mature cohort.
+
+The deterministic classifier recommends: Protect the current paid path, then use release and cohort baselines to decide whether acquisition or conversion is the next constraint.
+
+- Join ASC first-time download, first launch, first value, paywall shown, offer loaded, trial started, trial canceled, trial converted, entitlement active, restore, and purchase failure events with the app version and build.
+- Keep ASC's 90-day acquisition and proceeds window separate from RevenueCat's 28-day customer and revenue window. Do not calculate a conversion rate by dividing values from different windows.
+- Use a mature trial cohort and a minimum sample before choosing a native paywall or onboarding A/B winner. Record the offering identifier, package, placement, experiment variant, and build.
+- Put the app's classification and the next baseline date in the release handoff so Cursor, Claude, and Codex do not optimize from an old qualitative audit.
+
+### Boundary on success or death
+
+This snapshot supports the label **low-scale monetizing**, not a lifetime verdict. The app has current paid activity, but ASC does not expose a positive comparison for the selected window. A later decision should include a clean 28-day RevenueCat trend, ASC acquisition and conversion trend, ratings and review count, crash and hang evidence, and a release-specific cohort.
+This dated section supersedes earlier statements in this file that per-app ASC or RevenueCat activity was unavailable as of 2026-08-23. Earlier statements remain historical evidence boundaries for their original audit pass.
