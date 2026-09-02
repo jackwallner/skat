@@ -3,7 +3,7 @@
 Skat Trainer ist eine Übungs-App für deutsches Skat. Sie vermittelt Karten,
 Reizen, Spielarten, Drücken und Stichspiel in kurzen Übungen. Sie ist kein
 vollständiges Mehrspieler-Spiel. XcodeGen-Projekt und Scheme heißen
-`SkatTrainer`, der Headless-Simulator heißt `agent-skat`, die Bundle-ID ist
+`SkatTrainer`, der Simulator-Lease-Owner heißt `skat`, die Bundle-ID ist
 `com.jackwallner.skat`.
 
 ## Produktregeln
@@ -84,7 +84,7 @@ und dürfen keine IDs der redaktionellen Inhalte verbrauchen.
    markieren.
 3. Invarianten in `ContentValidityTests` ergänzen oder anpassen.
 4. Mit `xcodegen generate` das Xcode-Projekt neu erzeugen.
-5. Unit-Tests ausführen und den Raum auf `agent-skat` prüfen.
+5. Unit-Tests ausführen und den Raum auf dem geleasten Simulator prüfen.
 
 Der wiederverwendbare CardPort-Ablauf liegt im Nachbarordner
 `/Users/jackwallner/cardport`. Für weitere Karten-Apps zuerst README und
@@ -94,8 +94,10 @@ Der wiederverwendbare CardPort-Ablauf liegt im Nachbarordner
 
 Nach neuen oder entfernten Swift-Dateien und nach Änderungen an `project.yml`
 immer `xcodegen generate` ausführen. Mit dem Scheme `SkatTrainer` bauen. Für
-Laufzeitprüfungen ausschließlich den dedizierten Simulator `agent-skat`
-verwenden. Simulator.app darf nicht geöffnet werden.
+Laufzeitprüfungen ein Gerät aus dem gemeinsamen Headless-Pool leasen
+(`agent-sim checkout skat`), gegen die zurückgegebene UDID bauen und danach
+`agent-sim checkin skat` ausführen. Niemals gegen ein benanntes Ziel bauen und
+Simulator.app darf nicht geöffnet werden.
 
 Release-Skripte erwarten App-Store-Connect-Zugangsdaten aus der lokalen
 Credential-Datei. Diese Daten dürfen niemals ausgegeben werden. Die App-
