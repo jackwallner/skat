@@ -18,6 +18,14 @@ struct SkatTrainerApp: App {
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .onAppear {
                     subscriptions.start()
+                    ConversionDiagnostics.recordAppOpen()
+                    #if DEBUG
+                    if RevenueCatProbe.isEnabled {
+                        // Same entry point the real paywall screens call, so
+                        // what this proves is the actual path, not a parallel one.
+                        subscriptions.trackPaywallImpression(id: RevenueCatProbe.impressionID)
+                    }
+                    #endif
                     ReviewPromptTracker.recordAppLaunch()
                 }
         }
