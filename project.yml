@@ -68,7 +68,35 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         TEST_TARGET_NAME: SkatTrainer
 
+  # The paywall purchase probe. Its own target rather than a file dropped into
+  # SkatTrainerScreenshots: that one runs under a test plan that activates
+  # StoreKit Testing, and this has to reach RevenueCat's Test Store instead.
+  SkatTrainerUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: SkatTrainerUITests
+    dependencies:
+      - target: SkatTrainer
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.jackwallner.skat.uitests
+        TEST_TARGET_NAME: SkatTrainer
+
 schemes:
+  SkatTrainerUITests:
+    build:
+      targets:
+        SkatTrainer: all
+        SkatTrainerUITests: [test]
+    test:
+      config: Debug
+      targets:
+        - SkatTrainerUITests
+    run:
+      config: Debug
+
   SkatTrainer:
     build:
       targets:
