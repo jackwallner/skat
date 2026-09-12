@@ -92,74 +92,16 @@ Der wiederverwendbare CardPort-Ablauf liegt im Nachbarordner
 
 ## Build und Simulator
 
-Nach neuen oder entfernten Swift-Dateien und nach Änderungen an `project.yml`
-immer `xcodegen generate` ausführen. Mit dem Scheme `SkatTrainer` bauen. Für
-Laufzeitprüfungen ein Gerät aus dem gemeinsamen Headless-Pool leasen
-(`agent-sim checkout skat`), gegen die zurückgegebene UDID bauen und danach
-`agent-sim checkin skat` ausführen. Niemals gegen ein benanntes Ziel bauen und
-Simulator.app darf nicht geöffnet werden.
-
 Release-Skripte erwarten App-Store-Connect-Zugangsdaten aus der lokalen
-Credential-Datei. Diese Daten dürfen niemals ausgegeben werden. Die App-
-Store-ID wird nach dem Anlegen des ASC-Eintrags ergänzt.
+Credential-Datei. Diese Daten dürfen niemals ausgegeben werden.
 
 Details zum Wischstapel stehen in `SkatTrainer/Views/Drills/CLAUDE.md`.
 
-## Game-night rhythm (1.2)
+## Deep notes (load on demand)
+These files load automatically when you read a file matching their `paths:`. Agents that do not auto-load rules (AGENTS.md readers) should open the file for the area they are touching. Record new area-specific learnings in the matching file, not here.
 
-Skat+ owns two recurring rituals. `SkatMinuteContent` deterministically builds the
-same five questions for every member on a local calendar day: two generated
-Blattlesen, one Drücken decision, and two Stichspiel questions. Results and a 30-day
-archive stay on device in `SkatMinuteStore`; sharing uses the system share sheet and
-needs no account or leaderboard.
-
-The Drücken question is built straight from the authored scenarios, NOT through
-`SessionBuilder.choiceItems`. The quick-session pool deliberately excludes
-those drills, so drawing the daily from it silently produced a four-question
-challenge with that skill missing entirely.
-
-`HandGenerator` deals the daily hands from a caller-supplied generator all the
-way down: `deal`, `fill`, and `randomHand` are all generic over
-`RandomNumberGenerator`. One `.shuffled()` or `.randomElement()` left calling
-the system source is enough to make the same day deal different hands on
-different devices, and the stability test is what catches it.
-
-`GameNightPrepView` stores a weekly game night in `AppSettings`, schedules a
-local notification, and opens directly into `SessionBuilder.gameNightPrep`,
-which prioritizes due mistakes, misses, the weakest room, and unseen member
-content in that order. Both features are entirely Skat+ gated.
-
-## iPad (1.2)
-
-iPad support is free: `TARGETED_DEVICE_FAMILY "1,2"`, portrait and landscape,
-adaptive Home columns, drill grids, and readable content widths.
-
-Every drill body is a scroll view, so a question that underfills the viewport
-was pinned to the top and left the bottom half of a 13-inch iPad empty.
-`CenteringScrollView` centres short content and leaves taller content scrolling
-untouched (minHeight, not height). Keep its `maxWidth: .infinity`: a plain
-ScrollView centres narrow content for you, an explicitly framed one does not.
-The room eyebrow lives INSIDE `QuestionPager` so it centres with the question,
-and the flashcard deck is capped at 520pt wide so a card still looks like a
-card.
-
-## Screenshots
-
-`scripts/capture-screenshots.sh <udid> <out-dir> [prefix]` drives the real app
-through the App Store screens via the `Screenshots` scheme.
-`scripts/with-ipad-sim.sh` creates a throwaway 13-inch iPad (App Store iPad
-shots must be 2064x2752 and the agent-sim pool has no iPad Pro), boots it
-headless, and deletes it on exit:
-
-```bash
-./scripts/with-ipad-sim.sh sh -c './scripts/capture-screenshots.sh "$IPAD_UDID" out ipad_'
-```
-
-Gotchas baked into the test: the What's New sheet covers Home on the first
-launch after a version bump and returns every time Home reappears, so the
-script passes the marketing version in through
-`TEST_RUNNER_SCREENSHOT_APP_VERSION` and the test marks it seen; returning to
-the root only taps navigation-bar button 0 while a back button is there,
-because on Home that button is the Settings gear; and the test never calls
-XCTFail, because a failing UI test spends ten minutes collecting simulator
-diagnostics first.
+| File | Covers | Read when |
+|---|---|---|
+| `.claude/rules/game-night.md` | Game-night rhythm (1.2): Skat Minute, the daily Drücken question, deterministic dealing, game night prep | `SkatMinute*`, `GameNightPrepView`, `HandGenerator`, `SessionBuilder` |
+| `.claude/rules/ipad-layout.md` | iPad (1.2): device family, `CenteringScrollView`, the pager eyebrow, the deck width cap | Drill layouts, Home columns |
+| `.claude/rules/screenshots.md` | Screenshots: the capture script, the throwaway iPad, test gotchas | Capture scripts, the `Screenshots` scheme |
