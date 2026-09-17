@@ -29,6 +29,7 @@ final class ScreenshotTests: XCTestCase {
             "-progress.hasOnboarded", "YES",
             "-skat.hasReadPrimer", "YES",
             "-skat.skillLevel", "some",
+            "-subscription.localProOverride", "YES",
         ]
         // The What's New sheet fires on the first launch after a version bump
         // and covers Home. Marking the CURRENT version as already seen is what
@@ -49,21 +50,36 @@ final class ScreenshotTests: XCTestCase {
 
         if open("Loslegen") {
             capture("01_quick_session")
+            if answerQuick("Beim Kreuz-Buben") {
+                capture("01_quick_session_answered")
+                if advanceQuick(), answerQuick() {
+                    capture("01_quick_session_second_answered")
+                }
+            }
         }
         home()
 
         if open("Spielarten"), open("Die Struktur lesen") {
             capture("02_struktur")
+            if answerHandMatch() {
+                capture("02_struktur_answered")
+            }
         }
         home()
 
-        if open("Stichspiel"), open("Stich-Entscheidungen") {
+        if open("Stichspiel"), openStichDecision() {
             capture("03_stich")
+            if answerStich() {
+                capture("08_stich_answered")
+            }
         }
         home()
 
         if open("Drücken"), open("Dein Skat") {
             capture("04_druecken")
+            if answerDiscard() {
+                capture("04_druecken_answered")
+            }
         }
         home()
 
@@ -115,6 +131,23 @@ final class ScreenshotTests: XCTestCase {
         return false
     }
 
+    @discardableResult
+    private func openStichDecision() -> Bool {
+        let predicate = NSPredicate(
+            format: "label BEGINSWITH %@ AND NOT (label CONTAINS %@)",
+            "Stich-Entscheidungen",
+            "Extra-Runden"
+        )
+        let match = app.buttons.matching(predicate).firstMatch
+        guard match.waitForExistence(timeout: 6) else {
+            problems.append("could not open free Stich drill")
+            return false
+        }
+        match.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        settle()
+        return true
+    }
+
     /// Pops back to the root, recognising Home by its Get Started card.
     ///
     /// Do NOT just tap navigation-bar button 0 until it runs out: on Home that
@@ -136,6 +169,139 @@ final class ScreenshotTests: XCTestCase {
             back.tap()
             settle(0.6)
         }
+    }
+
+    @discardableResult
+    private func answerStich() -> Bool {
+        let choices = [
+            "Herz bedienen",
+            "Eine fremde Farbe spielen",
+            "Frei wählen",
+            "Trotzdem Herz legen",
+            "Trumpf gewinnt",
+            "Das Herz-Ass gewinnt immer",
+        ]
+        for label in choices {
+            let choice = app.buttons[label].firstMatch
+            guard choice.waitForExistence(timeout: 1) else { continue }
+            choice.tap()
+            settle()
+            return true
+        }
+        problems.append("could not answer Stich drill")
+        return false
+    }
+
+    @discardableResult
+    private func answerHandMatch() -> Bool {
+        let choice = app.buttons["Trumpf"].firstMatch
+        guard choice.waitForExistence(timeout: 2) else {
+            problems.append("could not answer hand structure")
+            return false
+        }
+        choice.tap()
+        settle()
+        return true
+    }
+
+    @discardableResult
+    private func answerDiscard() -> Bool {
+        guard tapCard("7 Kreuz"), tapCard("8 Pik") else {
+            problems.append("could not select discard cards")
+            return false
+        }
+        let submit = app.buttons["Diese 2 drücken"].firstMatch
+        guard submit.waitForExistence(timeout: 2) else {
+            problems.append("could not submit discard cards")
+            return false
+        }
+        submit.tap()
+        settle()
+        return true
+    }
+
+    @discardableResult
+    private func answerQuick(_ preferred: String? = nil) -> Bool {
+        let labels = [
+            preferred,
+            "Beim Kreuz-Buben",
+            "Beim Karo-Buben",
+            "Beim Kreuz-Ass",
+            "Vorhand",
+            "Mittelhand",
+            "Hinterhand",
+            "Ass",
+            "König",
+            "Dame",
+            "Bube",
+            "61 Augen",
+            "Keinen Stich",
+            "Alle vier Buben",
+            "Bedienpflicht",
+            "Die Bubenreihenfolge",
+            "Jeder Trumpf",
+            "Nur ein Ass",
+            "Du darfst frei wählen",
+            "Du musst passen",
+            "Du musst die höchste Karte spielen",
+        ].compactMap { $0 }
+        for label in labels {
+            let choice = app.buttons[label].firstMatch
+            if choice.waitForExistence(timeout: 0.5) {
+                choice.tap()
+                settle()
+                return true
+            }
+        }
+
+        // Quick Session deliberately shuffles its pool, so a capture test
+        // cannot rely on one authored label being present. The answer rows
+        // are the only wide, medium-height buttons in the drill body. Pick
+        // the first one when the shuffled item uses a different prompt.
+        let navigationLabels = Set(["Weiter", "Fertig", "Schließen", "Zurück"])
+        let answer = app.buttons.allElementsBoundByIndex.first { button in
+            let frame = button.frame
+            return button.exists
+                && button.isHittable
+                && !button.label.isEmpty
+                && !navigationLabels.contains(button.label)
+                && frame.width > 250
+                && frame.height >= 40
+                && frame.height <= 120
+                && frame.minY > 120
+        }
+        if let answer {
+            answer.tap()
+            settle()
+            return true
+        }
+        problems.append("could not answer Quick Session")
+        return false
+    }
+
+    @discardableResult
+    private func advanceQuick() -> Bool {
+        let next = app.buttons["Weiter"].firstMatch
+        guard next.waitForExistence(timeout: 2) else {
+            problems.append("could not advance Quick Session")
+            return false
+        }
+        next.tap()
+        settle()
+        return true
+    }
+
+    private func tapCard(_ label: String) -> Bool {
+        let predicate = NSPredicate(format: "label == %@", label)
+        for query in [app.staticTexts, app.otherElements, app.buttons] {
+            let match = query.matching(predicate).firstMatch
+            if match.waitForExistence(timeout: 2) {
+                match.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+                settle(0.4)
+                return true
+            }
+        }
+        return false
     }
 
     private var atHome: Bool {
