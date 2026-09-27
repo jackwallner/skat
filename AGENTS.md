@@ -95,10 +95,10 @@ Der wiederverwendbare CardPort-Ablauf liegt im Nachbarordner
 Release-Skripte erwarten App-Store-Connect-Zugangsdaten aus der lokalen
 Credential-Datei. Diese Daten dürfen niemals ausgegeben werden.
 
-Details zum Wischstapel stehen in `SkatTrainer/Views/Drills/CLAUDE.md`.
+Details zum Wischstapel stehen in `SkatTrainer/Views/Drills/AGENTS.md`.
 
 ## Deep notes (load on demand)
-These files load automatically when you read a file matching their `paths:`. Agents that do not auto-load rules (AGENTS.md readers) should open the file for the area they are touching. Record new area-specific learnings in the matching file, not here.
+These files load automatically when you read a file matching their `paths:`. Agents that do not auto-load rules (Codex, Cursor) should open the file for the area they are touching. Record new area-specific learnings in the matching file, not here.
 
 | File | Covers | Read when |
 |---|---|---|
