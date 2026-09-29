@@ -68,23 +68,23 @@ enum PlusContent {
     static let extraDiscards: [DiscardScenario] = [
         DiscardScenario(
             id: "plus-druecken-1",
-            situation: "Du hast ein Herzspiel mit langer Farbe im Blick. Welche zwei Karten drückst du?",
+            situation: "Herzspiel. Lehrziel: Alle sieben Trümpfe behalten und kreuzfrei werden. Welche zwei Seitenkarten drückst du?",
             deal: [.h(7), .h(8), .h(9), .h(10), .h(14), .c(11), .s(11), .d(13), .c(7), .s(8), .d(9), .c(12)],
-            recommendedDiscard: [.c(7), .s(8)],
-            reasoning: "Die Herzserie bleibt als Trumpf- und Beikartenkern erhalten. Die kleinen, losen Fremdfarben bringen in dieser Idee am wenigsten.",
+            recommendedDiscard: [.c(7), .c(12)],
+            reasoning: "Kreuz-Sieben und Kreuz-Dame sind die einzigen Kreuz-Seitenkarten. Kreuz-Bube bleibt als Herztrumpf. Das Paar sichert drei Augen und Kreuzfreiheit.",
             tip: "Eine Farbe mit Länge kann die Entscheidung vereinfachen. Suche zuerst die Karten ohne Farbe, Augen oder Anschluss."
         ),
         DiscardScenario(
             id: "plus-druecken-2",
-            situation: "Du reizt auf Grand. Welche beiden Karten sind ohne Augen und ohne sichtbare Verbindung?",
+            situation: "Grand. Lehrziel: Pikfreiheit herstellen und beide Buben behalten. Welches Paar ist dafür nötig?",
             deal: [.c(11), .s(11), .c(14), .d(14), .h(13), .s(13), .c(10), .d(10), .h(7), .d(7), .h(8), .s(8)],
-            recommendedDiscard: [.h(7), .d(7)],
-            reasoning: "Buben, Asse und Zehnen tragen die Grand-Idee. Die beiden Siebener liefern weder Augen noch einen erkennbaren sicheren Stich.",
-            tip: "Die beste Lehrentscheidung ist nicht immer die Karte mit dem niedrigsten Wert, aber hier sind die beiden Siebener klar lose."
+            recommendedDiscard: [.s(13), .s(8)],
+            reasoning: "Pik-König und Pik-Acht sind die einzigen Pik-Seitenkarten. Pik-Bube ist Trumpf. Das Paar schafft Pikfreiheit und sichert vier Augen.",
+            tip: "Eine freie Farbe kann Abwürfe oder Trumpfeinsatz ermöglichen. Das ist ein Ziel, kein Beweis für einen sicheren Grand."
         ),
         DiscardScenario(
             id: "plus-druecken-3",
-            situation: "Du nimmst den Skat für ein Nullspiel auf. Welche zwei hohen Karten willst du loswerden?",
+            situation: "Nullspiel. Lehrziel: Die zwei höchsten Karten nach der Null-Reihenfolge drücken. Wähle das Paar.",
             deal: [.c(7), .d(8), .h(9), .s(10), .c(8), .d(9), .h(10), .s(7), .c(14), .d(13), .h(12), .s(11)],
             recommendedDiscard: [.c(14), .d(13)],
             reasoning: "Ass und König können im Null schnell einen Stich gewinnen. Die niedrigen Karten lassen eher zu, einen Stich abzugeben.",
@@ -92,10 +92,10 @@ enum PlusContent {
         ),
         DiscardScenario(
             id: "plus-druecken-4",
-            situation: "Du hältst vier Buben und planst einen Grand. Welche zwei kleinen Seitenkarten legst du ab?",
+            situation: "Grand mit vier Buben. Lehrziel: Herzfreiheit herstellen und beide Asse behalten. Welches Paar drückst du?",
             deal: [.c(11), .s(11), .h(11), .d(11), .c(14), .s(14), .h(13), .d(13), .c(7), .s(7), .h(8), .d(8)],
-            recommendedDiscard: [.h(8), .d(8)],
-            reasoning: "Der Vier-Buben-Kern und die hohen Augen bleiben erhalten. Die beiden Achter sind kleine Einzelkarten ohne Augen.",
+            recommendedDiscard: [.h(13), .h(8)],
+            reasoning: "Herz-König und Herz-Acht sind die einzigen Herz-Seitenkarten. Beide entfernen schafft Herzfreiheit und sichert vier Augen, ohne Buben oder Asse anzutasten.",
             tip: "Bei vielen sicheren Trümpfen darfst du die Beikarten genauer auf Augen und Anschluss prüfen."
         ),
     ]

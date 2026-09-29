@@ -73,9 +73,9 @@ enum HandGenerator {
         let cards: [PlayingCard]
         switch target {
         case .grand:
-            cards = [.c(11), .s(11), .h(11), .d(11), .c([7, 8, 9, 10, 12, 13, 14].randomElement() ?? 7)]
+            cards = [.c(11), .s(11), .h(11), .d(11), .c([7, 8, 9, 10, 12, 13, 14].randomElement(using: &generator) ?? 7)]
         case .trumpf:
-            let suit: Suit = Bool.random() ? .hearts : .diamonds
+            let suit: Suit = Bool.random(using: &generator) ? .hearts : .diamonds
             cards = [
                 .c(11), .s(11),
                 .standard(rank: 7, suit: suit),
@@ -83,7 +83,7 @@ enum HandGenerator {
                 .standard(rank: 14, suit: suit)
             ]
         case .farbe:
-            let suit = Suit.allCases.randomElement() ?? .hearts
+            let suit = Suit.allCases.randomElement(using: &generator) ?? .hearts
             cards = [7, 8, 9, 10, 14].map { .standard(rank: $0, suit: suit) }
         case .nullspiel:
             cards = [.c(7), .d(8), .h(9), .s(10), .c(8)]

@@ -44,6 +44,8 @@ struct QuestionPager<Choices: View>: View {
     var eyebrow: String? = nil
     @ViewBuilder let choices: () -> Choices
 
+    private var isDetailedPrompt: Bool { prompt.contains("\n") || prompt.count > 240 }
+
     var body: some View {
         // Centring, not top-aligned: on a 13-inch iPad a short question used to
         // sit in the top quarter of the screen. See CenteringScrollView.
@@ -58,9 +60,10 @@ struct QuestionPager<Choices: View>: View {
                         .padding(.bottom, -8)
                 }
                 Text(prompt)
-                    .font(Theme.display(22))
+                    .font(isDetailedPrompt ? .body : Theme.display(22))
                     .foregroundStyle(Theme.ink)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(isDetailedPrompt ? .leading : .center)
+                    .frame(maxWidth: .infinity, alignment: isDetailedPrompt ? .leading : .center)
                     .padding(.top, 8)
                 if !tiles.isEmpty {
                     CardHandView(tiles: tiles, tileWidth: 44)

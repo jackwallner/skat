@@ -16,6 +16,15 @@ und kein vollständiges Mehrspieler-Spiel.
 - Nutzungsbedingungen: <https://jackwallner.github.io/skat/terms>
 - Mitgliedschaft: Skat+
 
+## Übungsumfang
+
+Version 1.2.3 enthält 222 redaktionelle Lernaufgaben. Der neu aufgebaute
+Meistertisch umfasst 100 Aufgaben zu Spielwert, Überreizen, Gegenspiel, Null,
+Endspielen und konkreten Drückzielen. Acht vollständige Drei-Stich-Endspiele
+verlangen einen Gewinnplan gegen jede legale Abwehr. 24 neue Fälle zu Reizen und Stichregeln
+stehen kostenlos zur Verfügung. Jede Drückaufgabe nennt ihr Lehrziel, statt
+eine ohne Kontext angeblich beste Karte vorauszusetzen.
+
 ## Entwicklung
 
 ```sh

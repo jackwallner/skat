@@ -1,9 +1,7 @@
-A better rhythm for Skat night.
+More depth at the card table.
 
-The Skat Minute is the new daily round. Every member gets the same five questions on the same day: two hand reads, one discard decision, and two trick-play questions. Share your score, and keep a forgiving five-day weekly rhythm with a 30-day archive to catch up from.
+222 authored learning items in total. The Master Table is rebuilt with 100 concrete exercises covering game values, overbidding, defense, Null and endgames instead of basic recall questions.
 
-Game Night Prep lets you set your usual Skat night. A reminder arrives beforehand and opens straight into a five-minute session built from your due mistakes, your weakest room, and material you have not seen yet.
+24 new free cases cover bidding and trick rules. Every discard exercise now states a clear learning objective, with explanations that distinguish teaching goals from universally optimal play.
 
-Skat Trainer now runs natively on iPad, in portrait or landscape.
-
-The Skat Minute and Game Night Prep are part of Skat+.
+Daily generated hands are now consistent for the same date. Exercise content is in German.

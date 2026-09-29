@@ -30,6 +30,31 @@ enum WhatsNew {
 
     static let releases: [WhatsNewRelease] = [
         WhatsNewRelease(
+            version: "1.2.3",
+            headline: "Mehr Tiefe am Kartentisch",
+            items: [
+                WhatsNewItem(
+                    id: "expert-situations",
+                    icon: "crown.fill",
+                    title: "100 Aufgaben am Meistertisch",
+                    body: "Rechne Überreizen und Ansagen, plane die letzten Stiche und löse konkrete Gegenspiel- und Nullprobleme mit nachvollziehbaren Erklärungen.",
+                    isPlus: true
+                ),
+                WhatsNewItem(
+                    id: "applied-practice",
+                    icon: "suit.club.fill",
+                    title: "24 neue kostenlose Fälle",
+                    body: "Übe Reizdeckung und Bedienpflicht an konkreten Beispielen in Karten & Reizen und Stichspiel."
+                ),
+                WhatsNewItem(
+                    id: "clear-discard-goals",
+                    icon: "arrow.down.to.line.compact",
+                    title: "Drücken mit klarem Ziel",
+                    body: "Jede Drückaufgabe nennt jetzt ihr Lehrziel. Vergleiche freie Farben, Trumpferhalt und sichere Skataugen statt eine unklare Musterlösung zu erraten."
+                ),
+            ]
+        ),
+        WhatsNewRelease(
             version: "1.2.0",
             headline: "Ein besserer Rhythmus für den Skatabend",
             items: [

@@ -75,23 +75,23 @@ enum MoreContent {
     static let discardExtras: [DiscardScenario] = [
         DiscardScenario(
             id: "mehr-druecken-1",
-            situation: "Du spielst Grand und hast nach dem Skat zwölf Karten. Welche zwei niedrigen Karten sind die Lehrentscheidung?",
+            situation: "Grand. Lehrziel: Alle Buben behalten und herzfrei werden. Welche beiden Herz-Seitenkarten drückst du?",
             deal: [.c(11), .s(11), .h(11), .d(11), .c(14), .d(14), .h(13), .s(13), .c(7), .d(7), .h(8), .s(8)],
-            recommendedDiscard: [.h(8), .s(8)],
-            reasoning: "Die Buben und die hohen Augen bilden den Kern. Die beiden Achter bringen keine Augen und werden als lose Beikarten gedrückt.",
+            recommendedDiscard: [.h(13), .h(8)],
+            reasoning: "Herz-König und Herz-Acht sind die einzigen Herz-Seitenkarten. Herz-Bube bleibt Trumpf. Vier Augen werden gesichert, die Herz-Seitenfarbe verschwindet aus der Hand.",
             tip: "Im Grand sind kleine Karten nicht automatisch schlecht, aber lose kleine Karten ohne Stichplan sind oft die schwächsten."
         ),
         DiscardScenario(
             id: "mehr-druecken-2",
-            situation: "Du planst ein Karo-Farbspiel. Welche zwei fremden Karten gibst du als erste Lehrentscheidung ab?",
+            situation: "Karospiel. Lehrziel: Alle sieben Trümpfe behalten und herzfrei werden. Welches Paar drückst du?",
             deal: [.d(7), .d(8), .d(9), .d(10), .d(14), .c(11), .s(11), .h(13), .c(14), .s(14), .h(7), .c(8)],
-            recommendedDiscard: [.h(7), .c(8)],
-            reasoning: "Die Karo-Serie bleibt vollständig. Zwei kleine Fremdfarben haben wenig Anschluss und nehmen Platz für Trumpf und Augen weg.",
+            recommendedDiscard: [.h(13), .h(7)],
+            reasoning: "Herz-König und Herz-Sieben sind die einzigen Herzkarten. Das Paar schafft Herzfreiheit und sichert vier Augen, ohne den Trumpfkern zu schwächen.",
             tip: "Sortiere nach Spielidee: Farbe und Trümpfe zuerst, dann sichere Augen, dann lose Nebenfarben."
         ),
         DiscardScenario(
             id: "mehr-druecken-3",
-            situation: "Du versuchst Null. Welche zwei hohen Karten willst du nicht in deiner Zehnerhand behalten?",
+            situation: "Nullspiel. Lehrziel: Die zwei höchsten Karten nach der Null-Reihenfolge drücken. Welche sind das?",
             deal: [.c(7), .d(8), .h(9), .s(10), .c(8), .d(9), .h(10), .s(7), .c(14), .d(13), .h(12), .s(11)],
             recommendedDiscard: [.c(14), .d(13)],
             reasoning: "Ass und König sind im Null gefährliche Gewinnerkarten. Die niedrigen Karten erlauben eher, einen Stich abzugeben.",
@@ -99,10 +99,10 @@ enum MoreContent {
         ),
         DiscardScenario(
             id: "mehr-druecken-4",
-            situation: "Du hast einen Grand mit zwei Buben im Plan. Welche zwei Karten wirken als lose Augenarme?",
+            situation: "Grand mit zwei Buben. Lehrziel: Pikfreiheit herstellen und beide Buben sowie beide Asse behalten. Welches Paar passt?",
             deal: [.c(11), .s(11), .c(14), .d(14), .h(13), .s(13), .c(10), .d(10), .h(7), .s(8), .h(8), .d(9)],
-            recommendedDiscard: [.h(7), .s(8)],
-            reasoning: "Die kleinen Karten bringen keine Augen und haben keinen sichtbaren Anschluss. Der Trumpfkern und die Augen bleiben im Blatt.",
+            recommendedDiscard: [.s(13), .s(8)],
+            reasoning: "Pik-König und Pik-Acht sind die einzigen Pik-Seitenkarten. Pik-Bube bleibt als Trumpf. Das Paar sichert vier Augen und Pikfreiheit.",
             tip: "Nicht nur Kartenpunkte zählen: Ein Drückpaar soll auch die erwartete Stichverteilung berücksichtigen."
         ),
     ]

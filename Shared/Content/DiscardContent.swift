@@ -17,7 +17,7 @@ enum DiscardContent {
             frontTiles: [.c(7), .d(8)],
             frontSubtitle: "Der Skat muss verdeckt liegen",
             backTitle: "Genau zwei Karten",
-            backBody: "Vor dem Ausspielen legst du genau zwei Karten verdeckt zurück. Sie gehören danach nicht mehr zu deinen zehn Handkarten und zählen bei deinen Stichen nicht mit."
+            backBody: "Vor dem Ausspielen legst du genau zwei Karten verdeckt zurück. Sie gehören danach nicht mehr zur Hand. Bei Farbe und Grand zählen ihre Augen trotzdem für den Alleinspieler, auch bei einem Handspiel zählt der unberührte Skat."
         ),
         Flashcard(
             id: "druecken-farbe",
@@ -53,23 +53,23 @@ enum DiscardContent {
     static let scenarios: [DiscardScenario] = [
         DiscardScenario(
             id: "druecken-deal-1",
-            situation: "Du planst ein Herzspiel. Nach dem Aufnehmen des Skats hältst du diese zwölf Karten. Welche zwei Karten legst du zurück?",
+            situation: "Herzspiel. Lehrziel: Nach dem Drücken pikfrei sein und alle Trümpfe behalten. Welche zwei Pik-Seitenkarten müssen weg?",
             deal: [.c(14), .d(14), .h(11), .h(14), .h(10), .h(7), .c(12), .s(13), .d(10), .c(7), .s(8), .d(9)],
-            recommendedDiscard: [.c(7), .s(8)],
-            reasoning: "Die Herztrümpfe und die beiden Asse bleiben erhalten. Die kleinen Einzelkarten in fremden Farben bringen in dieser Farbidee wenig und werden als Lehrentscheidung gedrückt.",
+            recommendedDiscard: [.s(13), .s(8)],
+            reasoning: "Pik-König und Pik-Acht sind die einzigen Pik-Seitenkarten. Beide zusammen schaffen Pikfreiheit und sichern vier Skataugen. Die Herztrümpfe und beide Asse bleiben.",
             tip: "Halte die Trumpffarbe und sichere Augen zusammen. Eine einzelne kleine Nebenfarbe ist oft der erste Kandidat für den Skat."
         ),
         DiscardScenario(
             id: "druecken-deal-2",
-            situation: "Du möchtest Grand spielen. Die Buben und hohen Augen sind dein Kern. Welche zwei Karten drückst du?",
+            situation: "Grand. Lehrziel: Herzfreiheit herstellen, alle Buben und beide Ass-Zehn-Paare behalten. Welche zwei Karten drückst du?",
             deal: [.c(11), .s(11), .h(11), .d(11), .c(14), .d(14), .h(13), .s(12), .c(10), .d(10), .h(7), .d(7)],
-            recommendedDiscard: [.h(7), .d(7)],
-            reasoning: "Alle vier Buben und die hohen Augen bleiben im Blatt. Die beiden Siebener sind im Grand keine Augen und liefern ohne konkrete Farbe keine zusätzliche Sicherheit.",
+            recommendedDiscard: [.h(13), .h(7)],
+            reasoning: "Herz-König und Herz-Sieben sind die einzigen Herz-Seitenkarten. Der Herz-Bube bleibt Trumpf. Beide Ass-Zehn-Paare bleiben zusammen, vier Augen gehen in den Skat.",
             tip: "Im Grand ist jeder Bube ein Trumpf. Zähle danach die Augen, die du mit deinen sicheren Stichen erreichen kannst."
         ),
         DiscardScenario(
             id: "druecken-deal-3",
-            situation: "Du prüfst ein Nullspiel. Deine Karten sollen möglichst klein und ohne gefährliche Augen bleiben. Was drückst du?",
+            situation: "Nullspiel. Lehrziel: Die zwei höchsten Karten nach der Null-Reihenfolge drücken. Welche sind das in diesem Blatt?",
             deal: [.c(7), .d(8), .h(9), .s(10), .c(8), .d(9), .h(7), .s(8), .c(14), .d(13), .h(10), .s(12)],
             recommendedDiscard: [.c(14), .d(13)],
             reasoning: "Ass und König können im Null leicht einen Stich erzwingen. Die niedrigen Karten lassen sich eher abwerfen und halten deine Hand für die Nullidee ruhig.",
@@ -77,26 +77,26 @@ enum DiscardContent {
         ),
         DiscardScenario(
             id: "druecken-deal-4",
-            situation: "Du spielst Herz und hast eine lange Herzfarbe aufgenommen. Welche zwei fremden Karten sind die Lehrentscheidung?",
+            situation: "Herzspiel. Lehrziel: Alle sieben Trümpfe behalten und kreuzfrei werden. Welche beiden Kreuz-Seitenkarten drückst du?",
             deal: [.h(7), .h(8), .h(9), .h(10), .h(14), .c(11), .s(11), .d(12), .c(13), .d(13), .c(9), .s(9)],
-            recommendedDiscard: [.c(9), .s(9)],
-            reasoning: "Die fünf Herz-Karten bilden die Farbe. Die beiden kleinen Neuner außerhalb der Farbe sind einzelne Karten ohne Augen und werden als Nebenfarben abgelegt.",
+            recommendedDiscard: [.c(13), .c(9)],
+            reasoning: "Kreuz-König und Kreuz-Neun sind die einzigen Kreuz-Seitenkarten. Kreuz-Bube ist Herztrumpf und bleibt. Mit dem Paar erreichst du Kreuzfreiheit und sicherst vier Augen.",
             tip: "Eine lange Trumpffarbe macht die Auswahl leichter: behalte die Farbe und entsorge möglichst unverbundene Seitenkarten."
         ),
         DiscardScenario(
             id: "druecken-deal-5",
-            situation: "Du planst einen Grand mit vier Buben. Welche zwei niedrigen Karten helfen deiner Hand am wenigsten?",
+            situation: "Grand mit vier Buben. Lehrziel: Herzfreiheit herstellen und beide Asse behalten. Welches Drückpaar erreicht das?",
             deal: [.c(11), .s(11), .h(11), .d(11), .c(14), .d(14), .h(13), .s(12), .c(7), .d(7), .h(8), .s(8)],
-            recommendedDiscard: [.c(7), .d(7)],
-            reasoning: "Der Vier-Buben-Grand hat einen klaren Trumpfkern. Die beiden Siebener zählen keine Augen und geben keine zusätzliche Stichsicherheit.",
+            recommendedDiscard: [.h(13), .h(8)],
+            reasoning: "Herz-König und Herz-Acht sind die einzigen Herz-Seitenkarten. Sie zu drücken sichert vier Augen und Herzfreiheit. Der Herz-Bube bleibt als Grandtrumpf.",
             tip: "Wenn dein Spiel schon einen starken Trumpfkern hat, drücke eher die Karten ohne Augen und ohne Anschluss."
         ),
         DiscardScenario(
             id: "druecken-deal-6",
-            situation: "Du entscheidest dich für ein Farbspiel Karo. Welche zwei Einzelkarten lässt du im Skat?",
+            situation: "Karospiel. Lehrziel: Alle fünf Trümpfe behalten und herzfrei werden. Welche beiden Karten erfüllen das?",
             deal: [.d(10), .d(11), .d(12), .d(13), .d(14), .c(10), .s(10), .h(10), .c(8), .s(8), .h(8), .c(7)],
-            recommendedDiscard: [.c(7), .h(8)],
-            reasoning: "Die Karo-Karten bilden die angesagte Farbe. Eine kleine Einzelkarte ohne Augen und eine nicht verbundene Nebenkarte werden als Lehrentscheidung gedrückt.",
+            recommendedDiscard: [.h(10), .h(8)],
+            reasoning: "Herz-Zehn und Herz-Acht sind die einzigen Herzkarten. Ihr Drücken schafft Herzfreiheit und sichert zehn Augen. Alle fünf Karotrümpfe bleiben.",
             tip: "Bei einer langen Farbe musst du nicht jede Nebenfarbe behalten. Prüfe, welche Karte später am wenigsten einen Stich gewinnt."
         ),
     ]

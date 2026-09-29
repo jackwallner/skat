@@ -22,6 +22,12 @@ enum DrillLibrary {
                     kind: .quiz(CardBasicsContent.cardQuiz)
                 ),
                 Drill(
+                    id: "applied-bidding",
+                    title: "Reizen am Beispiel",
+                    subtitle: "Zwölf konkrete Fälle zu Spitzen und Reizdeckung",
+                    kind: .quiz(AppliedContent.bidding)
+                ),
+                Drill(
                     id: "plus-card-extras",
                     title: "Karten-Check: Extra-Runden",
                     subtitle: "Mehr Fragen zu Blatt, Skat und Reizposition",
@@ -106,6 +112,12 @@ enum DrillLibrary {
                     kind: .quiz(MoreContent.tableQuiz)
                 ),
                 Drill(
+                    id: "applied-tricks",
+                    title: "Welche Karte ist legal?",
+                    subtitle: "Zwölf konkrete Stiche mit klarer Spielansage",
+                    kind: .quiz(AppliedContent.tricks)
+                ),
+                Drill(
                     id: "plus-pegging-extras",
                     title: "Stich-Entscheidungen: Extra-Runden",
                     subtitle: "Weitere Situationen für Farbe, Trumpf und Endspiel",
@@ -124,26 +136,38 @@ enum DrillLibrary {
                 Drill(
                     id: "master-discard",
                     title: "Meisterhaft drücken",
-                    subtitle: "Hand, Skat und Spielwert gemeinsam beurteilen",
-                    kind: .discard(ProContent.advancedDiscard)
+                    subtitle: "Acht Drückziele mit Spielart, Position und Reizwert",
+                    kind: .discard(AdvancedContent.discards)
                 ),
                 Drill(
                     id: "master-defense",
                     title: "Verteidigung",
-                    subtitle: "Karten verfolgen und den Gegenspieler lesen",
-                    kind: .quiz(ProContent.defenseQuiz)
+                    subtitle: "20 Situationen: schmieren, stechen, zählen",
+                    kind: .quiz(AdvancedContent.defense)
                 ),
                 Drill(
                     id: "master-counting",
                     title: "Spielwert sicher rechnen",
-                    subtitle: "Spitzen, Grundwert und Gewinnstufe verbinden",
-                    kind: .handMatch(ProContent.expertHandReading)
+                    subtitle: "24 Rechnungen mit Hand, Ansagen und Überreizen",
+                    kind: .quiz(AdvancedContent.scoring)
                 ),
                 Drill(
                     id: "master-rules",
-                    title: "Meisterregeln",
-                    subtitle: "Reizen, Handspiel, Schneider und Null ouvert",
-                    kind: .quiz(MoreContent.advancedRules)
+                    title: "Null: Angriff und Rettung",
+                    subtitle: "20 konkrete Fälle zu Zwangsstichen und Reizgrenzen",
+                    kind: .quiz(AdvancedContent.nullPlay)
+                ),
+                Drill(
+                    id: "master-endgames",
+                    title: "Die letzten Stiche",
+                    subtitle: "20 Endspiele mit Restkarten und Augenbilanz",
+                    kind: .quiz(AdvancedContent.endgames)
+                ),
+                Drill(
+                    id: "master-three-tricks",
+                    title: "Drei Stiche voraus",
+                    subtitle: "Acht vollständige Endspiele gegen optimale Abwehr",
+                    kind: .quiz(AdvancedContent.planning)
                 ),
             ]
         ),
