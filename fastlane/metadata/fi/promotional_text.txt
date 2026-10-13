@@ -1,1 +1,1 @@
-Opi Skatia uusilla käsillä, kertaa virheet ja haasta itsesi 90 sekunnin harjoituksessa.
+Harjoittele skatia lyhyesti: tarjoaminen, pelityypit, pudotus skattiin ja tikkipeli. Jokainen vastaus kertoo miksi. Neljä huonetta ilmaiseksi. Sovellus on saksaksi.
