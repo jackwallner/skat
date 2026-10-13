@@ -23,10 +23,12 @@ Karte in einer Hand oder einem Blatt, halte Drück-Szenarien bei zwölf Karten
 mit zwei empfohlenen Karten, vermeide Gedankenstriche in sichtbaren Texten
 und bewahre die Trennung zwischen kostenlos und Skat+.
 
-Der Review-Ablauf ist endgültig. Nach der dritten abgeschlossenen positiven
-Übung fragt `ReviewPromptSheet`, ob die App Freude macht. Ja öffnet die
-Bewertungsseite für App-Store-ID 6796913722, Nein öffnet den Feedback-Entwurf.
-Unzufriedene Spieler sehen keine Bewertungsaufforderung.
+Bewertungen: keine eigene Bewertungsfrage (App Review 5.6.1). Eine abgeschlossene
+Übung oder Skat Minute zählt als positiver Moment; `requestsReview(after:)` ruft
+etwa 3 s später Apples Systemdialog auf, wenn nichts darüber liegt. Bedingungen:
+zweiter Kaltstart, Onboarding fertig, 30 Tage Abstand. Nur die Einstellungszeile
+„Skat Trainer bewerten“ (Bewertungsseite für App-Store-ID 6796913722) beendet
+die Anfragen; „Feedback senden“ öffnet `FeedbackSheet` und beendet sie nie.
 
 ## Skat+-Produkte
 
@@ -61,7 +63,7 @@ Datei und die lokale Mitgliedschaftsüberschreibung in den Einstellungen.
   Stichspiel, Primer, Zusatzübungen und den Meistertisch. `DrillLibrary.rooms`
   ist die Quelle für die fünf Räume.
 - `Shared/Services` enthält Fortschritt, Einstellungen, Wiederholungsplanung,
-  Abos, Benachrichtigungen und den Review-Ablauf.
+  Abos, Benachrichtigungen und die Bewertungslogik.
 - `SkatTrainer/Views` enthält Onboarding, Lobby, Räume, Wischstapel,
   Kurzrunden, generierte Übungen, Einstellungen und Paywall.
 - `SkatTrainer/Utilities/Theme.swift` enthält das warme Karten­tisch-Design,

@@ -1,5 +1,4 @@
 import SwiftUI
-import StoreKit
 import UIKit
 
 struct SettingsView: View {
@@ -7,14 +6,11 @@ struct SettingsView: View {
     @EnvironmentObject private var settings: AppSettings
     @EnvironmentObject private var progress: ProgressStore
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.requestReview) private var requestReview
     @State private var showPaywall = false
     @State private var showWhatsNew = false
     @State private var showResetConfirm = false
     @State private var restoreMessage: String?
-    /// Non-nil while the review funnel is up; the value is where it opens.
-    @State private var reviewPromptStep: ReviewPromptSheet.Step?
-    @State private var pendingNativeReviewAfterDismiss = false
+    @State private var showFeedback = false
 
     var body: some View {
         NavigationStack {
@@ -51,11 +47,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            .sheet(item: $reviewPromptStep, onDismiss: requestPendingNativeReview) { step in
-                ReviewPromptSheet(initialStep: step) { outcome in
-                    pendingNativeReviewAfterDismiss = outcome == .enjoyedMaybeLater
-                }
-            }
+            .sheet(isPresented: $showFeedback) { FeedbackSheet() }
             .alert("Wiederherstellen", isPresented: .init(
                 get: { restoreMessage != nil },
                 set: { if !$0 { restoreMessage = nil } }
@@ -85,12 +77,6 @@ struct SettingsView: View {
                 Text("Deine Serie, abgeschlossenen Übungen und Übungshistorie werden gelöscht. Käufe bleiben erhalten.")
             }
         }
-    }
-
-    private func requestPendingNativeReview() {
-        guard pendingNativeReviewAfterDismiss else { return }
-        pendingNativeReviewAfterDismiss = false
-        requestReview()
     }
 
     private var appearanceSection: some View {
@@ -180,12 +166,13 @@ struct SettingsView: View {
                 }
             }
             Button {
-                reviewPromptStep = .reviewPitch
+                ReviewPromptTracker.markOpenedWriteReview()
+                UIApplication.shared.open(AppStoreLinks.writeReviewURL)
             } label: {
                 Label("Skat Trainer bewerten", systemImage: "star.fill")
             }
             Button {
-                reviewPromptStep = .feedback
+                showFeedback = true
             } label: {
                 Label("Feedback senden", systemImage: "envelope.fill")
             }
