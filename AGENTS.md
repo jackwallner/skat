@@ -108,3 +108,4 @@ These files load automatically when you read a file matching their `paths:`. Age
 | `.claude/rules/ipad-layout.md` | iPad (1.2): device family, `CenteringScrollView`, the pager eyebrow, the deck width cap | Drill layouts, Home columns |
 | `.claude/rules/screenshots.md` | Screenshots: the capture script, the throwaway iPad, test gotchas | Capture scripts, the `Screenshots` scheme |
 | `.claude/rules/expert-content.md` | Expert exercises, explicit discard objectives, rules and verification | `AdvancedContent`, `AppliedContent`, content validity tests |
+| `.claude/rules/android.md` | Android port: package, RevenueCat IDs, Play products, Swift content export, Pro AVD commands, store assets, Play state | `android/**`, `docs/android-*.html`, Play scripts |

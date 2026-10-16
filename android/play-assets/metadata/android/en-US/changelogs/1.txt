@@ -1,0 +1,1 @@
+First Android release. Four free practice rooms for cards and bidding, game types, discarding and trick play, with Skat+ for endless new hands.

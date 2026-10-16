@@ -1,0 +1,3957 @@
+{
+  "categories" : [
+    {
+      "displayName" : "Karten",
+      "howToSpot" : "Präge dir die 32 Karten, ihre Augenwerte und die Reihenfolge in jeder Spielart ein.",
+      "id" : "karten",
+      "shortName" : "Karten"
+    },
+    {
+      "displayName" : "Reizen",
+      "howToSpot" : "Beim Reizen vergleichst du deine Position und Kartenstärke mit dem Spielwert, den du übernehmen kannst.",
+      "id" : "reizen",
+      "shortName" : "Reizen"
+    },
+    {
+      "displayName" : "Trumpf",
+      "howToSpot" : "Im Farbspiel sind alle vier Buben und die angesagte Farbe Trumpf. Zähle die Trumpfstärke vor dem Reizen.",
+      "id" : "trumpf",
+      "shortName" : "Trumpf"
+    },
+    {
+      "displayName" : "Grand",
+      "howToSpot" : "Im Grand sind nur die vier Buben Trumpf. Die übrigen Farben werden normal bedient.",
+      "id" : "grand",
+      "shortName" : "Grand"
+    },
+    {
+      "displayName" : "Null",
+      "howToSpot" : "Im Null gibt es keinen Trumpf und keine Augen. Die Farbe läuft Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Das Ziel ist, keinen Stich zu bekommen.",
+      "id" : "nullspiel",
+      "shortName" : "Null"
+    },
+    {
+      "displayName" : "Farbe",
+      "howToSpot" : "Wer eine angespielte Farbe hat, muss sie bedienen. Erst ohne diese Farbe darfst du frei wählen.",
+      "id" : "farbe",
+      "shortName" : "Farbe"
+    },
+    {
+      "displayName" : "Stich",
+      "howToSpot" : "Der höchste Trumpf gewinnt, sonst die höchste Karte der angespielten Farbe.",
+      "id" : "stich",
+      "shortName" : "Stich"
+    },
+    {
+      "displayName" : "Spielwert",
+      "howToSpot" : "Der Spielwert entsteht aus Grundwert, Spitzen und dem angesagten Spiel. Hand und Schneider können ihn verändern.",
+      "id" : "spielwert",
+      "shortName" : "Spielwert"
+    },
+    {
+      "displayName" : "Endspiel",
+      "howToSpot" : "Im letzten Drittel zählen sichere Stiche, Restkarten und die Gewinnbedingung mehr als schöne Einzelkarten.",
+      "id" : "endspiel",
+      "shortName" : "Endspiel"
+    }
+  ],
+  "primer" : [
+    {
+      "body" : "Skat ist ein Stichspiel für drei Personen. Nach dem Reizen spielt eine Person allein gegen die beiden anderen.",
+      "icon" : "person.3.fill",
+      "id" : "primer-ziel",
+      "tiles" : [
+        "C14",
+        "S13",
+        "H11"
+      ],
+      "tip" : "Der Alleinspieler gewinnt im Farbspiel und Grand mit mindestens 61 Augen.",
+      "title" : "Drei Spieler, ein Alleinspieler"
+    },
+    {
+      "body" : "Es gibt vier Farben mit den Werten 7, 8, 9, 10, Bube, Dame, König und Ass. Jede Karte hat ihren Rang und ihren Augenwert.",
+      "icon" : "rectangle.portrait.on.rectangle.portrait.angled",
+      "id" : "primer-karten",
+      "tiles" : [
+        "C7",
+        "D10",
+        "H11",
+        "S14"
+      ],
+      "tip" : "Ass und Zehn bringen zusammen 21 Augen.",
+      "title" : "Das 32-Karten-Blatt"
+    },
+    {
+      "body" : "Die Spieler reizen mit möglichen Spielwerten: 18, 20, 22, 23, 24 und weiter. Wer die höchste Ansage hält, übernimmt das Spiel, nimmt den Skat auf und sagt die Spielart an.",
+      "icon" : "arrow.up.right.circle.fill",
+      "id" : "primer-reizen",
+      "tiles" : [
+        "C11",
+        "S11",
+        "H14"
+      ],
+      "tip" : "Die 18 ist das kleinste Gebot. Reize nur so hoch, wie dein Blatt und dein Plan es tragen.",
+      "title" : "Reizen und Spiel ansagen"
+    },
+    {
+      "body" : "Der Alleinspieler nimmt zwei Karten auf und hat zwölf Karten. Danach legt er genau zwei Karten verdeckt zurück und spielt mit zehn Karten weiter.",
+      "icon" : "arrow.down.to.line.compact",
+      "id" : "primer-skat",
+      "tiles" : [
+        "H7",
+        "D8",
+        "C14",
+        "S11"
+      ],
+      "tip" : "Entscheide erst nach dem Aufnehmen, welche Spielart wirklich passt.",
+      "title" : "Skat aufnehmen und drücken"
+    },
+    {
+      "body" : "Die angespielte Farbe muss bedient werden. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf spielen. Der höchste gültige Trumpf gewinnt.",
+      "icon" : "suit.club.fill",
+      "id" : "primer-stich",
+      "tiles" : [
+        "H14",
+        "H7",
+        "C11"
+      ],
+      "tip" : "Im Null gibt es keinen Trumpf und das Ass ist hoch.",
+      "title" : "Bedienen und Stiche holen"
+    },
+    {
+      "body" : "Starte mit den Karten-Grundlagen oder spring direkt in die empfohlenen fünfminütigen Übungen. Jede Antwort erklärt nicht nur was, sondern warum.",
+      "icon" : "rectangle.stack.fill",
+      "id" : "primer-start",
+      "tiles" : [
+        "C11",
+        "H10",
+        "D14"
+      ],
+      "tip" : "Die Räume bleiben frei nutzbar. Skat+ ergänzt weitere Originalübungen.",
+      "title" : "Jetzt üben"
+    }
+  ],
+  "rooms" : [
+    {
+      "drills" : [
+        {
+          "id" : "meet-cards",
+          "isPlus" : false,
+          "items" : [
+            {
+              "backBody" : "Skat wird mit 32 Karten gespielt: 7, 8, 9, 10, Bube, Dame, König und Ass in vier Farben. Drei Spieler erhalten je zehn Karten, zwei Karten bilden den Skat.",
+              "backTitle" : "Jeder bekommt zehn Karten",
+              "frontSubtitle" : "32 Karten, drei Spieler",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Das Skatblatt",
+              "id" : "karten-deck"
+            },
+            {
+              "backBody" : "Im Farbspiel wird eine Farbe angesagt. Die vier Buben sind immer Trumpf, dazu kommen alle Karten der angesagten Farbe.",
+              "backTitle" : "Die Farbe entscheidet über Trumpf",
+              "frontSubtitle" : "Kreuz, Pik, Herz und Karo",
+              "frontTiles" : [
+                "C10",
+                "S10",
+                "H10",
+                "D10"
+              ],
+              "frontTitle" : "Die vier Farben",
+              "id" : "karten-farben"
+            },
+            {
+              "backBody" : "Ein Ass zählt 11 Augen, ein König 4, eine Dame 3, ein Bube 2 und eine Zehn 10. Neun, Acht und Sieben zählen keine Augen. Insgesamt liegen 120 Augen im Blatt.",
+              "backTitle" : "11, 4, 3, 2, 10, 0",
+              "frontSubtitle" : "Ass bis 7",
+              "frontTiles" : [
+                "C14",
+                "S13",
+                "H12",
+                "D11",
+                "C10"
+              ],
+              "frontTitle" : "Augen zählen",
+              "id" : "karten-augen"
+            },
+            {
+              "backBody" : "Im Farbspiel und im Grand sind alle Buben Trumpf. Ihre Reihenfolge lautet Kreuz, Pik, Herz, Karo.",
+              "backTitle" : "Kreuz-Bube ist der höchste",
+              "frontSubtitle" : "Die höchsten Trümpfe",
+              "frontTiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11"
+              ],
+              "frontTitle" : "Die Buben",
+              "id" : "karten-buben"
+            },
+            {
+              "backBody" : "Das übliche Geben läuft in Blöcken: drei Karten an jeden, zwei Karten in die Mitte, vier Karten an jeden und danach noch drei Karten an jeden.",
+              "backTitle" : "3, 2, 4, 3",
+              "frontSubtitle" : "Drei Karten, Skat, vier Karten",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Das Geben",
+              "id" : "karten-geben"
+            },
+            {
+              "backBody" : "Beim Reizen wird festgelegt, wer spielt. Der Alleinspieler nimmt den Skat auf, legt zwei Karten wieder ab und sagt danach die Spielart an.",
+              "backTitle" : "Die höchste Ansage gewinnt",
+              "frontSubtitle" : "Wer übernimmt das Spiel?",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Das Reizen",
+              "id" : "karten-reizen"
+            },
+            {
+              "backBody" : "Im Farbspiel und Grand braucht der Alleinspieler mindestens 61 Augen. Im Nullspiel gewinnt er, wenn er keinen einzigen Stich macht.",
+              "backTitle" : "Farbspiel und Grand",
+              "frontSubtitle" : "61 Augen oder keinen Stich",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Das Ziel",
+              "id" : "karten-gewinnen"
+            },
+            {
+              "backBody" : "Der Alleinspieler nimmt die zwei Skatkarten auf und hat dadurch zwölf Karten. Danach legt er zwei Karten verdeckt zurück, bevor das Spiel beginnt.",
+              "backTitle" : "Aufnehmen, dann drücken",
+              "frontSubtitle" : "Zwei Karten in der Mitte",
+              "frontTiles" : [
+                "H7",
+                "D14"
+              ],
+              "frontTitle" : "Der Skat",
+              "id" : "karten-skat"
+            },
+            {
+              "backBody" : "Der Grundwert hängt von der angesagten Farbe ab: Karo 9, Herz 10, Pik 11 und Kreuz 12. Der Grand hat den Grundwert 24. Das Nullspiel hat feste Werte und wird nicht multipliziert.",
+              "backTitle" : "Karo 9, Herz 10, Pik 11, Kreuz 12",
+              "frontSubtitle" : "Jede Spielart hat ihren Wert",
+              "frontTiles" : [
+                "D11",
+                "H11",
+                "S11",
+                "C11"
+              ],
+              "frontTitle" : "Die Grundwerte",
+              "id" : "karten-grundwerte"
+            },
+            {
+              "backBody" : "Gezählt wird immer beim Kreuz-Buben. Hältst du ihn, spielst du mit so vielen Spitzen, wie du Trümpfe lückenlos von oben besitzt. Fehlt er dir, spielst du ohne so viele, wie dir von oben lückenlos fehlen. Der Spielwert ist der Grundwert mal der Summe aus Spitzen und dem Spiel selbst.",
+              "backTitle" : "Grundwert mal Spitzen plus Spiel",
+              "frontSubtitle" : "Mit oder ohne den Kreuz-Buben",
+              "frontTiles" : [
+                "C11",
+                "S11",
+                "H11"
+              ],
+              "frontTitle" : "Spitzen zählen",
+              "id" : "karten-spitzen"
+            },
+            {
+              "backBody" : "Gereizt wird nur mit Zahlen, die als Spielwert wirklich vorkommen: 18, 20, 22, 23, 24, 27, 30, 33, 35, 36 und so weiter. Die 18 ist das kleinste mögliche Gebot, denn Karo mit oder ohne einer Spitze ergibt 9 mal 2.",
+              "backTitle" : "18 ist das niedrigste Gebot",
+              "frontSubtitle" : "18, 20, 22, 23, 24 und weiter",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Die Reizwerte",
+              "id" : "karten-reizwerte"
+            },
+            {
+              "backBody" : "Mittelhand reizt Vorhand an. Vorhand antwortet ja, solange sie den Wert halten will, sonst passt sie. Wer übrig bleibt, wird von Hinterhand weitergereizt. Reize nur so hoch, wie dein Blatt den Spielwert wirklich trägt.",
+              "backTitle" : "Vorhand hält oder passt",
+              "frontSubtitle" : "Mittelhand, Vorhand, Hinterhand",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Wer reizt wen?",
+              "id" : "karten-reizablauf"
+            }
+          ],
+          "kind" : "flashcards",
+          "subtitle" : "Karteikarten: Farben, Augen, Buben und Reizen",
+          "title" : "Die Karten kennenlernen"
+        },
+        {
+          "id" : "card-quiz",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "24",
+                "32",
+                "52"
+              ],
+              "explanation" : "Skat wird mit 32 Karten gespielt: acht Kartenwerte in vier Farben.",
+              "id" : "karten-quiz-1",
+              "prompt" : "Wie viele Karten hat ein Skatblatt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "8",
+                "10",
+                "12"
+              ],
+              "explanation" : "Jeder der drei Spieler erhält zehn Karten. Zwei Karten bleiben als Skat liegen.",
+              "id" : "karten-quiz-2",
+              "prompt" : "Wie viele Karten bekommt jeder Spieler?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 2,
+              "choices" : [
+                "4",
+                "10",
+                "11"
+              ],
+              "explanation" : "Das Ass ist mit elf Augen die wertvollste Karte beim Zählen.",
+              "id" : "karten-quiz-3",
+              "prompt" : "Wie viele Augen zählt ein Ass im Farbspiel?",
+              "tiles" : [
+                "H14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Bube",
+                "Herz-Bube",
+                "Karo-Bube"
+              ],
+              "explanation" : "Die Buben rangieren im Farbspiel und Grand von Kreuz über Pik und Herz bis Karo.",
+              "id" : "karten-quiz-4",
+              "prompt" : "Welcher Bube ist der höchste Trumpf?",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Zwei Karten werden gedrückt",
+                "Alle Karten werden neu gegeben",
+                "Der Gegenspieler bestimmt die Farbe"
+              ],
+              "explanation" : "Der Alleinspieler legt nach dem Aufnehmen zwei Karten verdeckt zurück. Das nennt man Drücken.",
+              "id" : "karten-quiz-5",
+              "prompt" : "Was passiert nach dem Aufnehmen des Skats?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "100",
+                "120",
+                "132"
+              ],
+              "explanation" : "Die Kartenwerte ergeben zusammen 120 Augen. Im Farbspiel und Grand teilen sich diese Augen auf die Stiche auf.",
+              "id" : "karten-quiz-6",
+              "prompt" : "Wie viele Augen liegen insgesamt im Skatblatt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Der Spieler mit der höchsten Ansage",
+                "Immer Vorhand",
+                "Der Spieler links vom Geber"
+              ],
+              "explanation" : "Der Spieler, der das Reizen gewinnt, wird Alleinspieler und nimmt den Skat auf.",
+              "id" : "karten-quiz-7",
+              "prompt" : "Wer nimmt den Skat auf?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 2,
+              "choices" : [
+                "Mindestens 61 Augen",
+                "Mindestens fünf Stiche",
+                "Keinen Stich"
+              ],
+              "explanation" : "Im Null gibt es keine Augenwertung. Der Alleinspieler gewinnt nur, wenn er keinen Stich erhält.",
+              "id" : "karten-quiz-8",
+              "prompt" : "Was muss der Alleinspieler im Null erreichen?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "17",
+                "18",
+                "20"
+              ],
+              "explanation" : "Die 18 ist der kleinste vorkommende Spielwert: Grundwert 9 für Karo mal zwei für eine Spitze und das Spiel.",
+              "id" : "karten-quiz-9",
+              "prompt" : "Was ist das niedrigste mögliche Gebot beim Reizen?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "9",
+                "12",
+                "24"
+              ],
+              "explanation" : "Die Grundwerte lauten Karo 9, Herz 10, Pik 11 und Kreuz 12. Der Grand steht mit 24 darüber.",
+              "id" : "karten-quiz-10",
+              "prompt" : "Welchen Grundwert hat ein Kreuzspiel?",
+              "tiles" : [
+                "C14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Beim Kreuz-Buben",
+                "Beim Karo-Buben",
+                "Beim Kreuz-Ass"
+              ],
+              "explanation" : "Die Spitzen werden immer vom Kreuz-Buben aus gezählt, entweder mit ihm oder ohne ihn.",
+              "id" : "karten-quiz-11",
+              "prompt" : "Bei welcher Karte beginnt das Zählen der Spitzen?",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "Schnelles Quiz zu den Grundlagen",
+          "title" : "Karten-Check"
+        },
+        {
+          "id" : "applied-bidding",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein",
+                "Ja",
+                "Nur als Hinterhand"
+              ],
+              "explanation" : "Mit einem, Spiel zwei mal zwölf = 24. Wer 27 hält, braucht eine zusätzliche tatsächlich erreichte Stufe oder ein anderes ausreichend wertvolles Spiel.",
+              "id" : "praxis-reizen-01",
+              "prompt" : "Kreuz mit einem, Skataufnahme geplant. Ohne Schneider erwartest du 24. Mittelhand bietet 27. Reicht dein einfacher Spielwert zum Halten?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "33",
+                "35",
+                "44"
+              ],
+              "explanation" : "Mit zwei, Spiel drei: 3 × 11 = 33. 35 und 44 verlangen mehr Spielwert.",
+              "id" : "praxis-reizen-02",
+              "prompt" : "Pik mit zwei, Skataufnahme. Du erwartest mehr als 60, aber weniger als 90 Augen. Welche Reizhöhe ist durch diesen einfachen Wert gedeckt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "20",
+                "22",
+                "30"
+              ],
+              "explanation" : "Ohne einen, Spiel zwei mal zehn = 20. Der fehlende Kreuz-Bube zählt als eine Spitze, nicht als null.",
+              "id" : "praxis-reizen-03",
+              "prompt" : "Herz ohne einen, Skataufnahme, kein Schneider. Kreuz-Bube fehlt auch nach der Aufnahme. Welcher Spielwert ist gedeckt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "27",
+                "30",
+                "36"
+              ],
+              "explanation" : "Mit zwei, Spiel drei mal neun = 27. Ein Reizschritt zu 30 geht über diesen Wert.",
+              "id" : "praxis-reizen-04",
+              "prompt" : "Karo mit zwei, Skataufnahme, kein Schneider. Welche Reizhöhe deckt der einfache Wert gerade noch?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, Null zählt 23",
+                "Ja, Null zählt 24",
+                "Ja, Null hat keine Reizgrenze"
+              ],
+              "explanation" : "Du darfst zwar höher reizen, würdest mit einem Null für 23 aber überreizen. Diese Aufgabe fragt nach Deckung, nicht nach einem verbotenen Reizgebot.",
+              "id" : "praxis-reizen-05",
+              "prompt" : "Du planst Null mit Skataufnahme. Vorhand hält 23. Darfst du 24 sagen, wenn du ausschließlich diesen Nullwert als Deckung hast?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, sie zählt nur 23",
+                "Ja, sie zählt 35",
+                "Ja, jeder Null zählt 46"
+              ],
+              "explanation" : "Null-Hand zählt 35, erfordert aber Verzicht auf Skataufnahme. Nach Aufnahme deckt nur ein ausreichend höherer Spielwert das Gebot.",
+              "id" : "praxis-reizen-06",
+              "prompt" : "Du hältst 35 und möchtest ein Nullspiel mit Skataufnahme, aber nicht offen spielen. Deckt diese Ansage 35?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "48",
+                "50",
+                "59"
+              ],
+              "explanation" : "Mit einem, Spiel zwei mal 24 = 48. Ein Grand ist nicht automatisch mindestens 72 wert.",
+              "id" : "praxis-reizen-07",
+              "prompt" : "Grand mit einem, Skataufnahme, kein Schneider. Welche der angebotenen Reizhöhen ist durch den einfachen Wert gedeckt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Mit einem",
+                "Ohne zwei",
+                "Mit zwei"
+              ],
+              "explanation" : "Die Folge startet oben beim Kreuz-Buben und endet vor dem fehlenden Pik-Buben. Der Herz-Bube unter der Lücke verlängert sie nicht.",
+              "id" : "praxis-reizen-08",
+              "prompt" : "Du findest Kreuz-Bube im Skat. Pik-Bube fehlt, Herz-Bube war bereits auf deiner Hand. Wie zählen die Spitzen bei Grand jetzt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Mit zwei",
+                "Mit drei",
+                "Mit vier"
+              ],
+              "explanation" : "Eine Lücke stoppt die Spitzenfolge. Der Karo-Bube wird nicht einfach zu den beiden höchsten Buben addiert.",
+              "id" : "praxis-reizen-09",
+              "prompt" : "Du hast Kreuz- und Pik-Bube, aber keinen Herz-Buben. Der Karo-Bube liegt im aufgenommenen Skat. Wie viele Spitzen zählen beim Grand?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "10 Punkte höher",
+                "20 Punkte höher",
+                "Kein Unterschied"
+              ],
+              "explanation" : "Hand fügt eine Stufe hinzu. Der Herzgrundwert zehn macht aus 20 einen Wert von 30.",
+              "id" : "praxis-reizen-10",
+              "prompt" : "Herz mit einem, Hand statt Skataufnahme, kein Schneider. Der Skat ändert die Spitzen nicht. Wie viel höher ist der Wert als mit Aufnahme?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Vorhand",
+                "Mittelhand",
+                "Der Geber immer"
+              ],
+              "explanation" : "Nachdem Mittelhand ausscheidet, reizt Hinterhand gegen Vorhand. Die Positionen gelten, nicht eine pauschale Sonderrolle des Gebers.",
+              "id" : "praxis-reizen-11",
+              "prompt" : "Mittelhand passt sofort. Wer kann nun Hinterhand durch Halten oder Passen beantworten?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Mit zwei",
+                "Ohne einen",
+                "Mit einem"
+              ],
+              "explanation" : "Für die Spitzen zählt auch der gedrückte Skat. Kreuz-Bube und Pik-Bube gehören dir beide, daher mit zwei. Erst der fehlende Herz-Bube beendet die Folge.",
+              "id" : "praxis-reizen-12",
+              "prompt" : "Du hast Kreuz-Bube gedrückt, Pik-Bube bleibt auf der Hand. Herz-Bube fehlt. Wie zählt Grand hinsichtlich der Spitzen?",
+              "tiles" : [
+
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "Zwölf konkrete Fälle zu Spitzen und Reizdeckung",
+          "title" : "Reizen am Beispiel"
+        },
+        {
+          "id" : "plus-card-extras",
+          "isPlus" : true,
+          "items" : [
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "0",
+                "10",
+                "11"
+              ],
+              "explanation" : "Die Zehn zählt zehn Augen. Nur das Ass ist mit elf Augen noch wertvoller.",
+              "id" : "plus-karten-1",
+              "prompt" : "Wie viele Augen zählt eine Zehn?",
+              "tiles" : [
+                "C10"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Die vier Buben",
+                "Alle Asse",
+                "Nur die Karten der angesagten Farbe"
+              ],
+              "explanation" : "Die vier Buben sind unabhängig von der angesagten Farbe Trumpf. Dazu kommt die komplette angesagte Farbe.",
+              "id" : "plus-karten-2",
+              "prompt" : "Welche Karten sind in einem Farbspiel immer Trumpf?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "1",
+                "2",
+                "4"
+              ],
+              "explanation" : "Nach dem Aufnehmen legt der Alleinspieler genau zwei Karten verdeckt zurück.",
+              "id" : "plus-karten-3",
+              "prompt" : "Wie viele Karten legt der Alleinspieler in den Skat zurück?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Die höchste tragbare Ansage übernimmt das Spiel",
+                "Vorhand gewinnt immer",
+                "Die Gegner sagen die Spielart an"
+              ],
+              "explanation" : "Der Spieler, der die höchste Ansage hält, wird Alleinspieler. Er sagt die Spielart selbst an.",
+              "id" : "plus-karten-4",
+              "prompt" : "Welche Aussage zum Reizen stimmt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "1",
+                "2",
+                "3"
+              ],
+              "explanation" : "Zwei Karten werden beim Geben verdeckt in die Mitte gelegt und bilden den Skat.",
+              "id" : "mehr-karten-1",
+              "prompt" : "Wie viele Karten liegen im Skat?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "König",
+                "Dame",
+                "Bube"
+              ],
+              "explanation" : "Der König zählt vier Augen. Die Dame zählt drei und der Bube zwei.",
+              "id" : "mehr-karten-2",
+              "prompt" : "Welche Karte zählt im Farbspiel vier Augen?",
+              "tiles" : [
+                "C13",
+                "D12",
+                "H11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Vorhand",
+                "Mittelhand",
+                "Hinterhand"
+              ],
+              "explanation" : "Vorhand spielt den ersten Stich aus. Die Sitzordnung bleibt auch beim Reizen wichtig.",
+              "id" : "mehr-karten-3",
+              "prompt" : "Welche Position spielt im ersten Stich aus?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "8",
+                "10",
+                "12"
+              ],
+              "explanation" : "Nach dem Aufnehmen sind es zwölf Karten. Zwei werden gedrückt, zehn bleiben für das Spiel.",
+              "id" : "mehr-karten-4",
+              "prompt" : "Wie viele Karten bleiben nach dem Drücken auf der Hand?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nur die vier Buben",
+                "Eine angesagte Farbe",
+                "Keine Karte"
+              ],
+              "explanation" : "Im Grand sind ausschließlich die vier Buben Trumpf.",
+              "id" : "mehr-karten-5",
+              "prompt" : "Was ist im Grand Trumpf?",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "Mehr Fragen zu Blatt, Skat und Reizposition",
+          "title" : "Karten-Check: Extra-Runden"
+        }
+      ],
+      "icon" : "rectangle.portrait.on.rectangle.portrait.angled",
+      "id" : "card-room",
+      "isFree" : true,
+      "name" : "Karten & Reizen",
+      "tagline" : "Lerne die 32 Karten und den Weg zum Spiel"
+    },
+    {
+      "drills" : [
+        {
+          "id" : "scoring-cards",
+          "isPlus" : false,
+          "items" : [
+            {
+              "backBody" : "Bei einem Herzspiel sind Kreuz-, Pik-, Herz- und Karo-Bube Trumpf. Danach folgen Herz-Ass, Herz-Zehn, Herz-König, Herz-Dame, Herz-Neun, Herz-Acht und Herz-Sieben.",
+              "backTitle" : "Buben schlagen die Farbe",
+              "frontSubtitle" : "Vier Buben plus eine Farbe",
+              "frontTiles" : [
+                "C11",
+                "S11",
+                "H14",
+                "H10"
+              ],
+              "frontTitle" : "Trumpf im Farbspiel",
+              "id" : "spielarten-trumpf"
+            },
+            {
+              "backBody" : "Im Grand sind nur die vier Buben Trumpf. In jeder anderen Farbe gilt die normale Reihenfolge mit Ass, Zehn, König, Dame, Neun, Acht, Sieben.",
+              "backTitle" : "Die vier Buben zuerst",
+              "frontSubtitle" : "Nur die Buben sind Trumpf",
+              "frontTiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11"
+              ],
+              "frontTitle" : "Grand",
+              "id" : "spielarten-grand"
+            },
+            {
+              "backBody" : "Im Nullspiel gibt es keinen Trumpf und keine Augen. Innerhalb jeder Farbe gilt eine eigene Reihenfolge: Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Die Zehn steht hier unter dem Buben. Der Alleinspieler darf keinen Stich bekommen.",
+              "backTitle" : "Ass, König, Dame, Bube, Zehn",
+              "frontSubtitle" : "Kein Trumpf, kein Stich",
+              "frontTiles" : [
+                "C7",
+                "D8",
+                "H9",
+                "S10"
+              ],
+              "frontTitle" : "Null",
+              "id" : "spielarten-null"
+            },
+            {
+              "backBody" : "Wer eine Karte der angespielten Farbe hält, muss diese Farbe spielen. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf legen.",
+              "backTitle" : "Erst Farbe, dann frei",
+              "frontSubtitle" : "Die angespielte Farbe muss folgen",
+              "frontTiles" : [
+                "H14",
+                "H7",
+                "C13"
+              ],
+              "frontTitle" : "Bedienpflicht",
+              "id" : "spielarten-bedienpflicht"
+            },
+            {
+              "backBody" : "Ein Trumpf gewinnt gegen jede Karte einer Seitenfarbe. Gibt es keinen Trumpf, gewinnt die höchste Karte der angespielten Farbe.",
+              "backTitle" : "Der höchste gültige Rang",
+              "frontSubtitle" : "Trumpf vor Farbe",
+              "frontTiles" : [
+                "C11",
+                "H14",
+                "H10"
+              ],
+              "frontTitle" : "Wer gewinnt den Stich?",
+              "id" : "spielarten-stich"
+            },
+            {
+              "backBody" : "Nach dem Spiel zählen die Parteien die Augen ihrer Stiche. Ass und Zehn bringen zusammen bereits 21 Augen, Bube, Dame und König weitere 9.",
+              "backTitle" : "Jeder Stich wird gezählt",
+              "frontSubtitle" : "Was zählt im Stich?",
+              "frontTiles" : [
+                "H14",
+                "H13",
+                "H12",
+                "H11",
+                "H10"
+              ],
+              "frontTitle" : "Die Augen",
+              "id" : "spielarten-augen"
+            },
+            {
+              "backBody" : "Der Spielwert ist der Wert der Ansage. Er entsteht aus dem Grundwert der Spielart und dem Multiplikator aus Spitzen und Gewinnstufe. Augen entscheiden dagegen, wer das Spiel gewinnt.",
+              "backTitle" : "Grundwert mal Spitzen",
+              "frontSubtitle" : "Nicht mit Augen verwechseln",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Spielwert",
+              "id" : "spielarten-spielwert"
+            },
+            {
+              "backBody" : "Wenn nur noch wenige Karten liegen, zählt die Reihenfolge. Ein sicheres Ass oder ein verbleibender Trumpf kann wichtiger sein als eine riskante lange Farbe.",
+              "backTitle" : "Sichere Augen sichern",
+              "frontSubtitle" : "Die letzten Stiche planen",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Das Endspiel",
+              "id" : "spielarten-endspiel"
+            }
+          ],
+          "kind" : "flashcards",
+          "subtitle" : "Karteikarten: Trumpf, Grand, Null und Stich",
+          "title" : "Spielarten verstehen"
+        },
+        {
+          "id" : "hand-match",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answer" : "trumpf",
+              "choices" : [
+                "trumpf",
+                "grand",
+                "nullspiel"
+              ],
+              "explanation" : "Zwei Buben und drei Karten einer Farbe zeigen eine starke Trumpfstruktur. Ob daraus ein Farbspiel wird, hängt zusätzlich vom Reizen ab.",
+              "id" : "struktur-hand-1",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H7",
+                "H10",
+                "H14"
+              ]
+            },
+            {
+              "answer" : "grand",
+              "choices" : [
+                "grand",
+                "trumpf",
+                "nullspiel"
+              ],
+              "explanation" : "Alle vier Buben liegen im Muster. Das ist die zentrale Trumpfstruktur des Grand.",
+              "id" : "struktur-hand-2",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C8"
+              ]
+            },
+            {
+              "answer" : "nullspiel",
+              "choices" : [
+                "nullspiel",
+                "grand",
+                "trumpf"
+              ],
+              "explanation" : "Die Karten sind niedrig und enthalten keinen Buben. Für ein Nullmuster gibt es keinen Trumpf und keine Augen.",
+              "id" : "struktur-hand-3",
+              "tiles" : [
+                "C7",
+                "D8",
+                "H9",
+                "S10",
+                "C8"
+              ]
+            },
+            {
+              "answer" : "farbe",
+              "choices" : [
+                "farbe",
+                "grand",
+                "nullspiel"
+              ],
+              "explanation" : "Fünf Karten derselben Farbe bilden eine klare Farbstruktur. Im Farbspiel wird diese Farbe zum Trumpf.",
+              "id" : "struktur-hand-4",
+              "tiles" : [
+                "C7",
+                "C8",
+                "C9",
+                "C10",
+                "C14"
+              ]
+            },
+            {
+              "answer" : "stich",
+              "choices" : [
+                "stich",
+                "nullspiel",
+                "grand"
+              ],
+              "explanation" : "Zwei Asse und hohe Beikarten versprechen mögliche sichere Stiche. Ohne Buben ist das noch kein Grand.",
+              "id" : "struktur-hand-5",
+              "tiles" : [
+                "C14",
+                "D14",
+                "H13",
+                "S12",
+                "C10"
+              ]
+            },
+            {
+              "answer" : "reizen",
+              "choices" : [
+                "reizen",
+                "spielwert",
+                "nullspiel"
+              ],
+              "explanation" : "Zwei Buben und zwei Asse sind ein Reizsignal. Beim Reizen musst du daraus aber noch einen tragbaren Spielwert ableiten.",
+              "id" : "struktur-hand-6",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H14",
+                "D14",
+                "C10"
+              ]
+            },
+            {
+              "answer" : "trumpf",
+              "choices" : [
+                "trumpf",
+                "stich",
+                "farbe"
+              ],
+              "explanation" : "Die beiden Buben und die Herzserie geben einem möglichen Herzspiel mehrere Trumpfkarten und eine klare Beikartenidee.",
+              "id" : "struktur-hand-7",
+              "tiles" : [
+                "H7",
+                "H8",
+                "H9",
+                "D11",
+                "S11"
+              ]
+            },
+            {
+              "answer" : "stich",
+              "choices" : [
+                "stich",
+                "nullspiel",
+                "grand"
+              ],
+              "explanation" : "Asse und ein König liefern mögliche Augenstiche. Für Null sind die hohen Augen und das Ass keine ruhige Struktur.",
+              "id" : "struktur-hand-8",
+              "tiles" : [
+                "C14",
+                "C13",
+                "S14",
+                "H10",
+                "D9"
+              ]
+            }
+          ],
+          "kind" : "handMatch",
+          "subtitle" : "Fünf Karten sehen und die Idee benennen",
+          "title" : "Die Struktur lesen"
+        },
+        {
+          "id" : "plus-hand-extras",
+          "isPlus" : true,
+          "items" : [
+            {
+              "answer" : "grand",
+              "choices" : [
+                "grand",
+                "trumpf",
+                "nullspiel"
+              ],
+              "explanation" : "Drei Buben bilden im Muster den Kern eines Grand. Ein vierter Bube würde die Trumpfkontrolle noch verstärken.",
+              "id" : "plus-struktur-1",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D8",
+                "C14"
+              ]
+            },
+            {
+              "answer" : "farbe",
+              "choices" : [
+                "farbe",
+                "nullspiel",
+                "stich"
+              ],
+              "explanation" : "Fünf Karten in Karo geben eine lange Farbe. Die Farbe kann im passenden Farbspiel zur Trumpffarbe werden.",
+              "id" : "plus-struktur-2",
+              "tiles" : [
+                "D7",
+                "D8",
+                "D10",
+                "D13",
+                "D14"
+              ]
+            },
+            {
+              "answer" : "nullspiel",
+              "choices" : [
+                "nullspiel",
+                "grand",
+                "reizen"
+              ],
+              "explanation" : "Niedrige Karten ohne Buben halten das Muster für Null ruhig. Es gibt keinen offensichtlichen Zwangsstich.",
+              "id" : "plus-struktur-3",
+              "tiles" : [
+                "C7",
+                "D8",
+                "H9",
+                "S10",
+                "H8"
+              ]
+            },
+            {
+              "answer" : "stich",
+              "choices" : [
+                "stich",
+                "nullspiel",
+                "grand"
+              ],
+              "explanation" : "Die beiden Asse sind mögliche sichere Augenstiche. Ohne Buben ist die Struktur kein Grand.",
+              "id" : "plus-struktur-4",
+              "tiles" : [
+                "C14",
+                "S14",
+                "H13",
+                "D12",
+                "C10"
+              ]
+            },
+            {
+              "answer" : "trumpf",
+              "choices" : [
+                "trumpf",
+                "grand",
+                "nullspiel"
+              ],
+              "explanation" : "Zwei Buben plus mehrere Herz-Karten geben einem möglichen Farbspiel eine erkennbare Trumpfidee.",
+              "id" : "mehr-struktur-1",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H7",
+                "D10",
+                "H14"
+              ]
+            },
+            {
+              "answer" : "nullspiel",
+              "choices" : [
+                "nullspiel",
+                "stich",
+                "grand"
+              ],
+              "explanation" : "Das Muster ist niedrig und frei von Buben. Genau diese Ruhe suchst du im Nullspiel.",
+              "id" : "mehr-struktur-2",
+              "tiles" : [
+                "C7",
+                "D8",
+                "H9",
+                "S10",
+                "D7"
+              ]
+            },
+            {
+              "answer" : "farbe",
+              "choices" : [
+                "farbe",
+                "nullspiel",
+                "grand"
+              ],
+              "explanation" : "Die fünf Kreuz-Karten liefern die Länge für eine Farbidee. Im eigentlichen Farbspiel kommen die Kreuz-Trümpfe dazu.",
+              "id" : "mehr-struktur-3",
+              "tiles" : [
+                "C7",
+                "C9",
+                "C10",
+                "C13",
+                "C14"
+              ]
+            },
+            {
+              "answer" : "stich",
+              "choices" : [
+                "stich",
+                "nullspiel",
+                "trumpf"
+              ],
+              "explanation" : "Die beiden Asse und die hohen Seitenkarten sprechen für mögliche Augenstiche, nicht für ein ruhiges Null.",
+              "id" : "mehr-struktur-4",
+              "tiles" : [
+                "C14",
+                "D14",
+                "H10",
+                "S13",
+                "C12"
+              ]
+            }
+          ],
+          "kind" : "handMatch",
+          "subtitle" : "Weitere Muster für Spielart und Stich",
+          "title" : "Struktur lesen: Extra-Runden"
+        }
+      ],
+      "icon" : "suit.club.fill",
+      "id" : "scoring-room",
+      "isFree" : true,
+      "name" : "Spielarten",
+      "tagline" : "Erkenne Trumpf, Grand, Null und sichere Stiche"
+    },
+    {
+      "drills" : [
+        {
+          "id" : "discard-rules",
+          "isPlus" : false,
+          "items" : [
+            {
+              "backBody" : "Nach dem Reizen nimmt der Alleinspieler die zwei Skatkarten auf. Erst mit zwölf Karten kannst du entscheiden, welche zehn Karten deine Spielidee tragen.",
+              "backTitle" : "Erst aufnehmen, dann entscheiden",
+              "frontSubtitle" : "Aus zehn werden zwölf Karten",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Skat aufnehmen",
+              "id" : "druecken-aufnehmen"
+            },
+            {
+              "backBody" : "Vor dem Ausspielen legst du genau zwei Karten verdeckt zurück. Sie gehören danach nicht mehr zur Hand. Bei Farbe und Grand zählen ihre Augen trotzdem für den Alleinspieler, auch bei einem Handspiel zählt der unberührte Skat.",
+              "backTitle" : "Genau zwei Karten",
+              "frontSubtitle" : "Der Skat muss verdeckt liegen",
+              "frontTiles" : [
+                "C7",
+                "D8"
+              ],
+              "frontTitle" : "Zwei Karten drücken",
+              "id" : "druecken-zwei"
+            },
+            {
+              "backBody" : "Bei einem Farbspiel sind die Buben und die angesagte Farbe Trumpf. Beim Drücken hältst du deshalb oft die wertvolle Länge und gibst lose Nebenfarben ab.",
+              "backTitle" : "Eine Farbe braucht Länge",
+              "frontSubtitle" : "Trumpf und Beikarten zusammenhalten",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Farbspiel vorbereiten",
+              "id" : "druecken-farbe"
+            },
+            {
+              "backBody" : "Im Grand gibt es nur vier Trümpfe. Buben und sichere Augen sollten zusammen betrachtet werden, bevor du eine scheinbar kleine Karte drückst.",
+              "backTitle" : "Die Buben sind knapp",
+              "frontSubtitle" : "Buben als Trumpfkern",
+              "frontTiles" : [
+                "C11",
+                "S11",
+                "H14",
+                "D14"
+              ],
+              "frontTitle" : "Grand vorbereiten",
+              "id" : "druecken-grand"
+            },
+            {
+              "backBody" : "Im Null willst du keinen Stich. Niedrige Karten und lange Farben helfen, während Asse, Könige und Zehnen oft die gefährlichen Karten sind.",
+              "backTitle" : "Hohe Karten werden gefährlich",
+              "frontSubtitle" : "Keine Augen, keine Trümpfe",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Null vorbereiten",
+              "id" : "druecken-null"
+            },
+            {
+              "backBody" : "Spielart, Reizwert, Position und bekannte Karten verändern das Drücken. Die Übungen nennen ihren Kontext, damit du ein Prinzip und keine starre Liste lernst.",
+              "backTitle" : "Lehrentscheidung statt Automatismus",
+              "frontSubtitle" : "Nicht jede Entscheidung ist gleich",
+              "frontTiles" : [
+
+              ],
+              "frontTitle" : "Der Kontext zählt",
+              "id" : "druecken-kontext"
+            }
+          ],
+          "kind" : "flashcards",
+          "subtitle" : "Karteikarten: Skat aufnehmen und zwei Karten ablegen",
+          "title" : "Das Drücken lernen"
+        },
+        {
+          "id" : "discard-two",
+          "isPlus" : false,
+          "items" : [
+            {
+              "deal" : [
+                "C14",
+                "D14",
+                "H11",
+                "H14",
+                "H10",
+                "H7",
+                "C12",
+                "S13",
+                "D10",
+                "C7",
+                "S8",
+                "D9"
+              ],
+              "id" : "druecken-deal-1",
+              "reasoning" : "Pik-König und Pik-Acht sind die einzigen Pik-Seitenkarten. Beide zusammen schaffen Pikfreiheit und sichern vier Skataugen. Die Herztrümpfe und beide Asse bleiben.",
+              "recommendedDiscard" : [
+                "S13",
+                "S8"
+              ],
+              "situation" : "Herzspiel. Lehrziel: Nach dem Drücken pikfrei sein und alle Trümpfe behalten. Welche zwei Pik-Seitenkarten müssen weg?",
+              "tip" : "Halte die Trumpffarbe und sichere Augen zusammen. Eine einzelne kleine Nebenfarbe ist oft der erste Kandidat für den Skat."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C14",
+                "D14",
+                "H13",
+                "S12",
+                "C10",
+                "D10",
+                "H7",
+                "D7"
+              ],
+              "id" : "druecken-deal-2",
+              "reasoning" : "Herz-König und Herz-Sieben sind die einzigen Herz-Seitenkarten. Der Herz-Bube bleibt Trumpf. Beide Ass-Zehn-Paare bleiben zusammen, vier Augen gehen in den Skat.",
+              "recommendedDiscard" : [
+                "H13",
+                "H7"
+              ],
+              "situation" : "Grand. Lehrziel: Herzfreiheit herstellen, alle Buben und beide Ass-Zehn-Paare behalten. Welche zwei Karten drückst du?",
+              "tip" : "Im Grand ist jeder Bube ein Trumpf. Zähle danach die Augen, die du mit deinen sicheren Stichen erreichen kannst."
+            },
+            {
+              "deal" : [
+                "C7",
+                "D8",
+                "H9",
+                "S10",
+                "C8",
+                "D9",
+                "H7",
+                "S8",
+                "C14",
+                "D13",
+                "H10",
+                "S12"
+              ],
+              "id" : "druecken-deal-3",
+              "reasoning" : "Ass und König können im Null leicht einen Stich erzwingen. Die niedrigen Karten lassen sich eher abwerfen und halten deine Hand für die Nullidee ruhig.",
+              "recommendedDiscard" : [
+                "C14",
+                "D13"
+              ],
+              "situation" : "Nullspiel. Lehrziel: Die zwei höchsten Karten nach der Null-Reihenfolge drücken. Welche sind das in diesem Blatt?",
+              "tip" : "Im Null zählt nicht die Summe der Augen. Frage stattdessen, welche Karte deinen Gegnern einen sicheren Stich schenken könnte."
+            },
+            {
+              "deal" : [
+                "H7",
+                "H8",
+                "H9",
+                "H10",
+                "H14",
+                "C11",
+                "S11",
+                "D12",
+                "C13",
+                "D13",
+                "C9",
+                "S9"
+              ],
+              "id" : "druecken-deal-4",
+              "reasoning" : "Kreuz-König und Kreuz-Neun sind die einzigen Kreuz-Seitenkarten. Kreuz-Bube ist Herztrumpf und bleibt. Mit dem Paar erreichst du Kreuzfreiheit und sicherst vier Augen.",
+              "recommendedDiscard" : [
+                "C13",
+                "C9"
+              ],
+              "situation" : "Herzspiel. Lehrziel: Alle sieben Trümpfe behalten und kreuzfrei werden. Welche beiden Kreuz-Seitenkarten drückst du?",
+              "tip" : "Eine lange Trumpffarbe macht die Auswahl leichter: behalte die Farbe und entsorge möglichst unverbundene Seitenkarten."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C14",
+                "D14",
+                "H13",
+                "S12",
+                "C7",
+                "D7",
+                "H8",
+                "S8"
+              ],
+              "id" : "druecken-deal-5",
+              "reasoning" : "Herz-König und Herz-Acht sind die einzigen Herz-Seitenkarten. Sie zu drücken sichert vier Augen und Herzfreiheit. Der Herz-Bube bleibt als Grandtrumpf.",
+              "recommendedDiscard" : [
+                "H13",
+                "H8"
+              ],
+              "situation" : "Grand mit vier Buben. Lehrziel: Herzfreiheit herstellen und beide Asse behalten. Welches Drückpaar erreicht das?",
+              "tip" : "Wenn dein Spiel schon einen starken Trumpfkern hat, drücke eher die Karten ohne Augen und ohne Anschluss."
+            },
+            {
+              "deal" : [
+                "D10",
+                "D11",
+                "D12",
+                "D13",
+                "D14",
+                "C10",
+                "S10",
+                "H10",
+                "C8",
+                "S8",
+                "H8",
+                "C7"
+              ],
+              "id" : "druecken-deal-6",
+              "reasoning" : "Herz-Zehn und Herz-Acht sind die einzigen Herzkarten. Ihr Drücken schafft Herzfreiheit und sichert zehn Augen. Alle fünf Karotrümpfe bleiben.",
+              "recommendedDiscard" : [
+                "H10",
+                "H8"
+              ],
+              "situation" : "Karospiel. Lehrziel: Alle fünf Trümpfe behalten und herzfrei werden. Welche beiden Karten erfüllen das?",
+              "tip" : "Bei einer langen Farbe musst du nicht jede Nebenfarbe behalten. Prüfe, welche Karte später am wenigsten einen Stich gewinnt."
+            }
+          ],
+          "kind" : "discard",
+          "subtitle" : "Zwölf Karten: Wähle zwei und vergleiche die Lehrentscheidung",
+          "title" : "Dein Skat"
+        },
+        {
+          "id" : "plus-discard-extras",
+          "isPlus" : true,
+          "items" : [
+            {
+              "deal" : [
+                "H7",
+                "H8",
+                "H9",
+                "H10",
+                "H14",
+                "C11",
+                "S11",
+                "D13",
+                "C7",
+                "S8",
+                "D9",
+                "C12"
+              ],
+              "id" : "plus-druecken-1",
+              "reasoning" : "Kreuz-Sieben und Kreuz-Dame sind die einzigen Kreuz-Seitenkarten. Kreuz-Bube bleibt als Herztrumpf. Das Paar sichert drei Augen und Kreuzfreiheit.",
+              "recommendedDiscard" : [
+                "C7",
+                "C12"
+              ],
+              "situation" : "Herzspiel. Lehrziel: Alle sieben Trümpfe behalten und kreuzfrei werden. Welche zwei Seitenkarten drückst du?",
+              "tip" : "Eine Farbe mit Länge kann die Entscheidung vereinfachen. Suche zuerst die Karten ohne Farbe, Augen oder Anschluss."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "C14",
+                "D14",
+                "H13",
+                "S13",
+                "C10",
+                "D10",
+                "H7",
+                "D7",
+                "H8",
+                "S8"
+              ],
+              "id" : "plus-druecken-2",
+              "reasoning" : "Pik-König und Pik-Acht sind die einzigen Pik-Seitenkarten. Pik-Bube ist Trumpf. Das Paar schafft Pikfreiheit und sichert vier Augen.",
+              "recommendedDiscard" : [
+                "S13",
+                "S8"
+              ],
+              "situation" : "Grand. Lehrziel: Pikfreiheit herstellen und beide Buben behalten. Welches Paar ist dafür nötig?",
+              "tip" : "Eine freie Farbe kann Abwürfe oder Trumpfeinsatz ermöglichen. Das ist ein Ziel, kein Beweis für einen sicheren Grand."
+            },
+            {
+              "deal" : [
+                "C7",
+                "D8",
+                "H9",
+                "S10",
+                "C8",
+                "D9",
+                "H10",
+                "S7",
+                "C14",
+                "D13",
+                "H12",
+                "S11"
+              ],
+              "id" : "plus-druecken-3",
+              "reasoning" : "Ass und König können im Null schnell einen Stich gewinnen. Die niedrigen Karten lassen eher zu, einen Stich abzugeben.",
+              "recommendedDiscard" : [
+                "C14",
+                "D13"
+              ],
+              "situation" : "Nullspiel. Lehrziel: Die zwei höchsten Karten nach der Null-Reihenfolge drücken. Wähle das Paar.",
+              "tip" : "Im Null sind Augen nicht das Ziel. Beurteile jede hohe Karte danach, ob sie dich zum Stichgewinn zwingt."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C14",
+                "S14",
+                "H13",
+                "D13",
+                "C7",
+                "S7",
+                "H8",
+                "D8"
+              ],
+              "id" : "plus-druecken-4",
+              "reasoning" : "Herz-König und Herz-Acht sind die einzigen Herz-Seitenkarten. Beide entfernen schafft Herzfreiheit und sichert vier Augen, ohne Buben oder Asse anzutasten.",
+              "recommendedDiscard" : [
+                "H13",
+                "H8"
+              ],
+              "situation" : "Grand mit vier Buben. Lehrziel: Herzfreiheit herstellen und beide Asse behalten. Welches Paar drückst du?",
+              "tip" : "Bei vielen sicheren Trümpfen darfst du die Beikarten genauer auf Augen und Anschluss prüfen."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C14",
+                "D14",
+                "H13",
+                "S13",
+                "C7",
+                "D7",
+                "H8",
+                "S8"
+              ],
+              "id" : "mehr-druecken-1",
+              "reasoning" : "Herz-König und Herz-Acht sind die einzigen Herz-Seitenkarten. Herz-Bube bleibt Trumpf. Vier Augen werden gesichert, die Herz-Seitenfarbe verschwindet aus der Hand.",
+              "recommendedDiscard" : [
+                "H13",
+                "H8"
+              ],
+              "situation" : "Grand. Lehrziel: Alle Buben behalten und herzfrei werden. Welche beiden Herz-Seitenkarten drückst du?",
+              "tip" : "Im Grand sind kleine Karten nicht automatisch schlecht, aber lose kleine Karten ohne Stichplan sind oft die schwächsten."
+            },
+            {
+              "deal" : [
+                "D7",
+                "D8",
+                "D9",
+                "D10",
+                "D14",
+                "C11",
+                "S11",
+                "H13",
+                "C14",
+                "S14",
+                "H7",
+                "C8"
+              ],
+              "id" : "mehr-druecken-2",
+              "reasoning" : "Herz-König und Herz-Sieben sind die einzigen Herzkarten. Das Paar schafft Herzfreiheit und sichert vier Augen, ohne den Trumpfkern zu schwächen.",
+              "recommendedDiscard" : [
+                "H13",
+                "H7"
+              ],
+              "situation" : "Karospiel. Lehrziel: Alle sieben Trümpfe behalten und herzfrei werden. Welches Paar drückst du?",
+              "tip" : "Sortiere nach Spielidee: Farbe und Trümpfe zuerst, dann sichere Augen, dann lose Nebenfarben."
+            },
+            {
+              "deal" : [
+                "C7",
+                "D8",
+                "H9",
+                "S10",
+                "C8",
+                "D9",
+                "H10",
+                "S7",
+                "C14",
+                "D13",
+                "H12",
+                "S11"
+              ],
+              "id" : "mehr-druecken-3",
+              "reasoning" : "Ass und König sind im Null gefährliche Gewinnerkarten. Die niedrigen Karten erlauben eher, einen Stich abzugeben.",
+              "recommendedDiscard" : [
+                "C14",
+                "D13"
+              ],
+              "situation" : "Nullspiel. Lehrziel: Die zwei höchsten Karten nach der Null-Reihenfolge drücken. Welche sind das?",
+              "tip" : "Buben sind im Null keine Trümpfe, bleiben aber eine hohe Karte. Prüfe jede hohe Karte auf ihren möglichen Zwangsstich."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "C14",
+                "D14",
+                "H13",
+                "S13",
+                "C10",
+                "D10",
+                "H7",
+                "S8",
+                "H8",
+                "D9"
+              ],
+              "id" : "mehr-druecken-4",
+              "reasoning" : "Pik-König und Pik-Acht sind die einzigen Pik-Seitenkarten. Pik-Bube bleibt als Trumpf. Das Paar sichert vier Augen und Pikfreiheit.",
+              "recommendedDiscard" : [
+                "S13",
+                "S8"
+              ],
+              "situation" : "Grand mit zwei Buben. Lehrziel: Pikfreiheit herstellen und beide Buben sowie beide Asse behalten. Welches Paar passt?",
+              "tip" : "Nicht nur Kartenpunkte zählen: Ein Drückpaar soll auch die erwartete Stichverteilung berücksichtigen."
+            }
+          ],
+          "kind" : "discard",
+          "subtitle" : "Weitere Entscheidungen für Farbe, Grand und Null",
+          "title" : "Dein Skat: Extra-Runden"
+        }
+      ],
+      "icon" : "arrow.down.to.line.compact",
+      "id" : "discard-room",
+      "isFree" : true,
+      "name" : "Drücken",
+      "tagline" : "Lege zwei Karten mit einem Plan in den Skat"
+    },
+    {
+      "drills" : [
+        {
+          "id" : "pegging-judgment",
+          "isPlus" : false,
+          "items" : [
+            {
+              "backBody" : "Wenn du Herz hältst, musst du Herz bedienen. Der Kreuz-König darf nicht gespielt werden, solange noch eine Herzkarte auf deiner Hand liegt.",
+              "backTitle" : "Herz muss folgen",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Herz bedienen",
+                  "Eine fremde Farbe spielen"
+                ]
+              },
+              "frontSubtitle" : "Herz ist angespielt",
+              "frontTiles" : [
+                "H14",
+                "H7",
+                "C13"
+              ],
+              "frontTitle" : "Farbe bedienen",
+              "id" : "stich-entscheidung-1"
+            },
+            {
+              "backBody" : "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen. Die Bedienpflicht entfällt erst dann.",
+              "backTitle" : "Jetzt darfst du frei wählen",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Frei wählen",
+                  "Trotzdem Herz legen"
+                ]
+              },
+              "frontSubtitle" : "Herz ist angespielt, du hast kein Herz",
+              "frontTiles" : [
+                "H14",
+                "C11"
+              ],
+              "frontTitle" : "Keine Farbe vorhanden",
+              "id" : "stich-entscheidung-2"
+            },
+            {
+              "backBody" : "Der Kreuz-Bube ist in einem Farbspiel Trumpf. Er gewinnt den Stich auch dann, wenn eine hohe Karte der angespielten Farbe liegt.",
+              "backTitle" : "Trumpf gewinnt vor Farbe",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Trumpf gewinnt",
+                  "Das Herz-Ass gewinnt immer"
+                ]
+              },
+              "frontSubtitle" : "Kreuz-Bube schlägt Herz-Ass",
+              "frontTiles" : [
+                "C11",
+                "H14",
+                "H10"
+              ],
+              "frontTitle" : "Trumpf ziehen",
+              "id" : "stich-entscheidung-3"
+            },
+            {
+              "backBody" : "Die Buben haben in jeder normalen Spielart dieselbe Reihenfolge. Der Kreuz-Bube ist der höchste, der Karo-Bube der niedrigste Bube.",
+              "backTitle" : "Kreuz vor Pik vor Herz vor Karo",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Kreuz-Bube ist höher",
+                  "Karo-Bube ist höher"
+                ]
+              },
+              "frontSubtitle" : "Die Buben von oben nach unten",
+              "frontTiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11"
+              ],
+              "frontTitle" : "Trumpfreihenfolge",
+              "id" : "stich-entscheidung-4"
+            },
+            {
+              "backBody" : "Im Null sind die Buben keine Trümpfe. Innerhalb der Farbe gilt Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Das Ass bleibt die höchste Karte, und die Zehn rutscht unter den Buben.",
+              "backTitle" : "Das Ass bleibt hoch",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Ass ist hoch",
+                  "Bube ist Trumpf"
+                ]
+              },
+              "frontSubtitle" : "Kein Trumpf im Null",
+              "frontTiles" : [
+                "C14",
+                "C7",
+                "S11"
+              ],
+              "frontTitle" : "Nullspiel",
+              "id" : "stich-entscheidung-5"
+            },
+            {
+              "backBody" : "Wenn dein Partner den Stich sicher gewinnt, musst du keinen höheren Trumpf verschenken. Das genaue Zeichen dafür hängt vom Tisch und der Karteninformation ab.",
+              "backTitle" : "Nicht jeden Stich überstechen",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Kleine Karte kann reichen",
+                  "Immer den höchsten Trumpf spielen"
+                ]
+              },
+              "frontSubtitle" : "Wann reicht eine kleine Karte?",
+              "frontTiles" : [
+                "C11",
+                "H14",
+                "H7"
+              ],
+              "frontTitle" : "Den Stich sichern",
+              "id" : "stich-entscheidung-6"
+            }
+          ],
+          "kind" : "flashcards",
+          "subtitle" : "Entscheide, bediene und drehe die Karte um",
+          "title" : "Stich-Entscheidungen"
+        },
+        {
+          "id" : "pegging-quiz",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Du darfst frei wählen",
+                "Du musst passen",
+                "Du musst die höchste Karte spielen"
+              ],
+              "explanation" : "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen.",
+              "id" : "mehr-stich-quiz-1",
+              "prompt" : "Was gilt, wenn du die angespielte Farbe nicht hast?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Jeder Trumpf",
+                "Nur ein Ass",
+                "Nur eine Karte derselben Farbe"
+              ],
+              "explanation" : "Ein gültiger Trumpf gewinnt gegen jede Karte einer Seitenfarbe.",
+              "id" : "mehr-stich-quiz-2",
+              "prompt" : "Was schlägt eine Karte der Seitenfarbe?",
+              "tiles" : [
+                "C11",
+                "H14"
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "61 Augen",
+                "Keinen Stich",
+                "Alle vier Buben"
+              ],
+              "explanation" : "Im Null gewinnt der Alleinspieler, wenn er keinen Stich erhält.",
+              "id" : "mehr-stich-quiz-3",
+              "prompt" : "Was ist das Ziel des Alleinspielers im Null?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Der Gewinner des letzten Stichs",
+                "Immer Vorhand",
+                "Der Spieler mit den meisten Augen"
+              ],
+              "explanation" : "Der Gewinner eines Stichs spielt den nächsten Stich aus.",
+              "id" : "mehr-stich-quiz-4",
+              "prompt" : "Wer spielt den nächsten Stich aus?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Ass",
+                "Bube",
+                "König"
+              ],
+              "explanation" : "Im Null gilt eine eigene Reihenfolge: Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Das Ass ist hoch und die Buben sind keine Trümpfe.",
+              "id" : "mehr-stich-quiz-5",
+              "prompt" : "Welche Karte ist im Null innerhalb einer Farbe am höchsten?",
+              "tiles" : [
+                "C14",
+                "C13",
+                "C11"
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "3",
+                "5",
+                "7"
+              ],
+              "explanation" : "Der Bube zählt zwei und die Dame drei Augen. Zusammen sind das fünf.",
+              "id" : "mehr-stich-quiz-6",
+              "prompt" : "Wie viele Augen zählen Bube und Dame zusammen?",
+              "tiles" : [
+                "H11",
+                "H12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Bedienpflicht",
+                "Die eigene Punktzahl",
+                "Ob der Skat offen liegt"
+              ],
+              "explanation" : "Die Bedienpflicht entscheidet, welche Karten überhaupt legal gespielt werden dürfen.",
+              "id" : "mehr-stich-quiz-7",
+              "prompt" : "Was muss im Farbspiel zuerst geprüft werden?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Die Bubenreihenfolge",
+                "Die Anzahl der Augen",
+                "Die Sitzposition allein"
+              ],
+              "explanation" : "Die Buben stehen im Farbspiel über der angesagten Farbe und haben eine feste Reihenfolge.",
+              "id" : "mehr-stich-quiz-8",
+              "prompt" : "Was zeigt im Farbspiel die Trumpfhöhe?",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "Bedienpflicht, Trumpf, Stichgewinn und Null",
+          "title" : "Stichregeln"
+        },
+        {
+          "id" : "applied-tricks",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Beide",
+                "Nur Kreuz-Bube",
+                "Nur Herz-Ass"
+              ],
+              "explanation" : "Der Kreuz-Bube gehört zu Trumpf, nicht zur Kreuz-Seitenfarbe. Du bist kreuzfrei und darfst stechen oder abwerfen.",
+              "id" : "praxis-stich-01",
+              "prompt" : "Grand. Kreuz-Sieben ist angespielt. Deine vollständige Resthand ist Kreuz-Bube und Herz-Ass. Welche Karten darfst du legen?",
+              "tiles" : [
+                "C11",
+                "H14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Pik-Bube",
+                "Karo-Ass",
+                "Du darfst wählen"
+              ],
+              "explanation" : "Herz fordert Trumpf. Pik-Bube ist ebenfalls Herztrumpf und muss bedient werden.",
+              "id" : "praxis-stich-02",
+              "prompt" : "Herzspiel. Herz-Sieben ist angespielt. Deine Resthand ist Pik-Bube und Karo-Ass. Welche Karte ist Pflicht?",
+              "tiles" : [
+                "S11",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Herz-Bube",
+                "Pik-Ass",
+                "Beide sind erlaubt"
+              ],
+              "explanation" : "Ein Bube fordert Trumpf. Pik-Ass ist eine Seitenkarte und darf mit vorhandenem Herz-Buben nicht als Bedienung gelten.",
+              "id" : "praxis-stich-03",
+              "prompt" : "Grand. Pik-Bube ist angespielt. Du hast Herz-Bube und Pik-Ass. Welche Karte musst du legen?",
+              "tiles" : [
+                "H11",
+                "S14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Bube",
+                "Herz-Sieben",
+                "Beide sind erlaubt"
+              ],
+              "explanation" : "Im Null gehören Buben zur aufgedruckten Farbe. Kreuz-Bube muss Kreuz bedienen, auch wenn er einen unerwünschten Stich verursachen könnte.",
+              "id" : "praxis-stich-04",
+              "prompt" : "Null. Kreuz-Sieben ist angespielt. Deine Resthand ist Kreuz-Bube und Herz-Sieben. Welche Karte musst du legen?",
+              "tiles" : [
+                "C11",
+                "H7"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Herz-Zehn",
+                "Herz-König",
+                "Herz-Dame"
+              ],
+              "explanation" : "In Farbe und Grand steht die Zehn über König und Dame. Der Stich zählt 17 Augen.",
+              "id" : "praxis-stich-05",
+              "prompt" : "Grand. Herz-Zehn, Herz-König und Herz-Dame liegen in dieser Reihenfolge. Kein Trumpf. Wer gewinnt?",
+              "tiles" : [
+                "H10",
+                "H13",
+                "H12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Herz-König",
+                "Herz-Zehn",
+                "Herz-Dame"
+              ],
+              "explanation" : "Im Null ist die Reihenfolge anders. König schlägt Dame und Zehn. Buben sind keine Trümpfe.",
+              "id" : "praxis-stich-06",
+              "prompt" : "Null. Herz-Zehn, Herz-König und Herz-Dame liegen in dieser Reihenfolge. Wer gewinnt?",
+              "tiles" : [
+                "H10",
+                "H13",
+                "H12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Ass",
+                "Pik-Ass",
+                "Herz-Ass"
+              ],
+              "explanation" : "Die angespielte Farbe ist Kreuz. Die fremden Asse sind Abwürfe und können diesen Stich ohne Trumpf nicht gewinnen.",
+              "id" : "praxis-stich-07",
+              "prompt" : "Karo. Kreuz-Ass, Pik-Ass und Herz-Ass liegen in dieser Reihenfolge. Niemand hat Trumpf gelegt. Wer gewinnt?",
+              "tiles" : [
+                "C14",
+                "S14",
+                "H14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Bube",
+                "Karo-Ass",
+                "Karo-Zehn"
+              ],
+              "explanation" : "Karo-Bube ist im Grand Trumpf und schlägt die beiden Seitenkarten. Der vollständige Stich enthält 23 Augen.",
+              "id" : "praxis-stich-08",
+              "prompt" : "Grand. Karo-Ass, Karo-Zehn und Karo-Bube liegen in dieser Reihenfolge. Wer gewinnt?",
+              "tiles" : [
+                "D14",
+                "D10",
+                "D11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Ass",
+                "Karo-Bube",
+                "Karo-Zehn"
+              ],
+              "explanation" : "Bei Null ist der Bube kein Trumpf. Das Ass bleibt die höchste Karte der Farbe.",
+              "id" : "praxis-stich-09",
+              "prompt" : "Null. Karo-Ass, Karo-Zehn und Karo-Bube liegen in dieser Reihenfolge. Wer gewinnt?",
+              "tiles" : [
+                "D14",
+                "D10",
+                "D11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein",
+                "Ja",
+                "Nur in Hinterhand"
+              ],
+              "explanation" : "Mit einer Kreuz-Seitenkarte musst du Kreuz bedienen. Ein vorhandener Trumpf hebt diese Pflicht nicht auf.",
+              "id" : "praxis-stich-10",
+              "prompt" : "Herz. Kreuz-Ass ist angespielt. Du hast Kreuz-Sieben und Herz-Bube. Darfst du mit dem Buben stechen?",
+              "tiles" : [
+                "C7",
+                "H11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, beide sind legal",
+                "Ja, Pik-Sieben ist Pflicht",
+                "Nein, du darfst nur Herz legen"
+              ],
+              "explanation" : "Die internationale Regel kennt keine allgemeine Stichpflicht. Ohne Karo darfst du stechen oder abwerfen.",
+              "id" : "praxis-stich-11",
+              "prompt" : "Pik. Karo-Zehn ist angespielt. Du bist karofrei und hältst Pik-Sieben sowie Herz-Sieben. Musst du stechen?",
+              "tiles" : [
+                "S7",
+                "H7"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "6",
+                "3",
+                "0"
+              ],
+              "explanation" : "Jeder Bube zählt zwei Augen. Drei Buben ergeben sechs, unabhängig davon, welcher Bube den Stich gewinnt.",
+              "id" : "praxis-stich-12",
+              "prompt" : "Grand. Du gewinnst einen Stich aus Kreuz-Bube, Pik-Bube und Herz-Bube. Wie viele Augen nimmst du mit?",
+              "tiles" : [
+                "C11",
+                "S11",
+                "H11"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "Zwölf konkrete Stiche mit klarer Spielansage",
+          "title" : "Welche Karte ist legal?"
+        },
+        {
+          "id" : "plus-pegging-extras",
+          "isPlus" : true,
+          "items" : [
+            {
+              "backBody" : "Im Herzspiel gehören die Herz-Karten und der Kreuz-Bube zusammen zum Trumpf, denn alle vier Buben sind Trumpf. Genau diese Struktur hältst du zusammen. Eine einzelne kleine Karte in einer Seitenfarbe ist dagegen nur mit einem konkreten Stichplan wertvoll.",
+              "backTitle" : "Trumpfstruktur vor Einzelkarte",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Herzstruktur halten",
+                  "Farbe sofort zerreißen"
+                ]
+              },
+              "frontSubtitle" : "Herz ist die Spielidee",
+              "frontTiles" : [
+                "H14",
+                "H7",
+                "C11"
+              ],
+              "frontTitle" : "Farbe behalten",
+              "id" : "plus-entscheidung-1"
+            },
+            {
+              "backBody" : "Ohne Herzkarte darfst du eine andere Farbe spielen. Ob ein Trumpf besser ist, hängt von deinem Spielplan und der Stichlage ab.",
+              "backTitle" : "Kreuz darf gelegt werden",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Andere Farbe ist erlaubt",
+                  "Herz muss trotzdem folgen"
+                ]
+              },
+              "frontSubtitle" : "Herz ist angespielt",
+              "frontTiles" : [
+                "H14",
+                "C7"
+              ],
+              "frontTitle" : "Kein Herz",
+              "id" : "plus-entscheidung-2"
+            },
+            {
+              "backBody" : "Im Grand gewinnt der Kreuz-Bube den Stich gegen das Kreuz-Ass, weil die vier Buben über allen anderen Karten stehen.",
+              "backTitle" : "Der Bube steht höher",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Kreuz-Bube gewinnt",
+                  "Kreuz-Ass gewinnt"
+                ]
+              },
+              "frontSubtitle" : "Kreuz-Bube gegen Kreuz-Ass",
+              "frontTiles" : [
+                "C11",
+                "C14"
+              ],
+              "frontTitle" : "Grand-Trumpf",
+              "id" : "plus-entscheidung-3"
+            },
+            {
+              "backBody" : "Im Null gibt es keine Buben-Trümpfe. Innerhalb von Pik steht das Ass über dem Buben.",
+              "backTitle" : "Ass ist höher als Bube",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Ass ist höher",
+                  "Bube ist höher"
+                ]
+              },
+              "frontSubtitle" : "Pik ist angespielt",
+              "frontTiles" : [
+                "S11",
+                "S14"
+              ],
+              "frontTitle" : "Null bleibt Null",
+              "id" : "plus-entscheidung-4"
+            },
+            {
+              "backBody" : "Wenn Herz angespielt ist und du kein Herz hältst, darfst du eine andere Farbe oder Trumpf spielen. Eine kleine Seitenkarte kann die richtige Schonung sein.",
+              "backTitle" : "Frei wählen ist legal",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Frei wählen",
+                  "Herz muss folgen"
+                ]
+              },
+              "frontSubtitle" : "Herz ist angespielt, du hast kein Herz",
+              "frontTiles" : [
+                "C7",
+                "S9",
+                "D8"
+              ],
+              "frontTitle" : "Kleine Farbe abwerfen",
+              "id" : "mehr-entscheidung-1"
+            },
+            {
+              "backBody" : "Wenn kein Trumpf im Stich liegt und Herz bedient werden muss, gewinnt das Herz-Ass diesen Stich.",
+              "backTitle" : "Ass gewinnt ohne Trumpf",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Ass gewinnt",
+                  "Die Sieben gewinnt"
+                ]
+              },
+              "frontSubtitle" : "Herz ist angespielt",
+              "frontTiles" : [
+                "H14",
+                "H7"
+              ],
+              "frontTitle" : "Sicheres Ass",
+              "id" : "mehr-entscheidung-2"
+            },
+            {
+              "backBody" : "Im Null ist der Bube kein Trumpf. Er ist eine hohe Karte der Farbe, während das Ass noch höher liegt.",
+              "backTitle" : "Der Bube ist keine Sonderkarte",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Bube ist kein Trumpf",
+                  "Bube gewinnt immer"
+                ]
+              },
+              "frontSubtitle" : "Kreuz ist angespielt",
+              "frontTiles" : [
+                "C11",
+                "C7"
+              ],
+              "frontTitle" : "Null und Bube",
+              "id" : "mehr-entscheidung-3"
+            },
+            {
+              "backBody" : "Der Kreuz-Bube ist im Farbspiel und im Grand Trumpf. Er gewinnt den Stich gegen das Karo-Ass, obwohl das Ass mehr Augen zählt. Erst der Trumpfrang, dann die Augen zählen.",
+              "backTitle" : "Trumpf schlägt Seitenfarbe",
+              "choice" : {
+                "answerIndex" : 0,
+                "options" : [
+                  "Trumpf gewinnt",
+                  "Ass gewinnt immer"
+                ]
+              },
+              "frontSubtitle" : "Karo ist angespielt, ein Bube liegt im Stich",
+              "frontTiles" : [
+                "D14",
+                "D10",
+                "C11"
+              ],
+              "frontTitle" : "Stich auswerten",
+              "id" : "mehr-entscheidung-4"
+            }
+          ],
+          "kind" : "flashcards",
+          "subtitle" : "Weitere Situationen für Farbe, Trumpf und Endspiel",
+          "title" : "Stich-Entscheidungen: Extra-Runden"
+        }
+      ],
+      "icon" : "arrow.up.right.circle.fill",
+      "id" : "pegging-room",
+      "isFree" : true,
+      "name" : "Stichspiel",
+      "tagline" : "Bediene Farben und hole die richtigen Stiche"
+    },
+    {
+      "drills" : [
+        {
+          "id" : "master-discard",
+          "isPlus" : false,
+          "items" : [
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C14",
+                "S14",
+                "H10",
+                "D10",
+                "C13",
+                "S13",
+                "H7",
+                "D8"
+              ],
+              "id" : "vertieft-druecken-01",
+              "reasoning" : "Die beiden Zehnen sichern 20 Augen im Skat. Unter der ausdrücklichen Vorgabe, Buben und Asse zu behalten, ist kein höheres Paar möglich. Kleine Karten drücken würde hier null Augen sichern.",
+              "recommendedDiscard" : [
+                "H10",
+                "D10"
+              ],
+              "situation" : "Grand, Vorhand, gereizt 48. Lehrziel: Alle vier Buben und beide Asse behalten, dabei möglichst viele Augen drücken. Welches Paar erfüllt genau dieses Ziel?",
+              "tip" : "Das ist eine Optimierungsaufgabe mit Vorgabe, keine Behauptung, dass Zehnen in jedem Grand gedrückt gehören."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "H14",
+                "H10",
+                "H7",
+                "C10",
+                "C13",
+                "S14",
+                "D14",
+                "D7"
+              ],
+              "id" : "vertieft-druecken-02",
+              "reasoning" : "Kreuz-Zehn und Kreuz-König sind die einzigen Kreuz-Seitenkarten. Beide zu drücken schafft Kreuzfreiheit und sichert 14 Augen. Kreuz-Bube bleibt als Herztrumpf erhalten.",
+              "recommendedDiscard" : [
+                "C10",
+                "C13"
+              ],
+              "situation" : "Herz, Mittelhand, gereizt 40. Lehrziel: Alle sieben Trümpfe behalten und nach dem Drücken kreuzfrei sein. Wähle das einzige passende Paar.",
+              "tip" : "Farbfreisein bezieht sich auf Seitenkarten. Ein Kreuz-Bube macht dich im Herzspiel nicht kreuzpflichtig."
+            },
+            {
+              "deal" : [
+                "C7",
+                "C8",
+                "C9",
+                "C10",
+                "S7",
+                "S8",
+                "S9",
+                "H7",
+                "H8",
+                "D7",
+                "H14",
+                "D14"
+              ],
+              "id" : "vertieft-druecken-03",
+              "reasoning" : "Herz-Ass und Karo-Ass sind die beiden höchsten Karten. Ohne sie bleiben niedrige Folgen. Das garantiert keinen Nullsieg gegen jede Verteilung, vermeidet aber die ausdrücklich genannten Spitzenrisiken.",
+              "recommendedDiscard" : [
+                "H14",
+                "D14"
+              ],
+              "situation" : "Null mit Skataufnahme, Hinterhand, gereizt 23. Lehrziel: Beide Asse entfernen, die niedrigen Folgen bleiben zusammen. Wähle das Paar.",
+              "tip" : "Bei Null zählt Deckung unter hohen Karten, nicht ihre Augen im Skat."
+            },
+            {
+              "deal" : [
+                "C7",
+                "C8",
+                "C9",
+                "C11",
+                "C12",
+                "H7",
+                "H8",
+                "H9",
+                "H10",
+                "D7",
+                "S13",
+                "D12"
+              ],
+              "id" : "vertieft-druecken-04",
+              "reasoning" : "Der alleinstehende Pik-König muss weg, ebenso Karo-Dame. Kreuz-Dame bleibt unter dieser Vorgabe bewusst in ihrer längeren Farbe. Die Kreuz-Lücke bei der Zehn bleibt ein Risiko, kein automatisch sicherer Null.",
+              "recommendedDiscard" : [
+                "S13",
+                "D12"
+              ],
+              "situation" : "Null, Vorhand, gereizt 23. Lehrziel: Pikfreiheit herstellen und zugleich Karo bis auf die Sieben abbauen. Welche zwei Karten müssen weg?",
+              "tip" : "Ein hoher Einzelkönig ist anders zu bewerten als eine hohe Karte mit mehreren kleinen Karten darunter."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "S14",
+                "S10",
+                "S7",
+                "H14",
+                "H10",
+                "C14",
+                "D13",
+                "D7"
+              ],
+              "id" : "vertieft-druecken-05",
+              "reasoning" : "Die zwei Herz-Seitenkarten sichern 21 Skataugen und schaffen Herzfreiheit. Herz-Bube bleibt ein Piktrumpf. Eine kleine Karo-Karte zu drücken würde das Ziel nicht erfüllen.",
+              "recommendedDiscard" : [
+                "H14",
+                "H10"
+              ],
+              "situation" : "Pik, Hinterhand, gereizt 44. Lehrziel: Herzfreiheit herstellen, ohne einen Trumpf zu drücken. Wähle das einzige Paar.",
+              "tip" : "Ein gedrücktes Ass kann sinnvoll sein, wenn das konkrete Ziel eine freie Farbe und sichere Skataugen ist."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C14",
+                "C10",
+                "C13",
+                "C12",
+                "C9",
+                "S14",
+                "H12",
+                "D12"
+              ],
+              "id" : "vertieft-druecken-06",
+              "reasoning" : "Herz-Dame und Karo-Dame sind die einzigen Seitenkarten ihrer Farben. Ihre sechs Augen gehen in den Skat; die Kreuzfolge und vier Buben bleiben. Im Grand zählt der Kreuz-Bube nicht zur Kreuz-Seitenfolge.",
+              "recommendedDiscard" : [
+                "H12",
+                "D12"
+              ],
+              "situation" : "Grand, Vorhand, gereizt 72. Lehrziel: Alle Buben und die vollständige Kreuz-Seitenfolge behalten, zugleich herz- und karofrei werden. Welches Paar passt?",
+              "tip" : "Länge ist ein Plan für zusätzliche Stiche. Trenne sie beim Sortieren von den vier Grandtrümpfen."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "D14",
+                "D10",
+                "D9",
+                "H13",
+                "H12",
+                "C14",
+                "S14",
+                "S7"
+              ],
+              "id" : "vertieft-druecken-07",
+              "reasoning" : "Herz-König und Herz-Dame sind die einzigen Herz-Seitenkarten. Beide zusammen sichern sieben Skataugen. Den Herz-Buben mitdrücken wäre unter dem Ziel, alle Trümpfe zu behalten, falsch.",
+              "recommendedDiscard" : [
+                "H13",
+                "H12"
+              ],
+              "situation" : "Karo, Mittelhand, gereizt 36. Lehrziel: Alle Trümpfe behalten und herzfrei werden. Welches Paar erfüllt das?",
+              "tip" : "Benannte Ziele machen die Lehrentscheidung prüfbar. Eine unbekannte gegnerische Verteilung erlaubt keinen absoluten Gewinnbeweis."
+            },
+            {
+              "deal" : [
+                "C11",
+                "S11",
+                "H11",
+                "D11",
+                "C14",
+                "C10",
+                "S14",
+                "D14",
+                "H10",
+                "S13",
+                "D12",
+                "H7"
+              ],
+              "id" : "vertieft-druecken-08",
+              "reasoning" : "Die zwei Seitenasse liefern 22 Skataugen, mehr als Ass und Zehn mit 21. Alle sechs Trümpfe bleiben. Das Lehrziel maximiert sichere Skataugen, es behauptet nicht die allgemein beste Gewinnstrategie.",
+              "recommendedDiscard" : [
+                "S14",
+                "D14"
+              ],
+              "situation" : "Kreuz, Vorhand, gereizt 60. Lehrziel: Alle sechs Trümpfe behalten und unter den übrigen Karten die maximale Augensumme drücken. Wähle das Paar.",
+              "tip" : "Kreuz-Ass gehört hier zum Trumpfkern, Pik-Ass und Karo-Ass nicht. Der gleiche Kartenrang kann verschiedene Aufgaben haben."
+            }
+          ],
+          "kind" : "discard",
+          "subtitle" : "Acht Drückziele mit Spielart, Position und Reizwert",
+          "title" : "Meisterhaft drücken"
+        },
+        {
+          "id" : "master-defense",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Gegenpartei gewinnt mit 60",
+                "Alleinspieler gewinnt mit 61",
+                "Gegenpartei bleibt bei 49"
+              ],
+              "explanation" : "11 + 4 + 10 = 25 Augen im Stich. 35 + 25 = 60 genügt der Gegenpartei. Der Alleinspieler bleibt bei 60.",
+              "id" : "vertieft-abwehr-01",
+              "prompt" : "Grand, letzter Stich. Dein Partner spielt Karo-Ass, der Alleinspieler legt Karo-König. Du hast nur Karo-Zehn. Eure Partei hatte 35 Augen. Wie endet das Spiel?",
+              "tiles" : [
+                "D14",
+                "D13",
+                "D10"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Zehn",
+                "Karo-Ass",
+                "Kreuz-Sieben"
+              ],
+              "explanation" : "Kreuz muss bedient werden. Das Ass des Partners steht fest; die Zehn sichert zehn zusätzliche Augen. Das Karo-Ass wäre ein Bedienfehler.",
+              "id" : "vertieft-abwehr-02",
+              "prompt" : "Herzspiel. Du bist Hinterhand, Partner hat Kreuz-Ass gespielt, Alleinspieler Kreuz-König. Deine vollständige Resthand: Kreuz-Zehn, Kreuz-Sieben, Karo-Ass. Keine Karte folgt nach dir. Welche Zugabe bringt eurer Partei hier die meisten Augen?",
+              "tiles" : [
+                "C10",
+                "C7",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Pik-Bube",
+                "Karo-Zehn",
+                "Beide Karten gewinnen"
+              ],
+              "explanation" : "Pik-Bube steht über Karo-Bube. Die Zehn ist nur eine Seitenkarte und würde dem Alleinspieler zehn Augen schenken.",
+              "id" : "vertieft-abwehr-03",
+              "prompt" : "Grand. Partner spielt Herz-Ass, Alleinspieler sticht mit Karo-Bube. Du bist Hinterhand, herzfrei, mit Pik-Bube und Karo-Zehn. Welche Karte sichert diesen Augenstich für euch?",
+              "tiles" : [
+                "S11",
+                "D10"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Zehn schmieren",
+                "Pik-Sieben stechen",
+                "Beide bringen zehn Augen"
+              ],
+              "explanation" : "Der Alleinspieler hat bedient und kann nicht mehr stechen. Die Zehn bringt zehn Augen in den Partnerstich, ohne deinen Trumpf zu verbrauchen.",
+              "id" : "vertieft-abwehr-04",
+              "prompt" : "Pikspiel. Partner spielt Kreuz-Ass, Alleinspieler Kreuz-Acht. Du bist Hinterhand und kreuzfrei. Resthand: Karo-Zehn, Pik-Sieben. Welche Karte bringt in diesem bereits sicheren Partnerstich mehr Augen?",
+              "tiles" : [
+                "D10",
+                "S7"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, Karo-Sieben ist Pflicht",
+                "Ja, weil der Partner gewinnt",
+                "Ja, weil die Zehn Augen zählt"
+              ],
+              "explanation" : "Ein sicherer Partnerstich hebt die Bedienpflicht nicht auf. Mit Karo auf der Hand musst du Karo zugeben.",
+              "id" : "vertieft-abwehr-05",
+              "prompt" : "Herzspiel. Partner spielt Karo-Ass, Alleinspieler Karo-Neun. Du hältst in Hinterhand Karo-Sieben und Kreuz-Zehn. Darfst du die Zehn schmieren?",
+              "tiles" : [
+                "D7",
+                "C10"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Keine",
+                "Einer",
+                "Drei"
+              ],
+              "explanation" : "Es gibt genau vier Grandtrümpfe. Drei sind gefallen, den vierten hältst du selbst. Karo-Bube ist nun der höchste verbleibende Trumpf.",
+              "id" : "vertieft-abwehr-06",
+              "prompt" : "Grand. Im bisherigen Spiel sind Kreuz-, Pik- und Herz-Bube gefallen. Du hältst Karo-Bube. Wie viele fremde Trümpfe sind noch möglich?",
+              "tiles" : [
+                "D11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nur Kreuz-König",
+                "Kreuz-Bube und Kreuz-König",
+                "Keine"
+              ],
+              "explanation" : "Nach den Buben gilt Ass, Zehn, König, Dame, Neun, Acht, Sieben. Über deiner Dame bleibt aus der genannten Liste nur der König.",
+              "id" : "vertieft-abwehr-07",
+              "prompt" : "Kreuzspiel. Alle vier Buben sowie Kreuz-Ass und Kreuz-Zehn sind gefallen. Du hältst Kreuz-Dame und Kreuz-Neun. Welche höhere Trumpfkarte kann noch ausstehen?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Zwei",
+                "Drei",
+                "Fünf"
+              ],
+              "explanation" : "Ein Farbspiel hat elf Trümpfe. Sechs sind gefallen, drei hältst du: 11 - 6 - 3 = 2. Diese zwei können beim Alleinspieler, Partner oder im Skat liegen.",
+              "id" : "vertieft-abwehr-08",
+              "prompt" : "Pikspiel. Du warst mit fünf Trümpfen gestartet. Nach zwei vollen Trumpfstichen mit jeweils drei Trümpfen hast du noch drei. Wie viele Trümpfe sind insgesamt außerhalb deiner Hand noch nicht gefallen?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Er hat keine Kreuz-Seitenkarte",
+                "Er hat keinen Buben",
+                "Er hält Herz-Ass"
+              ],
+              "explanation" : "Kreuz-Bube ist im Grand Trumpf, keine Kreuz-Seitenkarte. Der Abwurf beweist Kreuzfreiheit, nicht Trumpffreiheit oder einen bestimmten Herzbestand.",
+              "id" : "vertieft-abwehr-09",
+              "prompt" : "Grand. Alleinspieler spielt Kreuz-Ass. Dein Partner ist kreuzfrei und legt Herz-Sieben ab. Was ist allein daraus sicher ableitbar?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Partner hat weder Buben noch Herz",
+                "Partner hat nur keinen Herz-Buben",
+                "Partner hat keine Karo-Karte"
+              ],
+              "explanation" : "Herz-Sieben fordert Trumpf. Alle Buben gehören zur Trumpffarbe; wer abwirft, hält keinen einzigen Trumpf mehr.",
+              "id" : "vertieft-abwehr-10",
+              "prompt" : "Herzspiel. Alleinspieler spielt Herz-Sieben. Dein Partner legt Karo-Acht ab. Welche sichere Folgerung gilt bei regelgerechtem Spiel?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, Kreuz-König muss folgen",
+                "Ja, beide Karten zeigen Kreuz",
+                "Ja, Buben dürfen immer gespielt werden"
+              ],
+              "explanation" : "Der Bube ist Trumpf. Eine Kreuz-Seitenkarte ist vorhanden, also muss sie bedient werden. Das aufgedruckte Symbol genügt nicht.",
+              "id" : "vertieft-abwehr-11",
+              "prompt" : "Grand. Alleinspieler spielt Kreuz-Sieben. Dein Partner legt Kreuz-Bube. Er hat laut offener Resthand auch Kreuz-König. Ist das legal?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Bube",
+                "Karo-Ass",
+                "Du darfst wählen"
+              ],
+              "explanation" : "Ein Bube fordert Trumpf. Dein Karo-Bube muss folgen, obwohl er den Partner nicht überholt. Das Ass ist kein Trumpf.",
+              "id" : "vertieft-abwehr-12",
+              "prompt" : "Grand. Partner spielt Kreuz-Bube, Alleinspieler Herz-Bube. Du hältst Karo-Bube und Karo-Ass. Welche Karte musst du in Hinterhand zugeben?",
+              "tiles" : [
+                "D11",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Bube",
+                "Kreuz-Sieben",
+                "Keine, das Ass ist unschlagbar"
+              ],
+              "explanation" : "Der Bube sticht das Ass und sichert 23 Augen für eure Partei. Kreuz-Sieben ist ein Abwurf, kein Stichgewinn.",
+              "id" : "vertieft-abwehr-13",
+              "prompt" : "Grand, Hinterhand. Alleinspieler spielt Herz-Ass, Partner legt Herz-Zehn. Du bist herzfrei und hast nur Karo-Bube oder Kreuz-Sieben zur Wahl. Welche Karte verhindert, dass 21 Augen an den Alleinspieler gehen?",
+              "tiles" : [
+                "D11",
+                "C7"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Herz-Zehn abwerfen",
+                "Kreuz-Bube überstechen",
+                "Beides bringt gleich viele Augen"
+              ],
+              "explanation" : "Der Partner hat den Stich bereits gewonnen. Die Herz-Zehn schmiert zehn Augen. Überstechen wäre legal, kostet aber den höchsten Trumpf und bringt nur zwei.",
+              "id" : "vertieft-abwehr-14",
+              "prompt" : "Karo, Hinterhand. Alleinspieler spielt Pik-Ass, Partner sticht mit Herz-Bube. Du bist pikfrei; Resthand Kreuz-Bube und Herz-Zehn. Was sichert mehr Augen, ohne einen hohen Trumpf zu verbrauchen?",
+              "tiles" : [
+                "C11",
+                "H10"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Pik-Dame",
+                "Pik-Acht",
+                "Keine der beiden"
+              ],
+              "explanation" : "Mit der Dame: 48 + 11 + 3 = 62. Mit der Acht: nur 59. Beide bedienen, aber nur die Dame entscheidet sofort.",
+              "id" : "vertieft-abwehr-15",
+              "prompt" : "Grand. Eure Partei hat 48 Augen. Partner spielt Pik-Ass, Alleinspieler Pik-Sieben. Du bist Hinterhand mit Pik-Dame und Pik-Acht. Welche Zugabe erreicht sofort die Gewinnschwelle?",
+              "tiles" : [
+                "S12",
+                "S8"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Zehn",
+                "Karo-Neun",
+                "Beide"
+              ],
+              "explanation" : "40 + 11 + 4 + 10 = 65. Mit der Neun wären es 55. Die Zehn darf unter das höhere Ass geschmiert werden.",
+              "id" : "vertieft-abwehr-16",
+              "prompt" : "Grand. Eure Partei hat 40 Augen. Partner spielt Karo-Ass, Alleinspieler Karo-König. Du hältst in Hinterhand Karo-Zehn und Karo-Neun. Welche Zugabe gewinnt sofort das Spiel?",
+              "tiles" : [
+                "D10",
+                "D9"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Eine der beiden, du darfst wählen",
+                "Immer Kreuz-Bube",
+                "Immer Pik-Ass"
+              ],
+              "explanation" : "Beide sind Pik-Trümpfe und bedienen. Es gibt keine allgemeine Pflicht zu stechen oder den höchsten Trumpf zu wählen. Eine taktische Bewertung bräuchte den dritten Spieler.",
+              "id" : "vertieft-abwehr-17",
+              "prompt" : "Pikspiel. Du hast Kreuz-Bube und Pik-Ass. Alleinspieler hat Pik-Zehn ausgespielt. Du bist Mittelhand. Welche deiner Karten muss nach internationaler Bedienregel gespielt werden?",
+              "tiles" : [
+                "C11",
+                "S14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Du musst die Karo-Dame bedienen",
+                "Kreuz-Bube ist zu niedrig",
+                "Im Grand darf man nicht stechen"
+              ],
+              "explanation" : "Eine vorhandene Seitenfarbe muss bedient werden. Der Bube könnte den Stich schlagen, ist aber in dieser Lage keine legale Zugabe.",
+              "id" : "vertieft-abwehr-18",
+              "prompt" : "Grand. Alleinspieler spielt Karo-Ass, Partner Karo-Zehn. Du bist Hinterhand mit Karo-Dame und Kreuz-Bube. Warum darfst du nicht mit dem Buben die 21 Augen retten?",
+              "tiles" : [
+                "D12",
+                "C11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Für diesen Stich sind beide gleichwertig",
+                "Kreuz-Zehn ist immer besser",
+                "Karo-Zehn ist immer besser"
+              ],
+              "explanation" : "Beide Abwürfe sind legal und bringen zehn Augen. Welche Farbe später wertvoller ist, ist ohne Restkarten nicht bestimmbar. Genau dieser Kontext fehlt bei pauschalen Drück- oder Abwurfregeln.",
+              "id" : "vertieft-abwehr-19",
+              "prompt" : "Herzspiel. Partner spielt Pik-Ass, Alleinspieler Pik-Zehn. Du hast als Hinterhand nur Kreuz-Zehn und Karo-Zehn. Was lässt sich über die bessere Zugabe allein hier sagen?",
+              "tiles" : [
+                "C10",
+                "D10"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, sie endet bei 59",
+                "Ja, sie endet bei 60",
+                "Ja, sie endet bei 61"
+              ],
+              "explanation" : "Der Stich zählt 25, also insgesamt 59. Der Alleinspieler hat die übrigen 61 Augen einschließlich Skat und gewinnt bei gedecktem Reizwert.",
+              "id" : "vertieft-abwehr-20",
+              "prompt" : "Grand, letzter Stich. Partner spielt Kreuz-Ass, Alleinspieler Kreuz-Zehn, du Kreuz-König. Eure Partei hatte 34 Augen. Gewinnt die Gegenpartei?",
+              "tiles" : [
+                "C14",
+                "C10",
+                "C13"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "20 Situationen: schmieren, stechen, zählen",
+          "title" : "Verteidigung"
+        },
+        {
+          "id" : "master-counting",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "36",
+                "48",
+                "24"
+              ],
+              "explanation" : "Mit zwei, Spiel drei: 3 × 12 = 36. 78 Augen bringen weder Schneider noch eine Handstufe.",
+              "id" : "vertieft-wert-01",
+              "prompt" : "Kreuz mit zwei, Skataufnahme, 78 Augen, gereizt 36. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "44",
+                "55",
+                "33"
+              ],
+              "explanation" : "Ohne drei, Spiel vier: 4 × 11 = 44. Für die Spitzen zählen Hand und Skat zusammen.",
+              "id" : "vertieft-wert-02",
+              "prompt" : "Pik ohne drei, Skataufnahme, 65 Augen, gereizt 44. Auch im Skat liegt keiner der drei fehlenden höchsten Buben. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "30",
+                "40",
+                "20"
+              ],
+              "explanation" : "Mit einem, Spiel zwei, Hand drei: 3 × 10 = 30. Hand ist eine zusätzliche Gewinnstufe.",
+              "id" : "vertieft-wert-03",
+              "prompt" : "Herz mit einem, Hand, 74 Augen, gereizt 30. Der Skat ändert die Spitzen nicht. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "36",
+                "45",
+                "27"
+              ],
+              "explanation" : "Ohne zwei, Spiel drei, Hand vier: 4 × 9 = 36. Die Grundwerte der Farben sind verschieden.",
+              "id" : "vertieft-wert-04",
+              "prompt" : "Karo ohne zwei, Hand, 82 Augen, gereizt 36. Kein fehlender Spitzentrumpf liegt im Skat. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "96",
+                "120",
+                "72"
+              ],
+              "explanation" : "Die Gegenpartei hat 28 Augen und ist Schneider. Mit zwei, Spiel drei, Schneider vier: 4 × 24 = 96.",
+              "id" : "vertieft-wert-05",
+              "prompt" : "Grand mit zwei, Skataufnahme, 92 Augen, gereizt 72. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "36",
+                "48",
+                "24"
+              ],
+              "explanation" : "Bei genau 90 Augen bleiben der Gegenpartei 30, also Schneider. Mit einem, Spiel zwei, Schneider drei: 36.",
+              "id" : "vertieft-wert-06",
+              "prompt" : "Kreuz mit einem, Skataufnahme, 90 Augen, gereizt 24. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "22",
+                "33",
+                "11"
+              ],
+              "explanation" : "31 Augen der Gegenpartei sind nicht Schneider. Mit einem, Spiel zwei: 22. Die Grenze liegt bei höchstens 30 Augen.",
+              "id" : "vertieft-wert-07",
+              "prompt" : "Pik mit einem, Skataufnahme, 89 Augen, gereizt 22. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "60",
+                "70",
+                "50"
+              ],
+              "explanation" : "Mit zwei, Spiel drei, Hand vier, Schneider fünf, angesagt sechs: 60. Die Ansage zählt zusätzlich zum erreichten Schneider.",
+              "id" : "vertieft-wert-08",
+              "prompt" : "Herz mit zwei, Hand, Schneider angesagt und mit 93 Augen erreicht, gereizt 50. Die Spitzen sind einschließlich Skat geklärt. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "45",
+                "54",
+                "36"
+              ],
+              "explanation" : "Mit einem, Spiel zwei, Hand drei, Schneider vier, Schwarz fünf: 45. Schwarz setzt keinen gegnerischen Stich voraus.",
+              "id" : "vertieft-wert-09",
+              "prompt" : "Karo mit einem, Hand, ohne Ansage alle zehn Stiche gewonnen, gereizt 27. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "264",
+                "288",
+                "240"
+              ],
+              "explanation" : "Mit vieren, Spiel fünf, Hand sechs, Schneider sieben, angesagt acht, Schwarz neun, angesagt zehn, ouvert elf: 264. Grand ouvert verlangt alle Stiche.",
+              "id" : "vertieft-wert-10",
+              "prompt" : "Grand mit vieren, ouvert regelgerecht gewonnen, gereizt 120. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-72",
+                "-96",
+                "-60"
+              ],
+              "explanation" : "Das einfache Spiel ist 36 wert. Ein Verlust wird doppelt abgeschrieben: -72, nicht nur -36.",
+              "id" : "vertieft-wert-11",
+              "prompt" : "Kreuz mit zwei, Skataufnahme, 58 Augen, gereizt 36. Keine Partei ist Schneider. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-44",
+                "-66",
+                "-33"
+              ],
+              "explanation" : "60 Augen reichen dem Alleinspieler nicht. Mit einem, Spiel zwei ergibt 22, doppelt verloren also -44.",
+              "id" : "vertieft-wert-12",
+              "prompt" : "Pik mit einem, Skataufnahme, 60 Augen, gereizt 22. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-80",
+                "-100",
+                "-70"
+              ],
+              "explanation" : "Der Alleinspieler ist selbst Schneider. Ohne zwei, Spiel drei, Schneider vier: 40. Der verlorene Wert wird auf -80 verdoppelt.",
+              "id" : "vertieft-wert-13",
+              "prompt" : "Herz ohne zwei, Skataufnahme, nur 29 Augen, gereizt 30. Die Spitzen sind geklärt. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-240",
+                "-288",
+                "-216"
+              ],
+              "explanation" : "Die verpflichtende Schneideransage ist verfehlt. Mit einem, Spiel zwei, Hand drei, Schneider vier, angesagt fünf: 120, doppelt verloren -240.",
+              "id" : "vertieft-wert-14",
+              "prompt" : "Grand mit einem, Hand, Schneider angesagt, aber nur 89 Augen erreicht, gereizt 72. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-72",
+                "-96",
+                "-60"
+              ],
+              "explanation" : "Der erreichte Wert 24 deckt 30 nicht. Das kleinste ausreichende Vielfache von 12 ist 36, doppelt abgeschrieben -72. Die Augen heilen das Überreizen nicht.",
+              "id" : "vertieft-wert-15",
+              "prompt" : "Kreuz mit einem, Skataufnahme, 80 Augen, gereizt 30. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-88",
+                "-110",
+                "-77"
+              ],
+              "explanation" : "22 ist zu wenig. 33 deckt den Reizwert 35 ebenfalls nicht, also wird 44 angesetzt und doppelt verloren: -88.",
+              "id" : "vertieft-wert-16",
+              "prompt" : "Pik mit einem, Skataufnahme, 75 Augen, gereizt 35. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-80",
+                "-100",
+                "-70"
+              ],
+              "explanation" : "Das Spiel erreicht nur 20. Das kleinste Herz-Vielfache ab 36 ist 40, deshalb -80.",
+              "id" : "vertieft-wert-17",
+              "prompt" : "Herz mit einem, Skataufnahme, 70 Augen, gereizt 36. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-54",
+                "-72",
+                "-45"
+              ],
+              "explanation" : "Der einfache Wert ist 18. Das kleinste ausreichende Karo-Vielfache ist 27. Überreizt und doppelt verloren ergibt -54.",
+              "id" : "vertieft-wert-18",
+              "prompt" : "Karo mit einem, Skataufnahme, 77 Augen, gereizt 23. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-144",
+                "-192",
+                "-120"
+              ],
+              "explanation" : "48 deckt 50 nicht. Das nächste Grand-Vielfache ist 72. Doppelte Abschreibung: -144.",
+              "id" : "vertieft-wert-19",
+              "prompt" : "Grand mit einem, Skataufnahme, 81 Augen, gereizt 50. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-72",
+                "-90",
+                "-63"
+              ],
+              "explanation" : "Der Skat zählt auch beim Handspiel für Spitzen. Nun mit einem, Spiel zwei, Hand drei = 27. 36 wird nicht erreicht, das passende Vielfache 36 wird doppelt abgeschrieben.",
+              "id" : "vertieft-wert-20",
+              "prompt" : "Karo-Hand: Du hieltest ohne drei und reiztest 36. Im unberührten Skat liegt der Kreuz-Bube, aber nicht der Pik-Bube. Du erreichst 80 Augen. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "36",
+                "45",
+                "27"
+              ],
+              "explanation" : "Mit einem, Spiel zwei, Hand drei, tatsächlich Schneider vier: 36. Der erreichte Schneider deckt diesmal den Reizwert.",
+              "id" : "vertieft-wert-21",
+              "prompt" : "Karo-Hand wie zuvor: Kreuz-Bube im Skat, Pik-Bube fehlt. Gereizt 36, diesmal 92 Augen. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "72",
+                "84",
+                "60"
+              ],
+              "explanation" : "Die Spitzenfolge endet nicht bei den Buben: Mit fünf, Spiel sechs = 72. Das fehlende Kreuz-Zehn unterbricht die Folge nach dem Ass.",
+              "id" : "vertieft-wert-22",
+              "prompt" : "Kreuz mit vier Buben und Kreuz-Ass, aber ohne Kreuz-Zehn, Skataufnahme, 76 Augen, gereizt 60. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "70",
+                "80",
+                "60"
+              ],
+              "explanation" : "Sechs lückenlose Spitzentrümpfe ergeben mit sechs, Spiel sieben: 70. Die Folge endet vor dem fehlenden Herz-König.",
+              "id" : "vertieft-wert-23",
+              "prompt" : "Herz mit allen vier Buben sowie Herz-Ass und Herz-Zehn, ohne Herz-König, Skataufnahme, 73 Augen, gereizt 60. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "120",
+                "144",
+                "96"
+              ],
+              "explanation" : "Im Grand sind nur die Buben Trumpf. Ohne vier, Spiel fünf: 120. Ein Ass verlängert hier keine Spitzenfolge.",
+              "id" : "vertieft-wert-24",
+              "prompt" : "Grand ohne vier Buben in Hand und Skat, Skataufnahme, 67 Augen, gereizt 96. Welcher Listenwert gilt nach internationaler Skatordnung (ohne Turnierbonus)?",
+              "tiles" : [
+
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "24 Rechnungen mit Hand, Ansagen und Überreizen",
+          "title" : "Spielwert sicher rechnen"
+        },
+        {
+          "id" : "master-rules",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Alleinspieler, Null verloren",
+                "Du mit Kreuz-Acht",
+                "Partner mit Kreuz-Sieben"
+              ],
+              "explanation" : "Alle bedienen Kreuz. Neun ist höher als Acht und Sieben. Der Alleinspieler erhält einen Stich und verliert unabhängig von Augen.",
+              "id" : "vertieft-null-01",
+              "prompt" : "Null ouvert, nur noch ein Stich. Alleinspieler spielt Kreuz-Neun, du bist Mittelhand mit Kreuz-Acht, Partner hat nur Kreuz-Sieben. Wer gewinnt den Stich?",
+              "tiles" : [
+                "C9",
+                "C8",
+                "C7"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Neun gewinnt, Null verloren",
+                "Pik-Ass gewinnt",
+                "Kreuz-Acht gewinnt"
+              ],
+              "explanation" : "Die Neun muss bedienen und schlägt die Acht. Ein fremdes Ass ist im Null kein Trumpf und kann den Kreuzstich nicht übernehmen.",
+              "id" : "vertieft-null-02",
+              "prompt" : "Null ouvert. Du spielst Kreuz-Acht, der Alleinspieler in Mittelhand hat als einzige Kreuzkarte Kreuz-Neun. Partner ist kreuzfrei und hat Pik-Ass. Was passiert in diesem Stich?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Ja, Herz-Dame gewinnt",
+                "Nein, Herz-Bube ist Trumpf",
+                "Nein, Herz-Zehn ist höher als Dame"
+              ],
+              "explanation" : "Im Null lautet die Folge Zehn, Bube, Dame, König, Ass aufsteigend. Die Dame übernimmt den Buben. Der Alleinspieler bleibt stichlos.",
+              "id" : "vertieft-null-03",
+              "prompt" : "Null ouvert, letzter Stich. Partner spielt Herz-Zehn, Alleinspieler Herz-Bube, du Herz-Dame. Bleibt Null in diesem Stich erhalten?",
+              "tiles" : [
+                "H10",
+                "H11",
+                "H12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Pik-Neun",
+                "Pik-Bube",
+                "Beide"
+              ],
+              "explanation" : "Die Neun bleibt unter der Zehn, sodass der Alleinspieler gewinnt. Der Bube würde im Null über der Zehn stehen und ihn retten.",
+              "id" : "vertieft-null-04",
+              "prompt" : "Null ouvert. Partner spielt Pik-Sieben, Alleinspieler Pik-Zehn. Du hast Pik-Neun und Pik-Bube. Welche Zugabe zwingt den Alleinspieler in diesen Stich?",
+              "tiles" : [
+                "S9",
+                "S11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Bube",
+                "Karo-König",
+                "Keine"
+              ],
+              "explanation" : "Bube liegt unter Dame; König liegt darüber. Den König zugeben würde den Alleinspieler retten, der Bube lässt die Dame den Stich erhalten.",
+              "id" : "vertieft-null-05",
+              "prompt" : "Null ouvert, Hinterhand. Partner spielt Karo-Acht, Alleinspieler Karo-Dame. Deine Resthand: Karo-Bube und Karo-König. Welche Karte lässt den Alleinspieler gewinnen?",
+              "tiles" : [
+                "D11",
+                "D13"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, die Kreuz-Acht gewinnt",
+                "Ja, jedes Ass verliert Null",
+                "Ja, Herz-Ass ist Trumpf"
+              ],
+              "explanation" : "Eine fremde Farbe kann im Null nicht stechen. Hohe Karten sind beim legalen Abwurf ungefährlich. Entscheidend ist, wer den Stich gewinnt.",
+              "id" : "vertieft-null-06",
+              "prompt" : "Null ouvert. Alleinspieler ist kreuzfrei und wirft Herz-Ass auf Kreuz-Sieben und Kreuz-Acht ab. Verliert er allein wegen des Asses?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, Partner muss mit Ass übernehmen",
+                "Ja, Partner darf passen",
+                "Ja, Partner darf das Ass verstecken"
+              ],
+              "explanation" : "Der Partner hat nur das Ass und muss es spielen. Es übernimmt die Acht. Im vollständigen letzten Stich ist der Angriff damit widerlegt.",
+              "id" : "vertieft-null-07",
+              "prompt" : "Null ouvert, letzter Stich. Du spielst Karo-Sieben, Alleinspieler hat Karo-Acht, Partner Karo-Ass. Könnt ihr den Alleinspieler zwingen?",
+              "tiles" : [
+                "D7",
+                "D8",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Zehn",
+                "Kreuz-Dame",
+                "Beide"
+              ],
+              "explanation" : "Im Null liegt die Zehn unter dem Buben, die Dame darüber. Mit der Zehn bleibt der Bube beim Gegner; mit der Dame würdest du gewinnen.",
+              "id" : "vertieft-null-08",
+              "prompt" : "Null ouvert. Du bist Alleinspieler in Hinterhand. Vor dir liegen Kreuz-Neun und Kreuz-Bube. Du hast Kreuz-Zehn und Kreuz-Dame. Welche Zugabe vermeidet einen eigenen Stich?",
+              "tiles" : [
+                "C10",
+                "C12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Karo-Bube",
+                "Karo-König",
+                "Keine Karte"
+              ],
+              "explanation" : "Die Dame ist höher als dein Bube, aber niedriger als dein König. Du musst Karo bedienen und wählst den Buben.",
+              "id" : "vertieft-null-09",
+              "prompt" : "Null ouvert. Du bist Alleinspieler in Hinterhand. Karo-Zehn und Karo-Dame liegen im Stich. Du hältst Karo-Bube und Karo-König. Was hält dich stichlos?",
+              "tiles" : [
+                "D11",
+                "D13"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Beide",
+                "Nur Herz-Acht",
+                "Nur Herz-König"
+              ],
+              "explanation" : "Das Ass steht im Null über beiden. Beide bedienen und bleiben unter dem Ass. Die kleinste Karte ist nicht automatisch die einzige sichere Zugabe.",
+              "id" : "vertieft-null-10",
+              "prompt" : "Null ouvert. Du bist Alleinspieler in Hinterhand. Herz-Ass und Herz-Sieben liegen im Stich. Du hast Herz-König und Herz-Acht. Welche legalen Karten vermeiden den eigenen Stich?",
+              "tiles" : [
+                "H13",
+                "H8"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, er kann Kreuz-Acht legen",
+                "Ja, jede Kreuzkarte gewinnt",
+                "Ja, weil die Dame sichtbar ist"
+              ],
+              "explanation" : "Mit der Acht übernimmt später die Neun des Partners. Die offene Dame allein garantiert keinen sofortigen Zwang; die niedrige Deckkarte schützt diesen Stich.",
+              "id" : "vertieft-null-11",
+              "prompt" : "Null ouvert. Du spielst Kreuz-Sieben an. Alleinspieler in Mittelhand hält Kreuz-Acht und Kreuz-Dame. Partner hat ausschließlich Kreuz-Neun in dieser Farbe. Ist ein eigener Stich des Alleinspielers sofort erzwungen?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Acht",
+                "Kreuz-Dame",
+                "Beide gewinnen für euch"
+              ],
+              "explanation" : "Die Acht bleibt unter der erzwungenen Zehn des Alleinspielers. Die Dame würde den Stich selbst übernehmen und Null retten.",
+              "id" : "vertieft-null-12",
+              "prompt" : "Null ouvert. Du spielst Kreuz-Neun. Alleinspieler in Mittelhand hat nur Kreuz-Zehn. Partner kann Kreuz-Acht oder Kreuz-Dame bedienen. Was muss Partner legen, um Null zu schlagen?",
+              "tiles" : [
+                "C8",
+                "C12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Der feste Nullwert 23 deckt 24 nicht",
+                "Null verlangt mindestens 61 Augen",
+                "Jeder Bube im Skat verliert Null"
+              ],
+              "explanation" : "Die Nullansage ist durch 24 nicht mehr gedeckt. Nach ISkO 3.6.2 wird ein nicht mehr durchführbares Null als verlorenes Farb- oder Grandspiel unter Berücksichtigung von Reizhöhe und Spitzen gewertet, nicht pauschal als -46.",
+              "id" : "vertieft-null-13",
+              "prompt" : "Du hast 24 gehalten, den Skat aufgenommen und willst einfaches Null ansagen. Warum kann stichloses Spielen diesen Plan nicht retten?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "+35",
+                "+46",
+                "+23"
+              ],
+              "explanation" : "Null-Hand hat den festen Wert 35. Keine Spitzen- oder Schneiderstufe wird addiert. Der Reizwert ist genau gedeckt.",
+              "id" : "vertieft-null-14",
+              "prompt" : "Null-Hand, gereizt 35. Der Alleinspieler bleibt stichlos. Welcher Listenwert gilt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "-92",
+                "0",
+                "-46"
+              ],
+              "explanation" : "Jeder eigene Stich verliert Null, auch drei kleine Karten ohne Augen. Der feste Wert 46 wird doppelt abgeschrieben.",
+              "id" : "vertieft-null-15",
+              "prompt" : "Null ouvert mit Skataufnahme, gereizt 46. Der Alleinspieler erhält einen Stich mit null Augen. Welcher Listenwert gilt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "+59",
+                "+118",
+                "+69"
+              ],
+              "explanation" : "Null ouvert Hand zählt fest 59. Das offene Handspiel bekommt keine zusätzlichen Spitzen oder Augenstufen.",
+              "id" : "vertieft-null-16",
+              "prompt" : "Null ouvert Hand, gereizt 59. Der Alleinspieler bleibt stichlos. Welche Wertung gilt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Null ouvert Hand für 59",
+                "Einfaches Null-Hand für 35",
+                "Einfaches Null für 23"
+              ],
+              "explanation" : "36 liegt über 35. Null ouvert Hand hat fest 59, setzt aber offene Karten voraus. Die Wertdeckung allein beweist noch nicht, dass dein Blatt diese offene Variante gewinnt.",
+              "id" : "vertieft-null-17",
+              "prompt" : "Du hast 36 gehalten, den Skat nicht angesehen und planst Null-Hand. Welche Nullvariante kann diesen Reizwert noch decken, wenn du weiterhin nicht aufnehmen willst?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, nach Aufnahme maximal 46",
+                "Ja, Null ouvert Hand zählt 59",
+                "Ja, Null ouvert zählt 48"
+              ],
+              "explanation" : "Nach Skataufnahme sind Handspiele unzulässig. Null ouvert zählt 46 und reicht nicht. Es bleibt die Prüfung eines ausreichend wertvollen Farb- oder Grandspiels, keine nachträgliche Handansage.",
+              "id" : "vertieft-null-18",
+              "prompt" : "Du hast 48 gehalten und den Skat aufgenommen. Deckt irgendeine zulässige Nullvariante diesen Reizwert noch?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nur Herz-Acht",
+                "Nur Kreuz-Bube",
+                "Beide"
+              ],
+              "explanation" : "Im Null ist der Bube eine Kreuzkarte, kein Trumpf. Mit Herz auf der Hand musst du Herz bedienen. Die niedrige Acht ist hier dennoch höher als die angespielte Sieben.",
+              "id" : "vertieft-null-19",
+              "prompt" : "Null ouvert. Du hältst nur Kreuz-Bube und Herz-Acht. Herz-Sieben ist angespielt. Welche Karte ist legal?",
+              "tiles" : [
+                "C11",
+                "H8"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Pik-Acht",
+                "Pik-Zehn",
+                "Beide"
+              ],
+              "explanation" : "Die Acht lässt die Neun beim Alleinspieler. Die Zehn würde den Stich übernehmen. Auch eine augenlose Neun kann den entscheidenden Nullverlust verursachen.",
+              "id" : "vertieft-null-20",
+              "prompt" : "Null ouvert. Du spielst Pik-Sieben, Alleinspieler legt Pik-Neun. Partner hält Pik-Acht und Pik-Zehn. Welche Karte beendet Null zu euren Gunsten?",
+              "tiles" : [
+                "S8",
+                "S10"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "20 konkrete Fälle zu Zwangsstichen und Reizgrenzen",
+          "title" : "Null: Angriff und Rettung"
+        },
+        {
+          "id" : "master-endgames",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Ja, genau 61",
+                "Nein, nur 60",
+                "Nein, das Ass zählt zehn"
+              ],
+              "explanation" : "Das Ass bringt elf, die kleinen Karten null. 50 + 11 = 61 gewinnt. Der Skat wurde schon mitgezählt und darf nicht noch einmal addiert werden.",
+              "id" : "vertieft-ende-01",
+              "prompt" : "Grand, letzter Stich. Du bist Alleinspieler mit 50 Augen einschließlich Skat. Du spielst Herz-Ass, Gegner geben Herz-Sieben und Herz-Acht. Reicht das bei gedecktem Reizwert?",
+              "tiles" : [
+                "H14",
+                "H7",
+                "H8"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Verloren mit 60 Augen",
+                "Gewonnen mit 61 Augen",
+                "Unentschieden"
+              ],
+              "explanation" : "49 + 11 = 60 reicht dem Alleinspieler nicht. Die Gegenpartei hat die anderen 60 und gewinnt.",
+              "id" : "vertieft-ende-02",
+              "prompt" : "Grand, letzter Stich. Du hast 49 Augen einschließlich Skat und gewinnst Karo-Ass, Karo-Sieben, Karo-Acht. Was ist das Ergebnis?",
+              "tiles" : [
+                "D14",
+                "D7",
+                "D8"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Gegenpartei, Pik-Sieben sticht",
+                "Du, Kreuz-Ass ist am höchsten",
+                "Du, weil 66 Augen reichen"
+              ],
+              "explanation" : "Pik ist Trumpf. Die kleine Pik-Sieben schlägt beide Kreuzkarten und nimmt 21 Augen mit. Deine 45 bleiben unverändert.",
+              "id" : "vertieft-ende-03",
+              "prompt" : "Pikspiel, letzter Stich. Du hast 45 Augen einschließlich Skat. Du spielst Kreuz-Ass, Gegner geben Kreuz-Zehn und Pik-Sieben. Wer gewinnt?",
+              "tiles" : [
+                "C14",
+                "C10",
+                "S7"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "67",
+                "65",
+                "46"
+              ],
+              "explanation" : "Karo-Bube ist Trumpf und gewinnt 11 + 10 + 2 = 23 Augen. 44 + 23 = 67. Ein höherer Bube kann im bereits vollständigen Stich nicht mehr auftauchen.",
+              "id" : "vertieft-ende-04",
+              "prompt" : "Grand, letzter Stich. Du hast 44 Augen einschließlich Skat. Herz-Ass, Herz-Zehn und dein Karo-Bube liegen in dieser Reihenfolge. Wie viele Augen hast du danach?",
+              "tiles" : [
+                "H14",
+                "H10",
+                "D11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Gewonnen mit 61",
+                "Verloren mit 58",
+                "Gewonnen mit 65"
+              ],
+              "explanation" : "Die Zehn steht im Grand über König und Dame. Der Stich bringt 10 + 4 + 3 = 17 Augen, also 61. Nicht mit der Null-Reihenfolge verwechseln.",
+              "id" : "vertieft-ende-05",
+              "prompt" : "Grand, letzter Stich. Du bist Alleinspieler und spielst Herz-Zehn. Gegner legen Herz-König und Herz-Dame. Du hattest 44 Augen inklusive Skat. Wie endet es bei gedecktem Reizwert?",
+              "tiles" : [
+                "H10",
+                "H13",
+                "H12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Ja, 61 einschließlich Skat",
+                "Nein, 58",
+                "Nein, der Skat zählt nur bei Hand"
+              ],
+              "explanation" : "Die gedrückte Dame zählt drei, die Sieben null. 58 + 3 = 61. Der Skat gehört bei Farbe und Grand zu den Augen des Alleinspielers.",
+              "id" : "vertieft-ende-06",
+              "prompt" : "Herzspiel. Vor dem letzten Stich hast du 58 Stichaugen, noch ohne den verdeckten Skat. Du verlierst den letzten Stich. Im Skat liegen Kreuz-Dame und Karo-Sieben. Ist die Augenbedingung erfüllt?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, insgesamt 60",
+                "Ja, Hand gewinnt mit 60",
+                "Ja, insgesamt 61"
+              ],
+              "explanation" : "Auch bei Hand zählen die Skataugen. 56 + 4 = 60 reicht trotzdem nicht. Hand erhöht den Spielwert, nicht die Gewinnschwelle.",
+              "id" : "vertieft-ende-07",
+              "prompt" : "Grand-Hand. Du hast 56 Stichaugen und verlierst den letzten Stich. Im bis dahin unbekannten Skat liegen Herz-König und Karo-Sieben. Reicht das?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Bube",
+                "Karo-Ass",
+                "Keines"
+              ],
+              "explanation" : "Der Bube zieht beide letzten gegnerischen Trümpfe. Danach läuft Karo-Ass gegen die fremden Seitenkarten. Mit Karo-Ass zuerst könnten die karofreien Gegner stattdessen stechen.",
+              "id" : "vertieft-ende-08",
+              "prompt" : "Kreuzspiel, letzte zwei Stiche, vollständige Restkarten. Du hast Kreuz-Bube und Karo-Ass. Linker Gegner Kreuz-Sieben und Herz-Zehn, rechter Kreuz-Acht und Pik-König. Du spielst aus. Welches Ausspiel sichert beide Stiche?",
+              "tiles" : [
+                "C11",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Bube zuerst",
+                "Herz-Ass zuerst",
+                "Beides sicher"
+              ],
+              "explanation" : "Trumpf ausspielen zwingt beide gegnerischen Buben in einen Stich. Danach ist Herz-Ass sicher. Auf Herz-Ass können die herzfreien Gegner stattdessen ihre Buben einsetzen.",
+              "id" : "vertieft-ende-09",
+              "prompt" : "Grand, letzte zwei Stiche, vollständige Restkarten. Du hast Kreuz-Bube und Herz-Ass. Linker Gegner Pik-Bube und Pik-Zehn, rechter Herz-Bube und Karo-König. Du spielst aus. Was sichert alle Restaugen?",
+              "tiles" : [
+                "C11",
+                "H14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Herz-Ass, dann Karo-Ass",
+                "Karo-Ass, dann Herz-Ass",
+                "Keine Reihenfolge"
+              ],
+              "explanation" : "Herz-Ass zieht die zwei fremden Resttrümpfe. Erst danach ist dein Seitenass sicher. Beim ersten Karo-Ausspiel könnten die karofreien Gegner stechen.",
+              "id" : "vertieft-ende-10",
+              "prompt" : "Herzspiel, letzte zwei Stiche. Du hast Herz-Ass und Karo-Ass. Linker Gegner Herz-Zehn und Pik-König, rechter Herz-König und Kreuz-Zehn. Du spielst aus. Welche Reihenfolge sichert beide Stiche?",
+              "tiles" : [
+                "H14",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, Kreuz-Bube verhindert das",
+                "Ja, Pik-Bube zieht alles",
+                "Ja, Karo-Ass zieht den Buben"
+              ],
+              "explanation" : "Der höhere Kreuz-Bube bleibt ein sicherer gegnerischer Trumpf. Ein Seitenass kann gestochen werden, dein Pik-Bube wird überstochen. Beide Reststiche sind nicht erzwingbar.",
+              "id" : "vertieft-ende-11",
+              "prompt" : "Grand, letzte zwei Stiche. Du hast Pik-Bube und Karo-Ass. Linker Gegner Kreuz-Bube und Karo-Sieben, rechter Karo-Zehn und Karo-König. Du spielst aus. Kannst du gegen beste Abwehr beide Stiche erzwingen?",
+              "tiles" : [
+                "S11",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Linker Gegner",
+                "Du",
+                "Rechter Gegner"
+              ],
+              "explanation" : "Zwei Buben zählen je zwei, das Ass elf. Kreuz-Bube schlägt Pik-Bube; die Gegenpartei bekommt den vollständigen Stich.",
+              "id" : "vertieft-ende-12",
+              "prompt" : "Grand, letzter Stich. Du spielst Pik-Bube, linker Gegner Kreuz-Bube, rechter Karo-Ass. Wer bekommt die 15 Augen?",
+              "tiles" : [
+                "S11",
+                "C11",
+                "D14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Jeder Bube steht über Farbtrümpfen",
+                "Herz ist stärker als Kreuz",
+                "Er zählt die meisten Augen"
+              ],
+              "explanation" : "Die Buben bilden die höchste Trumpfgruppe. Das Ass und die Zehn sind ebenfalls Trumpf, stehen aber unter jedem Buben. Der Stich enthält 23 Augen.",
+              "id" : "vertieft-ende-13",
+              "prompt" : "Kreuzspiel, letzter Stich. Kreuz-Ass, Kreuz-Zehn und Herz-Bube liegen in dieser Reihenfolge. Warum gewinnt der Herz-Bube?",
+              "tiles" : [
+                "C14",
+                "C10",
+                "H11"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "28",
+                "21",
+                "18"
+              ],
+              "explanation" : "Alle müssen beide Male Kreuz bedienen. Ass und Zehn gewinnen beide Stiche: 11 + 10 + 4 + 3 = 28. Die kleinen Karten bringen null.",
+              "id" : "vertieft-ende-14",
+              "prompt" : "Grand, letzte zwei Stiche. Du hast Kreuz-Ass und Kreuz-Zehn. Linker Gegner Kreuz-König und Kreuz-Dame, rechter Kreuz-Neun und Kreuz-Acht. Keine Buben mehr im Spiel. Du spielst aus. Wie viele Augen sind dir sicher?",
+              "tiles" : [
+                "C14",
+                "C10"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, Herz-Ass muss einen gewinnen",
+                "Ja, Zehn steht über Ass",
+                "Ja, König zieht das Ass unter"
+              ],
+              "explanation" : "Das Ass ist die höchste Seitenkarte. Da alle nur Herz halten, bleibt ein gegnerischer Assstich unvermeidbar. Zehn steht über König, nicht über Ass.",
+              "id" : "vertieft-ende-15",
+              "prompt" : "Grand, letzte zwei Stiche. Du hast Herz-Zehn und Herz-König. Linker Gegner Herz-Ass und Herz-Sieben, rechter Herz-Dame und Herz-Acht. Keine Buben mehr. Du spielst aus. Können beide Reststiche dir gehören?",
+              "tiles" : [
+                "H10",
+                "H13"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, beide eigenen Trümpfe stehen",
+                "Ja, Pik-Zehn schlägt Pik-Ass",
+                "Ja, Pik-Dame schlägt Kreuz-Bube"
+              ],
+              "explanation" : "Beide deiner Karten sind höher als jede gegnerische Restkarte. In zwei reinen Trumpfstichen gewinnst du unabhängig von deren Zugaben.",
+              "id" : "vertieft-ende-16",
+              "prompt" : "Pikspiel, letzte zwei Stiche. Du hältst Kreuz-Bube und Pik-Ass. Linker Gegner Pik-Zehn und Pik-König, rechter Pik-Dame und Pik-Neun. Du spielst aus. Können Gegner noch einen Stich gewinnen?",
+              "tiles" : [
+                "C11",
+                "S14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, Ansage verfehlt",
+                "Ja, mehr als 60",
+                "Ja, Hand genügt"
+              ],
+              "explanation" : "Eine angekündigte Gewinnstufe ist verpflichtend. 31 gegnerische Augen verfehlen Schneider. Ein niedriger Reizwert rettet die verfehlte Ansage nicht.",
+              "id" : "vertieft-ende-17",
+              "prompt" : "Herz-Hand, Schneider angesagt. Nach allen Stichen und Skat hast du 89 Augen. Der Reizwert wäre schon ohne Schneider gedeckt. Gewonnen?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Schneider, nicht Schwarz",
+                "Schwarz",
+                "Keine"
+              ],
+              "explanation" : "Schwarz verlangt, dass die Gegenpartei keinen einzigen Stich bekommt. Ein Nullaugenstich verhindert Schwarz, selbst bei 120 Augen des Alleinspielers.",
+              "id" : "vertieft-ende-18",
+              "prompt" : "Grand, Skataufnahme. Du erreichst 120 Augen, die Gegner haben aber einen Stich aus drei kleinen Karten gemacht. Welche zusätzliche Gewinnstufe ist erreicht?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Nein, überreizt",
+                "Ja, 61 Augen genügen immer",
+                "Unentschieden"
+              ],
+              "explanation" : "Augenbedingung und Reizdeckung müssen beide erfüllt sein. 18 deckt 20 nicht. Für die Abschreibung gilt mindestens 27 als passendes Karo-Vielfaches, doppelt also -54.",
+              "id" : "vertieft-ende-19",
+              "prompt" : "Karo, Skataufnahme. Du hast 61 Augen einschließlich Skat erreicht, aber der Spielwert ist 18 und du hast 20 gehalten. Gewonnen?",
+              "tiles" : [
+
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Kreuz-Bube",
+                "Karo-Sieben",
+                "Keine"
+              ],
+              "explanation" : "Der Bube sticht 23 Augen: 40 + 23 = 63. Ein Abwurf lässt die 21 Augen bei der Gegenpartei. Du brauchst keine Vermutung über den letzten Stich.",
+              "id" : "vertieft-ende-20",
+              "prompt" : "Grand, letzte zwei Stiche, du bist Alleinspieler in Hinterhand. Linker Gegner spielt Herz-Ass, rechter Herz-Zehn. Deine Resthand Kreuz-Bube und Karo-Sieben, du bist herzfrei. Du hattest 40 Augen inklusive Skat. Welche Zugabe sichert den Sieg sofort?",
+              "tiles" : [
+                "C11",
+                "D7"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "20 Endspiele mit Restkarten und Augenbilanz",
+          "title" : "Die letzten Stiche"
+        },
+        {
+          "id" : "master-three-tricks",
+          "isPlus" : false,
+          "items" : [
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "10 Kreuz",
+                "König Pik",
+                "Ass Pik"
+              ],
+              "explanation" : "Kreuz-Zehn zuerst erzwingt mindestens 21 Restaugen, also 61 insgesamt. Du gibst einen Seitenstich ab, ohne die Trumpfgabel Ass/König früh aufzulösen. Zum Beispiel nimmt der rechte Gegner mit Kreuz-Ass; auf Herz-Zehn stichst du dann mit Pik-Ass. Ein Trumpfausspiel erlaubt den Gegnern dagegen, deine Restbeute auf 15 Augen zu begrenzen.",
+              "id" : "vertieft-plan-01",
+              "prompt" : "Pikspiel, noch drei Stiche. Du bist Alleinspieler und spielst aus. 40 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: 10 Kreuz, König Pik, Ass Pik.\nLinks: 10 Pik, 8 Herz, 9 Pik.\nRechts: 10 Herz, Ass Kreuz, König Karo.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "C10",
+                "S13",
+                "S14"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "Ass Pik",
+                "Dame Herz",
+                "Dame Pik"
+              ],
+              "explanation" : "Pik-Ass sofort sichert mindestens 21 Augen: Beide Gegner müssen Pik bedienen. Bei Herz-Dame zuerst kann Kreuz-Ass stechen, danach greift die Gegenpartei deine Pikstruktur an. Du darfst das sichere Ass nicht auf einen späteren Übergang verschieben. Ass-Ausspiel ergibt mindestens 61, die anderen Ausspiele höchstens 53 beziehungsweise 40 gegen beste Abwehr.",
+              "id" : "vertieft-plan-02",
+              "prompt" : "Kreuzspiel, noch drei Stiche. Du bist Alleinspieler und spielst aus. 40 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: Ass Pik, Dame Herz, Dame Pik.\nLinks: König Pik, 9 Pik, Dame Karo.\nRechts: 10 Pik, König Karo, Ass Kreuz.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "S14",
+                "H12",
+                "S12"
+              ]
+            },
+            {
+              "answerIndex" : 2,
+              "choices" : [
+                "Ass Pik",
+                "8 Pik",
+                "8 Karo"
+              ],
+              "explanation" : "Karo-Acht zuerst gibt das Ausspiel kontrolliert ab. Der rechte Gegner muss Karo-Ass auf Karo-Zehn legen und anschließend in deine Trumpfstruktur oder mit einer abwerfbaren Karo-Karte zurückspielen. So erzwingst du mindestens 25 Augen. Mit einem Trumpf zuerst bleibt dir gegen beste Abwehr nur eine Beute von 14; 36 + 25 gewinnt genau.",
+              "id" : "vertieft-plan-03",
+              "prompt" : "Pikspiel, noch drei Stiche. Du bist Alleinspieler und spielst aus. 36 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: Ass Pik, 8 Pik, 8 Karo.\nLinks: 10 Karo, Dame Herz, Ass Herz.\nRechts: 9 Pik, Ass Karo, 7 Pik.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "S14",
+                "S8",
+                "D8"
+              ]
+            },
+            {
+              "answerIndex" : 1,
+              "choices" : [
+                "Ass Herz",
+                "9 Pik",
+                "Dame Kreuz"
+              ],
+              "explanation" : "Pik-Neun opfert den Trumpfstich, zieht aber beide fremden Trümpfe. Dadurch wird Herz-Ass gegen Herz-König sicher und liefert mindestens 15 Restaugen. Ein frühes Seitenass kann vom herzfreien linken Gegner gestochen werden. Bei Herz-Ass oder Kreuz-Dame zuerst können die Gegner deine Beute auf vier Augen begrenzen.",
+              "id" : "vertieft-plan-04",
+              "prompt" : "Pikspiel, noch drei Stiche. Du bist Alleinspieler und spielst aus. 46 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: Ass Herz, 9 Pik, Dame Kreuz.\nLinks: 7 Kreuz, 9 Karo, 7 Pik.\nRechts: König Karo, 10 Pik, König Herz.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "H14",
+                "S9",
+                "C12"
+              ]
+            },
+            {
+              "answerIndex" : 2,
+              "choices" : [
+                "Bube Kreuz",
+                "Dame Herz",
+                "Dame Karo"
+              ],
+              "explanation" : "Karo-Dame zuerst schafft den nötigen Übergang: Selbst wenn Pik-Bube übernimmt, bleibt Kreuz-Bube für einen späteren Augenstich erhalten. Eine optimale Abwehrlinie ist Pik-Bube, Karo-Acht; dann Kreuz-Zehn, Kreuz-Ass, dein Kreuz-Bube für 23 Augen. Auch andere legale Abwehrlinien lassen mindestens 23 zu. Den höchsten Buben sofort zu ziehen garantiert dagegen nur 18.",
+              "id" : "vertieft-plan-05",
+              "prompt" : "Karospiel, noch drei Stiche. Du bist Alleinspieler und spielst aus. 38 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: Bube Kreuz, Dame Herz, Dame Karo.\nLinks: 7 Karo, 10 Kreuz, Bube Pik.\nRechts: Dame Pik, 8 Karo, Ass Kreuz.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "C11",
+                "H12",
+                "D12"
+              ]
+            },
+            {
+              "answerIndex" : 0,
+              "choices" : [
+                "10 Kreuz",
+                "Bube Herz",
+                "7 Karo"
+              ],
+              "explanation" : "Kreuz-Zehn zuerst bietet Augen an, während du Herz-Bube zurückhältst. Übernimmt Pik-Bube, kann die Gegenpartei zwar einen Karostich holen, muss aber später in deinen verbliebenen Buben spielen. Mindestens 15 Augen bleiben sicher. Auf Herz-Bube oder Karo-Sieben zuerst kann die Gegenpartei hingegen sämtliche Restaugen behalten.",
+              "id" : "vertieft-plan-06",
+              "prompt" : "Grand, noch drei Stiche. Du bist Alleinspieler und spielst aus. 46 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: 10 Kreuz, Bube Herz, 7 Karo.\nLinks: 10 Karo, Ass Karo, Bube Pik.\nRechts: 7 Kreuz, Dame Pik, 9 Karo.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "C10",
+                "H11",
+                "D7"
+              ]
+            },
+            {
+              "answerIndex" : 2,
+              "choices" : [
+                "8 Herz",
+                "König Kreuz",
+                "König Herz"
+              ],
+              "explanation" : "Herz-König zuerst hält das Ausspiel: Der linke Gegner muss Herz-Dame bedienen, der rechte ist trumpffrei. Danach gewinnst du mit Herz-Acht einen weiteren Seitenstich. Beide zusammen bringen gegen jede Abwehr mindestens 20 Augen. Herz-Acht zuerst gibt der Dame das Ausspiel, Kreuz-König läuft in Kreuz-Bube. Beide falschen Eröffnungen erlauben null eigene Restaugen.",
+              "id" : "vertieft-plan-07",
+              "prompt" : "Kreuzspiel, noch drei Stiche. Du bist Alleinspieler und spielst aus. 41 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: 8 Herz, König Kreuz, König Herz.\nLinks: Bube Kreuz, Dame Herz, 7 Karo.\nRechts: Ass Karo, Dame Karo, 10 Pik.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "H8",
+                "C13",
+                "H13"
+              ]
+            },
+            {
+              "answerIndex" : 2,
+              "choices" : [
+                "8 Pik",
+                "Ass Pik",
+                "Dame Karo"
+              ],
+              "explanation" : "Karo-Dame zwingt beide gegnerischen Buben in einen Stich und macht später Pik-Ass nutzbar. Eine optimale Abwehrlinie ist Kreuz-Bube, Karo-Bube; danach Kreuz-Acht, Herz-Ass, Pik-Acht; zuletzt Pik-Dame, Herz-Dame, Pik-Ass für 17 Augen. Über alle legalen Abwehrlinien bleiben mindestens diese 17 sicher. Ein Pik-Ausspiel zuerst lässt die Gegenpartei alle Restaugen gewinnen.",
+              "id" : "vertieft-plan-08",
+              "prompt" : "Karospiel, noch drei Stiche. Du bist Alleinspieler und spielst aus. 44 Augen einschließlich Skat, Reizwert gedeckt. Alle Restkarten sind bekannt:\n\nDu: 8 Pik, Ass Pik, Dame Karo.\nLinks: Dame Pik, 8 Kreuz, Bube Kreuz.\nRechts: Bube Karo, Dame Herz, Ass Herz.\n\nWelches Ausspiel erzwingt gegen jede legale Abwehr mindestens 61 Augen?",
+              "tiles" : [
+                "S8",
+                "S14",
+                "D12"
+              ]
+            }
+          ],
+          "kind" : "quiz",
+          "subtitle" : "Acht vollständige Endspiele gegen optimale Abwehr",
+          "title" : "Drei Stiche voraus"
+        }
+      ],
+      "icon" : "crown.fill",
+      "id" : "pro-tables",
+      "isFree" : false,
+      "name" : "Der Meistertisch",
+      "tagline" : "Reizen, Spielwert und schwierige Endspiele"
+    }
+  ],
+  "whatsNew" : [
+    {
+      "headline" : "Mehr Tiefe am Kartentisch",
+      "items" : [
+        {
+          "body" : "Rechne Überreizen und Ansagen, plane die letzten Stiche und löse konkrete Gegenspiel- und Nullprobleme mit nachvollziehbaren Erklärungen.",
+          "icon" : "crown.fill",
+          "id" : "expert-situations",
+          "isPlus" : true,
+          "title" : "100 Aufgaben am Meistertisch"
+        },
+        {
+          "body" : "Übe Reizdeckung und Bedienpflicht an konkreten Beispielen in Karten & Reizen und Stichspiel.",
+          "icon" : "suit.club.fill",
+          "id" : "applied-practice",
+          "isPlus" : false,
+          "title" : "24 neue kostenlose Fälle"
+        },
+        {
+          "body" : "Jede Drückaufgabe nennt jetzt ihr Lehrziel. Vergleiche freie Farben, Trumpferhalt und sichere Skataugen statt eine unklare Musterlösung zu erraten.",
+          "icon" : "arrow.down.to.line.compact",
+          "id" : "clear-discard-goals",
+          "isPlus" : false,
+          "title" : "Drücken mit klarem Ziel"
+        }
+      ],
+      "version" : "1.2.3"
+    },
+    {
+      "headline" : "Ein besserer Rhythmus für den Skatabend",
+      "items" : [
+        {
+          "body" : "Löse täglich dieselben fünf Fragen wie alle anderen Mitglieder, teile dein Ergebnis und halte einen nachsichtigen Rhythmus von fünf Tagen pro Woche.",
+          "icon" : "calendar.badge.clock",
+          "id" : "skat-minute",
+          "isPlus" : true,
+          "title" : "Skat-Minute"
+        },
+        {
+          "body" : "Lege deinen üblichen Skatabend fest und bekomme rechtzeitig eine Fünf-Minuten-Runde aus deinen Fehlern und deinem schwächsten Raum.",
+          "icon" : "person.2.fill",
+          "id" : "game-night-prep",
+          "isPlus" : true,
+          "title" : "Skatabend-Vorbereitung"
+        }
+      ],
+      "version" : "1.2.0"
+    },
+    {
+      "headline" : "Skat lernen, eine Runde nach der anderen",
+      "items" : [
+        {
+          "body" : "Baue Sicherheit auf mit Karten, Spielarten, Drücken und Stichspiel.",
+          "icon" : "rectangle.grid.2x2.fill",
+          "id" : "rooms",
+          "isPlus" : false,
+          "title" : "Vier freie Übungsräume"
+        },
+        {
+          "body" : "Jede Antwort zeigt die Regel, die Beobachtung und den Grund für die Entscheidung.",
+          "icon" : "lightbulb.fill",
+          "id" : "coaching",
+          "isPlus" : false,
+          "title" : "Erklärungen, die bleiben"
+        },
+        {
+          "body" : "Serien, Fehler und eine tägliche Kurzrunde halten das Wichtige griffbereit.",
+          "icon" : "chart.bar.fill",
+          "id" : "progress",
+          "isPlus" : false,
+          "title" : "Übung mit Gedächtnis"
+        }
+      ],
+      "version" : "1.0"
+    },
+    {
+      "headline" : "Üben ohne Ende",
+      "items" : [
+        {
+          "body" : "Frische Kartenmuster bei jeder Runde. Lies Trumpf, Grand, Null und sichere Stiche so lange du möchtest.",
+          "icon" : "infinity",
+          "id" : "endless",
+          "isPlus" : true,
+          "title" : "Endlos üben"
+        },
+        {
+          "body" : "Die App merkt sich unsichere Antworten und bringt sie nach und nach zurück.",
+          "icon" : "arrow.trianglehead.counterclockwise",
+          "id" : "review",
+          "isPlus" : true,
+          "title" : "Fehler wiederholen"
+        },
+        {
+          "body" : "90 Sekunden, so viele sichere Entscheidungen wie möglich, mit persönlicher Bestleistung.",
+          "icon" : "timer",
+          "id" : "challenge",
+          "isPlus" : true,
+          "title" : "Zeitprüfung"
+        },
+        {
+          "body" : "Genauigkeit pro Raum, schwächstes Thema und deine gesamte Übungszeit.",
+          "icon" : "chart.bar.fill",
+          "id" : "stats",
+          "isPlus" : false,
+          "title" : "Fortschritt im Detail"
+        },
+        {
+          "body" : "Neue Originalfragen zu Karten, Spielarten, Drücken, Stichspiel und Meistertisch.",
+          "icon" : "plus.rectangle.on.folder.fill",
+          "id" : "content",
+          "isPlus" : false,
+          "title" : "Mehr Übungen in jedem Raum"
+        }
+      ],
+      "version" : "1.1"
+    }
+  ]
+}
