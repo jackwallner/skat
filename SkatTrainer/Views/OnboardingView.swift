@@ -385,7 +385,7 @@ struct OnboardingView: View {
         subscriptions.isPro ? "" : PaywallPricing.priceText(subscriptions, onboardingPlan)
     }
 
-    /// One concise line, matching the approved fleet pattern (StatScout): trial
+    /// One concise line, matching the approved fleet pattern: trial
     /// length, price, that it renews, how to cancel. The EULA behind the Terms
     /// link carries the full legalese; this is the point-of-purchase micro copy.
     ///

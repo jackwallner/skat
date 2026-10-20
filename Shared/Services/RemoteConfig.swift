@@ -3,8 +3,7 @@ import Foundation
 import RevenueCat
 
 /// Everything RevenueCat can change without a release, read from the current
-/// offering's metadata (a running Experiment's variant included), the Vitals
-/// and Mahj pattern. Every variant ships in the binary; a missing or unknown
+/// offering's metadata (a running Experiment's variant included). Every variant ships in the binary; a missing or unknown
 /// value is the control, which is what the app shipped before this existed.
 /// Keys that a switch reads must be set the same on every offering, or an
 /// Experiment arm would flip them as a side effect.
@@ -49,8 +48,8 @@ enum RemoteSwitch: String, CaseIterable, Sendable {
     case attPrompt = "att_prompt"
     /// Apple's rating prompt after a good drill.
     case ratingPrompt = "rating_prompt"
-    /// The daily and monthly challenge. Nothing reads it yet: the challenge
-    /// lands in phase 2 and must gate its Home card and deep link on this.
+    /// A future remotely switchable feature (a challenge with its own Home card
+    /// and deep link). Nothing reads it yet; Skat-Minute is not behind it.
     case challenge = "challenge"
 }
 

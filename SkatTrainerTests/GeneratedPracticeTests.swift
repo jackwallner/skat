@@ -178,7 +178,7 @@ final class GeneratedPracticeTests: XCTestCase {
                 XCTAssertFalse(note.isEmpty)
                 XCTAssertFalse(note.contains("\u{2014}"))
                 if choice == .grand {
-                    XCTAssertTrue(note.contains(jacks == 1 ? "1 Buben" : "\(jacks) Buben"), note)
+                    XCTAssertTrue(note.contains(jacks == 1 ? "1 Bube" : "\(jacks) Buben"), note)
                 }
             }
         }

@@ -45,7 +45,7 @@ final class SkatMinuteStore: ObservableObject {
         }
     }
 
-    func result(for day: Date, calendar: Calendar = .current) -> SkatMinuteResult? {
+    func result(for day: Date, calendar: Calendar = .gregorianLocal) -> SkatMinuteResult? {
         results[SkatMinuteContent.key(for: day, calendar: calendar)]
     }
 

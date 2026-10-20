@@ -257,8 +257,8 @@ struct FeatureTourView: View {
                 }
             }
             // The same three modes the paywall leads with. Extra sets and the
-            // Der Meistertisch wird im Seitentext erklärt, damit die Startseite
-            // have to say everything.
+            // Meistertisch are explained in the page text, so this card does
+            // not have to say everything.
             ForEach(["Endlos üben, immer neue Muster", "Fehler wiederholen bringt Fehler zurück", "Zeitprüfung, 90 Sekunden"], id: \.self) { line in
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Image(systemName: locked ? "sparkles" : "checkmark.circle.fill")

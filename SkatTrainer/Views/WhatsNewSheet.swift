@@ -18,9 +18,9 @@ struct WhatsNewSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.dynamicTypeSize) private var typeSize
 
-    /// Phase 2: filter out a line whose feature is switched off remotely
-    /// (`RemoteSwitch.challenge`), so the sheet never announces something Home
-    /// no longer shows.
+    /// The place to filter out a line whose feature is switched off remotely
+    /// (see `RemoteSwitch`), so the sheet never announces something Home no
+    /// longer shows. Nothing is switchable yet.
     private var items: [WhatsNewItem] { release.items }
 
     private var lockedItems: [WhatsNewItem] {

@@ -141,4 +141,12 @@ final class FeedbackServiceTests: XCTestCase {
         }
         XCTAssertEqual(service.pendingCount, 20)
     }
+
+    /// VoiceOver loses the Senden button when the result replaces the form, so
+    /// every outcome has its own spoken line.
+    func testEveryOutcomeHasAGermanAnnouncement() {
+        let lines = [FeedbackService.Outcome.sent, .queued, .failed].map { ReviewPromptSheet.announcement($0) }
+        XCTAssertEqual(Set(lines).count, 3)
+        XCTAssertTrue(lines.allSatisfy { !$0.isEmpty && !$0.contains("\u{2014}") })
+    }
 }

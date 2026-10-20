@@ -8,11 +8,11 @@ import UIKit
 enum FeedbackKind: String, Codable, Sendable {
     /// Settings > Send Feedback.
     case general
-    /// The retired enjoyment funnel's "not really" branch. Nothing sends it
-    /// now; kept because the table still accepts it.
+    /// A retired "not really" branch of an enjoyment question. Nothing sends
+    /// it; kept because the shared table still accepts it.
     case notEnjoying = "not_enjoying"
-    /// The per-question report link, removed before 1.4.1 shipped. Nothing
-    /// sends it now; kept so reports queued on a TestFlight build still decode.
+    /// A per-question report link. Nothing sends it; kept because the shared
+    /// table still accepts it.
     case question
     /// The one question asked when a trial or membership is on its way out.
     case churn

@@ -153,8 +153,7 @@ final class AppSettings: ObservableObject {
     /// Generic on purpose. A repeating notification is static text, so any
     /// number in it goes stale for exactly the player who stops opening the
     /// app. Progress counts live on Home and Your Progress, where they are
-    /// always current. (Mahj's 1.4.0 baked a weekly count in and had to take
-    /// it back; Skat never shipped one.)
+    /// always current.
     static let dailyReminderBody = "Fünf Minuten Übung machen Drücken und Stichplanung sicherer."
     static let gameNightReminderBody = "Fünf persönliche Minuten jetzt, und der Tisch fühlt sich später ruhiger an."
 

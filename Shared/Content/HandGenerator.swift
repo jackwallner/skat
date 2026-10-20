@@ -207,7 +207,7 @@ enum HandGenerator {
         let jacks = jackCount(cards)
         let suitCount = maximumSuitCount(cards)
         let aces = ranks(cards).filter { $0 == 14 }.count
-        let jackText = jacks == 1 ? "1 Buben" : "\(jacks) Buben"
+        let jackText = jacks == 1 ? "1 Bube" : "\(jacks) Buben"
         switch picked {
         case .grand:
             return "Für Grand braucht das Muster mindestens drei Buben. Hier sind es \(jackText)."

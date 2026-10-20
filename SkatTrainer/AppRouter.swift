@@ -6,7 +6,7 @@ enum AppDestination: Hashable {
     case gameNightPrepSession
 
     /// Free destinations open for everyone; the rest wait behind the paywall.
-    /// Phase 2's challenge is the first free one.
+    /// None is free yet.
     var isFree: Bool { false }
 }
 

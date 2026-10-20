@@ -153,7 +153,9 @@ enum PracticeGenerators {
                     ? "Du hältst den Kreuz-Buben, daher gilt „mit“, nicht „ohne“."
                     : "Dir fehlt der Kreuz-Bube, daher gilt „ohne“, nicht „mit“."
             }
-            return "Zähle die Buben von oben (Kreuz, Pik, Herz, Karo) bis zur ersten Lücke. Das sind \(truth.count), nicht \(option.count)."
+            return truth.mit
+                ? "Zähle die Buben, die du hältst, von oben (Kreuz, Pik, Herz, Karo) bis zur ersten Lücke. Das sind \(truth.count), nicht \(option.count)."
+                : "Zähle die Buben, die dir fehlen, von oben (Kreuz, Pik, Herz, Karo) bis zum ersten, den du hältst. Das sind \(truth.count), nicht \(option.count)."
         }
         return QuickItem(
             id: PracticeSkill.spitzen.itemPrefix + UUID().uuidString,
