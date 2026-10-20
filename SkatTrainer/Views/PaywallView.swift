@@ -4,8 +4,9 @@ import RevenueCat
 enum PaywallPlan: String, CaseIterable {
     case yearly, lifetime, monthly
 
-    var ctaTitle: String {
-        self == .lifetime ? "\(Membership.name) dauerhaft freischalten" : "7-Tage-Test starten"
+    /// `trialTitle` is the subscription plans' button (`TrialCTA`).
+    func ctaTitle(trialTitle: String = TrialCTA.sevenDay.title(.paywall)) -> String {
+        self == .lifetime ? "\(Membership.name) dauerhaft freischalten" : trialTitle
     }
 }
 
@@ -65,6 +66,11 @@ struct PaywallContent: View {
     }
 
     private var planCards: some View {
+        // Yearly, then monthly, then lifetime. Monthly sits DIRECTLY under yearly
+        // on purpose: the yearly card's whole pitch is a discount off the monthly
+        // price, and a discount only reads as one when the thing it's discounting
+        // is the next line down. Lifetime is a different decision (own it vs rent
+        // it) and belongs after that comparison, not inside it.
         VStack(spacing: 10) {
             planCard(.yearly, title: "Jährlich", price: PaywallPricing.priceText(subscriptions, .yearly),
                      perMonth: PaywallPricing.perMonthEquivalent(subscriptions),
@@ -113,6 +119,10 @@ struct PaywallContent: View {
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(Theme.ink)
                     if let perMonth {
+                        // The struck-through monthly price beside the yearly
+                        // per-month figure is the discount, stated. Without it
+                        // the two cards are just two numbers and the bigger one
+                        // looks like the worse deal.
                         HStack(spacing: 5) {
                             if let anchor {
                                 Text(anchor)
@@ -138,6 +148,14 @@ struct PaywallContent: View {
             )
         }
         .buttonStyle(.plain)
+        // Selection was carried by a border colour and a fill alone, and the
+        // two subscription cards share a CTA title, so nothing told a VoiceOver
+        // user which plan the button at the bottom would actually buy.
+        .accessibilityLabel([title, badge, price, perMonth.map { "\($0), jährlich abgerechnet" }, detail]
+            .compactMap { $0 }
+            .joined(separator: ", "))
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+        .accessibilityHint(isSelected ? "Ausgewählter Tarif" : "Doppeltippen, um diesen Tarif zu wählen")
     }
 }
 
@@ -147,7 +165,8 @@ struct PaywallContent: View {
 /// to "$9.99 / Jahr" when RevenueCat had not loaded, and that is exactly what
 /// the reviewer was shown: a dollar amount, in a German-language app, that the
 /// German storefront would never charge. A price the store did not give us is
-/// worse than no price at all, so an unresolved product renders the loading
+/// worse than no price at all (3.1.2 wants the amount the customer will
+/// actually be charged), so an unresolved product renders the loading
 /// placeholder and the disclosure drops the amount rather than inventing one.
 @MainActor
 enum PaywallPricing {
@@ -171,6 +190,11 @@ enum PaywallPricing {
         price(subscriptions, plan) ?? placeholder
     }
 
+    /// Yearly billed amount restated per month, e.g. "2,50 € / Monat". Yearly is the
+    /// only plan this makes sense for; everything else returns nil.
+    ///
+    /// This is the line that keeps a yearly price legible next to the monthly
+    /// one. Without it a 4x sticker gap reads as a penalty instead of a saving.
     static func perMonthEquivalent(_ subscriptions: SubscriptionService) -> String? {
         guard let product = subscriptions.paywallPrice(for: .yearly) else { return nil }
         let monthly = product.amount / 12
@@ -181,11 +205,18 @@ enum PaywallPricing {
         return "\(text) / Monat"
     }
 
+    /// The monthly plan's own price restated as a per-month anchor, e.g.
+    /// "6,99 € / Monat". This is the number the yearly card is discounting; it is
+    /// struck through beside the yearly per-month figure.
     static func monthlyAnchor(_ subscriptions: SubscriptionService) -> String? {
         guard let product = subscriptions.paywallPrice(for: .monthly) else { return nil }
         return "\(product.localized) / Monat"
     }
 
+    /// Whole-percent saving of the yearly plan against twelve months of the
+    /// monthly plan. nil when either product is missing or the yearly plan is
+    /// not actually cheaper, so the badge can never claim a saving that isn't
+    /// there (PPP territories price the two plans independently).
     static func savingsPercent(_ subscriptions: SubscriptionService) -> Int? {
         guard let yearly = subscriptions.paywallPrice(for: .yearly),
               let monthly = subscriptions.paywallPrice(for: .monthly) else { return nil }
@@ -198,6 +229,9 @@ enum PaywallPricing {
         return percent > 0 ? percent : nil
     }
 
+    /// The yearly card's badge: the quantified saving when we can compute it,
+    /// otherwise the generic claim. "SPARE 64 %" outsells "BESTER WERT" because it
+    /// says what the value is.
     static func savingsBadge(_ subscriptions: SubscriptionService) -> String {
         guard let percent = savingsPercent(subscriptions) else { return "BESTER WERT" }
         return "SPARE \(percent) %"
@@ -210,7 +244,11 @@ enum PaywallPricing {
     /// trial is mentioned once, in caption type, under a price line set in
     /// display type.
     static func terms(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String {
-        guard let amount = price(subscriptions, plan) else {
+        terms(amount: price(subscriptions, plan), plan: plan)
+    }
+
+    static func terms(amount: String?, plan: PaywallPlan) -> String {
+        guard let amount else {
             switch plan {
             case .lifetime:
                 return "Einmalige Zahlung. Kein Abonnement, keine automatische Verlängerung."
@@ -237,46 +275,39 @@ struct PaywallView: View {
     @State private var selectedPlan: PaywallPlan = .yearly
     @State private var purchasing = false
     @State private var restoring = false
+    @State private var loadingPrices = false
+    /// Whether a price fetch has actually been tried yet. Without it the
+    /// "prices aren't available" line renders on the very first frame, before
+    /// `.task` has had a chance to ask, so a perfectly healthy cold open
+    /// flashes a connection error at the customer.
+    @State private var priceLoadAttempted = false
     @State private var message: String?
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 PaywallContent(selectedPlan: $selectedPlan)
                     .padding()
+                    .frame(maxWidth: 680)
+                    .frame(maxWidth: .infinity)
+                // At accessibility sizes a pinned footer covered most of the
+                // screen and clipped Restore, Terms and Privacy, so there it
+                // scrolls with the plans instead.
+                if dynamicTypeSize.isAccessibilitySize {
+                    purchaseFooter
+                        .padding()
+                        .frame(maxWidth: 680)
+                        .frame(maxWidth: .infinity)
+                }
             }
             .background(Theme.background)
             .safeAreaInset(edge: .bottom) {
-                VStack(spacing: 8) {
-                    // Billed amount, shown prominently at the point of purchase
-                    // (App Review 3.1.2(c)): the reviewer flagged that it wasn't
-                    // clearly and conspicuously displayed. It has to stay the
-                    // largest pricing element here, above the trial fine print.
-                    Text(PaywallPricing.priceText(subscriptions, selectedPlan))
-                        .font(Theme.display(26).weight(.bold))
-                        .foregroundStyle(Theme.ink)
-                    Text(PaywallPricing.terms(subscriptions, selectedPlan))
-                        .font(.caption)
-                        .foregroundStyle(Theme.inkSecondary)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Button {
-                        purchase()
-                    } label: {
-                        Group {
-                            if purchasing {
-                                ProgressView().tint(.white)
-                            } else {
-                                Text(selectedPlan.ctaTitle)
-                            }
-                        }
-                        .primaryCTA()
-                    }
-                    .disabled(purchasing)
-                    footerLinks
+                if !dynamicTypeSize.isAccessibilitySize {
+                    purchaseFooter
+                        .padding()
+                        .background(.thinMaterial)
                 }
-                .padding()
-                .background(.thinMaterial)
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -297,15 +328,86 @@ struct PaywallView: View {
             }
             .task {
                 subscriptions.trackPaywallImpression(id: source)
-                await subscriptions.ensureOfferings()
+                if !priceReady { await loadPrices() }
             }
         }
     }
 
+    private var purchaseFooter: some View {
+        VStack(spacing: 8) {
+            if priceLoadAttempted && !priceReady && !loadingPrices {
+                Text("Preise sind gerade nicht verfügbar. Prüfe deine Verbindung und versuche es erneut.")
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkSecondary)
+                    .multilineTextAlignment(.center)
+                Button("Preise erneut laden") {
+                    Task { await loadPrices() }
+                }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(Theme.jade)
+            }
+            // Billed amount, shown prominently at the point of purchase
+            // (App Review 3.1.2(c)): the reviewer flagged that it wasn't
+            // clearly and conspicuously displayed. It has to stay the
+            // largest pricing element here, above the trial fine print.
+            if priceReady {
+                Text(PaywallPricing.priceText(subscriptions, selectedPlan))
+                    .font(Theme.display(26).weight(.bold))
+                    .foregroundStyle(Theme.ink)
+            }
+            Text(PaywallPricing.terms(subscriptions, selectedPlan))
+                .font(.caption)
+                .foregroundStyle(Theme.inkSecondary)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+            Button {
+                purchase()
+            } label: {
+                Group {
+                    if purchasing || loadingPrices || (!priceLoadAttempted && !priceReady) {
+                        ProgressView().tint(Theme.onFill)
+                    } else {
+                        Text(selectedPlan.ctaTitle(trialTitle: subscriptions.trialCTA(.paywall)))
+                    }
+                }
+                .primaryCTA()
+            }
+            // Dead until there is a price. Enabled over an unresolved
+            // product, this button ran a second offerings fetch and
+            // then showed a generic "products unavailable" alert, which
+            // reads as the app being broken rather than the store being
+            // slow.
+            .disabled(purchasing || restoring || !priceReady)
+            .opacity(priceReady ? 1 : 0.75)
+            .accessibilityHint(priceReady ? "" : "Wartet darauf, dass der App Store die Preise liefert")
+            footerLinks
+        }
+    }
+
+    /// Whether the selected plan has a real amount to charge. 3.1.2 wants the
+    /// purchase screen to state what the customer pays, so a plan we cannot
+    /// price is a plan we cannot sell.
+    private var priceReady: Bool {
+        PaywallPricing.price(subscriptions, selectedPlan) != nil
+    }
+
+    private func loadPrices() async {
+        guard !loadingPrices else { return }
+        loadingPrices = true
+        defer {
+            loadingPrices = false
+            priceLoadAttempted = true
+        }
+        await subscriptions.loadOfferings()
+    }
+
     private var footerLinks: some View {
-        HStack(spacing: 16) {
+        let layout = dynamicTypeSize.isAccessibilitySize
+            ? AnyLayout(VStackLayout(spacing: 10))
+            : AnyLayout(HStackLayout(spacing: 16))
+        return layout {
             Button("Wiederherstellen") { restore() }
-                .disabled(restoring)
+                .disabled(restoring || purchasing)
             Link("Nutzungsbedingungen", destination: PaywallLinks.terms)
             Link("Datenschutz", destination: PaywallLinks.privacy)
         }
@@ -319,6 +421,8 @@ struct PaywallView: View {
             defer { purchasing = false }
             do {
                 await subscriptions.ensureOfferings()
+                // A reinstalled member recovered just now: nothing to sell.
+                guard !subscriptions.isPro else { return }
                 let outcome = try await subscriptions.purchase(subscriptions.package(for: selectedPlan))
                 guard outcome == .purchased else { return }
                 Haptics.success()
