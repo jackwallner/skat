@@ -7,6 +7,7 @@ struct SkatTrainerApp: App {
     @StateObject private var progress = ProgressStore.shared
     @StateObject private var settings = AppSettings.shared
     @StateObject private var router = AppRouter.shared
+    @Environment(\.scenePhase) private var scenePhase
 
     init() {
         // Once per cold launch; the rating prompt waits for the second.
@@ -21,6 +22,10 @@ struct SkatTrainerApp: App {
                 .environmentObject(settings)
                 .environmentObject(router)
                 .preferredColorScheme(settings.appearance.colorScheme)
+                .onChange(of: scenePhase) { _, phase in
+                    guard phase == .active else { return }
+                    MetaAds.activateApp()
+                }
                 .onAppear {
                     subscriptions.start()
                     ConversionDiagnostics.recordAppOpen()
