@@ -23,12 +23,16 @@ struct SkatTrainerApp: App {
                 .environmentObject(router)
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .onChange(of: scenePhase) { _, phase in
+                    // iOS rarely cold-launches an app, so a report queued
+                    // offline also retries every time the app comes back.
                     guard phase == .active else { return }
+                    Task { await FeedbackService.shared.flushPending() }
                     MetaAds.activateApp()
                 }
                 .onAppear {
                     subscriptions.start()
                     ConversionDiagnostics.recordAppOpen()
+                    Task { await FeedbackService.shared.flushPending() }
                     #if DEBUG
                     if RevenueCatProbe.isEnabled {
                         // Same entry point the real paywall screens call, so

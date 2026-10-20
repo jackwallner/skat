@@ -52,7 +52,7 @@ struct DrillCompleteView: View {
             HStack(spacing: 6) {
                 Image(systemName: "flame.fill")
                     .foregroundStyle(Theme.coral)
-                Text("\(progress.streakCount) Tage am Stück")
+                Text("\(progress.currentStreak()) Tage am Stück")
                     .font(.headline)
                     .foregroundStyle(Theme.ink)
             }
@@ -80,16 +80,13 @@ struct DrillCompleteView: View {
             Haptics.success()
             SoundPlayer.play(.complete)
             progress.recordSession(drillID: drill.id)
-            recordPositiveMoment()
+            // The ask is for a good moment: half right or better (a deck has
+            // no score and always counts).
+            if score.map({ Double($0) / Double(max(total, 1)) >= 0.5 }) ?? true {
+                reviewMoment += 1
+            }
         }
         .requestsReview(after: reviewMoment)
-    }
-
-    /// A finished drill is a positive moment: Apple's rating prompt may follow
-    /// once the confetti has landed.
-    private func recordPositiveMoment() {
-        ReviewPromptTracker.recordPositiveMoment()
-        reviewMoment += 1
     }
 
     private var headline: String {

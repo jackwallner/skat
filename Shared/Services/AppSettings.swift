@@ -148,6 +148,16 @@ final class AppSettings: ObservableObject {
         ) ?? Date()
     }
 
+    // MARK: - Reminder copy
+
+    /// Generic on purpose. A repeating notification is static text, so any
+    /// number in it goes stale for exactly the player who stops opening the
+    /// app. Progress counts live on Home and Your Progress, where they are
+    /// always current. (Mahj's 1.4.0 baked a weekly count in and had to take
+    /// it back; Skat never shipped one.)
+    static let dailyReminderBody = "Fünf Minuten Übung machen Drücken und Stichplanung sicherer."
+    static let gameNightReminderBody = "Fünf persönliche Minuten jetzt, und der Tisch fühlt sich später ruhiger an."
+
     // MARK: - Daily reminder
 
     private func requestPermissionAndSchedule() {
@@ -169,7 +179,7 @@ final class AppSettings: ObservableObject {
 
         let content = UNMutableNotificationContent()
         content.title = "Zeit für eine kurze Runde"
-        content.body = "Fünf Minuten Übung machen Drücken und Stichplanung sicherer."
+        content.body = Self.dailyReminderBody
         content.sound = .default
 
         var parts = Calendar.current.dateComponents([.hour, .minute], from: reminderTime)
@@ -204,7 +214,7 @@ final class AppSettings: ObservableObject {
 
         let content = UNMutableNotificationContent()
         content.title = "Deine Skatabend-Vorbereitung steht bereit"
-        content.body = "Fünf persönliche Minuten jetzt, und der Tisch fühlt sich später ruhiger an."
+        content.body = Self.gameNightReminderBody
         content.sound = .default
         content.userInfo = [AppNotification.routeKey: AppNotification.gameNightPrepValue]
 

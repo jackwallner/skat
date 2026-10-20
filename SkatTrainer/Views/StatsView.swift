@@ -7,6 +7,7 @@ import SwiftUI
 struct StatsView: View {
     @EnvironmentObject private var progress: ProgressStore
     @StateObject private var records = PracticeRecordStore.shared
+    @StateObject private var ledger = MasteryLedger.shared
 
     @EnvironmentObject private var subscriptions: SubscriptionService
 
@@ -20,6 +21,9 @@ struct StatsView: View {
                     emptyState
                 } else {
                     summaryCard
+                    if let gain = ledger.weeklyGain() {
+                        weekCard(gain)
+                    }
                     if let weakest = records.weakestRoom(), roomStats.count > 1 {
                         weakSpotCard(weakest)
                     }
@@ -59,13 +63,44 @@ struct StatsView: View {
         .padding(.top, 12)
     }
 
+    /// The week in one sentence. The bars below say where you stand; this
+    /// says whether the practice is working, which is the question a player
+    /// in their first week is actually asking.
+    private func weekCard(_ gain: Int) -> some View {
+        let strongest = ledger.strongestRoom().flatMap { DrillLibrary.room(id: $0.roomID) }
+        return HStack(spacing: 12) {
+            Image(systemName: "arrow.up.right")
+                .font(.body.weight(.semibold))
+                .foregroundStyle(Theme.plum)
+                .frame(width: 38, height: 38)
+                .background(Theme.plum.opacity(0.13), in: Circle())
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Diese Woche \(gain) \(gain == 1 ? "Frage" : "Fragen") mehr gefestigt")
+                    .font(.headline)
+                    .foregroundStyle(Theme.ink)
+                Text(strongest.map { "Der größte Sprung: \($0.name). Bleib in dem Tempo, dann sitzt es." }
+                     ?? "Fragen, die du jetzt zweimal hintereinander richtig beantwortet hast.")
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(14)
+        .themedCard(corner: 16)
+    }
+
     private var summaryCard: some View {
         HStack(spacing: 0) {
             metric(value: percent(records.overallAccuracy), caption: "Genauigkeit", color: Theme.jade)
             divider
             metric(value: "\(records.totalAttempts)", caption: "Antworten", color: Theme.ink)
-            divider
-            metric(value: "\(records.bestChallengeScore)", caption: "Zeitprüfung", color: Theme.coral)
+            // A free player cannot reach the timed challenge, so a 0 here
+            // reads as a score they failed to earn.
+            if records.bestChallengeScore > 0 {
+                divider
+                metric(value: "\(records.bestChallengeScore)", caption: "Zeitprüfung", color: Theme.coral)
+            }
         }
         .padding(.vertical, 18)
         .frame(maxWidth: .infinity)
@@ -211,7 +246,7 @@ struct StatsView: View {
                 .frame(width: 38, height: 38)
                 .background(Theme.coral.opacity(0.13), in: Circle())
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(progress.streakCount) Tage am Stück")
+                Text("\(progress.currentStreak()) Tage am Stück")
                     .font(.headline)
                     .foregroundStyle(Theme.ink)
                 Text("\(progress.totalSessions) Übungen abgeschlossen")
