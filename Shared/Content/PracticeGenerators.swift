@@ -144,14 +144,14 @@ enum PracticeGenerators {
         let heldText = jacks.isEmpty ? "keinen Buben" : jacks.map(cardName).joined(separator: ", ")
         let runText = SkatRules.jackOrder.prefix(truth.count).map { "\($0.displayName)-Bube" }.joined(separator: ", ")
         let explanation = truth.mit
-            ? "Du hältst den Kreuz-Buben, also spielst du mit. Die Reihe Kreuz, Pik, Herz, Karo hält bei \(truth.count) Buben (\(runText)), also \"mit \(truth.count)\", Spiel \(truth.count + 1)."
-            : "Dir fehlt der Kreuz-Bube, also spielst du ohne. Es fehlen \(truth.count) Buben in Folge von oben (\(runText)), also \"ohne \(truth.count)\", Spiel \(truth.count + 1)."
+            ? "Du hältst den Kreuz-Buben, also spielst du mit. Die Reihe Kreuz, Pik, Herz, Karo hält bei \(truth.count) Buben (\(runText)), also „mit \(truth.count)“, Spiel \(truth.count + 1)."
+            : "Dir fehlt der Kreuz-Bube, also spielst du ohne. Es fehlen \(truth.count) Buben in Folge von oben (\(runText)), also „ohne \(truth.count)“, Spiel \(truth.count + 1)."
         let notes: [String?] = shuffled.map { option in
             if option.mit == truth.mit && option.count == truth.count { return nil }
             if option.mit != truth.mit {
                 return truth.mit
-                    ? "Du hältst den Kreuz-Buben, daher gilt \"mit\", nicht \"ohne\"."
-                    : "Dir fehlt der Kreuz-Bube, daher gilt \"ohne\", nicht \"mit\"."
+                    ? "Du hältst den Kreuz-Buben, daher gilt „mit“, nicht „ohne“."
+                    : "Dir fehlt der Kreuz-Bube, daher gilt „ohne“, nicht „mit“."
             }
             return "Zähle die Buben von oben (Kreuz, Pik, Herz, Karo) bis zur ersten Lücke. Das sind \(truth.count), nicht \(option.count)."
         }
