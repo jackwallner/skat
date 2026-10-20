@@ -30,6 +30,32 @@ enum WhatsNew {
 
     static let releases: [WhatsNewRelease] = [
         WhatsNewRelease(
+            version: "1.2.4",
+            headline: "Üben, bis es sitzt",
+            items: [
+                WhatsNewItem(
+                    id: "more-endless-skills",
+                    icon: "infinity",
+                    title: "Drei neue Endlos-Übungen",
+                    body: "Augen zählen, Stiche gewinnen in Farbspiel, Grand und Null, und Spitzen mit oder ohne. Jede Aufgabe wird frisch erzeugt.",
+                    isPlus: true
+                ),
+                WhatsNewItem(
+                    id: "why-not",
+                    icon: "questionmark.circle.fill",
+                    title: "Warum nicht?",
+                    body: "Nach einer falschen Antwort in Endlos üben erklärt eine Notiz, warum genau deine Wahl nicht passt.",
+                    isPlus: true
+                ),
+                WhatsNewItem(
+                    id: "mastery",
+                    icon: "checkmark.seal.fill",
+                    title: "Beherrschung pro Raum",
+                    body: "Jeder Raum zeigt, wie viele Fragen du zweimal hintereinander richtig hattest. Die Übersicht findest du unter Fortschritt."
+                ),
+            ]
+        ),
+        WhatsNewRelease(
             version: "1.2.3",
             headline: "Mehr Tiefe am Kartentisch",
             items: [

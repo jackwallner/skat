@@ -79,6 +79,10 @@ struct PracticeRunView: View {
 
     private var item: QuickItem { items[min(index, items.count - 1)] }
     private var answered: Bool { selection != nil }
+    private var missNote: String? {
+        guard let selection, selection != item.answerIndex, item.choiceNotes.indices.contains(selection) else { return nil }
+        return item.choiceNotes[selection]
+    }
     /// Endless and timed runs are scored out of what was actually attempted,
     /// not out of a deck size that does not exist.
     private var gradedTotal: Int { mode == .review ? items.count : attempted }
@@ -110,7 +114,8 @@ struct PracticeRunView: View {
                     tiles: item.tiles,
                     explanation: item.explanation,
                     answered: answered,
-                    eyebrow: item.sourceLabel.uppercased()
+                    eyebrow: item.sourceLabel.uppercased(),
+                    missNote: missNote
                 ) {
                     ChoiceList(labels: item.choices, selection: selection, answerIndex: item.answerIndex) { pick in
                         grade(pick)

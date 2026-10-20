@@ -13,6 +13,10 @@ struct QuickItem: Identifiable, Sendable {
     /// The persistence row this answer contributes to. Most authored items use
     /// their own id. Procedural daily items can share one bounded rollup row.
     let trackingID: String
+    /// Parallel to `choices`: why that choice is wrong, nil for the answer or
+    /// when no specific note exists. Must travel through any reordering of
+    /// `choices`, or a note explains someone else's wrong answer.
+    let choiceNotes: [String?]
     /// False for one-off generated prompts that can never be scheduled back
     /// into Fix My Mistakes.
     let isReviewable: Bool
@@ -27,6 +31,7 @@ struct QuickItem: Identifiable, Sendable {
         sourceLabel: String,
         roomID: String,
         trackingID: String? = nil,
+        choiceNotes: [String?] = [],
         isReviewable: Bool = true
     ) {
         self.id = id
@@ -38,6 +43,7 @@ struct QuickItem: Identifiable, Sendable {
         self.sourceLabel = sourceLabel
         self.roomID = roomID
         self.trackingID = trackingID ?? id
+        self.choiceNotes = choiceNotes
         self.isReviewable = isReviewable
     }
 }
@@ -122,7 +128,9 @@ enum SessionBuilder {
     }
 
     static func prepared(_ item: QuickItem) -> QuickItem {
+        let permutation = ChoiceShuffle.permutation(count: item.choices.count, seed: item.id)
         let shuffled = ChoiceShuffle.shuffledChoices(labels: item.choices, answerIndex: item.answerIndex, seed: item.id)
+        let notes = item.choiceNotes.count == item.choices.count ? permutation.map { item.choiceNotes[$0] } : []
         return QuickItem(
             id: item.id,
             prompt: item.prompt,
@@ -133,6 +141,7 @@ enum SessionBuilder {
             sourceLabel: item.sourceLabel,
             roomID: item.roomID,
             trackingID: item.trackingID,
+            choiceNotes: notes,
             isReviewable: item.isReviewable
         )
     }

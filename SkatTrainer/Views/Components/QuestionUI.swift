@@ -42,6 +42,8 @@ struct QuestionPager<Choices: View>: View {
     /// the question: pinned above it on an iPad, the eyebrow sat alone at the
     /// top with a hand's width of empty cream between it and the prompt.
     var eyebrow: String? = nil
+    /// Why the player's pick was wrong, shown only after a miss.
+    var missNote: String? = nil
     @ViewBuilder let choices: () -> Choices
 
     private var isDetailedPrompt: Bool { prompt.contains("\n") || prompt.count > 240 }
@@ -69,6 +71,20 @@ struct QuestionPager<Choices: View>: View {
                     CardHandView(tiles: tiles, tileWidth: 44)
                 }
                 choices()
+                if answered, let missNote {
+                    HStack(alignment: .top, spacing: 10) {
+                        Image(systemName: "questionmark.circle.fill")
+                            .foregroundStyle(Theme.coral)
+                        Text(missNote)
+                            .font(.subheadline)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Theme.coral.opacity(0.10), in: RoundedRectangle(cornerRadius: 14))
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("Warum nicht: \(missNote)")
+                }
                 if answered {
                     HStack(alignment: .top, spacing: 10) {
                         Image(systemName: "lightbulb.fill")

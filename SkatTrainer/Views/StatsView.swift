@@ -8,7 +8,10 @@ struct StatsView: View {
     @EnvironmentObject private var progress: ProgressStore
     @StateObject private var records = PracticeRecordStore.shared
 
+    @EnvironmentObject private var subscriptions: SubscriptionService
+
     private var roomStats: [PracticeRecordStore.RoomStat] { records.roomStats() }
+    private var masteryRows: [RoomMastery] { records.masteryByRoom(isMember: subscriptions.isPro) }
 
     var body: some View {
         ScrollView {
@@ -20,6 +23,7 @@ struct StatsView: View {
                     if let weakest = records.weakestRoom(), roomStats.count > 1 {
                         weakSpotCard(weakest)
                     }
+                    masteryCard
                     roomBreakdown
                 }
                 streakCard
@@ -109,6 +113,51 @@ struct StatsView: View {
         }
         .padding(14)
         .themedCard(corner: 16)
+    }
+
+    private var masteryCard: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("BEHERRSCHUNG")
+                .font(.caption.weight(.heavy))
+                .kerning(1.4)
+                .foregroundStyle(Theme.inkSecondary)
+            ForEach(masteryRows) { row in
+                if let room = DrillLibrary.room(id: row.roomID), row.total > 0 {
+                    HStack(spacing: 12) {
+                        Image(systemName: row.level.icon)
+                            .foregroundStyle(row.level == .untouched ? Theme.inkTertiary : Theme.jade)
+                            .frame(width: 24)
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(room.name)
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(Theme.ink)
+                            Text("\(row.known) von \(row.total) gefestigt")
+                                .font(.caption)
+                                .foregroundStyle(Theme.inkSecondary)
+                        }
+                        Spacer(minLength: 8)
+                        Text(row.level.title)
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(Theme.jade)
+                    }
+                    .accessibilityElement(children: .combine)
+                }
+            }
+            if let next = records.roomToWorkOn(isMember: subscriptions.isPro),
+               let room = DrillLibrary.room(id: next.roomID) {
+                Text("\(room.name): \(next.level.nextStep)")
+                    .font(.caption)
+                    .foregroundStyle(Theme.inkSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Text("Eine Frage gilt als gefestigt, wenn du sie zweimal hintereinander richtig beantwortet hast.")
+                .font(.caption2)
+                .foregroundStyle(Theme.inkTertiary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .themedCard()
     }
 
     private var roomBreakdown: some View {

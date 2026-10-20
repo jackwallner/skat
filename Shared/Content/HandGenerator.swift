@@ -66,7 +66,59 @@ enum HandGenerator {
         let explanation: String
     }
 
+    private static let fullDeck: [PlayingCard] = Suit.allCases.flatMap { suit in
+        PlayingCard.skatRanks.map { PlayingCard.standard(rank: $0, suit: suit) }
+    }
+
+    /// Open-ended deals for unseeded practice. The legacy deals above give
+    /// Null and Stich a single hand each, which made Endless repeat itself.
+    /// Rejection sampling keeps every hand inside the same `fits` rules.
+    private static func variedDeal<R: RandomNumberGenerator>(
+        _ target: HandCategory,
+        using generator: inout R
+    ) -> [PlayingCard]? {
+        switch target {
+        case .nullspiel, .stich:
+            for _ in 0..<400 {
+                let cards = Array(fullDeck.shuffled(using: &generator).prefix(5))
+                if category(for: cards) == target { return cards }
+            }
+            return nil
+        case .farbe:
+            let suit = Suit.allCases.randomElement(using: &generator) ?? .hearts
+            let plain = PlayingCard.skatRanks.filter { $0 != 11 }
+            let size = Int.random(in: 4...5, using: &generator)
+            var cards = plain.shuffled(using: &generator).prefix(size).map { PlayingCard.standard(rank: $0, suit: suit) }
+            if size == 4 {
+                let other = fullDeck.filter { $0.suit != suit && !$0.isJack }.randomElement(using: &generator)
+                cards += other.map { [$0] } ?? []
+            }
+            return cards
+        case .trumpf:
+            let suit = Suit.allCases.randomElement(using: &generator) ?? .hearts
+            let jacks = SkatRules.jackOrder.shuffled(using: &generator).prefix(2).map { PlayingCard.standard(rank: 11, suit: $0) }
+            let plain = PlayingCard.skatRanks.filter { $0 != 11 }.shuffled(using: &generator).prefix(3)
+            return jacks + plain.map { PlayingCard.standard(rank: $0, suit: suit) }
+        case .grand:
+            let extra = fullDeck.filter { !$0.isJack }.randomElement(using: &generator)
+            return SkatRules.jackOrder.map { PlayingCard.standard(rank: 11, suit: $0) } + (extra.map { [$0] } ?? [])
+        default:
+            return nil
+        }
+    }
+
     private static func deal<R: RandomNumberGenerator>(
+        _ target: HandCategory,
+        varied: Bool,
+        using generator: inout R
+    ) -> [PlayingCard]? {
+        if varied, let cards = variedDeal(target, using: &generator), category(for: cards) == target {
+            return cards
+        }
+        return legacyDeal(target, using: &generator)
+    }
+
+    private static func legacyDeal<R: RandomNumberGenerator>(
         _ target: HandCategory,
         using generator: inout R
     ) -> [PlayingCard]? {
@@ -97,7 +149,7 @@ enum HandGenerator {
 
     static func hand(for target: HandCategory, attempts: Int = 120) -> GeneratedHand? {
         var generator = SystemRandomNumberGenerator()
-        return hand(for: target, attempts: attempts, using: &generator)
+        return hand(for: target, attempts: attempts, varied: true, using: &generator)
     }
 
     /// The seeded variant. A dated challenge has to deal the SAME original hand
@@ -106,10 +158,11 @@ enum HandGenerator {
     static func hand<R: RandomNumberGenerator>(
         for target: HandCategory,
         attempts: Int = 120,
+        varied: Bool = false,
         using generator: inout R
     ) -> GeneratedHand? {
         for _ in 0..<attempts {
-            guard let cards = deal(target, using: &generator), category(for: cards) == target else { continue }
+            guard let cards = deal(target, varied: varied, using: &generator), category(for: cards) == target else { continue }
             let distractors = generatableCategories
                 .filter { $0 != target && !fits(cards, $0) }
                 .shuffled(using: &generator)
@@ -127,7 +180,7 @@ enum HandGenerator {
 
     static func batch(count: Int) -> [GeneratedHand] {
         var generator = SystemRandomNumberGenerator()
-        return batch(count: count, using: &generator)
+        return batch(count: count, varied: true, using: &generator)
     }
 
     /// A reproducible batch for a dated shared challenge. The same app build
@@ -140,11 +193,42 @@ enum HandGenerator {
 
     private static func batch<R: RandomNumberGenerator>(
         count: Int,
+        varied: Bool = false,
         using generator: inout R
     ) -> [GeneratedHand] {
         var targets: [HandCategory] = []
         while targets.count < count { targets += generatableCategories.shuffled(using: &generator) }
-        return targets.prefix(count).compactMap { hand(for: $0, using: &generator) }.shuffled(using: &generator)
+        return targets.prefix(count).compactMap { hand(for: $0, varied: varied, using: &generator) }.shuffled(using: &generator)
+    }
+
+    /// Why a wrong read does not fit this hand, naming the actual counts so the
+    /// note teaches the rule rather than restating the answer.
+    static func missNote(for cards: [PlayingCard], picked: HandCategory) -> String {
+        let jacks = jackCount(cards)
+        let suitCount = maximumSuitCount(cards)
+        let aces = ranks(cards).filter { $0 == 14 }.count
+        let jackText = jacks == 1 ? "1 Buben" : "\(jacks) Buben"
+        switch picked {
+        case .grand:
+            return "Für Grand braucht das Muster mindestens drei Buben. Hier sind es \(jackText)."
+        case .trumpf:
+            if jacks != 2 { return "Das Trumpfmuster hat genau zwei Buben. Hier sind es \(jackText)." }
+            return "Das Trumpfmuster braucht mindestens drei Karten einer Farbe. Die längste Farbe hat hier \(suitCount)."
+        case .farbe:
+            if jacks > 0 { return "Das Farbmuster hat keinen Buben, denn Buben sind eigene Trümpfe. Hier sind es \(jackText)." }
+            return "Das Farbmuster braucht mindestens vier Karten einer Farbe. Die längste Farbe hat hier \(suitCount)."
+        case .nullspiel:
+            if jacks > 0 { return "Das Nullmuster hat keinen Buben. Hier sind es \(jackText)." }
+            if ranks(cards).contains(where: { $0 > 10 }) { return "Das Nullmuster hat nur Karten bis zur Zehn. Hier liegt eine höhere Karte." }
+            return "Das Nullmuster verteilt sich auf mehrere Farben, höchstens drei pro Farbe. Hier sind es \(suitCount)."
+        case .stich:
+            if aces < 2 { return "Das Stichmuster braucht mindestens zwei Asse. Hier \(aces == 1 ? "liegt eines" : "liegt keines")." }
+            if jacks >= 3 { return "Mit drei oder mehr Buben liest du zuerst Grand, nicht Stich." }
+            if suitCount >= 4 { return "Vier Karten einer Farbe lesen sich zuerst als Farbmuster, nicht als Stichmuster." }
+            return "Zwei Buben und mehrere Karten einer Farbe lesen sich zuerst als Trumpfmuster."
+        default:
+            return picked.howToSpot
+        }
     }
 
     static func explain(_ cards: [PlayingCard], answer: HandCategory) -> String {

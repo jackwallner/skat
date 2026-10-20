@@ -5,6 +5,9 @@ import Foundation
 enum PracticeSkill: String, CaseIterable, Identifiable, Sendable {
     case handReading
     case trickPlay
+    case counting
+    case trickWinner
+    case spitzen
 
     var id: String { rawValue }
 
@@ -12,6 +15,9 @@ enum PracticeSkill: String, CaseIterable, Identifiable, Sendable {
         switch self {
         case .handReading: return "Handmuster lesen"
         case .trickPlay: return "Stichspiel üben"
+        case .counting: return "Augen zählen"
+        case .trickWinner: return "Wer sticht?"
+        case .spitzen: return "Spitzen zählen"
         }
     }
 
@@ -19,6 +25,9 @@ enum PracticeSkill: String, CaseIterable, Identifiable, Sendable {
         switch self {
         case .handReading: return "Frische Kartenmuster, unbegrenzt"
         case .trickPlay: return "Bedienpflicht und Stichentscheidung"
+        case .counting: return "Zähle Karte für Karte, wie am Tisch"
+        case .trickWinner: return "Trumpf, Farbe und Null im Dreierstich"
+        case .spitzen: return "Mit oder ohne, Spiel eins bis fünf"
         }
     }
 
@@ -26,13 +35,18 @@ enum PracticeSkill: String, CaseIterable, Identifiable, Sendable {
         switch self {
         case .handReading: return "rectangle.portrait.on.rectangle.portrait.angled"
         case .trickPlay: return "arrow.up.right.circle.fill"
+        case .counting: return "plus.forwardslash.minus"
+        case .trickWinner: return "rosette"
+        case .spitzen: return "crown.fill"
         }
     }
 
     var roomID: String {
         switch self {
         case .handReading: return "scoring-room"
-        case .trickPlay: return "pegging-room"
+        case .trickPlay, .trickWinner: return "pegging-room"
+        case .counting: return "card-room"
+        case .spitzen: return "scoring-room"
         }
     }
 
@@ -59,6 +73,9 @@ enum EndlessPractice {
         switch skill {
         case .handReading: return handItems(count: count)
         case .trickPlay: return trickItems(count: count)
+        case .counting: return generated(count) { PracticeGenerators.countingItem(using: &$0) }
+        case .trickWinner: return generated(count) { PracticeGenerators.trickItem(using: &$0) }
+        case .spitzen: return generated(count) { PracticeGenerators.spitzenItem(using: &$0) }
         }
     }
 
@@ -66,6 +83,11 @@ enum EndlessPractice {
         let skills = PracticeSkill.allCases
         let perSkill = max(1, count / skills.count + 1)
         return skills.flatMap { items(for: $0, count: perSkill) }.shuffled().prefix(count).map { $0 }
+    }
+
+    private static func generated(_ count: Int, _ make: (inout SystemRandomNumberGenerator) -> QuickItem) -> [QuickItem] {
+        var generator = SystemRandomNumberGenerator()
+        return (0..<count).map { _ in make(&generator) }
     }
 
     private static func handItems(count: Int) -> [QuickItem] {
@@ -80,7 +102,9 @@ enum EndlessPractice {
                 answerIndex: answerIndex,
                 explanation: hand.explanation,
                 sourceLabel: "Endlos üben",
-                roomID: PracticeSkill.handReading.roomID
+                roomID: PracticeSkill.handReading.roomID,
+                choiceNotes: hand.choices.map { $0 == hand.answer ? nil : HandGenerator.missNote(for: hand.tiles, picked: $0) },
+                isReviewable: false
             )
         }
     }
@@ -121,9 +145,18 @@ enum EndlessPractice {
                 answerIndex: answerIndex,
                 explanation: explanation,
                 sourceLabel: "Endlos üben",
-                roomID: PracticeSkill.trickPlay.roomID
+                roomID: PracticeSkill.trickPlay.roomID,
+                choiceNotes: choices.indices.map { $0 == answerIndex ? nil : trickMissNote(follows: follows, lead: lead, card: card) },
+                isReviewable: false
             ))
         }
         return items
+    }
+
+    private static func trickMissNote(follows: Bool, lead: Suit, card: PlayingCard) -> String {
+        if follows {
+            return "Du hältst \(card.spokenName) und kannst \(lead.displayName) bedienen. Dann darfst du keine andere Farbe wählen."
+        }
+        return "Du hältst keine \(lead.displayName)-Karte, also gibt es nichts zu bedienen. Du darfst jede Karte spielen."
     }
 }
