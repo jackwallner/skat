@@ -24,11 +24,24 @@ mit zwei empfohlenen Karten, vermeide Gedankenstriche in sichtbaren Texten
 und bewahre die Trennung zwischen kostenlos und Skat+.
 
 Bewertungen: keine eigene Bewertungsfrage (App Review 5.6.1). Eine abgeschlossene
-Übung oder Skat Minute zählt als positiver Moment; `requestsReview(after:)` ruft
-etwa 3 s später Apples Systemdialog auf, wenn nichts darüber liegt. Bedingungen:
-zweiter Kaltstart, Onboarding fertig, 30 Tage Abstand. Nur die Einstellungszeile
-„Skat Trainer bewerten“ (Bewertungsseite für App-Store-ID 6796913722) beendet
-die Anfragen; „Feedback senden“ öffnet `FeedbackSheet` und beendet sie nie.
+Übung oder Skat Minute mit mindestens der Hälfte richtig ruft etwa 3 s später
+über `.requestsReview(after:)` Apples `requestReview()` auf, wenn nichts darüber
+liegt. Bedingungen stehen nur in `ReviewPromptTracker` (zweiter Kaltstart,
+30 Tage Abstand) plus Onboarding fertig und der RevenueCat-Schalter
+`rating_prompt`. Nur die Einstellungszeile „Skat Trainer bewerten“
+(Bewertungsseite für App-Store-ID 6796913722) beendet die Anfragen; „Feedback
+senden“ öffnet `ReviewPromptSheet(.feedback)` und schickt über
+`FeedbackService` (App-Schlüssel `skat`) an die gemeinsame Feedback-Tabelle,
+ohne die Anfragen zu beenden. Dasselbe Blatt stellt die eine Abwanderungsfrage.
+Details: `.claude/rules/feedback-and-retention.md`.
+
+Der Probe-Ablauf (Onboarding-Probeseite, Paywall, Kauf bis Tour) ist wie Mahj
+1.3.2 aufgebaut; nur der Knopftext variiert über RevenueCat-Angebotsmetadaten
+(`TrialCTA`). Der abgerechnete Betrag ist der auffälligste Preis (3.1.2(c)),
+Preise kommen immer live aus StoreKit. Jede andere Änderung braucht Jacks
+Zustimmung. Das Meta-SDK bleibt inaktiv, solange `META_APP_ID` und
+`META_CLIENT_TOKEN` in `project.yml` leer sind, und startet nie im Simulator.
+ATT wird nur in `HomeView.askForTrackingIfNeeded` abgefragt.
 
 ## Skat+-Produkte
 
@@ -109,4 +122,7 @@ These files load automatically when you read a file matching their `paths:`. Age
 | `.claude/rules/screenshots.md` | Screenshots: the capture script, the throwaway iPad, test gotchas | Capture scripts, the `Screenshots` scheme |
 | `.claude/rules/expert-content.md` | Expert exercises, explicit discard objectives, rules and verification | `AdvancedContent`, `AppliedContent`, content validity tests |
 | `.claude/rules/generated-practice.md` | Endless skills, rules oracle, miss notes, mastery, What's New | `SkatRules`, `PracticeGenerators`, `EndlessPractice`, `HandGenerator`, `Mastery` |
+| `.claude/rules/feedback-and-retention.md` | Feedback sink, churn question, weekly gain ledger, ratings policy, what was not ported | `FeedbackService`, `ReviewPromptSheet`, `MasteryLedger`, `ReviewRequest` |
+| `.claude/rules/meta-ads.md` | Meta SDK + ATT (inert), remote switches and `TrialCTA`, the relay that lives in Mahj | `MetaAds`, `RemoteConfig`, ATT timing, `project.yml` Meta ids |
+| `.claude/rules/membership-and-trial.md` | Trial flow, 3.1.2(c) price line, membership state, fit at every size, What's New mechanics | `SubscriptionService`, onboarding, paywall, primer, tour |
 | `.claude/rules/android.md` | Android port: package, RevenueCat IDs, Play products, Swift content export, Pro AVD commands, store assets, Play state | `android/**`, `docs/android-*.html`, Play scripts |
