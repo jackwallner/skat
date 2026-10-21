@@ -92,7 +92,8 @@ enum PracticeGenerators {
             return trumps > 1 ? "weil es der höchste Trumpf im Stich ist" : "weil es der einzige Trumpf im Stich ist"
         }
         if let lead = cards.first, case .suit(let suit) = SkatRules.family(of: lead, in: game) {
-            return "weil es die höchste Karte der angespielten Farbe \(suit.displayName) ist und niemand getrumpft hat"
+            let trumped = game == .null ? "" : " und niemand getrumpft hat"
+            return "weil es die höchste Karte der angespielten Farbe \(suit.displayName) ist\(trumped)"
         }
         return "weil es die höchste Karte ist"
     }

@@ -32,7 +32,7 @@
     },
     {
       "displayName" : "Farbe",
-      "howToSpot" : "Wer eine angespielte Farbe hat, muss sie bedienen. Erst ohne diese Farbe darfst du frei wählen.",
+      "howToSpot" : "Wer eine angespielte Farbe hat, muss sie bedienen. Erst ohne diese Farbe darfst du frei wählen. Im Farbspiel und im Grand zählen Buben als Trumpf, nicht als Karte ihrer Farbe.",
       "id" : "farbe",
       "shortName" : "Farbe"
     },
@@ -107,7 +107,7 @@
       "title" : "Skat aufnehmen und drücken"
     },
     {
-      "body" : "Die angespielte Farbe muss bedient werden. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf spielen. Der höchste gültige Trumpf gewinnt.",
+      "body" : "Die angespielte Farbe muss bedient werden. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf spielen. Der höchste gültige Trumpf gewinnt. Im Farbspiel und im Grand sind die Buben Trumpf und gehören nicht zu ihrer Farbe.",
       "icon" : "suit.club.fill",
       "id" : "primer-stich",
       "tiles" : [
@@ -243,7 +243,7 @@
               "id" : "karten-grundwerte"
             },
             {
-              "backBody" : "Gezählt wird immer beim Kreuz-Buben. Hältst du ihn, spielst du mit so vielen Spitzen, wie du Trümpfe lückenlos von oben besitzt. Fehlt er dir, spielst du ohne so viele, wie dir von oben lückenlos fehlen. Der Spielwert ist der Grundwert mal der Summe aus Spitzen und dem Spiel selbst.",
+              "backBody" : "Gezählt wird immer beim Kreuz-Buben, und die zwei Karten im Skat zählen mit. Hältst du ihn, spielst du mit so vielen Spitzen, wie du Trümpfe lückenlos von oben besitzt. Fehlt er dir, spielst du ohne so viele, wie dir von oben lückenlos fehlen. Der Spielwert ist der Grundwert mal der Summe der Fälle: Spitzen plus das Spiel selbst, dazu Stufen wie Hand und Schneider.",
               "backTitle" : "Grundwert mal Spitzen plus Spiel",
               "frontSubtitle" : "Mit oder ohne den Kreuz-Buben",
               "frontTiles" : [
@@ -515,9 +515,9 @@
                 "Ja, Null zählt 24",
                 "Ja, Null hat keine Reizgrenze"
               ],
-              "explanation" : "Du darfst zwar höher reizen, würdest mit einem Null für 23 aber überreizen. Diese Aufgabe fragt nach Deckung, nicht nach einem verbotenen Reizgebot.",
+              "explanation" : "Null mit Skataufnahme hat den festen Wert 23, ohne Spitzen und ohne Stufen. Ein Gebot von 24 darfst du aussprechen, dein Spiel würde es aber nicht decken, und du würdest überreizen.",
               "id" : "praxis-reizen-05",
-              "prompt" : "Du planst Null mit Skataufnahme. Vorhand hält 23. Darfst du 24 sagen, wenn du ausschließlich diesen Nullwert als Deckung hast?",
+              "prompt" : "Du planst Null mit Skataufnahme. Vorhand hält 23. Deckt dein Null ein Gebot von 24, wenn du ausschließlich diesen Nullwert als Deckung hast?",
               "tiles" : [
 
               ]
@@ -818,7 +818,7 @@
               "id" : "spielarten-null"
             },
             {
-              "backBody" : "Wer eine Karte der angespielten Farbe hält, muss diese Farbe spielen. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf legen.",
+              "backBody" : "Wer eine Karte der angespielten Farbe hält, muss diese Farbe spielen. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf legen. Im Farbspiel und im Grand gehört ein Bube nicht zu seiner Farbe, denn er ist Trumpf.",
               "backTitle" : "Erst Farbe, dann frei",
               "frontSubtitle" : "Die angespielte Farbe muss folgen",
               "frontTiles" : [
@@ -856,8 +856,8 @@
               "id" : "spielarten-augen"
             },
             {
-              "backBody" : "Der Spielwert ist der Wert der Ansage. Er entsteht aus dem Grundwert der Spielart und dem Multiplikator aus Spitzen und Gewinnstufe. Augen entscheiden dagegen, wer das Spiel gewinnt.",
-              "backTitle" : "Grundwert mal Spitzen",
+              "backBody" : "Der Spielwert ist der Wert der Ansage. Er ist der Grundwert der Spielart mal der Summe der Fälle: Spitzen, das Spiel selbst und Stufen wie Hand oder Schneider. Augen entscheiden dagegen, wer das Spiel gewinnt.",
+              "backTitle" : "Grundwert mal Summe der Fälle",
               "frontSubtitle" : "Nicht mit Augen verwechseln",
               "frontTiles" : [
 
@@ -1104,13 +1104,13 @@
                 "grand",
                 "nullspiel"
               ],
-              "explanation" : "Zwei Buben plus mehrere Herz-Karten geben einem möglichen Farbspiel eine erkennbare Trumpfidee.",
+              "explanation" : "Zwei Buben plus drei Herz-Karten geben einem möglichen Farbspiel eine erkennbare Trumpfidee.",
               "id" : "mehr-struktur-1",
               "tiles" : [
                 "C11",
                 "S11",
                 "H7",
-                "D10",
+                "H9",
                 "H14"
               ]
             },
@@ -1228,7 +1228,7 @@
               "id" : "druecken-grand"
             },
             {
-              "backBody" : "Im Null willst du keinen Stich. Niedrige Karten und lange Farben helfen, während Asse, Könige und Zehnen oft die gefährlichen Karten sind.",
+              "backBody" : "Im Null willst du keinen Stich. Niedrige Karten helfen, während Asse, Könige und Damen oft die gefährlichen Karten sind.",
               "backTitle" : "Hohe Karten werden gefährlich",
               "frontSubtitle" : "Keine Augen, keine Trümpfe",
               "frontTiles" : [
@@ -1648,7 +1648,7 @@
                   "Trotzdem Herz legen"
                 ]
               },
-              "frontSubtitle" : "Herz ist angespielt, du hast kein Herz",
+              "frontSubtitle" : "Herz ist angespielt und kein Trumpf, du hast kein Herz",
               "frontTiles" : [
                 "H14",
                 "C11"
@@ -1676,7 +1676,7 @@
               "id" : "stich-entscheidung-3"
             },
             {
-              "backBody" : "Die Buben haben in jeder normalen Spielart dieselbe Reihenfolge. Der Kreuz-Bube ist der höchste, der Karo-Bube der niedrigste Bube.",
+              "backBody" : "Im Farbspiel und im Grand haben die Buben dieselbe Reihenfolge. Der Kreuz-Bube ist der höchste, der Karo-Bube der niedrigste Bube. Im Null sind die Buben keine Trümpfe.",
               "backTitle" : "Kreuz vor Pik vor Herz vor Karo",
               "choice" : {
                 "answerIndex" : 0,
@@ -3179,7 +3179,7 @@
                 "Ja, Partner darf passen",
                 "Ja, Partner darf das Ass verstecken"
               ],
-              "explanation" : "Der Partner hat nur das Ass und muss es spielen. Es übernimmt die Acht. Im vollständigen letzten Stich ist der Angriff damit widerlegt.",
+              "explanation" : "Der Partner hat nur das Ass und muss es spielen. Es schlägt die Acht, also bleibt der Alleinspieler stichlos. Im vollständigen letzten Stich ist der Angriff damit widerlegt.",
               "id" : "vertieft-null-07",
               "prompt" : "Null ouvert, letzter Stich. Du spielst Karo-Sieben, Alleinspieler hat Karo-Acht, Partner Karo-Ass. Könnt ihr den Alleinspieler zwingen?",
               "tiles" : [
@@ -3545,7 +3545,7 @@
                 "Ja, Pik-Bube zieht alles",
                 "Ja, Karo-Ass zieht den Buben"
               ],
-              "explanation" : "Der höhere Kreuz-Bube bleibt ein sicherer gegnerischer Trumpf. Ein Seitenass kann gestochen werden, dein Pik-Bube wird überstochen. Beide Reststiche sind nicht erzwingbar.",
+              "explanation" : "Der höhere Kreuz-Bube bleibt ein sicherer gegnerischer Trumpf. Spielst du Pik-Bube aus, wird er überstochen. Spielst du Karo-Ass aus, gewinnst du diesen Stich, aber der Kreuz-Bube nimmt den nächsten. Beide Reststiche sind nicht erzwingbar.",
               "id" : "vertieft-ende-11",
               "prompt" : "Grand, letzte zwei Stiche. Du hast Pik-Bube und Karo-Ass. Linker Gegner Kreuz-Bube und Karo-Sieben, rechter Karo-Zehn und Karo-König. Du spielst aus. Kannst du gegen beste Abwehr beide Stiche erzwingen?",
               "tiles" : [
@@ -3838,6 +3838,40 @@
     }
   ],
   "whatsNew" : [
+    {
+      "headline" : "Üben, bis es sitzt",
+      "items" : [
+        {
+          "body" : "Augen zählen, Stiche gewinnen in Farbspiel, Grand und Null, und Spitzen mit oder ohne. Jede Aufgabe wird frisch erzeugt.",
+          "icon" : "infinity",
+          "id" : "more-endless-skills",
+          "isPlus" : true,
+          "title" : "Drei neue Endlos-Übungen"
+        },
+        {
+          "body" : "Nach einer falschen Antwort in Endlos üben erklärt eine Notiz, warum genau deine Wahl nicht passt.",
+          "icon" : "questionmark.circle.fill",
+          "id" : "why-not",
+          "isPlus" : true,
+          "title" : "Warum nicht?"
+        },
+        {
+          "body" : "Jeder Raum zeigt, wie viele Fragen du zweimal hintereinander richtig hattest. Die Übersicht findest du unter Fortschritt.",
+          "icon" : "checkmark.seal.fill",
+          "id" : "mastery",
+          "isPlus" : false,
+          "title" : "Beherrschung pro Raum"
+        },
+        {
+          "body" : "Home und Dein Fortschritt zeigen jetzt, wie viele Fragen du diese Woche gefestigt hast. So siehst du, dass das Üben wirkt.",
+          "icon" : "arrow.up.right",
+          "id" : "week-gain",
+          "isPlus" : false,
+          "title" : "Deine Woche im Blick"
+        }
+      ],
+      "version" : "1.3.0"
+    },
     {
       "headline" : "Mehr Tiefe am Kartentisch",
       "items" : [

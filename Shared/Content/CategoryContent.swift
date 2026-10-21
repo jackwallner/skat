@@ -33,7 +33,7 @@ enum CategoryContent {
             frontTiles: [.h(14), .h(7), .c(13)],
             frontSubtitle: "Die angespielte Farbe muss folgen",
             backTitle: "Erst Farbe, dann frei",
-            backBody: "Wer eine Karte der angespielten Farbe hält, muss diese Farbe spielen. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf legen."
+            backBody: "Wer eine Karte der angespielten Farbe hält, muss diese Farbe spielen. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf legen. Im Farbspiel und im Grand gehört ein Bube nicht zu seiner Farbe, denn er ist Trumpf."
         ),
         Flashcard(
             id: "spielarten-stich",
@@ -55,8 +55,8 @@ enum CategoryContent {
             id: "spielarten-spielwert",
             frontTitle: "Spielwert",
             frontSubtitle: "Nicht mit Augen verwechseln",
-            backTitle: "Grundwert mal Spitzen",
-            backBody: "Der Spielwert ist der Wert der Ansage. Er entsteht aus dem Grundwert der Spielart und dem Multiplikator aus Spitzen und Gewinnstufe. Augen entscheiden dagegen, wer das Spiel gewinnt."
+            backTitle: "Grundwert mal Summe der Fälle",
+            backBody: "Der Spielwert ist der Wert der Ansage. Er ist der Grundwert der Spielart mal der Summe der Fälle: Spitzen, das Spiel selbst und Stufen wie Hand oder Schneider. Augen entscheiden dagegen, wer das Spiel gewinnt."
         ),
         Flashcard(
             id: "spielarten-endspiel",

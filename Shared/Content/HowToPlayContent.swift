@@ -56,7 +56,7 @@ enum HowToPlayContent {
             id: "primer-stich",
             icon: "suit.club.fill",
             title: "Bedienen und Stiche holen",
-            body: "Die angespielte Farbe muss bedient werden. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf spielen. Der höchste gültige Trumpf gewinnt.",
+            body: "Die angespielte Farbe muss bedient werden. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf spielen. Der höchste gültige Trumpf gewinnt. Im Farbspiel und im Grand sind die Buben Trumpf und gehören nicht zu ihrer Farbe.",
             tiles: [.h(14), .h(7), .c(11)],
             tip: "Im Null gibt es keinen Trumpf und das Ass ist hoch."
         ),

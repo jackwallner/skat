@@ -39,7 +39,7 @@ enum DiscardContent {
             frontTitle: "Null vorbereiten",
             frontSubtitle: "Keine Augen, keine Trümpfe",
             backTitle: "Hohe Karten werden gefährlich",
-            backBody: "Im Null willst du keinen Stich. Niedrige Karten und lange Farben helfen, während Asse, Könige und Zehnen oft die gefährlichen Karten sind."
+            backBody: "Im Null willst du keinen Stich. Niedrige Karten helfen, während Asse, Könige und Damen oft die gefährlichen Karten sind."
         ),
         Flashcard(
             id: "druecken-kontext",

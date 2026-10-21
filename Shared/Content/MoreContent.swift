@@ -44,10 +44,10 @@ enum MoreContent {
     static let handReading: [HandMatchQuestion] = [
         HandMatchQuestion(
             id: "mehr-struktur-1",
-            tiles: [.c(11), .s(11), .h(7), .d(10), .h(14)],
+            tiles: [.c(11), .s(11), .h(7), .h(9), .h(14)],
             choices: [.trumpf, .grand, .nullspiel],
             answer: .trumpf,
-            explanation: "Zwei Buben plus mehrere Herz-Karten geben einem möglichen Farbspiel eine erkennbare Trumpfidee."
+            explanation: "Zwei Buben plus drei Herz-Karten geben einem möglichen Farbspiel eine erkennbare Trumpfidee."
         ),
         HandMatchQuestion(
             id: "mehr-struktur-2",

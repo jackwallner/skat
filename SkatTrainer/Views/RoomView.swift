@@ -176,7 +176,7 @@ struct RoomView: View {
                         .foregroundStyle(Theme.ink)
                     Spacer(minLength: 0)
                 }
-                Text("\(Membership.name) schaltet die Extra-Runden hier und in allen anderen Räumen frei, dazu den Meistertisch und Endlos üben ohne Wiederholungen. Alles, was du bereits hast, bleibt frei.")
+                Text("\(Membership.name) schaltet die Extra-Runden hier und in allen anderen Räumen frei, dazu den Meistertisch und Endlos üben mit immer neuen Aufgaben. Alles, was du bereits hast, bleibt frei.")
                     .font(.caption)
                     .foregroundStyle(Theme.inkSecondary)
                     .multilineTextAlignment(.leading)

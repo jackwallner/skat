@@ -33,7 +33,7 @@ struct EndlessPickerView: View {
         HStack(alignment: .top, spacing: 10) {
             Image(systemName: "infinity")
                 .foregroundStyle(Theme.jade)
-            Text("Jedes Muster wird erst erzeugt, wenn du es siehst. Übe so lange du möchtest, ohne dieselbe Frage zu wiederholen.")
+            Text("Jede Aufgabe wird erst erzeugt, wenn du sie siehst. Übe so lange du möchtest.")
                 .font(.subheadline)
                 .foregroundStyle(Theme.inkSecondary)
                 .fixedSize(horizontal: false, vertical: true)

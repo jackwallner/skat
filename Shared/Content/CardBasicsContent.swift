@@ -77,7 +77,7 @@ enum CardBasicsContent {
             frontTiles: [.c(11), .s(11), .h(11)],
             frontSubtitle: "Mit oder ohne den Kreuz-Buben",
             backTitle: "Grundwert mal Spitzen plus Spiel",
-            backBody: "Gezählt wird immer beim Kreuz-Buben. Hältst du ihn, spielst du mit so vielen Spitzen, wie du Trümpfe lückenlos von oben besitzt. Fehlt er dir, spielst du ohne so viele, wie dir von oben lückenlos fehlen. Der Spielwert ist der Grundwert mal der Summe aus Spitzen und dem Spiel selbst."
+            backBody: "Gezählt wird immer beim Kreuz-Buben, und die zwei Karten im Skat zählen mit. Hältst du ihn, spielst du mit so vielen Spitzen, wie du Trümpfe lückenlos von oben besitzt. Fehlt er dir, spielst du ohne so viele, wie dir von oben lückenlos fehlen. Der Spielwert ist der Grundwert mal der Summe der Fälle: Spitzen plus das Spiel selbst, dazu Stufen wie Hand und Schneider."
         ),
         Flashcard(
             id: "karten-reizwerte",

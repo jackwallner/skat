@@ -16,7 +16,7 @@ enum KeepDiscardContent {
             id: "stich-entscheidung-2",
             frontTitle: "Keine Farbe vorhanden",
             frontTiles: [.h(14), .c(11)],
-            frontSubtitle: "Herz ist angespielt, du hast kein Herz",
+            frontSubtitle: "Herz ist angespielt und kein Trumpf, du hast kein Herz",
             backTitle: "Jetzt darfst du frei wählen",
             backBody: "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen. Die Bedienpflicht entfällt erst dann.",
             choice: CardChoice("Frei wählen", "Trotzdem Herz legen", answerIndex: 0)
@@ -36,7 +36,7 @@ enum KeepDiscardContent {
             frontTiles: [.c(11), .s(11), .h(11), .d(11)],
             frontSubtitle: "Die Buben von oben nach unten",
             backTitle: "Kreuz vor Pik vor Herz vor Karo",
-            backBody: "Die Buben haben in jeder normalen Spielart dieselbe Reihenfolge. Der Kreuz-Bube ist der höchste, der Karo-Bube der niedrigste Bube.",
+            backBody: "Im Farbspiel und im Grand haben die Buben dieselbe Reihenfolge. Der Kreuz-Bube ist der höchste, der Karo-Bube der niedrigste Bube. Im Null sind die Buben keine Trümpfe.",
             choice: CardChoice("Kreuz-Bube ist höher", "Karo-Bube ist höher", answerIndex: 0)
         ),
         Flashcard(

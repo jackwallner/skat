@@ -69,7 +69,7 @@ fun EndlessPickerScreen() {
                 ) {
                     Icon(symbol("infinity"), null, tint = colors.jade, modifier = Modifier.size(20.dp))
                     Text(
-                        "Jedes Muster wird erst erzeugt, wenn du es siehst. Übe so lange du möchtest, ohne dieselbe Frage zu wiederholen.",
+                        "Jede Aufgabe wird erst erzeugt, wenn du sie siehst. Übe so lange du möchtest.",
                         style = SkatType.subheadline,
                         color = colors.inkSecondary,
                     )

@@ -223,7 +223,7 @@ private fun OnboardingPages(skillLevel: String, onSkill: (String) -> Unit, onDon
                     2 -> InfoPage(
                         "figure.walk",
                         "Sicher an den Tisch",
-                        "Kenne die Kartenwerte, erkenne Trumpf, Grand und Null schneller und drücke mit einem Plan. Übe in deinem Tempo, ohne Gegner und ohne Zeitdruck.",
+                        "Kenne die Kartenwerte, erkenne Trumpf, Grand und Null schneller und drücke mit einem Plan. Übe in deinem Tempo und ohne Gegner.",
                         listOf(PlayingCard.c(14), PlayingCard.d(11), PlayingCard.h(7)),
                     )
                     3 -> SkillPage(skillLevel, onSkill)

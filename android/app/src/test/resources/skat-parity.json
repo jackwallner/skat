@@ -6049,10 +6049,10 @@
         "Ja, Null zählt 24",
         "Nein, Null zählt 23"
       ],
-      "explanation" : "Du darfst zwar höher reizen, würdest mit einem Null für 23 aber überreizen. Diese Aufgabe fragt nach Deckung, nicht nach einem verbotenen Reizgebot.",
+      "explanation" : "Null mit Skataufnahme hat den festen Wert 23, ohne Spitzen und ohne Stufen. Ein Gebot von 24 darfst du aussprechen, dein Spiel würde es aber nicht decken, und du würdest überreizen.",
       "id" : "praxis-reizen-05",
       "isReviewable" : true,
-      "prompt" : "Du planst Null mit Skataufnahme. Vorhand hält 23. Darfst du 24 sagen, wenn du ausschließlich diesen Nullwert als Deckung hast?",
+      "prompt" : "Du planst Null mit Skataufnahme. Vorhand hält 23. Deckt dein Null ein Gebot von 24, wenn du ausschließlich diesen Nullwert als Deckung hast?",
       "roomID" : "card-room",
       "sourceLabel" : "Karten & Reizen",
       "tiles" : [
@@ -6624,7 +6624,7 @@
         "Grand",
         "Trumpf"
       ],
-      "explanation" : "Zwei Buben plus mehrere Herz-Karten geben einem möglichen Farbspiel eine erkennbare Trumpfidee.",
+      "explanation" : "Zwei Buben plus drei Herz-Karten geben einem möglichen Farbspiel eine erkennbare Trumpfidee.",
       "id" : "mehr-struktur-1",
       "isReviewable" : true,
       "prompt" : "Welche Struktur fällt dir zuerst auf?",
@@ -6634,8 +6634,8 @@
         "C11",
         "S11",
         "H7",
-        "H14",
-        "D10"
+        "H9",
+        "H14"
       ],
       "trackingID" : "mehr-struktur-1"
     },
@@ -6733,7 +6733,7 @@
       "explanation" : "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen. Die Bedienpflicht entfällt erst dann.",
       "id" : "stich-entscheidung-2",
       "isReviewable" : true,
-      "prompt" : "Keine Farbe vorhanden\nHerz ist angespielt, du hast kein Herz",
+      "prompt" : "Keine Farbe vorhanden\nHerz ist angespielt und kein Trumpf, du hast kein Herz",
       "roomID" : "pegging-room",
       "sourceLabel" : "Stichspiel",
       "tiles" : [
@@ -6767,7 +6767,7 @@
         "Kreuz-Bube ist höher",
         "Karo-Bube ist höher"
       ],
-      "explanation" : "Die Buben haben in jeder normalen Spielart dieselbe Reihenfolge. Der Kreuz-Bube ist der höchste, der Karo-Bube der niedrigste Bube.",
+      "explanation" : "Im Farbspiel und im Grand haben die Buben dieselbe Reihenfolge. Der Kreuz-Bube ist der höchste, der Karo-Bube der niedrigste Bube. Im Null sind die Buben keine Trümpfe.",
       "id" : "stich-entscheidung-4",
       "isReviewable" : true,
       "prompt" : "Trumpfreihenfolge\nDie Buben von oben nach unten",
@@ -8281,7 +8281,7 @@
         "Ja, Partner darf passen",
         "Nein, Partner muss mit Ass übernehmen"
       ],
-      "explanation" : "Der Partner hat nur das Ass und muss es spielen. Es übernimmt die Acht. Im vollständigen letzten Stich ist der Angriff damit widerlegt.",
+      "explanation" : "Der Partner hat nur das Ass und muss es spielen. Es schlägt die Acht, also bleibt der Alleinspieler stichlos. Im vollständigen letzten Stich ist der Angriff damit widerlegt.",
       "id" : "vertieft-null-07",
       "isReviewable" : true,
       "prompt" : "Null ouvert, letzter Stich. Du spielst Karo-Sieben, Alleinspieler hat Karo-Acht, Partner Karo-Ass. Könnt ihr den Alleinspieler zwingen?",
@@ -8734,7 +8734,7 @@
         "Nein, Kreuz-Bube verhindert das",
         "Ja, Karo-Ass zieht den Buben"
       ],
-      "explanation" : "Der höhere Kreuz-Bube bleibt ein sicherer gegnerischer Trumpf. Ein Seitenass kann gestochen werden, dein Pik-Bube wird überstochen. Beide Reststiche sind nicht erzwingbar.",
+      "explanation" : "Der höhere Kreuz-Bube bleibt ein sicherer gegnerischer Trumpf. Spielst du Pik-Bube aus, wird er überstochen. Spielst du Karo-Ass aus, gewinnst du diesen Stich, aber der Kreuz-Bube nimmt den nächsten. Beide Reststiche sind nicht erzwingbar.",
       "id" : "vertieft-ende-11",
       "isReviewable" : true,
       "prompt" : "Grand, letzte zwei Stiche. Du hast Pik-Bube und Karo-Ass. Linker Gegner Kreuz-Bube und Karo-Sieben, rechter Karo-Zehn und Karo-König. Du spielst aus. Kannst du gegen beste Abwehr beide Stiche erzwingen?",
@@ -9415,7 +9415,7 @@
             "explanation" : "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen. Die Bedienpflicht entfällt erst dann.",
             "id" : "stich-entscheidung-2",
             "isReviewable" : true,
-            "prompt" : "Keine Farbe vorhanden\nHerz ist angespielt, du hast kein Herz",
+            "prompt" : "Keine Farbe vorhanden\nHerz ist angespielt und kein Trumpf, du hast kein Herz",
             "roomID" : "pegging-room",
             "sourceLabel" : "Stichspiel",
             "tiles" : [

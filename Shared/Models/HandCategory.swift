@@ -45,7 +45,7 @@ enum HandCategory: String, Codable, CaseIterable, Identifiable, Sendable {
         case .nullspiel:
             return "Im Null gibt es keinen Trumpf und keine Augen. Die Farbe läuft Ass, König, Dame, Bube, Zehn, Neun, Acht, Sieben. Das Ziel ist, keinen Stich zu bekommen."
         case .farbe:
-            return "Wer eine angespielte Farbe hat, muss sie bedienen. Erst ohne diese Farbe darfst du frei wählen."
+            return "Wer eine angespielte Farbe hat, muss sie bedienen. Erst ohne diese Farbe darfst du frei wählen. Im Farbspiel und im Grand zählen Buben als Trumpf, nicht als Karte ihrer Farbe."
         case .stich:
             return "Der höchste Trumpf gewinnt, sonst die höchste Karte der angespielten Farbe."
         case .spielwert:

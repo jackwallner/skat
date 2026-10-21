@@ -71,7 +71,7 @@ struct OnboardingView: View {
                 infoPage(
                     icon: "figure.walk",
                     title: "Sicher an den Tisch",
-                    body: "Kenne die Kartenwerte, erkenne Trumpf, Grand und Null schneller und drücke mit einem Plan. Übe in deinem Tempo, ohne Gegner und ohne Zeitdruck.",
+                    body: "Kenne die Kartenwerte, erkenne Trumpf, Grand und Null schneller und drücke mit einem Plan. Übe in deinem Tempo und ohne Gegner.",
                     tiles: [.c(14), .d(11), .h(7)]
                 ).tag(2).accessibilityHidden(page != 2)
                 skillLevelPage.tag(3).accessibilityHidden(page != 3)

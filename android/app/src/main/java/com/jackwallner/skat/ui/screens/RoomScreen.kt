@@ -157,7 +157,7 @@ private fun RoomUpsell(lockedCount: Int, onClick: () -> Unit) {
             Spacer(Modifier.weight(1f))
         }
         Text(
-            "${Membership.NAME} schaltet die Extra-Runden hier und in allen anderen Räumen frei, dazu den Meistertisch und Endlos üben ohne Wiederholungen. Alles, was du bereits hast, bleibt frei.",
+            "${Membership.NAME} schaltet die Extra-Runden hier und in allen anderen Räumen frei, dazu den Meistertisch und Endlos üben mit immer neuen Aufgaben. Alles, was du bereits hast, bleibt frei.",
             style = SkatType.caption,
             color = colors.inkSecondary,
         )
