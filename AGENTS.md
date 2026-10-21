@@ -41,7 +41,7 @@ Der Probe-Ablauf (Onboarding-Probeseite, Paywall, Kauf bis Tour) ist wie Mahj
 Preise kommen immer live aus StoreKit. Jede andere Änderung braucht Jacks
 Zustimmung. Das Meta-SDK bleibt inaktiv, solange `META_APP_ID` und
 `META_CLIENT_TOKEN` in `project.yml` leer sind, und startet nie im Simulator.
-ATT wird nur in `HomeView.askForTrackingIfNeeded` abgefragt.
+ATT wird nur in `HomeView.askForTrackingIfNeeded` abgefragt, die auf einen Test oder Kauf wartet (`MetaAds.askAfterPurchase`).
 
 ## Skat+-Produkte
 
