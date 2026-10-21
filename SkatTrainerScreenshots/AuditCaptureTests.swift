@@ -16,7 +16,7 @@ final class AuditCaptureTests: XCTestCase {
             "-skat.hasReadPrimer", "YES",
             "-skat.skillLevel", "some",
             "-subscription.localProOverride", "YES",
-            "-whatsnew.lastSeenVersion", ProcessInfo.processInfo.environment["SCREENSHOT_APP_VERSION"] ?? "1.2.4",
+            "-whatsnew.lastSeenVersion", ProcessInfo.processInfo.environment["SCREENSHOT_APP_VERSION"] ?? "1.3.0",
         ] + extra
         app.launch()
         _ = app.wait(for: .runningForeground, timeout: 30)

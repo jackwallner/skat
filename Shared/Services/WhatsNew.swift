@@ -30,7 +30,7 @@ enum WhatsNew {
 
     static let releases: [WhatsNewRelease] = [
         WhatsNewRelease(
-            version: "1.2.4",
+            version: "1.3.0",
             headline: "Üben, bis es sitzt",
             items: [
                 WhatsNewItem(
@@ -52,6 +52,12 @@ enum WhatsNew {
                     icon: "checkmark.seal.fill",
                     title: "Beherrschung pro Raum",
                     body: "Jeder Raum zeigt, wie viele Fragen du zweimal hintereinander richtig hattest. Die Übersicht findest du unter Fortschritt."
+                ),
+                WhatsNewItem(
+                    id: "week-gain",
+                    icon: "arrow.up.right",
+                    title: "Deine Woche im Blick",
+                    body: "Home und Dein Fortschritt zeigen jetzt, wie viele Fragen du diese Woche gefestigt hast. So siehst du, dass das Üben wirkt."
                 ),
             ]
         ),
