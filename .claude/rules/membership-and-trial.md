@@ -7,6 +7,7 @@ paths:
   - "SkatTrainer/Views/HowToPlayView.swift"
   - "SkatTrainer/Views/FeatureTourView.swift"
   - "SkatTrainerTests/TrialCopyTests.swift"
+  - "SkatTrainerTests/TrialEligibilityTests.swift"
   - "SkatTrainerTests/PaywallFunnelTests.swift"
 ---
 
@@ -35,6 +36,21 @@ expiration date (not for lifetime). Only the button wording varies, via
 `TrialCTA` offering metadata; any other change to this flow needs Jack's
 go-ahead. The paywall CTA stays disabled until StoreKit returns a price, which
 includes every simulator run (RevenueCat is never configured there).
+
+**Intro-offer eligibility (2026-10-20, Mahj fc6b7ed).** Apple gives one free
+week per subscription group, so a lapsed member is charged on day one.
+`SubscriptionService.isTrialEligible(for:)` asks StoreKit (no product reads as
+eligible, as before). The onboarding trial page and `PaywallView` load it and,
+when it is false, drop every free-week line: the CTA "Skat+ abonnieren", the
+plan cards "Jährliche Abrechnung. Verlängert sich automatisch." / "Monatliche
+Abrechnung. ...", and `PaywallPricing.terms(..., trial: false)` /
+`OnboardingView.trialDisclosure(amount:trial: false)` ("Abrechnung: X, heute
+berechnet. Verlängert sich automatisch ..."). The onboarding title is already
+trial-free. The billed amount stays the largest price. A purchase tap re-checks
+eligibility after offerings load and, if it changed, redraws and returns without
+buying. `TrialEligibilityTests` runs against `SkatTrainer.storekit`; its
+lapsed-account half is left out because `Product.purchase` hangs on the gh-sim
+runner. The eligible copy is unchanged.
 
 **Membership state.** `membershipResolved` is false until a customer record was
 read (cache or network); nothing may treat "not a member" as a lapse or sell a
