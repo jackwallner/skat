@@ -1,0 +1,29 @@
+Usedni k dalšímu stolu se Skatem a věz, co licitovat, co odložit do Skatu a která karta vezme štych. Skat Trainer mění klasickou německou karetní hru pro tři hráče v krátké otázky a každá odpověď ukáže důvod.
+
+Aplikace samotná je v němčině, jazyce, ve kterém se Skat hraje, a obsahuje oficiální pojmy (Reizen, Drücken, Bube, Grand, Null), které uslyšíš u stolu. Bez čekání na soupeře, bez účtu, bez registrace.
+
+ČTYŘI MÍSTNOSTI NA ZAČÁTEK
+
+Karten & Reizen: balíček 32 karet, body, spodci a hodnoty licitace.
+Spielarten: přečti ruku a vyber barevnou hru, Grand nebo Null.
+Drücken: vyber dvě karty k odložení z dvanácti.
+Stichspiel: přiznávání barvy, kdy vyhrává trumf a výnos.
+
+Otoč kartičku a odsuň ji, až ji umíš, nebo odpovídej na otázky s výběrem a hned čti vysvětlení. Krátká denní lekce buduje sérii.
+
+SKAT+ (VOLITELNÉ)
+- Nekonečný trénink s čerstvě rozdanými rukami
+- Opakování chyb, dokud nezůstanou v hlavě
+- Výzva na 90 sekund s rekordem k překonání
+- Skat Minute, společná denní výzva
+- Další kola v každé místnosti
+- Meistertisch: pokročilé odkládání, obrana, hodnota hry a koncovky
+
+BEZ REKLAM, BEZ SLEDOVÁNÍ. Tvůj pokrok zůstává v zařízení.
+
+Skat+ je k dispozici jako měsíční nebo roční předplatné s automatickým obnovením (zkušební doba zdarma pro způsobilé nové předplatitele) nebo jako jednorázový nákup nadosmrti. Místní cena se zobrazí v aplikaci před nákupem. Google Play strhne platbu z účtu po potvrzení. Spravuj nebo zruš kdykoli v Google Play v sekci Platby a předplatná.
+
+Zásady ochrany osobních údajů: https://jackwallner.github.io/skat/android-privacy.html
+Podmínky použití: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer je nezávislá cvičná aplikace s vlastními výukovými rozdáními. Domácí pravidla se liší, dohodněte se proto na pravidlech u svého stolu. Nehraje se o peníze.

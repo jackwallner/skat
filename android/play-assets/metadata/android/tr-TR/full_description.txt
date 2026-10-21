@@ -1,0 +1,29 @@
+Bir sonraki Skat masasına neye ihale vereceğini, Skat'a neyi koyacağını ve hangi kartın eli alacağını bilerek otur. Skat Trainer, üç kişilik klasik Alman kart oyununu kısa sorulara çevirir ve her cevap gerekçesini gösterir.
+
+Uygulamanın kendisi Almancadır, yani Skat'ın oynandığı dildedir, ve masada duyacağın resmi terimleri (Reizen, Drücken, Bube, Grand, Null) içerir. Rakip beklemek yok, hesap yok, kayıt yok.
+
+BAŞLANGIÇ İÇİN DÖRT ODA
+
+Karten & Reizen: 32 kartlık deste, kart puanları, valeler ve ihale değerleri.
+Spielarten: bir eli oku ve renk oyunu, Grand ya da Null seç.
+Drücken: on iki karttan atılacak iki kartı seç.
+Stichspiel: renge uymak, kozun ne zaman aldığı ve açılış.
+
+Bir bilgi kartını çevir, bildiğinde kaydırıp geç; ya da çoktan seçmeli soruları yanıtla ve açıklamayı hemen oku. Günde kısa bir seans seri oluşturur.
+
+SKAT+ (İSTEĞE BAĞLI)
+- Yeni dağıtılmış ellerle sınırsız alıştırma
+- Hatalar yerine oturana kadar tekrar
+- Geçilecek bir rekorla 90 saniyelik meydan okuma
+- Skat Minute, ortak günlük meydan okuma
+- Her odada ek turlar
+- Meistertisch: ileri düzey kart atma, savunma, oyun değeri ve son oyunlar
+
+REKLAM YOK, TAKİP YOK. İlerlemen cihazında kalır.
+
+Skat+ aylık veya yıllık, otomatik yenilenen abonelik (uygun yeni abonelere ücretsiz deneme) ya da tek seferlik ömür boyu satın alma olarak sunulur. Yerel fiyat satın almadan önce uygulamada görünür. Google Play onayladığında hesabından tahsil eder. İstediğin zaman Google Play'de Ödemeler ve abonelikler bölümünden yönet veya iptal et.
+
+Gizlilik Politikası: https://jackwallner.github.io/skat/android-privacy.html
+Kullanım Koşulları: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer, özgün öğretim elleriyle hazırlanmış bağımsız bir alıştırma uygulamasıdır. Ev kuralları farklılık gösterir, bu yüzden masanızda kuralları kararlaştırın. Para üzerine oynanmaz.

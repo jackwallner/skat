@@ -1,0 +1,29 @@
+Ngồi vào bàn Skat tiếp theo khi đã biết nên đấu giá gì, bỏ gì vào Skat và lá nào ăn ván. Skat Trainer biến trò chơi bài cổ điển của Đức cho ba người thành những câu hỏi luyện tập ngắn, và mỗi đáp án đều cho thấy lý do.
+
+Bản thân ứng dụng bằng tiếng Đức, ngôn ngữ mà Skat được chơi, kèm các thuật ngữ chính thức (Reizen, Drücken, Bube, Grand, Null) bạn sẽ nghe ở bàn. Không phải chờ đối thủ, không cần tài khoản, không cần đăng ký.
+
+BỐN PHÒNG ĐỂ BẮT ĐẦU
+
+Karten & Reizen: bộ bài 32 lá, điểm bài, các lá Bồi và giá trị đấu giá.
+Spielarten: đọc một ván bài và chọn chơi theo chất, Grand hoặc Null.
+Drücken: chọn hai lá bỏ ra từ mười hai lá.
+Stichspiel: theo chất, khi nào chủ bài thắng và lá đánh đầu.
+
+Lật thẻ ghi nhớ rồi vuốt đi khi đã thuộc, hoặc trả lời câu hỏi trắc nghiệm và đọc giải thích ngay. Một buổi ngắn mỗi ngày tạo nên chuỗi ngày liên tiếp.
+
+SKAT+ (TÙY CHỌN)
+- Luyện tập không giới hạn với các ván bài mới chia
+- Ôn lại lỗi sai cho đến khi nhớ
+- Thử thách 90 giây với điểm cao nhất để phá
+- Skat Minute, thử thách chung mỗi ngày
+- Thêm vòng chơi ở mỗi phòng
+- Meistertisch: bỏ bài nâng cao, phòng thủ, giá trị ván và tàn cuộc
+
+KHÔNG QUẢNG CÁO, KHÔNG THEO DÕI. Tiến độ của bạn nằm lại trên thiết bị.
+
+Skat+ có dạng gói đăng ký hằng tháng hoặc hằng năm tự động gia hạn (dùng thử miễn phí cho người đăng ký mới đủ điều kiện) hoặc mua một lần trọn đời. Giá theo khu vực của bạn hiển thị trong ứng dụng trước khi mua. Google Play tính phí tài khoản khi bạn xác nhận. Quản lý hoặc hủy bất cứ lúc nào trong Google Play, mục Thanh toán và đăng ký.
+
+Chính sách quyền riêng tư: https://jackwallner.github.io/skat/android-privacy.html
+Điều khoản sử dụng: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer là ứng dụng luyện tập độc lập với các ván bài giảng dạy gốc. Luật nhà mỗi nơi một khác, nên hãy thống nhất luật tại bàn của bạn. Không chơi ăn tiền.

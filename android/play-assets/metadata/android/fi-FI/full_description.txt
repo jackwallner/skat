@@ -1,0 +1,29 @@
+Istu seuraavaan Skat-pöytään tietäen, mitä tarjota, mitä laittaa Skatiin ja mikä kortti vie tikin. Skat Trainer muuttaa klassisen saksalaisen kolmen pelaajan korttipelin lyhyiksi harjoituskysymyksiksi, ja jokainen vastaus näyttää perustelun.
+
+Itse sovellus on saksaksi, kielellä jolla Skatia pelataan, ja siinä on pöydässä kuulemasi viralliset termit (Reizen, Drücken, Bube, Grand, Null). Ei vastustajia odotettavana, ei tiliä, ei rekisteröitymistä.
+
+NELJÄ HUONETTA ALUKSI
+
+Karten & Reizen: 32 kortin pakka, pisteet, sotamiehet ja tarjousarvot.
+Spielarten: lue käsi ja valitse väripeli, Grand tai Null.
+Drücken: valitse kaksi pois pantavaa korttia kahdestatoista.
+Stichspiel: värin tunnustaminen, milloin valtti voittaa ja aloitus.
+
+Käännä muistikortti ja pyyhkäise pois, kun osaat sen, tai vastaa monivalintakysymyksiin ja lue selitys heti. Lyhyt päivittäinen harjoitus rakentaa putken.
+
+SKAT+ (VALINNAINEN)
+- Loputonta harjoitusta tuoreilla käsillä
+- Virheiden kertaus, kunnes ne jäävät mieleen
+- 90 sekunnin haaste ja parhaan tuloksen jahtaus
+- Skat Minute, yhteinen päivittäinen haaste
+- Lisäkierroksia jokaiseen huoneeseen
+- Meistertisch: edistynyt poisheitto, puolustus, pelin arvo ja loppupelit
+
+EI MAINOKSIA, EI SEURANTAA. Edistymisesi pysyy laitteellasi.
+
+Skat+ on saatavilla kuukausi- tai vuositilauksena, joka uusiutuu automaattisesti (ilmainen kokeilu oikeutetuille uusille tilaajille), tai kertaostoksena elinikäiseksi. Paikallinen hinta näkyy sovelluksessa ennen ostoa. Google Play veloittaa tiliäsi vahvistaessasi. Hallitse tai peruuta milloin tahansa Google Playssa kohdassa Maksut ja tilaukset.
+
+Tietosuojakäytäntö: https://jackwallner.github.io/skat/android-privacy.html
+Käyttöehdot: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer on itsenäinen harjoitussovellus, jossa on omia opetuskäsiä. Kotisäännöt vaihtelevat, joten sopikaa säännöt pöydässänne. Rahasta ei pelata.

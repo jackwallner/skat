@@ -1,0 +1,29 @@
+Duduklah di meja Skat berikutnya dengan tahu apa yang ditawar, apa yang diletakkan di Skat, dan kartu mana yang memenangkan trik. Skat Trainer mengubah permainan kartu klasik Jerman untuk tiga pemain menjadi pertanyaan latihan singkat, dan setiap jawaban menunjukkan alasannya.
+
+Aplikasinya sendiri berbahasa Jerman, bahasa yang dipakai untuk bermain Skat, lengkap dengan istilah resmi (Reizen, Drücken, Bube, Grand, Null) yang Anda dengar di meja. Tanpa menunggu lawan, tanpa akun, tanpa pendaftaran.
+
+EMPAT RUANG UNTUK MEMULAI
+
+Karten & Reizen: dek 32 kartu, poin kartu, Jack, dan nilai tawaran.
+Spielarten: baca satu tangan dan pilih permainan warna, Grand, atau Null.
+Drücken: pilih dua kartu yang dibuang dari dua belas.
+Stichspiel: mengikuti warna, kapan trump menang, dan kartu pembuka.
+
+Balik kartu belajar lalu geser setelah hafal, atau jawab soal pilihan ganda dan langsung baca penjelasannya. Sesi singkat setiap hari membangun rentetan hari berturut-turut.
+
+SKAT+ (OPSIONAL)
+- Latihan tanpa akhir dengan tangan yang baru dibagikan
+- Ulasan kesalahan sampai melekat
+- Tantangan 90 detik dengan skor terbaik untuk dikejar
+- Skat Minute, tantangan harian bersama
+- Ronde tambahan di setiap ruang
+- Meistertisch: pembuangan tingkat lanjut, pertahanan, nilai permainan, dan akhir permainan
+
+TANPA IKLAN, TANPA PELACAKAN. Kemajuan Anda tetap di perangkat Anda.
+
+Skat+ tersedia sebagai langganan bulanan atau tahunan yang diperpanjang otomatis (uji coba gratis untuk pelanggan baru yang memenuhi syarat) atau pembelian sekali seumur hidup. Harga lokal muncul di aplikasi sebelum Anda membeli. Google Play menagih akun Anda saat Anda konfirmasi. Kelola atau batalkan kapan saja di Google Play pada Pembayaran dan langganan.
+
+Kebijakan Privasi: https://jackwallner.github.io/skat/android-privacy.html
+Ketentuan Penggunaan: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer adalah aplikasi latihan independen dengan tangan pengajaran asli. Aturan rumah berbeda-beda, jadi sepakati aturan di meja Anda. Tidak dimainkan dengan uang.

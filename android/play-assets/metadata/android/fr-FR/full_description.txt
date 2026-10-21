@@ -1,0 +1,29 @@
+Asseyez-vous à votre prochaine table de Skat en sachant quoi annoncer, quoi mettre au Skat et quelle carte fait le pli. Skat Trainer transforme le jeu de cartes allemand à trois joueurs en courtes questions, et chaque réponse montre le raisonnement.
+
+L'application elle-même est en allemand, la langue dans laquelle on joue au Skat, avec les termes officiels (Reizen, Drücken, Bube, Grand, Null) entendus à table. Pas d'adversaire à attendre, pas de compte, pas d'inscription.
+
+QUATRE SALLES POUR COMMENCER
+
+Karten & Reizen: le jeu de 32 cartes, les points, les Valets et les valeurs d'enchère.
+Spielarten: lire une main et choisir couleur, Grand ou Null.
+Drücken: choisir les deux cartes à écarter parmi douze.
+Stichspiel: fournir, quand l'atout l'emporte et l'entame.
+
+Retournez une carte mémoire et écartez-la quand vous la maîtrisez, ou répondez à des QCM et lisez l'explication tout de suite. Une courte séance par jour crée une série.
+
+SKAT+ (OPTIONNEL)
+- Entraînement sans fin avec des mains toujours nouvelles
+- Révision des erreurs jusqu'à ce que ça rentre
+- Un défi de 90 secondes avec un meilleur score à battre
+- La Skat Minute, un défi quotidien partagé
+- Des tours supplémentaires dans chaque salle
+- Le Meistertisch : écarts avancés, défense, valeur de jeu et fins de partie
+
+PAS DE PUBLICITÉ, PAS DE PISTAGE. Votre progression reste sur votre appareil.
+
+Skat+ existe en abonnement mensuel ou annuel à renouvellement automatique (essai gratuit pour les nouveaux abonnés éligibles) ou en achat unique à vie. Le prix local s'affiche dans l'application avant l'achat. Google Play débite votre compte à votre confirmation. Gérez ou résiliez à tout moment dans Google Play, sous Paiements et abonnements.
+
+Politique de confidentialité: https://jackwallner.github.io/skat/android-privacy.html
+Conditions d'utilisation: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer est une application d'entraînement indépendante, fondée sur des mains pédagogiques originales. Les règles maison varient : mettez-vous d'accord à votre table. On ne joue pas d'argent.

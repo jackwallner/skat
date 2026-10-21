@@ -1,0 +1,29 @@
+Sätt dig vid nästa Skat-bord och vet vad du ska bjuda, vad du ska lägga i Skat och vilket kort som tar sticket. Skat Trainer gör det klassiska tyska kortspelet för tre till korta övningsfrågor, och varje svar visar resonemanget.
+
+Själva appen är på tyska, språket Skat spelas på, med de officiella termerna (Reizen, Drücken, Bube, Grand, Null) som du hör vid bordet. Inga motspelare att vänta på, inget konto, ingen registrering.
+
+FYRA RUM ATT BÖRJA MED
+
+Karten & Reizen: kortleken med 32 kort, poäng, knektarna och budvärden.
+Spielarten: läsa en hand och välja färgspel, Grand eller Null.
+Drücken: välja de två kort som läggs bort av tolv.
+Stichspiel: följa färg, när trumf vinner och utspel.
+
+Vänd ett kort och svep bort det när du kan det, eller svara på flervalsfrågor och läs förklaringen direkt. Ett kort pass om dagen bygger en svit.
+
+SKAT+ (VALFRITT)
+- Oändlig övning med nydelade händer
+- Repetition av misstag tills det sitter
+- En utmaning på 90 sekunder med ett rekord att slå
+- Skat Minute, en gemensam daglig utmaning
+- Extra rundor i varje rum
+- Meistertisch: avancerade kast, försvar, spelvärde och slutspel
+
+INGA ANNONSER, INGEN SPÅRNING. Dina framsteg stannar på din enhet.
+
+Skat+ finns som månads- eller årsprenumeration med automatisk förnyelse (gratis provperiod för berättigade nya prenumeranter) eller som engångsköp för livet. Ditt lokala pris visas i appen innan du köper. Google Play debiterar ditt konto när du bekräftar. Hantera eller avsluta när som helst i Google Play under Betalningar och prenumerationer.
+
+Integritetspolicy: https://jackwallner.github.io/skat/android-privacy.html
+Användarvillkor: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer är en oberoende övningsapp med egna övningshänder. Husregler skiljer sig, så kom överens om reglerna vid ert bord. Det spelas inte om pengar.

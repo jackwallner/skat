@@ -1,0 +1,29 @@
+下次坐上Skat牌桌之前,先知道該叫什麼、該把什麼墊進底牌、哪張牌能贏下一墩。Skat Trainer把經典的德國三人紙牌遊戲拆成簡短的練習題,每個答案都會說明道理。
+
+應用程式本身是德語介面,也就是Skat所使用的語言,並包含牌桌上會聽到的正式術語(Reizen、Drücken、Bube、Grand、Null)。無須等待對手,無須帳號,無須註冊。
+
+入門的四個房間
+
+Karten & Reizen: 32張牌、牌點、J(Bube)和叫牌價值。
+Spielarten: 讀懂一手牌,選擇花色遊戲、Grand或Null。
+Drücken: 從十二張牌中選出要墊掉的兩張。
+Stichspiel: 跟花色、王牌何時獲勝以及首攻。
+
+翻開記憶卡片,記住後滑走;也可以回答選擇題並立刻閱讀解析。每天一小節,連續天數就會不斷累積。
+
+SKAT+(選用)
+- 用新發的牌無限練習
+- 反覆複習錯題直到記住
+- 90秒挑戰,爭取刷新最高分
+- Skat Minute,全員共享的每日挑戰
+- 每個房間的額外回合
+- Meistertisch:進階墊牌、防守、遊戲價值和殘局
+
+無廣告,無追蹤。你的進度只儲存在你的裝置上。
+
+Skat+提供自動續訂的按月或按年訂閱(符合資格的新訂閱用戶可免費試用),也可以一次性買斷永久使用。購買前,應用程式內會顯示你所在地區的價格。你確認後,Google Play會從你的帳戶扣款。你可以隨時在Google Play的「付款和訂閱」中管理或取消。
+
+隱私權政策: https://jackwallner.github.io/skat/android-privacy.html
+使用條款: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer是一款獨立的練習應用程式,使用原創教學牌例。各地規則不同,請在牌桌上先約定規則。不涉及賭錢。

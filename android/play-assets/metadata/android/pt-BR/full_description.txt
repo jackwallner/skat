@@ -1,0 +1,29 @@
+Sente-se à sua próxima mesa de Skat sabendo o que lançar, o que deixar no Skat e qual carta leva a vaza. O Skat Trainer transforma o clássico jogo de cartas alemão para três jogadores em perguntas curtas, e cada resposta mostra o raciocínio.
+
+O aplicativo está em alemão, o idioma em que o Skat é jogado, com os termos oficiais (Reizen, Drücken, Bube, Grand, Null) que você ouve à mesa. Sem adversários para esperar, sem conta, sem cadastro.
+
+QUATRO SALAS PARA COMEÇAR
+
+Karten & Reizen: o baralho de 32 cartas, pontos, os Valetes e os valores de lance.
+Spielarten: ler uma mão e escolher naipe, Grand ou Null.
+Drücken: escolher as duas cartas a descartar entre doze.
+Stichspiel: seguir o naipe, quando o trunfo vence e a saída.
+
+Vire um cartão e deslize quando já souber, ou responda perguntas de múltipla escolha e leia a explicação na hora. Uma sessão curta por dia cria uma sequência.
+
+SKAT+ (OPCIONAL)
+- Prática sem fim com mãos recém-distribuídas
+- Revisão de erros até fixar
+- Um desafio de 90 segundos com recorde para bater
+- O Skat Minute, um desafio diário compartilhado
+- Rodadas extras em cada sala
+- A Meistertisch: descartes avançados, defesa, valor do jogo e finais
+
+SEM ANÚNCIOS, SEM RASTREAMENTO. Seu progresso fica no seu aparelho.
+
+O Skat+ está disponível como assinatura mensal ou anual com renovação automática (teste gratuito para novos assinantes elegíveis) ou como compra única vitalícia. O preço local aparece no aplicativo antes da compra. O Google Play cobra sua conta quando você confirma. Gerencie ou cancele quando quiser no Google Play, em Pagamentos e assinaturas.
+
+Política de Privacidade: https://jackwallner.github.io/skat/android-privacy.html
+Termos de Uso: https://jackwallner.github.io/skat/android-terms.html
+
+O Skat Trainer é um aplicativo de prática independente, com mãos didáticas originais. As regras da casa variam, então combinem as regras na sua mesa. Não se joga dinheiro.

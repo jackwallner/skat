@@ -1,0 +1,29 @@
+Ülj le a következő Skat-asztalhoz úgy, hogy tudod, mit licitálj, mit tegyél a Skatba, és melyik lap viszi az ütést. A Skat Trainer a klasszikus német, háromfős kártyajátékot rövid gyakorlókérdésekké alakítja, és minden válasz megmutatja az indoklást.
+
+Maga az alkalmazás németül van, azon a nyelven, amelyen a Skatot játsszák, és az asztalnál hallott hivatalos kifejezésekkel (Reizen, Drücken, Bube, Grand, Null). Nem kell ellenfelekre várni, nincs fiók, nincs regisztráció.
+
+NÉGY SZOBA AZ INDULÁSHOZ
+
+Karten & Reizen: a 32 lapos pakli, a pontok, az alsók és a licitértékek.
+Spielarten: olvass el egy leosztást, és válassz színjátékot, Grandot vagy Nullt.
+Drücken: tizenkét lapból válaszd ki a két eldobandót.
+Stichspiel: színkövetés, mikor üt az adu, és a kiindulás.
+
+Fordíts meg egy tanulókártyát, és söpörd el, ha már tudod, vagy válaszolj feleletválasztós kérdésekre, és olvasd el azonnal a magyarázatot. A rövid napi gyakorlás sorozatot épít.
+
+SKAT+ (VÁLASZTHATÓ)
+- Végtelen gyakorlás frissen osztott lapokkal
+- A hibák ismétlése, amíg meg nem marad
+- 90 másodperces kihívás megdöntendő rekorddal
+- A Skat Minute, közös napi kihívás
+- Extra körök minden szobában
+- A Meistertisch: haladó dobás, védekezés, játékérték és végjátékok
+
+NINCS HIRDETÉS, NINCS KÖVETÉS. A haladásod az eszközödön marad.
+
+A Skat+ havi vagy éves, automatikusan megújuló előfizetésként (a jogosult új előfizetőknek ingyenes próbaidőszak) vagy egyszeri, élethosszig tartó vásárlásként érhető el. A helyi ár a vásárlás előtt megjelenik az alkalmazásban. A Google Play a megerősítéskor terheli a fiókodat. Kezeld vagy mondd le bármikor a Google Playben a Fizetések és előfizetések menüben.
+
+Adatvédelmi irányelvek: https://jackwallner.github.io/skat/android-privacy.html
+Felhasználási feltételek: https://jackwallner.github.io/skat/android-terms.html
+
+A Skat Trainer független gyakorlóalkalmazás saját oktatási leosztásokkal. A házi szabályok eltérhetnek, ezért az asztalnál egyeztessetek a szabályokról. Pénzben nem játszunk.

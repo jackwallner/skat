@@ -1,0 +1,29 @@
+Duduk di meja Skat seterusnya dengan tahu apa yang perlu dibida, apa yang diletakkan dalam Skat dan kad mana yang memenangi trik. Skat Trainer menukar permainan kad klasik Jerman untuk tiga pemain kepada soalan latihan ringkas, dan setiap jawapan menunjukkan sebabnya.
+
+Aplikasi itu sendiri dalam bahasa Jerman, bahasa yang digunakan untuk bermain Skat, lengkap dengan istilah rasmi (Reizen, Drücken, Bube, Grand, Null) yang anda dengar di meja. Tiada lawan untuk ditunggu, tiada akaun, tiada pendaftaran.
+
+EMPAT BILIK UNTUK PERMULAAN
+
+Karten & Reizen: dek 32 kad, mata kad, Jack dan nilai bidaan.
+Spielarten: baca satu tangan dan pilih permainan warna, Grand atau Null.
+Drücken: pilih dua kad untuk dibuang daripada dua belas.
+Stichspiel: mengikut warna, bila trump menang dan kad pembukaan.
+
+Balikkan kad imbasan dan leret setelah anda hafal, atau jawab soalan aneka pilihan dan terus baca penjelasan. Sesi ringkas setiap hari membina rentetan hari berturut-turut.
+
+SKAT+ (PILIHAN)
+- Latihan tanpa had dengan tangan yang baru diagihkan
+- Ulang kaji kesilapan sehingga melekat
+- Cabaran 90 saat dengan skor terbaik untuk dikejar
+- Skat Minute, cabaran harian bersama
+- Pusingan tambahan dalam setiap bilik
+- Meistertisch: pembuangan lanjutan, pertahanan, nilai permainan dan permainan akhir
+
+TIADA IKLAN, TIADA PENJEJAKAN. Kemajuan anda kekal pada peranti anda.
+
+Skat+ tersedia sebagai langganan bulanan atau tahunan yang diperbaharui secara automatik (percubaan percuma untuk pelanggan baharu yang layak) atau pembelian sekali seumur hidup. Harga tempatan dipaparkan dalam aplikasi sebelum anda membeli. Google Play mengenakan bayaran pada akaun anda apabila anda mengesahkan. Urus atau batalkan bila-bila masa di Google Play di bawah Pembayaran dan langganan.
+
+Dasar Privasi: https://jackwallner.github.io/skat/android-privacy.html
+Terma Penggunaan: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer ialah aplikasi latihan bebas dengan tangan pengajaran asli. Peraturan rumah berbeza-beza, jadi sepakati peraturan di meja anda. Tidak dimainkan dengan wang.

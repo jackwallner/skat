@@ -1,0 +1,29 @@
+Seu a la propera taula d'Skat sabent què licitar, què deixar a l'Skat i quina carta guanya la basa. Skat Trainer converteix el clàssic joc de cartes alemany per a tres jugadors en preguntes curtes, i cada resposta mostra el raonament.
+
+L'aplicació és en alemany, l'idioma en què es juga a l'Skat, amb els termes oficials (Reizen, Drücken, Bube, Grand, Null) que sentiràs a la taula. Sense rivals que esperar, sense compte, sense registre.
+
+QUATRE SALES PER COMENÇAR
+
+Karten & Reizen: la baralla de 32 cartes, els punts, els Sotes i els valors de licitació.
+Spielarten: llegir una mà i triar pal, Grand o Null.
+Drücken: triar les dues cartes que es descarten entre dotze.
+Stichspiel: servir pal, quan guanya el triomf i la sortida.
+
+Gira una targeta i llisca-la quan te la sàpigues, o respon preguntes d'opció múltiple i llegeix l'explicació a l'instant. Una sessió curta al dia crea una ratxa.
+
+SKAT+ (OPCIONAL)
+- Pràctica sense fi amb mans acabades de repartir
+- Repàs d'errors fins que es quedi
+- Un repte de 90 segons amb una millor marca per superar
+- L'Skat Minute, un repte diari compartit
+- Rondes extra a cada sala
+- El Meistertisch: descarts avançats, defensa, valor de joc i finals
+
+SENSE ANUNCIS NI SEGUIMENT. El teu progrés es queda al teu dispositiu.
+
+Skat+ està disponible com a subscripció mensual o anual amb renovació automàtica (amb prova gratuïta per als nous subscriptors elegibles) o com a compra única de per vida. El preu local apareix a l'aplicació abans de comprar. Google Play et cobra al compte quan confirmes. Gestiona o cancel·la quan vulguis a Google Play, a Pagaments i subscripcions.
+
+Política de privadesa: https://jackwallner.github.io/skat/android-privacy.html
+Condicions d'ús: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer és una aplicació de pràctica independent amb mans didàctiques originals. Les regles de casa varien, així que acordeu les regles a la vostra taula. No es juga amb diners.

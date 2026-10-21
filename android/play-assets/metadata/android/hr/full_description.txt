@@ -1,0 +1,29 @@
+Sjedni za sljedeći stol za Skat i znaj što licitirati, što odložiti u Skat i koja karta uzima štih. Skat Trainer pretvara klasičnu njemačku kartašku igru za troje u kratka pitanja, a svaki odgovor pokazuje obrazloženje.
+
+Sama aplikacija je na njemačkom, jeziku na kojem se igra Skat, sa službenim izrazima (Reizen, Drücken, Bube, Grand, Null) koje ćeš čuti za stolom. Bez čekanja protivnika, bez računa, bez registracije.
+
+ČETIRI SOBE ZA POČETAK
+
+Karten & Reizen: špil od 32 karte, bodovi, dečki i vrijednosti licitacije.
+Spielarten: pročitaj ruku i odaberi igru u boji, Grand ili Null.
+Drücken: od dvanaest karata odaberi dvije za odlaganje.
+Stichspiel: služenje boje, kada pobjeđuje adut i izlaz.
+
+Okreni karticu i povuci je kad je znaš ili odgovaraj na pitanja s izborom i odmah čitaj objašnjenje. Kratka dnevna sesija gradi niz.
+
+SKAT+ (NEOBAVEZNO)
+- Beskrajno vježbanje sa svježe podijeljenim rukama
+- Ponavljanje grešaka dok se ne usade
+- Izazov od 90 sekundi s rekordom koji treba nadmašiti
+- Skat Minute, zajednički dnevni izazov
+- Dodatni krugovi u svakoj sobi
+- Meistertisch: napredno odlaganje, obrana, vrijednost igre i završnice
+
+BEZ OGLASA, BEZ PRAĆENJA. Tvoj napredak ostaje na uređaju.
+
+Skat+ je dostupan kao mjesečna ili godišnja pretplata s automatskom obnovom (besplatno probno razdoblje za prikladne nove pretplatnike) ili kao jednokratna kupnja doživotno. Lokalna cijena prikazuje se u aplikaciji prije kupnje. Google Play naplaćuje račun nakon potvrde. Upravljaj ili otkaži bilo kada u Google Playu pod Plaćanja i pretplate.
+
+Pravila privatnosti: https://jackwallner.github.io/skat/android-privacy.html
+Uvjeti korištenja: https://jackwallner.github.io/skat/android-terms.html
+
+Skat Trainer je neovisna aplikacija za vježbu s vlastitim poučnim rukama. Kućna pravila se razlikuju, zato se za stolom dogovorite o pravilima. Ne igra se za novac.
