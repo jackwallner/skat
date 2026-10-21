@@ -80,13 +80,13 @@ paths:
 - Increment `versionCode` on every Play upload. 1.2.4 is versionCode 1.
 - `scripts/play-upload.sh [validate|internal|internal-draft|production-draft]`
   and `scripts/play-products.py [--dry-run]` need `PLAY_SERVICE_ACCOUNT_JSON`.
-  Neither has been run yet.
+  Both have run (see Play state).
 
 ## Emulator (remote MacBook Pro only)
 
 Follow the `android-dev` skill's Remote MacBook Pro section. Host
 `jackwallner@192.168.4.25` (strict host keys), SDK
-`/Users/jackwallner/Library/Android/sdk`. The Pro has no cmdline-tools. Build and
+`/Users/jackwallner/Library/Android/sdk`. Build and
 test with `fm-gradle <tasks>` from `android/` (jmbp is the Pro), never
 `./gradlew` on the Air. It syncs the source with a debug-only
 `local.properties` (no Play key or upload secrets), uses the Pro's JDK 17 and
@@ -148,9 +148,8 @@ government app, no financial features, App access (instructions only),
 device IDs), IARC, category Education. Publishing overview shows
 "Submit 11 changes for review".
 
-Left for Jack: paste `SKAT_PLAY_REVIEW_CODE` from `~/.skat_credentials`
-into App access > Skat+ review unlock > Password, then press Send for review
-when this app's pacing slot comes. Review codes: `~/docs/android/tools/play_handoff.py review-codes`. RevenueCat Play
+Left for Jack: press Send for review when this app's pacing slot comes (the
+review code is already in App access). Review codes: `~/docs/android/tools/play_handoff.py review-codes`. RevenueCat Play
 credentials were uploaded with `play_handoff.py rc-credentials --apply`
 on  2026-10-17. The RevenueCat service account already has
 account-wide Play permissions, so no per-app grant is needed.
