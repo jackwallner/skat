@@ -13,7 +13,7 @@ struct HomeView: View {
     @EnvironmentObject private var subscriptions: SubscriptionService
     @EnvironmentObject private var settings: AppSettings
     @EnvironmentObject private var router: AppRouter
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.horizontalSizeClass) private var windowSizeClass
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @State private var membershipWaitOver = false
     @StateObject private var records = PracticeRecordStore.shared
@@ -23,6 +23,14 @@ struct HomeView: View {
     @State private var showPaywall = false
     @State private var showSettings = false
     @State private var showWhatsNew = false
+    /// The container's width and fold, measured so the unfolded iPhone Duo can
+    /// put Home and Dein Fortschritt on opposite sides of the fold.
+    @State private var paneGeometry = PaneGeometry(width: 0, fold: nil)
+    /// Mounted on the first unfold and kept, so folding only hides it.
+    @State private var progressPaneMounted = false
+    #if DEBUG
+    @State var duoRoute: DuoScreenshotMode.Route?
+    #endif
     /// Non-nil while the one churn question is up.
     @State private var churnPrompt: ChurnMoment?
     /// False while a room, drill or deep-linked screen is pushed over Home.
@@ -41,7 +49,78 @@ struct HomeView: View {
 
     private var showsPrimerCard: Bool { skillLevel == "new" && !hasReadPrimer }
 
+    /// Unfolded, Dein Fortschritt has its own pane beside Home.
+    var split: UnfoldedSplit? {
+        UnfoldedSplit.make(
+            width: paneGeometry.width,
+            isRegularWidth: windowSizeClass == .regular,
+            fold: paneGeometry.fold
+        )
+    }
+
+    /// Each unfolded pane is phone-width, so Home and everything pushed over
+    /// it lay out as on a phone.
+    private var horizontalSizeClass: UserInterfaceSizeClass? {
+        split == nil ? windowSizeClass : .compact
+    }
+
     var body: some View {
+        // Opening or closing the Duo only moves these frames, so neither stack
+        // is rebuilt and a drill in progress survives the fold.
+        ZStack(alignment: .topLeading) {
+            homeStack
+                .environment(\.horizontalSizeClass, horizontalSizeClass)
+                .frame(maxWidth: split?.primaryWidth ?? .infinity, maxHeight: .infinity)
+            if progressPaneMounted {
+                progressPane
+                    .environment(\.horizontalSizeClass, .compact)
+                    .frame(maxWidth: split?.secondaryWidth ?? .infinity, maxHeight: .infinity)
+                    .padding(.leading, split?.secondaryX ?? 0)
+                    .opacity(split == nil ? 0 : 1)
+                    .allowsHitTesting(split != nil)
+                    .accessibilityHidden(split == nil)
+            }
+        }
+        .background(Theme.background)
+        .onGeometryChange(for: PaneGeometry.self) { proxy in
+            PaneGeometry(width: proxy.size.width, fold: proxy.verticalFold())
+        } action: { paneGeometry = $0 }
+        .onChange(of: split != nil, initial: true) { _, isSplit in
+            if isSplit { progressPaneMounted = true }
+        }
+        .tint(Theme.jade)
+        #if DEBUG
+        // Here, not on Home's root: a pushed route would cancel a task there.
+        .task(id: split != nil) { await runDuoTour() }
+        #endif
+    }
+
+    /// The trailing pane: the practice record that the drills on the left are
+    /// building, updating as each answer lands. Settings opens here too, so it
+    /// never sits across the fold as a sheet.
+    private var progressPane: some View {
+        ZStack {
+            NavigationStack { StatsView() }
+                .accessibilityHidden(showSettings)
+            if showSettings, split != nil {
+                SettingsView(onDone: { showSettings = false })
+                    .transition(.move(edge: .trailing))
+            }
+        }
+        .animation(.snappy(duration: 0.3), value: showSettings)
+    }
+
+    /// Folded, Settings is the usual sheet; unfolded it lives in the trailing
+    /// pane. Opening the Duo with the sheet up moves it there rather than
+    /// closing it.
+    private var settingsSheet: Binding<Bool> {
+        Binding(
+            get: { showSettings && split == nil },
+            set: { if !$0, split == nil { showSettings = false } }
+        )
+    }
+
+    private var homeStack: some View {
         NavigationStack(path: $path) {
             ScrollViewReader { proxy in
                 ScrollView {
@@ -83,8 +162,13 @@ struct HomeView: View {
                     QuickSessionView(gameNightPrep: gameNightPrepItems)
                 }
             }
+            #if DEBUG
+            .navigationDestination(item: $duoRoute) {
+                DuoScreenshotMode.destination($0, progress: progress, subscriptions: subscriptions)
+            }
+            #endif
             .sheet(isPresented: $showPaywall) { PaywallView(source: "skat_home_sheet") }
-            .sheet(isPresented: $showSettings) { SettingsView() }
+            .sheet(isPresented: settingsSheet) { SettingsView() }
             .sheet(isPresented: $showWhatsNew) {
                 if let release = WhatsNew.currentRelease {
                     WhatsNewSheet(release: release) {
@@ -141,8 +225,14 @@ struct HomeView: View {
                 if !isShowing { homeIsBareAgain() }
             }
         }
-        .tint(Theme.jade)
     }
+
+    #if DEBUG
+    func setDuoSheets(settings: Bool, paywall: Bool) {
+        showSettings = settings
+        showPaywall = paywall
+    }
+    #endif
 
     @ViewBuilder
     private var homeContent: some View {
@@ -390,7 +480,9 @@ struct HomeView: View {
             }
         }
         .buttonStyle(.plain)
-        .accessibilityHint("Öffnet deine Fortschrittsübersicht")
+        // Unfolded, the breakdown is already open beside Home.
+        .allowsHitTesting(split == nil)
+        .accessibilityHint(split == nil ? "Öffnet deine Fortschrittsübersicht" : "")
     }
 
     private func statChip(value: Int, icon: String, color: Color, label: String, prefix: String = "") -> some View {
