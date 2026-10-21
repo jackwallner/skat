@@ -7,6 +7,8 @@ import SwiftUI
 /// to Apple's confirm. No plan cards here; the full paywall is only a fallback
 /// when products failed to load. This page is the proven trial flow: change
 /// the button's wording through a RevenueCat Experiment (`TrialCTA`), not here.
+/// An Apple Account that already had its free week (`trialEligible`) sees the
+/// price billed today instead, and "Skat+ abonnieren" on the button.
 ///
 /// After the trial decision (either way), brand-new players get the How to
 /// Play quick start FIRST, then everyone gets the feature tour, whose finale
@@ -22,6 +24,9 @@ struct OnboardingView: View {
     @State private var restoring = false
     @State private var showPaywallFallback = false
     @State private var purchaseError: String?
+    /// False once StoreKit says this Apple Account already had its free week:
+    /// the page then states the price billed today and promises no trial.
+    @State private var trialEligible = true
     @AppStorage("skat.skillLevel") private var skillLevel = ""
 
     private enum Stage: Equatable { case pages, tour, howToPlay }
@@ -87,6 +92,9 @@ struct OnboardingView: View {
         // time it appears - it no longer has an invented one to fall back on.
         .task(id: page) {
             await subscriptions.ensureOfferings()
+            // The answer needs the offerings, so it is asked on the trial page.
+            guard page == lastPage else { return }
+            trialEligible = await subscriptions.isTrialEligible(for: onboardingPlan)
         }
         .onChange(of: page) { _, newPage in
             // The TabView pages by swipe too, and only the Continue button is
@@ -396,12 +404,16 @@ struct OnboardingView: View {
         // Nobody is being charged anything here, so quoting a price would be
         // a lie about the button next to it.
         if subscriptions.isPro { return "" }
-        return Self.trialDisclosure(amount: PaywallPricing.price(subscriptions, onboardingPlan))
+        return Self.trialDisclosure(amount: PaywallPricing.price(subscriptions, onboardingPlan), trial: trialEligible)
     }
 
     /// The shipped onboarding line. If the product has not loaded, drop the
     /// amount rather than invent one.
-    static func trialDisclosure(amount: String?) -> String {
+    static func trialDisclosure(amount: String?, trial: Bool = true) -> String {
+        if !trial {
+            guard let amount else { return "Heute berechnet. Verlängert sich automatisch, bis du kündigst." }
+            return "Abrechnung: \(amount), heute berechnet. Verlängert sich automatisch, bis du kündigst."
+        }
         guard let amount else {
             return "Inklusive 7 Tagen kostenlos. Verlängert sich automatisch, bis du kündigst."
         }
@@ -416,7 +428,7 @@ struct OnboardingView: View {
     /// "you're already subscribed" sheet. Recognise them and just let them in.
     private var trialCTATitle: String {
         if subscriptions.isPro { return "Weiter" }
-        return subscriptions.trialCTA(.onboarding)
+        return trialEligible ? subscriptions.trialCTA(.onboarding) : "\(Membership.name) abonnieren"
     }
 
     // MARK: - Footer (identical geometry on every page: zero-shift CTA)
@@ -576,6 +588,13 @@ struct OnboardingView: View {
             // `trialDisclosure` above always names the plan bought here.
             guard let package = subscriptions.package(for: onboardingPlan) else {
                 showPaywallFallback = true
+                return
+            }
+            // The page may have drawn before StoreKit answered. If the free
+            // week is gone, show the real terms and let them tap again.
+            let eligible = await subscriptions.isTrialEligible(for: onboardingPlan)
+            guard eligible == trialEligible else {
+                trialEligible = eligible
                 return
             }
             do {

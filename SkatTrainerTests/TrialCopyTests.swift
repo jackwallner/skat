@@ -33,6 +33,47 @@ final class TrialCopyTests: XCTestCase {
         )
     }
 
+    /// An Apple Account that already had its free week is charged on day one,
+    /// so no line promises a trial and the billed amount leads.
+    func testIneligibleAccountsSeeTheBilledTodayLine() {
+        XCTAssertEqual(
+            PaywallPricing.terms(amount: "6,99 € / Monat", plan: .monthly, trial: false),
+            "Abrechnung: 6,99 € / Monat, heute berechnet. Verlängert sich automatisch. Kündige mindestens 24 Stunden vor Ablauf."
+        )
+        XCTAssertEqual(
+            PaywallPricing.terms(amount: nil, plan: .yearly, trial: false),
+            "Heute berechnet. Verlängert sich automatisch. Kündige mindestens 24 Stunden vor Ablauf."
+        )
+        XCTAssertEqual(
+            PaywallPricing.terms(amount: "69,99 €", plan: .lifetime, trial: false),
+            "69,99 € einmalig. Kein Abonnement, keine automatische Verlängerung."
+        )
+        XCTAssertEqual(
+            OnboardingView.trialDisclosure(amount: "6,99 € / Monat", trial: false),
+            "Abrechnung: 6,99 € / Monat, heute berechnet. Verlängert sich automatisch, bis du kündigst."
+        )
+        XCTAssertEqual(
+            OnboardingView.trialDisclosure(amount: nil, trial: false),
+            "Heute berechnet. Verlängert sich automatisch, bis du kündigst."
+        )
+        XCTAssertEqual(PaywallPlan.yearly.ctaTitle(trialEligible: false), "\(Membership.name) abonnieren")
+        XCTAssertEqual(PaywallPlan.monthly.ctaTitle(trialEligible: true), "7-Tage-Test starten")
+        XCTAssertEqual(PaywallPlan.lifetime.ctaTitle(trialEligible: false), PaywallPlan.lifetime.ctaTitle())
+        for plan in PaywallPlan.allCases {
+            for amount in [nil, "6,99 € / Monat"] {
+                let lines = [
+                    PaywallPricing.terms(amount: amount, plan: plan, trial: false),
+                    OnboardingView.trialDisclosure(amount: amount, trial: false),
+                ]
+                for line in lines {
+                    XCTAssertFalse(line.localizedCaseInsensitiveContains("kostenlos"), line)
+                    XCTAssertFalse(line.localizedCaseInsensitiveContains("probe"), line)
+                    XCTAssertFalse(line.contains("\u{2014}"), line)
+                }
+            }
+        }
+    }
+
     func testControlIsTheShippedButton() {
         XCTAssertEqual(PaywallPlan.yearly.ctaTitle(), "7-Tage-Test starten")
         XCTAssertEqual(PaywallPlan.monthly.ctaTitle(), "7-Tage-Test starten")

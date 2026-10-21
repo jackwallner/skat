@@ -5,8 +5,9 @@ enum PaywallPlan: String, CaseIterable {
     case yearly, lifetime, monthly
 
     /// `trialTitle` is the subscription plans' button (`TrialCTA`).
-    func ctaTitle(trialTitle: String = TrialCTA.sevenDay.title(.paywall)) -> String {
-        self == .lifetime ? "\(Membership.name) dauerhaft freischalten" : trialTitle
+    func ctaTitle(trialTitle: String = TrialCTA.sevenDay.title(.paywall), trialEligible: Bool = true) -> String {
+        if self == .lifetime { return "\(Membership.name) dauerhaft freischalten" }
+        return trialEligible ? trialTitle : "\(Membership.name) abonnieren"
     }
 }
 
@@ -27,6 +28,9 @@ enum PaywallLinks {
 struct PaywallContent: View {
     @EnvironmentObject private var subscriptions: SubscriptionService
     @Binding var selectedPlan: PaywallPlan
+    /// False once StoreKit says this Apple Account already had its free week:
+    /// the cards then state the billing and promise no trial.
+    var trialEligible = true
 
     var body: some View {
         VStack(spacing: 16) {
@@ -75,11 +79,11 @@ struct PaywallContent: View {
             planCard(.yearly, title: "Jährlich", price: PaywallPricing.priceText(subscriptions, .yearly),
                      perMonth: PaywallPricing.perMonthEquivalent(subscriptions),
                      anchor: PaywallPricing.monthlyAnchor(subscriptions),
-                     detail: "Jährliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch.",
+                     detail: trialEligible ? "Jährliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch." : "Jährliche Abrechnung. Verlängert sich automatisch.",
                      badge: PaywallPricing.savingsBadge(subscriptions))
             planCard(.monthly, title: "Monatlich", price: PaywallPricing.priceText(subscriptions, .monthly),
                      perMonth: nil, anchor: nil,
-                     detail: "Monatliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch.", badge: nil)
+                     detail: trialEligible ? "Monatliche Abrechnung, inklusive 7 Tagen kostenlos. Verlängert sich automatisch." : "Monatliche Abrechnung. Verlängert sich automatisch.", badge: nil)
             planCard(.lifetime, title: "Dauerhaft", price: PaywallPricing.priceText(subscriptions, .lifetime),
                      perMonth: nil, anchor: nil,
                      detail: "Einmalige Zahlung. Kein Abonnement, keine Verlängerung.", badge: "EINMALIG")
@@ -243,11 +247,19 @@ enum PaywallPricing {
     /// Subordinate to the billed amount above it by design (3.1.2(c)): the
     /// trial is mentioned once, in caption type, under a price line set in
     /// display type.
-    static func terms(_ subscriptions: SubscriptionService, _ plan: PaywallPlan) -> String {
-        terms(amount: price(subscriptions, plan), plan: plan)
+    static func terms(_ subscriptions: SubscriptionService, _ plan: PaywallPlan, trial: Bool = true) -> String {
+        terms(amount: price(subscriptions, plan), plan: plan, trial: trial)
     }
 
-    static func terms(amount: String?, plan: PaywallPlan) -> String {
+    /// `trial: false` is for an Apple Account that already had its free week
+    /// (Apple gives one per subscription group): it is charged on day one.
+    static func terms(amount: String?, plan: PaywallPlan, trial: Bool = true) -> String {
+        if !trial, plan != .lifetime {
+            guard let amount else {
+                return "Heute berechnet. Verlängert sich automatisch. Kündige mindestens 24 Stunden vor Ablauf."
+            }
+            return "Abrechnung: \(amount), heute berechnet. Verlängert sich automatisch. Kündige mindestens 24 Stunden vor Ablauf."
+        }
         guard let amount else {
             switch plan {
             case .lifetime:
@@ -282,12 +294,14 @@ struct PaywallView: View {
     /// flashes a connection error at the customer.
     @State private var priceLoadAttempted = false
     @State private var message: String?
+    /// False once StoreKit says this Apple Account already had its free week.
+    @State private var trialEligible = true
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                PaywallContent(selectedPlan: $selectedPlan)
+                PaywallContent(selectedPlan: $selectedPlan, trialEligible: trialEligible)
                     .padding()
                     .frame(maxWidth: 680)
                     .frame(maxWidth: .infinity)
@@ -329,6 +343,7 @@ struct PaywallView: View {
             .task {
                 subscriptions.trackPaywallImpression(id: source)
                 if !priceReady { await loadPrices() }
+                trialEligible = await currentTrialEligibility()
             }
         }
     }
@@ -355,7 +370,7 @@ struct PaywallView: View {
                     .font(Theme.display(26).weight(.bold))
                     .foregroundStyle(Theme.ink)
             }
-            Text(PaywallPricing.terms(subscriptions, selectedPlan))
+            Text(PaywallPricing.terms(subscriptions, selectedPlan, trial: trialEligible))
                 .font(.caption)
                 .foregroundStyle(Theme.inkSecondary)
                 .multilineTextAlignment(.center)
@@ -367,7 +382,7 @@ struct PaywallView: View {
                     if purchasing || loadingPrices || (!priceLoadAttempted && !priceReady) {
                         ProgressView().tint(Theme.onFill)
                     } else {
-                        Text(selectedPlan.ctaTitle(trialTitle: subscriptions.trialCTA(.paywall)))
+                        Text(selectedPlan.ctaTitle(trialTitle: subscriptions.trialCTA(.paywall), trialEligible: trialEligible))
                     }
                 }
                 .primaryCTA()
@@ -389,6 +404,12 @@ struct PaywallView: View {
     /// price is a plan we cannot sell.
     private var priceReady: Bool {
         PaywallPricing.price(subscriptions, selectedPlan) != nil
+    }
+
+    /// The free week is per subscription group, so any subscription plan
+    /// answers for both; lifetime has no trial and asks about yearly.
+    private func currentTrialEligibility() async -> Bool {
+        await subscriptions.isTrialEligible(for: selectedPlan == .lifetime ? .yearly : selectedPlan)
     }
 
     private func loadPrices() async {
@@ -423,6 +444,13 @@ struct PaywallView: View {
                 await subscriptions.ensureOfferings()
                 // A reinstalled member recovered just now: nothing to sell.
                 guard !subscriptions.isPro else { return }
+                // The sheet may have drawn before StoreKit answered. If the
+                // free week is gone, show the real terms and let them tap
+                // again.
+                let eligible = await currentTrialEligibility()
+                let changed = eligible != trialEligible
+                trialEligible = eligible
+                guard !changed || selectedPlan == .lifetime else { return }
                 let outcome = try await subscriptions.purchase(subscriptions.package(for: selectedPlan))
                 guard outcome == .purchased else { return }
                 Haptics.success()

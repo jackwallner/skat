@@ -1,1 +1,3 @@
 No sign-in required. German-language Skat teaching app, no multiplayer. Version 1.2.3 expands the catalog to 222 authored exercises. The Master Table (Skat+) has 100 contextual problems, including eight fully specified three-trick endgames verified against all legal defenses. Four beginner rooms remain free, with 24 additional free bidding and trick examples. Every discard question states its learning objective. To inspect member content on Simulator, use the local membership override in Settings. Physical devices use the existing approved monthly, annual and lifetime Skat+ products.
+
+The free week is shown only when StoreKit reports that the Apple Account is eligible for it. An account that already used it sees "Skat+ abonnieren" and the price billed today instead.
