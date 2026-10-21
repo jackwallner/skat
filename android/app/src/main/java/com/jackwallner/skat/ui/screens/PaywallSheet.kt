@@ -197,7 +197,7 @@ fun PaywallContent(service: SubscriptionService, selected: PaywallPlan, onSelect
         }
         Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
             listOf(
-                "Endlos üben: jedes Mal ein frisches Kartenmuster",
+                "Endlos üben: immer neue Aufgaben",
                 "Fehler wiederholen: Unsicheres kommt zurück, bis es sitzt",
                 "Zeitprüfung: 90 Sekunden für deinen Bestwert",
                 "Extra-Runden in jedem Raum plus der Meistertisch",

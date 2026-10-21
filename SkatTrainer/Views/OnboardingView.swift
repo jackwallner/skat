@@ -348,7 +348,7 @@ struct OnboardingView: View {
 
     private static let trialBenefitLines = [
         "Alle vier Einstiegsräume bleiben dauerhaft frei",
-        "Endlos üben gibt dir jedes Mal ein neues Kartenmuster",
+        "Endlos üben erzeugt immer neue Aufgaben",
         "Fehler wiederholen bringt unsichere Fragen zurück",
         "Extra-Runden in allen Räumen plus der Meistertisch",
     ]

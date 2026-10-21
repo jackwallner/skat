@@ -1,7 +1,7 @@
-More depth at the card table.
+Practice until it sticks.
 
-222 authored learning items in total. The Master Table is rebuilt with 100 concrete exercises covering game values, overbidding, defense, Null and endgames instead of basic recall questions.
+Three new Endless Practice skills: counting card points, winning tricks in suit, Grand and Null games, and matadors (Spitzen). Every hand is freshly dealt.
 
-24 new free cases cover bidding and trick rules. Every discard exercise now states a clear learning objective, with explanations that distinguish teaching goals from universally optimal play.
+After a wrong answer, a note explains exactly why your choice does not fit. Each room shows how much you have truly mastered, and Home counts the questions you locked in this week.
 
-Daily generated hands are now consistent for the same date. Exercise content is in German.
+Also new: Send Feedback in Settings and clearer membership terms. Exercises are in German.

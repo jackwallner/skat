@@ -373,7 +373,7 @@ private fun TrialPage(offersTrial: Boolean) {
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             listOf(
                 "Alle vier Einstiegsräume bleiben dauerhaft frei",
-                "Endlos üben gibt dir jedes Mal ein neues Kartenmuster",
+                "Endlos üben erzeugt immer neue Aufgaben",
                 "Fehler wiederholen bringt unsichere Fragen zurück",
                 "Extra-Runden in allen Räumen plus der Meistertisch",
             ).forEach { line ->

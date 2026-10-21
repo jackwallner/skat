@@ -48,7 +48,7 @@ struct PaywallContent: View {
             // sittings; what they are actually buying now is practice that
             // does not end.
             VStack(alignment: .leading, spacing: 9) {
-                benefit("Endlos üben: jedes Mal ein frisches Kartenmuster")
+                benefit("Endlos üben: immer neue Aufgaben")
                 benefit("Fehler wiederholen: Unsicheres kommt zurück, bis es sitzt")
                 benefit("Zeitprüfung: 90 Sekunden für deinen Bestwert")
                 benefit("Extra-Runden in jedem Raum plus der Meistertisch")
