@@ -25,6 +25,9 @@ solution as wrong without clarifying the objective.
 AdvancedContentTests checks values and overbid rounding independently, enumerates
 all legal defenses for the trump-first and three-trick endgames, and verifies Null rank order.
 ValueCase.expected is authored independently of the arithmetic in the test.
+SkatRulesAuditTests holds a second ISkO table of the 24 value cases (Spitzen and
+Stufen per id) plus Bedienpflicht and trump-order edge cases; change it together
+with the content.
 Keep the quiz, actual rest cards, and test fixtures aligned when editing tactics.
 
 PlanningCase contains all three rest hands, prior declarer points including skat,
