@@ -39,9 +39,7 @@ Der Probe-Ablauf (Onboarding-Probeseite, Paywall, Kauf bis Tour) ist wie Mahj
 1.3.2 aufgebaut; nur der Knopftext variiert über RevenueCat-Angebotsmetadaten
 (`TrialCTA`). Der abgerechnete Betrag ist der auffälligste Preis (3.1.2(c)),
 Preise kommen immer live aus StoreKit. Jede andere Änderung braucht Jacks
-Zustimmung. Das Meta-SDK bleibt inaktiv, solange `META_APP_ID` und
-`META_CLIENT_TOKEN` in `project.yml` leer sind, und startet nie im Simulator.
-ATT wird nur in `HomeView.askForTrackingIfNeeded` abgefragt, die auf einen Test oder Kauf wartet (`MetaAds.askAfterPurchase`).
+Zustimmung. Kein Meta-SDK und keine Tracking-Abfrage (Jack 2026-10-21: Meta vorerst nur in Mahj).
 
 ## Skat+-Produkte
 
@@ -123,6 +121,6 @@ These files load automatically when you read a file matching their `paths:`. Age
 | `.claude/rules/expert-content.md` | Expert exercises, explicit discard objectives, rules and verification | `AdvancedContent`, `AppliedContent`, content validity tests |
 | `.claude/rules/generated-practice.md` | Endless skills, rules oracle, miss notes, mastery, What's New | `SkatRules`, `PracticeGenerators`, `EndlessPractice`, `HandGenerator`, `Mastery` |
 | `.claude/rules/feedback-and-retention.md` | Feedback sink, churn question, weekly gain ledger, ratings policy, what was not ported | `FeedbackService`, `ReviewPromptSheet`, `MasteryLedger`, `ReviewRequest` |
-| `.claude/rules/meta-ads.md` | Meta SDK + ATT (inert), remote switches and `TrialCTA`, the relay that lives in Mahj | `MetaAds`, `RemoteConfig`, ATT timing, `project.yml` Meta ids |
+| `.claude/rules/meta-ads.md` | No Meta SDK (removed), remote switches and `TrialCTA` | `RemoteConfig`, adding Meta or tracking |
 | `.claude/rules/membership-and-trial.md` | Trial flow, 3.1.2(c) price line, membership state, fit at every size, What's New mechanics | `SubscriptionService`, onboarding, paywall, primer, tour |
 | `.claude/rules/android.md` | Android port: package, RevenueCat IDs, Play products, Swift content export, Pro AVD commands, store assets, Play state | `android/**`, `docs/android-*.html`, Play scripts |

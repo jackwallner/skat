@@ -20,29 +20,6 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>FacebookAppID</key>
-	<string>$(META_APP_ID)</string>
-	<key>FacebookClientToken</key>
-	<string>$(META_CLIENT_TOKEN)</string>
-	<key>FacebookDisplayName</key>
-	<string>Skat Trainer</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<false/>
-	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<false/>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>So sieht Meta, über welche Facebook- oder Instagram-Anzeige du Skat Trainer gefunden hast, und wir zahlen nicht länger für Anzeigen, die nichts bringen. Deine Übungen und dein Fortschritt werden nie geteilt.</string>
-	<key>SKAdNetworkItems</key>
-	<array>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>v9wttpbfk9.skadnetwork</string>
-		</dict>
-		<dict>
-			<key>SKAdNetworkIdentifier</key>
-			<string>n38lu8286q.skadnetwork</string>
-		</dict>
-	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
