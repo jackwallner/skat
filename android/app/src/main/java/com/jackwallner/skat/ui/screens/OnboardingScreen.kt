@@ -373,6 +373,7 @@ private fun TrialPage(offersTrial: Boolean) {
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             listOf(
                 "Alle vier Einstiegsräume bleiben dauerhaft frei",
+                "Skat Minute und deine persönliche Skatabend-Vorbereitung",
                 "Endlos üben erzeugt immer neue Aufgaben",
                 "Fehler wiederholen bringt unsichere Fragen zurück",
                 "Extra-Runden in allen Räumen plus der Meistertisch",
