@@ -579,6 +579,12 @@ struct OnboardingView: View {
                 startTour()
                 return
             }
+            // A reinstalled member whose purchases are still syncing must not
+            // reach Apple's sheet as a stranger.
+            guard !subscriptions.isRecoveringMembership else {
+                purchaseError = "Wir prüfen noch, was dieser Apple Account besitzt. Versuche es gleich noch einmal oder tippe auf Wiederherstellen."
+                return
+            }
             // Monthly by default, and this is deliberate. Two different people
             // reach the two purchase surfaces: whoever taps through onboarding
             // has not used the app yet and is reacting to the number on Apple's

@@ -97,6 +97,10 @@ final class SubscriptionService: NSObject, ObservableObject {
         }
     }
 
+    /// A reinstall's StoreKit sync is still running. Purchase buttons wait for
+    /// it so a member is never sold what they already own.
+    var isRecoveringMembership: Bool { membershipRecovery != nil }
+
     /// A reinstall is a new anonymous RevenueCat user, and iOS does not bring
     /// an existing subscription across on its own, so a paying member looked
     /// like a stranger (and was offered a trial) until they found Restore.
