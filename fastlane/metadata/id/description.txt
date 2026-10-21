@@ -1,6 +1,6 @@
 Latih keputusan Skat dengan sesi singkat dan terarah.
 
-Skat Trainer mengubah hal-hal penting bagi pemula menjadi pertanyaan latihan yang jelas. Tanpa lawan, timer, atau akun. Setiap jawaban menjelaskan apa yang benar dan alasannya.
+Skat Trainer mengubah hal-hal penting bagi pemula menjadi pertanyaan latihan yang jelas. Tanpa lawan atau akun. Setiap jawaban menjelaskan apa yang benar dan alasannya.
 
 Pelajari dek Skat 32 kartu, nilai kartu, jenis kartu, tawaran, Skat, dan dasar setiap ronde. Kenali trump, Grand, dan Null, pilih dua kartu untuk dibuang, lalu latih mengikuti jenis kartu, pembukaan, dan trik.
 

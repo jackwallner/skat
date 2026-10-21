@@ -1,6 +1,6 @@
 Rèn luyện quyết định chơi Skat qua những buổi học ngắn và tập trung.
 
-Skat Trainer biến những nội dung quan trọng nhất cho người mới thành các câu hỏi luyện tập rõ ràng. Không có đối thủ, đồng hồ hay tài khoản. Mỗi câu trả lời giải thích cả điều đúng lẫn lý do.
+Skat Trainer biến những nội dung quan trọng nhất cho người mới thành các câu hỏi luyện tập rõ ràng. Không có đối thủ hay tài khoản. Mỗi câu trả lời giải thích cả điều đúng lẫn lý do.
 
 Học bộ bài Skat 32 lá, giá trị lá bài, chất, đấu giá, Skat và nền tảng của mỗi ván. Nhận biết chủ, Grand và Null, chọn hai lá để bỏ, rồi luyện theo chất, lượt ra bài và các lần.
 

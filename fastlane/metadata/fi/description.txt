@@ -1,6 +1,6 @@
 Harjoittele Skatia lyhyissä ja keskittyneissä tuokioissa.
 
-Skat Trainer muuttaa aloittelijan tärkeimmät aiheet selkeiksi harjoituskysymyksiksi. Ei vastustajia, ajastinta tai tiliä. Jokainen vastaus kertoo sekä mikä on oikein että miksi.
+Skat Trainer muuttaa aloittelijan tärkeimmät aiheet selkeiksi harjoituskysymyksiksi. Ei vastustajia tai tiliä. Jokainen vastaus kertoo sekä mikä on oikein että miksi.
 
 NELJÄ ILMAISTA HARJOITUSHUONETTA
 

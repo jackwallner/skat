@@ -1,6 +1,6 @@
 Millora les teves decisions de Skat en sessions curtes i enfocades.
 
-Skat Trainer converteix els temes més importants per a principiants en preguntes clares. Sense rivals, temporitzador ni compte. Cada resposta explica què és correcte i per què.
+Skat Trainer converteix els temes més importants per a principiants en preguntes clares. Sense rivals ni compte. Cada resposta explica què és correcte i per què.
 
 Aprèn la baralla de 32 cartes, els valors, els pals, la subhasta, l'Skat i les bases de cada ronda. Reconeix el triomf, el Grand i el Null, tria dues cartes per descartar i practica seguir el pal, la sortida i les bazes.
 
