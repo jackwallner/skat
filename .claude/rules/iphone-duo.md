@@ -28,11 +28,14 @@ Same shape as Bridge Trainer's split, which follows Total Calories (`vitals`).
 - While split: the stats chips are inert (the breakdown is already open), and
   Settings opens in the trailing pane instead of a sheet (`settingsSheet`
   binding; opening the Duo with the sheet up moves it to the pane).
-- On the iOS 27.1 simulator the system moves Home's toolbar (gear, back
-  button) into a vertical bar on the leading pane's trailing edge, beside the
-  fold, so that pane's cards are about 340 pt wide. That is automatic
-  vertical-bar behavior and was left on: it keeps the pane's full height for a
-  drill. `.toolbarVerticalBehavior(.disabled)` would trade height for width.
+- iOS 27.1 moves a `NavigationStack`'s toolbar (gear, back button) into a
+  vertical bar on the stack's trailing edge, which in the leading pane lands
+  beside the fold with the title still leading. Supervisor review rejected
+  that (2026-10-21), so both panes set `toolbarVerticalBehavior(.disabled)`
+  while split (`horizontalToolbarInPane`): back button at the pane's leading
+  edge, title centred, as on a phone and in Bridge. Folded keeps `.automatic`.
+  With both panes horizontal the system drops its vertical status column and
+  the status bar runs across the top of the trailing pane.
 - Still system sheets, so centred across the fold: the paywall (the trial flow
   is locked to Mahj 1.3.2, moving it needs Jack's go-ahead), What's New, the
   churn and feedback sheets, and sheets raised from inside Settings. Onboarding

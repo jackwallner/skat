@@ -51,3 +51,18 @@ extension GeometryProxy {
         return fold.minX...fold.maxX
     }
 }
+
+extension View {
+    /// iOS 27.1 can move a stack's back button and toolbar into a vertical bar
+    /// on its trailing edge, which in the leading pane lands beside the fold
+    /// with the title still leading. A pane keeps the phone's horizontal bar,
+    /// back button leading. Folded, the system default is unchanged.
+    @ViewBuilder
+    func horizontalToolbarInPane(_ isPane: Bool) -> some View {
+        if #available(iOS 27.1, *) {
+            toolbarVerticalBehavior(isPane ? .disabled : .automatic)
+        } else {
+            self
+        }
+    }
+}

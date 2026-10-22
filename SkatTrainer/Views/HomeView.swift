@@ -70,10 +70,12 @@ struct HomeView: View {
         ZStack(alignment: .topLeading) {
             homeStack
                 .environment(\.horizontalSizeClass, horizontalSizeClass)
+                .horizontalToolbarInPane(split != nil)
                 .frame(maxWidth: split?.primaryWidth ?? .infinity, maxHeight: .infinity)
             if progressPaneMounted {
                 progressPane
                     .environment(\.horizontalSizeClass, .compact)
+                    .horizontalToolbarInPane(split != nil)
                     .frame(maxWidth: split?.secondaryWidth ?? .infinity, maxHeight: .infinity)
                     .padding(.leading, split?.secondaryX ?? 0)
                     .opacity(split == nil ? 0 : 1)
