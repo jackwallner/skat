@@ -364,6 +364,45 @@
       "schwarz": false,
       "ouvert": false,
       "expected": 96
+    },
+    {
+      "id": "announcedSchneiderAchievesSchwarz",
+      "base": 24,
+      "matadors": 4,
+      "hand": true,
+      "points": 120,
+      "tricks": 10,
+      "bid": 144,
+      "schneider": true,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 216
+    },
+    {
+      "id": "announcedSchneiderLosesSchwarz",
+      "base": 24,
+      "matadors": 1,
+      "hand": true,
+      "points": 2,
+      "tricks": 0,
+      "bid": 96,
+      "schneider": true,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -288
+    },
+    {
+      "id": "announcedSchneiderLosesSchneider",
+      "base": 24,
+      "matadors": 1,
+      "hand": true,
+      "points": 30,
+      "tricks": 2,
+      "bid": 96,
+      "schneider": true,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -240
     }
   ],
   "legal": [

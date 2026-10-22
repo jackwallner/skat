@@ -34,9 +34,13 @@ enum SkatRuleReference {
     static func score(base: Int, matadors: Int, hand: Bool = false, points: Int, tricks: Int,
                       bid: Int, schneider: Bool = false, schwarz: Bool = false, ouvert: Bool = false) -> Int? {
         guard hand || !(schneider || schwarz || ouvert) else { return nil }
-        let announcement = ouvert ? 5 : schwarz ? 4 : schneider ? 2 : 0
-        let achieved = (points <= 30 || points >= 90 ? 1 : 0) + (tricks == 0 || tricks == 10 ? 1 : 0)
-        let value = base * (matadors + 1 + (hand ? 1 : 0) + max(announcement, achieved))
+        let schneiderAnnounced = schneider || schwarz || ouvert
+        let schwarzAnnounced = schwarz || ouvert
+        let schneiderStage = schneiderAnnounced || points <= 30 || points >= 90
+        let schwarzStage = schwarzAnnounced || tricks == 0 || tricks == 10
+        let stages = (schneiderStage ? 1 : 0) + (schneiderAnnounced ? 1 : 0)
+            + (schwarzStage ? 1 : 0) + (schwarzAnnounced ? 1 : 0) + (ouvert ? 1 : 0)
+        let value = base * (matadors + 1 + (hand ? 1 : 0) + stages)
         let win = points >= 61 && (!(schneider || schwarz || ouvert) || points >= 90)
             && (!(schwarz || ouvert) || tricks == 10) && value >= bid
         return win ? value : -2 * max(value, ((bid + base - 1) / base) * base)

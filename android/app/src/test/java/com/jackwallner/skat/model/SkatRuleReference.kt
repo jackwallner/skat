@@ -28,9 +28,13 @@ object SkatRuleReference {
     fun score(base: Int, matadors: Int, hand: Boolean = false, points: Int, tricks: Int, bid: Int,
         schneider: Boolean = false, schwarz: Boolean = false, ouvert: Boolean = false): Int? {
         if (!hand && (schneider || schwarz || ouvert)) return null
-        val announcement = when { ouvert -> 5; schwarz -> 4; schneider -> 2; else -> 0 }
-        val achieved = (if (points <= 30 || points >= 90) 1 else 0) + (if (tricks == 0 || tricks == 10) 1 else 0)
-        val value = base * (matadors + 1 + (if (hand) 1 else 0) + maxOf(announcement, achieved))
+        val schneiderAnnounced = schneider || schwarz || ouvert
+        val schwarzAnnounced = schwarz || ouvert
+        val schneiderStage = schneiderAnnounced || points <= 30 || points >= 90
+        val schwarzStage = schwarzAnnounced || tricks == 0 || tricks == 10
+        val stages = (if (schneiderStage) 1 else 0) + (if (schneiderAnnounced) 1 else 0) +
+            (if (schwarzStage) 1 else 0) + (if (schwarzAnnounced) 1 else 0) + (if (ouvert) 1 else 0)
+        val value = base * (matadors + 1 + (if (hand) 1 else 0) + stages)
         val win = points >= 61 && (!(schneider || schwarz || ouvert) || points >= 90) && (!(schwarz || ouvert) || tricks == 10) && value >= bid
         return if (win) value else -2 * maxOf(value, ((bid + base - 1) / base) * base)
     }
