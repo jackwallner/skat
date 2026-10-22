@@ -49,9 +49,6 @@ final class ExperiencedAuditTests: XCTestCase {
         launch(member: true)
         capture("home_member")
         attach("home_tree", app.debugDescription)
-        scrollTrainingRow()
-        capture("home_training_row_scrolled")
-
         guard open("Endlos") else { return finishNotes() }
         capture("endless_picker")
         guard open("Wer sticht?") else { return finishNotes() }
@@ -92,7 +89,7 @@ final class ExperiencedAuditTests: XCTestCase {
         attach("return_home_tree", app.debugDescription)
         scrollTrainingRow()
         capture("return_training_row")
-        if open("Fehler wiederholen") {
+        if open("Fehler") {
             capture("review_q1")
             for i in 0..<3 {
                 guard let answer = answerRow(last: false) else { break }
@@ -154,17 +151,17 @@ final class ExperiencedAuditTests: XCTestCase {
         guard open("Drücken"), open("Dein Skat") else { return finishNotes() }
         capture("discard_q1")
         attach("discard_q1_tree", app.debugDescription)
-        let images = app.images.allElementsBoundByIndex.filter { $0.exists && $0.isHittable && $0.frame.width > 30 && $0.frame.width < 70 }
-        notes.append("hittable card-sized images: \(images.count)")
-        // The last card of a sorted hand is the least likely recommended discard.
-        if images.count >= 2 {
-            images[images.count - 1].tap()
-            images[images.count - 2].tap()
-            settle(0.6)
-            capture("discard_selected")
-        } else {
-            problems.append("could not find card images to tap")
+        // Cards are plain tap-gesture views, not buttons, so find them by the
+        // static text each exposes and tap just below the corner label.
+        let spades = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "Pik")).allElementsBoundByIndex
+            .filter { $0.exists && $0.frame.height > 25 && $0.frame.width < 40 }
+        notes.append("Pik card faces found: \(spades.count)")
+        for face in spades.prefix(2) {
+            app.coordinate(withNormalizedOffset: .zero)
+                .withOffset(CGVector(dx: face.frame.midX, dy: face.frame.midY)).tap()
+            settle(0.4)
         }
+        capture("discard_selected")
         tapIfExists("Diese 2 drücken")
         settle(1.0)
         capture("discard_result")
@@ -176,7 +173,7 @@ final class ExperiencedAuditTests: XCTestCase {
         capture("discard_training_row")
         let tile = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Fehler wiederholen")).firstMatch
         notes.append("review tile label: \(tile.exists ? tile.label : "absent")")
-        if open("Fehler wiederholen") {
+        if open("Fehler") {
             capture("discard_review_opened")
             attach("discard_review_tree", app.debugDescription)
             notes.append("review buttons: " + app.buttons.allElementsBoundByIndex.map { $0.label }.joined(separator: " | "))
@@ -421,12 +418,16 @@ final class ExperiencedAuditTests: XCTestCase {
     }
 
     private func scrollTrainingRow() {
-        // The tile row scrolls sideways; swipe at the height of the tiles.
-        let tile = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Endlos")).firstMatch
-        if tile.exists {
-            tile.swipeLeft()
-            settle(0.6)
-        }
+        // The tile row scrolls sideways. Drag at the height of the tiles with
+        // raw coordinates: a locked tile reports an empty frame, so
+        // element.swipeLeft() fails for free players.
+        // Tiles sit about 43% down on an iPhone 17; aim the drag there.
+        let y = 0.43
+        let a = app.coordinate(withNormalizedOffset: CGVector(dx: 0.85, dy: y))
+        let b = app.coordinate(withNormalizedOffset: CGVector(dx: 0.05, dy: y))
+        a.press(forDuration: 0.1, thenDragTo: b)
+        settle(0.6)
+    }
     }
 
     private func firstDrillButton() -> XCUIElement? {
