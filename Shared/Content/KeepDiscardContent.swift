@@ -15,8 +15,8 @@ enum KeepDiscardContent {
         Flashcard(
             id: "stich-entscheidung-2",
             frontTitle: "Keine Farbe vorhanden",
-            frontTiles: [.h(14), .c(11)],
-            frontSubtitle: "Herz ist angespielt und kein Trumpf, du hast kein Herz",
+            frontTiles: [.d(14), .c(11)],
+            frontSubtitle: "Grand: Herz ist angespielt, du hast kein Herz",
             backTitle: "Jetzt darfst du frei wählen",
             backBody: "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen. Die Bedienpflicht entfällt erst dann.",
             choice: CardChoice("Frei wählen", "Trotzdem Herz legen", answerIndex: 0)

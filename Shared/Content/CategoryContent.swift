@@ -101,7 +101,7 @@ enum CategoryContent {
             tiles: [.c(14), .d(14), .h(13), .s(12), .c(10)],
             choices: [.stich, .nullspiel, .grand],
             answer: .stich,
-            explanation: "Zwei Asse und hohe Beikarten versprechen mögliche sichere Stiche. Ohne Buben ist das noch kein Grand."
+            explanation: "Zwei Asse und hohe Beikarten versprechen mögliche sichere Stiche. Ein Grand ist auch ohne Buben erlaubt; seine Spielbarkeit hängt vom vollständigen Blatt ab."
         ),
         HandMatchQuestion(
             id: "struktur-hand-6",

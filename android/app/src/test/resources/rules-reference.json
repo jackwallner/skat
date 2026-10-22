@@ -1,0 +1,606 @@
+{
+  "source": "DSkV ISkO November 2022 2.2-2.6,3.3.7,3.6,4.2-4.3",
+  "scores": [
+    {
+      "id": "vertieft-wert-01",
+      "base": 12,
+      "matadors": 2,
+      "hand": false,
+      "points": 78,
+      "tricks": 7,
+      "bid": 36,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 36
+    },
+    {
+      "id": "vertieft-wert-02",
+      "base": 11,
+      "matadors": 3,
+      "hand": false,
+      "points": 65,
+      "tricks": 6,
+      "bid": 44,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 44
+    },
+    {
+      "id": "vertieft-wert-03",
+      "base": 10,
+      "matadors": 1,
+      "hand": true,
+      "points": 74,
+      "tricks": 7,
+      "bid": 30,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 30
+    },
+    {
+      "id": "vertieft-wert-04",
+      "base": 9,
+      "matadors": 2,
+      "hand": true,
+      "points": 82,
+      "tricks": 8,
+      "bid": 36,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 36
+    },
+    {
+      "id": "vertieft-wert-05",
+      "base": 24,
+      "matadors": 2,
+      "hand": false,
+      "points": 92,
+      "tricks": 9,
+      "bid": 72,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 96
+    },
+    {
+      "id": "vertieft-wert-06",
+      "base": 12,
+      "matadors": 1,
+      "hand": false,
+      "points": 90,
+      "tricks": 9,
+      "bid": 24,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 36
+    },
+    {
+      "id": "vertieft-wert-07",
+      "base": 11,
+      "matadors": 1,
+      "hand": false,
+      "points": 89,
+      "tricks": 8,
+      "bid": 22,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 22
+    },
+    {
+      "id": "vertieft-wert-08",
+      "base": 10,
+      "matadors": 2,
+      "hand": true,
+      "points": 93,
+      "tricks": 9,
+      "bid": 50,
+      "schneider": true,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 60
+    },
+    {
+      "id": "vertieft-wert-09",
+      "base": 9,
+      "matadors": 1,
+      "hand": true,
+      "points": 120,
+      "tricks": 10,
+      "bid": 27,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 45
+    },
+    {
+      "id": "vertieft-wert-10",
+      "base": 24,
+      "matadors": 4,
+      "hand": true,
+      "points": 120,
+      "tricks": 10,
+      "bid": 120,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": true,
+      "expected": 264
+    },
+    {
+      "id": "vertieft-wert-11",
+      "base": 12,
+      "matadors": 2,
+      "hand": false,
+      "points": 58,
+      "tricks": 5,
+      "bid": 36,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -72
+    },
+    {
+      "id": "vertieft-wert-12",
+      "base": 11,
+      "matadors": 1,
+      "hand": false,
+      "points": 60,
+      "tricks": 5,
+      "bid": 22,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -44
+    },
+    {
+      "id": "vertieft-wert-13",
+      "base": 10,
+      "matadors": 2,
+      "hand": false,
+      "points": 29,
+      "tricks": 3,
+      "bid": 30,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -80
+    },
+    {
+      "id": "vertieft-wert-14",
+      "base": 24,
+      "matadors": 1,
+      "hand": true,
+      "points": 89,
+      "tricks": 8,
+      "bid": 72,
+      "schneider": true,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -240
+    },
+    {
+      "id": "vertieft-wert-15",
+      "base": 12,
+      "matadors": 1,
+      "hand": false,
+      "points": 80,
+      "tricks": 7,
+      "bid": 30,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -72
+    },
+    {
+      "id": "vertieft-wert-16",
+      "base": 11,
+      "matadors": 1,
+      "hand": false,
+      "points": 75,
+      "tricks": 7,
+      "bid": 35,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -88
+    },
+    {
+      "id": "vertieft-wert-17",
+      "base": 10,
+      "matadors": 1,
+      "hand": false,
+      "points": 70,
+      "tricks": 7,
+      "bid": 36,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -80
+    },
+    {
+      "id": "vertieft-wert-18",
+      "base": 9,
+      "matadors": 1,
+      "hand": false,
+      "points": 77,
+      "tricks": 7,
+      "bid": 23,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -54
+    },
+    {
+      "id": "vertieft-wert-19",
+      "base": 24,
+      "matadors": 1,
+      "hand": false,
+      "points": 81,
+      "tricks": 7,
+      "bid": 50,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -144
+    },
+    {
+      "id": "vertieft-wert-20",
+      "base": 9,
+      "matadors": 1,
+      "hand": true,
+      "points": 80,
+      "tricks": 8,
+      "bid": 36,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -72
+    },
+    {
+      "id": "vertieft-wert-21",
+      "base": 9,
+      "matadors": 1,
+      "hand": true,
+      "points": 92,
+      "tricks": 9,
+      "bid": 36,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 36
+    },
+    {
+      "id": "vertieft-wert-22",
+      "base": 12,
+      "matadors": 5,
+      "hand": false,
+      "points": 76,
+      "tricks": 7,
+      "bid": 60,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 72
+    },
+    {
+      "id": "vertieft-wert-23",
+      "base": 10,
+      "matadors": 6,
+      "hand": false,
+      "points": 73,
+      "tricks": 7,
+      "bid": 60,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 70
+    },
+    {
+      "id": "vertieft-wert-24",
+      "base": 24,
+      "matadors": 4,
+      "hand": false,
+      "points": 67,
+      "tricks": 6,
+      "bid": 96,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 120
+    },
+    {
+      "id": "own30",
+      "base": 24,
+      "matadors": 1,
+      "hand": false,
+      "points": 30,
+      "tricks": 2,
+      "bid": 18,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -144
+    },
+    {
+      "id": "own31",
+      "base": 24,
+      "matadors": 1,
+      "hand": false,
+      "points": 31,
+      "tricks": 2,
+      "bid": 18,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": -96
+    },
+    {
+      "id": "120notSchwarz",
+      "base": 24,
+      "matadors": 1,
+      "hand": false,
+      "points": 120,
+      "tricks": 9,
+      "bid": 18,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 72
+    },
+    {
+      "id": "allTricks",
+      "base": 24,
+      "matadors": 1,
+      "hand": false,
+      "points": 120,
+      "tricks": 10,
+      "bid": 18,
+      "schneider": false,
+      "schwarz": false,
+      "ouvert": false,
+      "expected": 96
+    }
+  ],
+  "legal": [
+    {
+      "id": "praxis-stich-01",
+      "led": "C7",
+      "trump": null,
+      "null": false,
+      "hand": [
+        "C11",
+        "H14"
+      ],
+      "expected": [
+        "C11",
+        "H14"
+      ]
+    },
+    {
+      "id": "praxis-stich-02",
+      "led": "H7",
+      "trump": "hearts",
+      "null": false,
+      "hand": [
+        "S11",
+        "D14"
+      ],
+      "expected": [
+        "S11"
+      ]
+    },
+    {
+      "id": "praxis-stich-03",
+      "led": "S11",
+      "trump": null,
+      "null": false,
+      "hand": [
+        "H11",
+        "S14"
+      ],
+      "expected": [
+        "H11"
+      ]
+    },
+    {
+      "id": "praxis-stich-04",
+      "led": "C7",
+      "trump": null,
+      "null": true,
+      "hand": [
+        "C11",
+        "H7"
+      ],
+      "expected": [
+        "C11"
+      ]
+    },
+    {
+      "id": "praxis-stich-10",
+      "led": "C14",
+      "trump": "hearts",
+      "null": false,
+      "hand": [
+        "C7",
+        "H11"
+      ],
+      "expected": [
+        "C7"
+      ]
+    },
+    {
+      "id": "praxis-stich-11",
+      "led": "D10",
+      "trump": "spades",
+      "null": false,
+      "hand": [
+        "S7",
+        "H7"
+      ],
+      "expected": [
+        "S7",
+        "H7"
+      ]
+    },
+    {
+      "id": "stich-entscheidung-2",
+      "led": "H7",
+      "trump": null,
+      "null": false,
+      "hand": [
+        "D14",
+        "C11"
+      ],
+      "expected": [
+        "D14",
+        "C11"
+      ]
+    },
+    {
+      "id": "plus-entscheidung-2",
+      "led": "H7",
+      "trump": null,
+      "null": false,
+      "hand": [
+        "D14",
+        "C7"
+      ],
+      "expected": [
+        "D14",
+        "C7"
+      ]
+    }
+  ],
+  "tricks": [
+    {
+      "id": "praxis-stich-05",
+      "trump": null,
+      "null": false,
+      "cards": [
+        "H10",
+        "H13",
+        "H12"
+      ],
+      "winner": 0
+    },
+    {
+      "id": "praxis-stich-06",
+      "trump": null,
+      "null": true,
+      "cards": [
+        "H10",
+        "H13",
+        "H12"
+      ],
+      "winner": 1
+    },
+    {
+      "id": "praxis-stich-07",
+      "trump": "diamonds",
+      "null": false,
+      "cards": [
+        "C14",
+        "S14",
+        "H14"
+      ],
+      "winner": 0
+    },
+    {
+      "id": "praxis-stich-08",
+      "trump": null,
+      "null": false,
+      "cards": [
+        "D14",
+        "D10",
+        "D11"
+      ],
+      "winner": 2
+    },
+    {
+      "id": "praxis-stich-09",
+      "trump": null,
+      "null": true,
+      "cards": [
+        "D14",
+        "D10",
+        "D11"
+      ],
+      "winner": 0
+    }
+  ],
+  "matadors": [
+    {
+      "cards": [
+        "C11",
+        "S11",
+        "H11",
+        "D11",
+        "H14"
+      ],
+      "trump": "hearts",
+      "expected": 5
+    },
+    {
+      "cards": [
+        "C11",
+        "S11",
+        "D11"
+      ],
+      "trump": null,
+      "expected": 2
+    },
+    {
+      "cards": [
+        "H11"
+      ],
+      "trump": null,
+      "expected": 2
+    },
+    {
+      "cards": [],
+      "trump": null,
+      "expected": 4
+    },
+    {
+      "cards": [
+        "C11",
+        "S11",
+        "H11",
+        "D11"
+      ],
+      "trump": null,
+      "expected": 4
+    },
+    {
+      "cards": [
+        "S11",
+        "H11",
+        "D11"
+      ],
+      "trump": "hearts",
+      "expected": 1
+    },
+    {
+      "cards": [
+        "C11",
+        "S11",
+        "H11",
+        "D11",
+        "H14",
+        "H10",
+        "H13",
+        "H12",
+        "H9",
+        "H8",
+        "H7"
+      ],
+      "trump": "hearts",
+      "expected": 11
+    }
+  ]
+}

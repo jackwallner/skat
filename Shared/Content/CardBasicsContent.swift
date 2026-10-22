@@ -46,7 +46,7 @@ enum CardBasicsContent {
             frontTitle: "Das Reizen",
             frontSubtitle: "Wer übernimmt das Spiel?",
             backTitle: "Die höchste Ansage gewinnt",
-            backBody: "Beim Reizen wird festgelegt, wer spielt. Der Alleinspieler nimmt den Skat auf, legt zwei Karten wieder ab und sagt danach die Spielart an."
+            backBody: "Beim Reizen wird festgelegt, wer spielt. Bei Skataufnahme nimmt der Alleinspieler den Skat auf und legt zwei Karten zurück. Für ein Handspiel bleibt der Skat unberührt. Danach wird die Spielart angesagt."
         ),
         Flashcard(
             id: "karten-gewinnen",
@@ -142,10 +142,10 @@ enum CardBasicsContent {
         ),
         QuizQuestion(
             id: "karten-quiz-7",
-            prompt: "Wer nimmt den Skat auf?",
+            prompt: "Wer darf nach dem Reizen den Skat aufnehmen oder ein Handspiel ansagen?",
             choices: ["Der Spieler mit der höchsten Ansage", "Immer Vorhand", "Der Spieler links vom Geber"],
             answerIndex: 0,
-            explanation: "Der Spieler, der das Reizen gewinnt, wird Alleinspieler und nimmt den Skat auf."
+            explanation: "Wer den höchsten Reizwert bietet oder hält, wird Alleinspieler. Er darf den Skat aufnehmen oder ihn für ein Handspiel unberührt lassen."
         ),
         QuizQuestion(
             id: "karten-quiz-8",

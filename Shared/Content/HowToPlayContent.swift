@@ -40,7 +40,7 @@ enum HowToPlayContent {
             id: "primer-reizen",
             icon: "arrow.up.right.circle.fill",
             title: "Reizen und Spiel ansagen",
-            body: "Die Spieler reizen mit möglichen Spielwerten: 18, 20, 22, 23, 24 und weiter. Wer die höchste Ansage hält, übernimmt das Spiel, nimmt den Skat auf und sagt die Spielart an.",
+            body: "Die Spieler reizen mit möglichen Spielwerten: 18, 20, 22, 23, 24 und weiter. Wer den höchsten Wert bietet oder hält, wird Alleinspieler. Er nimmt den Skat auf oder lässt ihn für ein Handspiel unberührt. Wenn alle passen, wird eingepasst und der nächste Geber teilt aus; Ramsch gehört nicht zur ISkO.",
             tiles: [.c(11), .s(11), .h(14)],
             tip: "Die 18 ist das kleinste Gebot. Reize nur so hoch, wie dein Blatt und dein Plan es tragen."
         ),
@@ -56,7 +56,7 @@ enum HowToPlayContent {
             id: "primer-stich",
             icon: "suit.club.fill",
             title: "Bedienen und Stiche holen",
-            body: "Die angespielte Farbe muss bedient werden. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf spielen. Der höchste gültige Trumpf gewinnt. Im Farbspiel und im Grand sind die Buben Trumpf und gehören nicht zu ihrer Farbe.",
+            body: "Die angespielte Farbe muss bedient werden, auch Trumpf. Ohne diese Farbgruppe darfst du abwerfen oder stechen. Der höchste Trumpf gewinnt; ohne Trumpf die höchste Karte der angespielten Farbe. Buben sind nur im Null Teil ihrer aufgedruckten Farbe.",
             tiles: [.h(14), .h(7), .c(11)],
             tip: "Im Null gibt es keinen Trumpf und das Ass ist hoch."
         ),

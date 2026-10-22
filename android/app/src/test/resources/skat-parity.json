@@ -5884,10 +5884,10 @@
         "Der Spieler mit der höchsten Ansage",
         "Der Spieler links vom Geber"
       ],
-      "explanation" : "Der Spieler, der das Reizen gewinnt, wird Alleinspieler und nimmt den Skat auf.",
+      "explanation" : "Wer den höchsten Reizwert bietet oder hält, wird Alleinspieler. Er darf den Skat aufnehmen oder ihn für ein Handspiel unberührt lassen.",
       "id" : "karten-quiz-7",
       "isReviewable" : true,
-      "prompt" : "Wer nimmt den Skat auf?",
+      "prompt" : "Wer darf nach dem Reizen den Skat aufnehmen oder ein Handspiel ansagen?",
       "roomID" : "card-room",
       "sourceLabel" : "Karten & Reizen",
       "tiles" : [
@@ -6448,7 +6448,7 @@
         "Stich",
         "Grand"
       ],
-      "explanation" : "Zwei Asse und hohe Beikarten versprechen mögliche sichere Stiche. Ohne Buben ist das noch kein Grand.",
+      "explanation" : "Zwei Asse und hohe Beikarten versprechen mögliche sichere Stiche. Ein Grand ist auch ohne Buben erlaubt; seine Spielbarkeit hängt vom vollständigen Blatt ab.",
       "id" : "struktur-hand-5",
       "isReviewable" : true,
       "prompt" : "Welche Struktur fällt dir zuerst auf?",
@@ -6602,7 +6602,7 @@
         "Null",
         "Stich"
       ],
-      "explanation" : "Die beiden Asse sind mögliche sichere Augenstiche. Ohne Buben ist die Struktur kein Grand.",
+      "explanation" : "Die beiden Asse sind mögliche sichere Augenstiche. Ein Grand ohne Buben ist erlaubt. Zwei Asse allein beweisen aber noch keinen sicheren Grand.",
       "id" : "plus-struktur-4",
       "isReviewable" : true,
       "prompt" : "Welche Struktur fällt dir zuerst auf?",
@@ -6733,11 +6733,11 @@
       "explanation" : "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen. Die Bedienpflicht entfällt erst dann.",
       "id" : "stich-entscheidung-2",
       "isReviewable" : true,
-      "prompt" : "Keine Farbe vorhanden\nHerz ist angespielt und kein Trumpf, du hast kein Herz",
+      "prompt" : "Keine Farbe vorhanden\nGrand: Herz ist angespielt, du hast kein Herz",
       "roomID" : "pegging-room",
       "sourceLabel" : "Stichspiel",
       "tiles" : [
-        "H14",
+        "D14",
         "C11"
       ],
       "trackingID" : "stich-entscheidung-2"
@@ -7232,11 +7232,11 @@
       "explanation" : "Ohne Herzkarte darfst du eine andere Farbe spielen. Ob ein Trumpf besser ist, hängt von deinem Spielplan und der Stichlage ab.",
       "id" : "plus-entscheidung-2",
       "isReviewable" : true,
-      "prompt" : "Kein Herz\nHerz ist angespielt",
+      "prompt" : "Kein Herz\nGrand: Herz ist angespielt",
       "roomID" : "pegging-room",
       "sourceLabel" : "Stichspiel",
       "tiles" : [
-        "H14",
+        "D14",
         "C7"
       ],
       "trackingID" : "plus-entscheidung-2"
@@ -9415,11 +9415,11 @@
             "explanation" : "Ohne Karte der angespielten Farbe darfst du eine andere Farbe oder einen Trumpf spielen. Die Bedienpflicht entfällt erst dann.",
             "id" : "stich-entscheidung-2",
             "isReviewable" : true,
-            "prompt" : "Keine Farbe vorhanden\nHerz ist angespielt und kein Trumpf, du hast kein Herz",
+            "prompt" : "Keine Farbe vorhanden\nGrand: Herz ist angespielt, du hast kein Herz",
             "roomID" : "pegging-room",
             "sourceLabel" : "Stichspiel",
             "tiles" : [
-              "H14",
+              "D14",
               "C11"
             ],
             "trackingID" : "stich-entscheidung-2"

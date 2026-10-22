@@ -61,7 +61,7 @@ enum PlusContent {
             tiles: [.c(14), .s(14), .h(13), .d(12), .c(10)],
             choices: [.stich, .nullspiel, .grand],
             answer: .stich,
-            explanation: "Die beiden Asse sind mögliche sichere Augenstiche. Ohne Buben ist die Struktur kein Grand."
+            explanation: "Die beiden Asse sind mögliche sichere Augenstiche. Ein Grand ohne Buben ist erlaubt. Zwei Asse allein beweisen aber noch keinen sicheren Grand."
         ),
     ]
 
@@ -113,8 +113,8 @@ enum PlusContent {
         Flashcard(
             id: "plus-entscheidung-2",
             frontTitle: "Kein Herz",
-            frontTiles: [.h(14), .c(7)],
-            frontSubtitle: "Herz ist angespielt",
+            frontTiles: [.d(14), .c(7)],
+            frontSubtitle: "Grand: Herz ist angespielt",
             backTitle: "Kreuz darf gelegt werden",
             backBody: "Ohne Herzkarte darfst du eine andere Farbe spielen. Ob ein Trumpf besser ist, hängt von deinem Spielplan und der Stichlage ab.",
             choice: CardChoice("Andere Farbe ist erlaubt", "Herz muss trotzdem folgen", answerIndex: 0)

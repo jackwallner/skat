@@ -82,7 +82,7 @@
       "title" : "Das 32-Karten-Blatt"
     },
     {
-      "body" : "Die Spieler reizen mit möglichen Spielwerten: 18, 20, 22, 23, 24 und weiter. Wer die höchste Ansage hält, übernimmt das Spiel, nimmt den Skat auf und sagt die Spielart an.",
+      "body" : "Die Spieler reizen mit möglichen Spielwerten: 18, 20, 22, 23, 24 und weiter. Wer den höchsten Wert bietet oder hält, wird Alleinspieler. Er nimmt den Skat auf oder lässt ihn für ein Handspiel unberührt. Wenn alle passen, wird eingepasst und der nächste Geber teilt aus; Ramsch gehört nicht zur ISkO.",
       "icon" : "arrow.up.right.circle.fill",
       "id" : "primer-reizen",
       "tiles" : [
@@ -107,7 +107,7 @@
       "title" : "Skat aufnehmen und drücken"
     },
     {
-      "body" : "Die angespielte Farbe muss bedient werden. Wer sie nicht hat, darf eine andere Farbe oder einen Trumpf spielen. Der höchste gültige Trumpf gewinnt. Im Farbspiel und im Grand sind die Buben Trumpf und gehören nicht zu ihrer Farbe.",
+      "body" : "Die angespielte Farbe muss bedient werden, auch Trumpf. Ohne diese Farbgruppe darfst du abwerfen oder stechen. Der höchste Trumpf gewinnt; ohne Trumpf die höchste Karte der angespielten Farbe. Buben sind nur im Null Teil ihrer aufgedruckten Farbe.",
       "icon" : "suit.club.fill",
       "id" : "primer-stich",
       "tiles" : [
@@ -199,7 +199,7 @@
               "id" : "karten-geben"
             },
             {
-              "backBody" : "Beim Reizen wird festgelegt, wer spielt. Der Alleinspieler nimmt den Skat auf, legt zwei Karten wieder ab und sagt danach die Spielart an.",
+              "backBody" : "Beim Reizen wird festgelegt, wer spielt. Bei Skataufnahme nimmt der Alleinspieler den Skat auf und legt zwei Karten zurück. Für ein Handspiel bleibt der Skat unberührt. Danach wird die Spielart angesagt.",
               "backTitle" : "Die höchste Ansage gewinnt",
               "frontSubtitle" : "Wer übernimmt das Spiel?",
               "frontTiles" : [
@@ -377,9 +377,9 @@
                 "Immer Vorhand",
                 "Der Spieler links vom Geber"
               ],
-              "explanation" : "Der Spieler, der das Reizen gewinnt, wird Alleinspieler und nimmt den Skat auf.",
+              "explanation" : "Wer den höchsten Reizwert bietet oder hält, wird Alleinspieler. Er darf den Skat aufnehmen oder ihn für ein Handspiel unberührt lassen.",
               "id" : "karten-quiz-7",
-              "prompt" : "Wer nimmt den Skat auf?",
+              "prompt" : "Wer darf nach dem Reizen den Skat aufnehmen oder ein Handspiel ansagen?",
               "tiles" : [
 
               ]
@@ -959,7 +959,7 @@
                 "nullspiel",
                 "grand"
               ],
-              "explanation" : "Zwei Asse und hohe Beikarten versprechen mögliche sichere Stiche. Ohne Buben ist das noch kein Grand.",
+              "explanation" : "Zwei Asse und hohe Beikarten versprechen mögliche sichere Stiche. Ein Grand ist auch ohne Buben erlaubt; seine Spielbarkeit hängt vom vollständigen Blatt ab.",
               "id" : "struktur-hand-5",
               "tiles" : [
                 "C14",
@@ -1087,7 +1087,7 @@
                 "nullspiel",
                 "grand"
               ],
-              "explanation" : "Die beiden Asse sind mögliche sichere Augenstiche. Ohne Buben ist die Struktur kein Grand.",
+              "explanation" : "Die beiden Asse sind mögliche sichere Augenstiche. Ein Grand ohne Buben ist erlaubt. Zwei Asse allein beweisen aber noch keinen sicheren Grand.",
               "id" : "plus-struktur-4",
               "tiles" : [
                 "C14",
@@ -1648,9 +1648,9 @@
                   "Trotzdem Herz legen"
                 ]
               },
-              "frontSubtitle" : "Herz ist angespielt und kein Trumpf, du hast kein Herz",
+              "frontSubtitle" : "Grand: Herz ist angespielt, du hast kein Herz",
               "frontTiles" : [
-                "H14",
+                "D14",
                 "C11"
               ],
               "frontTitle" : "Keine Farbe vorhanden",
@@ -2094,9 +2094,9 @@
                   "Herz muss trotzdem folgen"
                 ]
               },
-              "frontSubtitle" : "Herz ist angespielt",
+              "frontSubtitle" : "Grand: Herz ist angespielt",
               "frontTiles" : [
-                "H14",
+                "D14",
                 "C7"
               ],
               "frontTitle" : "Kein Herz",
