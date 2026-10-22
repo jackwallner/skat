@@ -123,6 +123,28 @@ final class ExperiencedAuditTests: XCTestCase {
         finishNotes()
     }
 
+    /// Does the first answer row of "Stichspiel üben" win every time?
+    func testTrickPlayAnswerPosition() {
+        launch(member: true)
+        guard open("Endlos"), open("Stichspiel üben") else { return finishNotes() }
+        capture("trickplay_q1")
+        var firstRowResults: [String] = []
+        for i in 0..<8 {
+            guard let answer = answerRow(last: false) else { break }
+            let label = answer.label
+            answer.tap()
+            settle(0.8)
+            let status = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "richtig")).firstMatch
+            firstRowResults.append("q\(i + 1) first row \"\(label)\" -> status \(status.exists ? status.label : "?")")
+            if i == 3 { capture("trickplay_after4") }
+            tapIfExists("Weiter")
+            settle(0.6)
+        }
+        notes.append(firstRowResults.joined(separator: "\n"))
+        capture("trickplay_end")
+        finishNotes()
+    }
+
     /// The 90 second run: leaving early, and running out the clock.
     func testTimedRun() {
         launch(member: true)
