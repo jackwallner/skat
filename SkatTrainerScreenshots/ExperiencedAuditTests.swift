@@ -145,6 +145,52 @@ final class ExperiencedAuditTests: XCTestCase {
         finishNotes()
     }
 
+    /// A missed Drücken scenario feeds the "Fehler wiederholen" badge. Does the
+    /// review run then have anything in it?
+    func testDiscardMissFeedsReview() {
+        launch(member: true)
+        app.swipeUp()
+        settle(0.6)
+        guard open("Drücken"), open("Dein Skat") else { return finishNotes() }
+        capture("discard_q1")
+        attach("discard_q1_tree", app.debugDescription)
+        let images = app.images.allElementsBoundByIndex.filter { $0.exists && $0.isHittable && $0.frame.width > 30 && $0.frame.width < 70 }
+        notes.append("hittable card-sized images: \(images.count)")
+        // The last card of a sorted hand is the least likely recommended discard.
+        if images.count >= 2 {
+            images[images.count - 1].tap()
+            images[images.count - 2].tap()
+            settle(0.6)
+            capture("discard_selected")
+        } else {
+            problems.append("could not find card images to tap")
+        }
+        tapIfExists("Diese 2 drücken")
+        settle(1.0)
+        capture("discard_result")
+        attach("discard_result_tree", app.debugDescription)
+        // Leave through the back button without finishing the deck.
+        goHome()
+        capture("discard_home_after")
+        scrollTrainingRow()
+        capture("discard_training_row")
+        let tile = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Fehler wiederholen")).firstMatch
+        notes.append("review tile label: \(tile.exists ? tile.label : "absent")")
+        if open("Fehler wiederholen") {
+            capture("discard_review_opened")
+            attach("discard_review_tree", app.debugDescription)
+            notes.append("review buttons: " + app.buttons.allElementsBoundByIndex.map { $0.label }.joined(separator: " | "))
+            tapIfExists("Fertig")
+            settle(1.0)
+            goHome()
+            scrollTrainingRow()
+            capture("discard_review_after")
+            let again = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Fehler wiederholen")).firstMatch
+            notes.append("review tile after: \(again.exists ? again.label : "absent")")
+        }
+        finishNotes()
+    }
+
     /// The 90 second run: leaving early, and running out the clock.
     func testTimedRun() {
         launch(member: true)
