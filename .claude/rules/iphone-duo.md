@@ -48,3 +48,10 @@ Same shape as Bridge Trainer's split, which follows Total Calories (`vitals`).
   drill-<id>, stats, endless, minute, prep, timed, howto, settings, paywall.
   Add `-skat.suppressWhatsNew`. The `stats` route pushes a second Dein
   Fortschritt on the left, so skip it for inner shots.
+- gh-sim shoots once per display `--wait` seconds after launch and once per
+  `--url`. Never pad with fake URLs (`noop://` made gh-sim exit 1), and a
+  custom scheme raises "Open in ...?" over the app. So pass no `--url`: one
+  job per surface, with the tour ending on that route (for example
+  `-DuoTourStep 6 -DuoRoutes home,minute --wait 16`). An `all` job can end
+  "app is not running at the end" with no crash in app.log; launch-only
+  jobs on the same source stay alive.
