@@ -24,6 +24,7 @@ struct SkatTrainerApp: App {
                 .environmentObject(progress)
                 .environmentObject(settings)
                 .environmentObject(router)
+                .environment(\.locale, .skat)
                 .preferredColorScheme(settings.appearance.colorScheme)
                 .onChange(of: scenePhase) { _, phase in
                     // iOS rarely cold-launches an app, so a report queued
