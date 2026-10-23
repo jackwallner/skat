@@ -55,5 +55,6 @@ Same shape as Bridge Trainer's split, which follows Total Calories (`vitals`).
   shot folded and unfolded, `--wait 10`. Never pass `--url` (a custom scheme
   raises "Open in ...?", fake `noop://` URLs make gh-sim exit 1). The
   recording's jump and flicker events at each relaunch are gh-sim terminating
-  the app, not the app. The Skatabend time reads "5:00 PM" because the
-  runner's region is US; keep it out of marketing sets.
+  the app, not the app. A US-region runner once showed the Skatabend time as
+  "5:00 PM"; the root view now pins `Locale.skat` (de_DE), so every time reads
+  on the 24-hour clock (`DisplayLocaleTests`).
