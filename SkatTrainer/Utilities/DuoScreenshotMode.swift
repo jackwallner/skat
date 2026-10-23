@@ -12,10 +12,19 @@ import SwiftUI
 /// overrides the dwell while split (the inner display). The tour restarts when
 /// the panes split or join, so folded and unfolded each get the full walk.
 ///
+/// `-DuoScreen <route>` instead opens one route right after launch and holds
+/// it, for gh-sim's `--screen`, which relaunches the app once per surface. It
+/// wins over `-DuoTour`, so a run can tour on its first launch (for the video)
+/// and still hold each `--screen` still.
+///
 /// Routes: home, quick, room-<id>, drill-<id>, stats, endless, minute, prep,
 /// timed, howto, settings, paywall.
 enum DuoScreenshotMode {
     private static let arguments = ProcessInfo.processInfo.arguments
+
+    static var screen: String? { value("-DuoScreen") }
+    /// Set once `-DuoScreen` is open, so a split change does not pop and push it again.
+    @MainActor static var screenOpened = false
 
     static var isSeeded: Bool { arguments.contains("-DuoSeed") }
     static var wantsTour: Bool { arguments.contains("-DuoTour") }
@@ -131,6 +140,10 @@ extension HomeView {
     /// previous push pops, so every route is shown from a clean Home.
     @MainActor
     func runDuoTour() async {
+        if let screen = DuoScreenshotMode.screen {
+            await openDuoScreen(screen)
+            return
+        }
         guard DuoScreenshotMode.wantsTour else { return }
         // The inner display's screenshots are slower, so it may want a longer dwell.
         let unfolded = split != nil
@@ -150,6 +163,17 @@ extension HomeView {
 
     static let defaultDuoRoutes =
         "home,quick,room-discard-room,drill-discard-two,drill-hand-match,minute,endless,prep,settings"
+
+    /// The launch measures the window first, which restarts this task when the
+    /// panes split, so only the run that survives the settle opens the screen.
+    @MainActor
+    private func openDuoScreen(_ route: String) async {
+        try? await Task.sleep(nanoseconds: 600_000_000)
+        guard !Task.isCancelled, !DuoScreenshotMode.screenOpened else { return }
+        DuoScreenshotMode.screenOpened = true
+        NSLog("DUOSCREEN %@ route=%@", split != nil ? "inner" : "outer", route)
+        await openDuoRoute(route)
+    }
 
     @MainActor
     private func openDuoRoute(_ route: String) async {
