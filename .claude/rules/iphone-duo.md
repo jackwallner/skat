@@ -43,15 +43,17 @@ Same shape as Bridge Trainer's split, which follows Total Calories (`vitals`).
 - Captures: DEBUG only (`DuoScreenshotMode`). `-DuoSeed` fills the real stores
   once per install (`duo.seeded`) with a week of practice, a weekly-gain
   baseline, three Skat Minutes and the local Skat+ override (no RevenueCat, no
-  network). `-DuoTour -DuoRoutes a,b,c` walks Home through routes on a timer,
-  because the capture job cannot tap. Routes: home, quick, room-<id>,
+  network). `-DuoScreen <route>` opens one route about a second after launch
+  and holds it (it wins over the tour). `-DuoTour -DuoRoutes a,b,c` walks Home
+  through routes on a timer, for video. Routes: home, quick, room-<id>,
   drill-<id>, stats, endless, minute, prep, timed, howto, settings, paywall.
   Add `-skat.suppressWhatsNew`. The `stats` route pushes a second Dein
   Fortschritt on the left, so skip it for inner shots.
-- gh-sim shoots once per display `--wait` seconds after launch and once per
-  `--url`. Never pad with fake URLs (`noop://` made gh-sim exit 1), and a
-  custom scheme raises "Open in ...?" over the app. So pass no `--url`: one
-  job per surface, with the tour ending on that route (for example
-  `-DuoTourStep 6 -DuoRoutes home,minute --wait 16`). An `all` job can end
-  "app is not running at the end" with no crash in app.log; launch-only
-  jobs on the same source stay alive.
+- One `gh-sim all --device 'iPhone Duo'` run captures every surface: base
+  `--args "-DuoSeed -skat.suppressWhatsNew -DuoTour ..."` (the recorded first
+  launch tours) plus one `--screen "-DuoScreen <route>"` per surface, each
+  shot folded and unfolded, `--wait 10`. Never pass `--url` (a custom scheme
+  raises "Open in ...?", fake `noop://` URLs make gh-sim exit 1). The
+  recording's jump and flicker events at each relaunch are gh-sim terminating
+  the app, not the app. The Skatabend time reads "5:00 PM" because the
+  runner's region is US; keep it out of marketing sets.
