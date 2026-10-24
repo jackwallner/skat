@@ -1,0 +1,103 @@
+Optional(Attributes: Application, 0x105c173d0, pid: 8908, label: 'Skat Trainer'
+Element subtree:
+ →Application, 0x105c173d0, pid: 8908, label: 'Skat Trainer'
+    Window (Main), 0x105c174f0, {{0.0, 0.0}, {402.0, 874.0}}
+      Other, 0x105c178b0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x105c179d0, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x105c17f70, {{0.0, 0.0}, {402.0, 874.0}}
+            Other, 0x105c18090, {{0.0, 0.0}, {402.0, 874.0}}
+              Other, 0x105c17610, {{0.0, 0.0}, {402.0, 874.0}}
+                NavigationBar, 0x105c17730, {{0.0, 62.0}, {402.0, 54.0}}, identifier: '_TtGC7SwiftUI32NavigationStackHosting'
+                  Other, 0x105c17af0, {{346.0, 66.0}, {36.0, 36.0}}, identifier: 'gearshape', label: 'Einstellungen'
+                    Other, 0x105c17c10, {{346.0, 66.0}, {36.0, 36.0}}
+                      Button, 0x105c17d30, {{348.3, 66.0}, {31.3, 36.0}}, identifier: 'gearshape', label: 'Einstellungen'
+                Other, 0x105c17e50, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x105c18230, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x105c18350, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x105c18470, {{0.0, 0.0}, {402.0, 874.0}}
+                        ScrollView, 0x105c18590, {{0.0, 0.0}, {402.0, 874.0}}
+                          Other, 0x105c186b0, {{0.0, 0.0}, {402.0, 874.0}}
+                            Other, 0x105c18c70, {{0.0, 0.0}, {402.0, 170.8}}
+                          Other, 0x105c18d90, {{0.0, 0.0}, {402.0, 874.0}}
+                          Other, 0x105c18eb0, {{0.0, 116.0}, {402.0, 961.7}}
+                            StaticText, 0x105c18fd0, {{16.0, 118.0}, {192.7, 38.3}}, label: 'Skat Trainer'
+                            Button, 0x105c190f0, {{288.3, 122.0}, {97.7, 29.0}}, label: '0 Tage am Stück, 0 Übungen abgeschlossen'
+                              Other, 0x105c19210, {{288.3, 122.0}, {43.3, 29.0}}, label: '0 Tage am Stück'
+                                Image, 0x105c19330, {{298.3, 130.7}, {9.0, 11.7}}, identifier: 'flame.fill', label: 'Flamme'
+                                StaticText, 0x105c19450, {{313.3, 128.0}, {9.3, 17.0}}, label: '0'
+                              Other, 0x105c19570, {{339.7, 122.0}, {46.3, 29.0}}, label: '0 Übungen abgeschlossen'
+                                Image, 0x105c19690, {{349.3, 130.0}, {12.7, 12.7}}, identifier: 'checkmark.seal.fill', label: 'Überprüft', Selected
+                                StaticText, 0x105c197b0, {{367.7, 128.0}, {9.3, 17.0}}, label: '0'
+                            StaticText, 0x105c198d0, {{16.0, 160.3}, {131.3, 17.0}}, label: 'Dein Platz am Tisch.'
+                            Button, 0x105c199f0, {{16.0, 191.3}, {370.0, 108.7}}, label: 'Loslegen, Eine kurze Runde für deinen nächsten Schritt'
+                              StaticText, 0x105c19b10, {{36.0, 211.3}, {105.7, 28.7}}, label: 'Loslegen'
+                              StaticText, 0x105c19c30, {{36.0, 244.0}, {246.0, 36.0}}, label: 'Eine kurze Runde für deinen nächsten Schritt'
+                              Image, 0x105c19d50, {{318.0, 223.7}, {44.0, 44.0}}, identifier: 'play.circle.fill', label: 'Wiedergeben'
+                            StaticText, 0x105c19e70, {{20.0, 314.0}, {95.3, 13.3}}, label: 'ÜBUNGSMODI'
+                            ScrollView, 0x105c19f90, {{16.0, 335.3}, {370.0, 122.0}}
+                              Other, 0x105c1a0b0, {{16.0, 335.3}, {550.0, 122.0}}
+                                Button, 0x105c1a1d0, {{20.0, 337.3}, {128.0, 118.0}}, label: 'Endlos
+üben,  '
+                                  Image, 0x105c1a2f0, {{33.7, 351.0}, {25.7, 12.0}}, identifier: 'infinity', label: 'infinity'
+                                  StaticText, 0x105c1a410, {{32.0, 386.0}, {46.7, 36.0}}, label: 'Endlos
+üben'
+                                  StaticText, 0x105c1a530, {{32.0, 430.0}, {3.0, 13.3}}, label: ' '
+                                Button, 0x105c1a650, {{158.0, 337.3}, {128.0, 118.0}}, label: 'Skat
+Minute, Täglich'
+                                  Image, 0x105c1a770, {{172.3, 349.3}, {24.3, 20.7}}, identifier: 'calendar.badge.clock', label: 'Datum Und Uhrzeit'
+                                  StaticText, 0x105c1a890, {{170.0, 387.7}, {47.7, 36.0}}, label: 'Skat
+Minute'
+                                  StaticText, 0x105c1a9b0, {{170.0, 431.7}, {39.3, 13.3}}, label: 'Täglich'
+                                Button, 0x105c1aad0, {{296.0, 337.3}, {128.0, 118.0}}, label: 'Skatabend
+planen, Wöchentlich'
+                                  Image, 0x105c1abf0, {{310.3, 350.7}, {27.0, 18.3}}, identifier: 'person.2.fill', label: 'person.2.fill'
+                                  StaticText, 0x105c1ad10, {{308.0, 386.5}, {74.0, 36.0}}, label: 'Skatabend
+planen'
+                                  StaticText, 0x105c1ae30, {{308.0, 430.5}, {67.7, 13.3}}, label: 'Wöchentlich'
+                                Button, 0x105c1af50, {{434.0, 337.3}, {128.0, 118.0}}, label: '90
+Sekunden,  '
+                                  Image, 0x105c1b350, {{447.7, 350.0}, {19.7, 19.7}}, identifier: 'timer', label: 'Timer'
+                                  StaticText, 0x105c1b470, {{446.0, 387.2}, {69.0, 36.0}}, label: '90
+Sekunden'
+                                  StaticText, 0x105c1b590, {{446.0, 431.2}, {3.0, 13.3}}, label: ' '
+                            StaticText, 0x105c1b6b0, {{20.0, 477.3}, {77.0, 13.3}}, label: 'DIE RÄUME'
+                            Button, 0x105c1b7d0, {{16.0, 504.7}, {370.0, 86.3}}, label: 'Karten & Reizen, Lerne die 32 Karten und den Weg zum Spiel'
+                              Image, 0x105c1bb30, {{43.3, 535.7}, {21.0, 24.3}}, identifier: 'rectangle.portrait.on.rectangle.portrait.angled', label: 'rectangle.portrait.on.rectangle.portrait.angled'
+                              StaticText, 0x105c1bc50, {{92.0, 518.7}, {120.3, 19.3}}, label: 'Karten & Reizen'
+                              StaticText, 0x105c1bd70, {{92.0, 541.0}, {187.3, 36.0}}, label: 'Lerne die 32 Karten und den Weg zum Spiel'
+                              StaticText, 0x105c1be90, {{338.5, 530.5}, {35.0, 35.0}}, label: '0/3'
+                            Button, 0x105c1bfb0, {{16.0, 605.0}, {370.0, 86.3}}, label: 'Spielarten, Erkenne Trumpf, Grand, Null und sichere Stiche'
+                              Image, 0x105c1c0d0, {{45.0, 639.0}, {18.3, 18.3}}, identifier: 'suit.club.fill', label: 'Club'
+                              StaticText, 0x105c1c1f0, {{92.0, 619.0}, {77.7, 19.3}}, label: 'Spielarten'
+                              StaticText, 0x105c1c310, {{92.0, 641.3}, {214.0, 36.0}}, label: 'Erkenne Trumpf, Grand, Null und sichere Stiche'
+                              StaticText, 0x105c1c430, {{338.5, 630.8}, {35.0, 35.0}}, label: '0/3'
+                            Button, 0x105c1c550, {{16.0, 705.3}, {370.0, 86.3}}, label: 'Drücken, Lege zwei Karten mit einem Plan in den Skat'
+                              Image, 0x105c1c670, {{47.0, 740.0}, {14.3, 17.0}}, identifier: 'arrow.down.to.line.compact', label: 'Ende'
+                              StaticText, 0x105c1c9e0, {{92.0, 719.3}, {63.7, 19.3}}, label: 'Drücken'
+                              StaticText, 0x105c1cb00, {{92.0, 741.7}, {213.0, 36.0}}, label: 'Lege zwei Karten mit einem Plan in den Skat'
+                              StaticText, 0x105c1cc20, {{338.5, 731.2}, {35.0, 35.0}}, label: '0/3'
+                            Button, 0x105b50890, {{16.0, 805.7}, {370.0, 86.3}}, label: 'Stichspiel, Bediene Farben und hole die richtigen Stiche'
+                              Image, 0x105b176e0, {{44.3, 839.0}, {19.7, 19.7}}, identifier: 'arrow.up.right.circle.fill', label: 'arrow.up.right.circle.fill'
+                              StaticText, 0x105b2e240, {{92.0, 819.7}, {74.7, 19.3}}, label: 'Stichspiel'
+                              StaticText, 0x105b2dea0, {{92.0, 842.0}, {187.3, 36.0}}, label: 'Bediene Farben und hole die richtigen Stiche'
+                              StaticText, 0x105b2f010, {{338.5, 831.5}, {35.0, 35.0}}, label: '0/3'
+                            Button, 0x105b2fe20, {{16.0, 906.0}, {370.0, 86.3}}, label: 'Der Meistertisch, Reizen, Spielwert und schwierige Endspiele'
+                              Image, 0x105b2fa80, {{41.7, 939.7}, {25.0, 19.3}}, identifier: 'crown.fill', label: 'crown.fill'
+                              StaticText, 0x105b30d00, {{92.0, 920.0}, {125.3, 19.3}}, label: 'Der Meistertisch'
+                              StaticText, 0x105b31240, {{92.0, 942.3}, {143.3, 36.0}}, label: 'Reizen, Spielwert und schwierige Endspiele'
+                              StaticText, 0x105b355b0, {{338.5, 931.8}, {35.0, 35.0}}, label: '0/4'
+                            StaticText, 0x105b1e0c0, {{25.5, 1014.3}, {351.0, 39.3}}, label: 'Skat Trainer ist eine unabhängige Übungs-App mit eigenen Lehrbeispielen. Regeln können am Tisch variieren, spiele nach den Regeln, die ihr vereinbart habt.'
+                          Other, 0x105b256b0, {{369.0, 116.0}, {30.0, 696.0}}, label: 'Vertikaler Rollbalken, 2 Seiten', value: 0 %
+                            Other, 0x105b209d0, {{396.0, 119.0}, {3.0, 542.3}}
+                          Other, 0x105b273b0, {{369.0, 116.0}, {30.0, 696.0}}, label: 'Vertikaler Rollbalken, 2 Seiten', value: 0 %
+                            Other, 0x105b29f30, {{396.0, 119.0}, {3.0, 542.3}}
+                Other, 0x105b27750, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x105b2b100, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x105c173d0, pid: 8908, label: 'Skat Trainer'
+Query chain:
+ →Find: Target Application 'com.jackwallner.skat'
+  Output: {
+    Application, 0x105a31ec0, pid: 8908, label: 'Skat Trainer'
+  }
+)
