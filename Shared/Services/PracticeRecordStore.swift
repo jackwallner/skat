@@ -131,7 +131,7 @@ final class PracticeRecordStore: ObservableObject {
     /// wrong surface before the ones they nearly have.
     func reviewQueue(limit: Int = 12) -> [String] {
         records
-            .filter { $0.value.needsReview && $0.value.isDue && PracticeSkill(rawValue: $0.key) == nil }
+            .filter { $0.value.needsReview && $0.value.isDue && SessionBuilder.reviewableIDs.contains($0.key) }
             .sorted { lhs, rhs in
                 if lhs.value.accuracy != rhs.value.accuracy { return lhs.value.accuracy < rhs.value.accuracy }
                 return lhs.value.dueDate < rhs.value.dueDate
@@ -142,7 +142,7 @@ final class PracticeRecordStore: ObservableObject {
 
     /// How many items are waiting, for the Home card's badge.
     var dueCount: Int {
-        records.filter { $0.value.needsReview && $0.value.isDue && PracticeSkill(rawValue: $0.key) == nil }.count
+        records.filter { $0.value.needsReview && $0.value.isDue && SessionBuilder.reviewableIDs.contains($0.key) }.count
     }
 
     // MARK: - Stats

@@ -1,3 +1,4 @@
+import SwiftUI
 import XCTest
 @testable import SkatTrainer
 
@@ -19,6 +20,9 @@ final class PracticeRecordStoreTests: XCTestCase {
     }
 
     private let room = "card-room"
+    private var reviewItems: [QuickItem] {
+        DrillLibrary.rooms.flatMap { SessionBuilder.choiceItems(in: $0.id, includePro: true) }
+    }
 
     func testRecordsAccuracy() {
         store.record(itemID: "q1", roomID: room, correct: true)
@@ -33,24 +37,70 @@ final class PracticeRecordStoreTests: XCTestCase {
     /// the second condition an item would either nag forever or vanish on the
     /// first lucky guess.
     func testMissedItemEntersAndLeavesTheQueue() {
-        store.record(itemID: "q1", roomID: room, correct: false)
-        XCTAssertEqual(store.reviewQueue(), ["q1"])
+        let id = reviewItems[0].id
+        store.record(itemID: id, roomID: room, correct: false)
+        XCTAssertEqual(store.reviewQueue(), [id])
 
-        store.record(itemID: "q1", roomID: room, correct: true)
+        store.record(itemID: id, roomID: room, correct: true)
         XCTAssertEqual(store.reviewQueue(), [], "One correct answer schedules it a day out")
 
-        store.record(itemID: "q1", roomID: room, correct: true)
-        XCTAssertFalse(store.records["q1"]!.needsReview, "Two in a row retires it")
+        store.record(itemID: id, roomID: room, correct: true)
+        XCTAssertFalse(store.records[id]!.needsReview, "Two in a row retires it")
     }
 
     func testQueueRanksWorstFirst() {
-        // q1: 1 of 3. q2: 2 of 3. Both due, q1 should lead.
+        let id = reviewItems[0].id
+        let otherID = reviewItems[1].id
+        // The repeatedly missed item should lead.
         for correct in [false, false, false] {
-            store.record(itemID: "q1", roomID: room, correct: correct)
+            store.record(itemID: id, roomID: room, correct: correct)
         }
-        store.record(itemID: "q2", roomID: room, correct: true)
-        store.record(itemID: "q2", roomID: room, correct: false)
-        XCTAssertEqual(store.reviewQueue().first, "q1")
+        store.record(itemID: otherID, roomID: room, correct: true)
+        store.record(itemID: otherID, roomID: room, correct: false)
+        XCTAssertEqual(store.reviewQueue().first, id)
+    }
+
+    func testReviewQueueExcludesUnservableHistoryBeforeLimiting() {
+        let unsupported = DrillLibrary.rooms.flatMap { room in
+            room.drills.flatMap { drill -> [String] in
+                switch drill.kind {
+                case .discard(let scenarios): return scenarios.map(\.id)
+                case .flashcards(let cards): return cards.filter { $0.choice == nil }.map(\.id)
+                default: return []
+                }
+            }
+        } + ["removed-item"]
+        XCTAssertGreaterThan(unsupported.count, 12)
+        for id in unsupported {
+            store.record(itemID: id, roomID: room, correct: false, now: Date().addingTimeInterval(-86_400))
+        }
+        let reloaded = PracticeRecordStore(defaults: defaults)
+        XCTAssertTrue(reloaded.reviewQueue().isEmpty)
+        XCTAssertEqual(reloaded.dueCount, 0)
+        XCTAssertEqual(reloaded.totalAttempts, unsupported.count)
+
+        for item in reviewItems.prefix(13) {
+            reloaded.record(itemID: item.id, roomID: item.roomID, correct: false)
+        }
+        XCTAssertEqual(reloaded.dueCount, 13)
+        let queue = reloaded.reviewQueue()
+        XCTAssertEqual(queue.count, 12)
+        XCTAssertEqual(SessionBuilder.reviewSession(ids: queue, includePro: true).map(\.id), queue)
+    }
+
+    func testEmptyReviewDoesNotRecordCompletion() async throws {
+        let progress = ProgressStore(defaults: defaults)
+        let view = PracticeRunView(mode: .review)
+            .environmentObject(progress)
+            .environmentObject(SubscriptionService.shared)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = UIHostingController(rootView: view)
+        window.makeKeyAndVisible()
+        defer { window.isHidden = true }
+        try await Task.sleep(for: .milliseconds(200))
+        XCTAssertEqual(progress.totalSessions, 0)
+        XCTAssertEqual(progress.completions(for: SessionBuilder.reviewDrill.id), 0)
+        XCTAssertEqual(progress.streakCount, 0)
     }
 
     /// Generated items mint a new id per question. They must roll up onto one

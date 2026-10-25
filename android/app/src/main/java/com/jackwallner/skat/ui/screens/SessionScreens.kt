@@ -268,7 +268,7 @@ fun PracticeRunScreen(mode: PracticeMode, initialItems: List<QuickItem>) {
     fun finish() {
         if (mode == PracticeMode.Timed) graph.records.recordChallengeScore(score)
         // A run quit before answering anything is not an achievement.
-        if (attempted == 0 && mode != PracticeMode.Review) navigator.pop() else finished = true
+        if (attempted == 0) navigator.pop() else finished = true
     }
 
     // Backing out of a timed run keeps the score rather than throwing it away.

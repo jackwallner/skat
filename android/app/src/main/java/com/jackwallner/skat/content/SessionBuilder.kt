@@ -32,6 +32,9 @@ data class QuickItem(
  * wrong in one tap.
  */
 object SessionBuilder {
+    /** Review is member-only, so the badge and queue use the full playable pool. */
+    val reviewableIDs: Set<String> by lazy { choicePool(true).map { it.id }.toSet() }
+
     val sessionDrill = Drill("quick-session", "Kurzrunde", "Ein kurzer Mix für deinen nächsten Schritt", DrillKind.Flashcards(emptyList()))
     val reviewDrill = Drill("review-session", "Fehler wiederholen", "Fragen, die du noch nicht sicher hast", DrillKind.Flashcards(emptyList()))
     val gameNightPrepDrill = Drill("game-night-prep", "Skatabend-Vorbereitung", "Eine Fünf-Minuten-Mischung für deinen nächsten Tisch", DrillKind.Flashcards(emptyList()))

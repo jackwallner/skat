@@ -4,6 +4,7 @@ import com.jackwallner.skat.content.SkatContent
 import com.jackwallner.skat.content.SkatMinuteContent
 import com.jackwallner.skat.content.DrillLibrary
 import com.jackwallner.skat.content.PracticeSkill
+import com.jackwallner.skat.content.SessionBuilder
 import com.jackwallner.skat.data.AppClock
 import com.jackwallner.skat.data.ConversionDiagnostics
 import com.jackwallner.skat.data.SkatMinuteStore
@@ -13,6 +14,7 @@ import com.jackwallner.skat.data.ProgressStore
 import com.jackwallner.skat.data.ReviewAccess
 import com.jackwallner.skat.data.ReviewPromptTracker
 import com.jackwallner.skat.data.WhatsNewTracker
+import com.jackwallner.skat.model.DrillKind
 import java.security.MessageDigest
 import java.time.Clock
 import java.time.Instant
@@ -28,6 +30,7 @@ class StoreTest {
     private val defaults = InMemoryStore()
     private val clock = AppClock(Clock.fixed(Instant.parse("2026-10-16T12:00:00Z"), ZoneOffset.UTC))
     private val room = "card-room"
+    private val reviewItems get() = DrillLibrary.rooms.flatMap { SessionBuilder.choiceItems(it.id, includePro = true) }
 
     private fun advanceDays(days: Long) {
         clock.clock = Clock.offset(clock.clock, java.time.Duration.ofDays(days))
@@ -106,17 +109,47 @@ class StoreTest {
     @Test
     fun missedItemEntersAndLeavesTheQueueWorstFirst() {
         val store = PracticeRecordStore(defaults, clock)
-        store.record("q1", room, correct = false)
-        assertEquals(listOf("q1"), store.reviewQueue())
-        store.record("q1", room, correct = true)
+        val first = reviewItems[0].id
+        val second = reviewItems[1].id
+        val third = reviewItems[2].id
+        store.record(first, room, correct = false)
+        assertEquals(listOf(first), store.reviewQueue())
+        store.record(first, room, correct = true)
         assertEquals("One correct answer schedules it a day out", emptyList<String>(), store.reviewQueue())
-        store.record("q1", room, correct = true)
-        assertFalse("Two in a row retires it", store.records.getValue("q1").needsReview)
+        store.record(first, room, correct = true)
+        assertFalse("Two in a row retires it", store.records.getValue(first).needsReview)
 
-        repeat(3) { store.record("q2", room, correct = false) }
-        store.record("q3", room, correct = true)
-        store.record("q3", room, correct = false)
-        assertEquals("q2", store.reviewQueue().first())
+        repeat(3) { store.record(second, room, correct = false) }
+        store.record(third, room, correct = true)
+        store.record(third, room, correct = false)
+        assertEquals(second, store.reviewQueue().first())
+    }
+
+    @Test
+    fun reviewQueueExcludesUnservableHistoryBeforeLimiting() {
+        val store = PracticeRecordStore(defaults, clock)
+        val unsupported = DrillLibrary.rooms.flatMap { room ->
+            room.drills.flatMap { drill ->
+                when (val kind = drill.kind) {
+                    is DrillKind.Discard -> kind.scenarios.map { it.id }
+                    is DrillKind.Flashcards -> kind.cards.filter { it.choice == null }.map { it.id }
+                    else -> emptyList()
+                }
+            }
+        } + "removed-item"
+        assertTrue(unsupported.size > 12)
+        unsupported.forEach { store.record(it, room, correct = false) }
+        val reloaded = PracticeRecordStore(defaults, clock)
+        assertTrue(reloaded.reviewQueue().isEmpty())
+        assertEquals(0, reloaded.dueCount)
+        assertEquals(unsupported.size, reloaded.totalAttempts)
+
+        advanceDays(1)
+        reviewItems.take(13).forEach { reloaded.record(it.id, it.roomID, correct = false) }
+        assertEquals(13, reloaded.dueCount)
+        val queue = reloaded.reviewQueue()
+        assertEquals(12, queue.size)
+        assertEquals(queue, SessionBuilder.reviewSession(queue, includePro = true).map { it.id })
     }
 
     @Test

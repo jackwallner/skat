@@ -51,6 +51,9 @@ struct QuickItem: Identifiable, Sendable {
 /// Builds the mixed session from choice-gradeable material. Plain reference
 /// cards and dedicated two-card decisions stay in their own interactions.
 enum SessionBuilder {
+    /// Review is member-only, so the badge and queue use the full playable pool.
+    static let reviewableIDs = Set(choicePool(includePro: true).map(\.id))
+
     static let sessionDrill = Drill(
         id: "quick-session",
         title: "Kurzrunde",
