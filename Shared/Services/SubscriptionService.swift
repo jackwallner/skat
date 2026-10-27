@@ -49,7 +49,9 @@ final class SubscriptionService: NSObject, ObservableObject {
     @Published private(set) var pendingChurnMoment: ChurnMoment?
 
     private var isConfigured = false
+    #if DEBUG
     private let localOverrideKey = "subscription.localProOverride"
+    #endif
     private let snapshotKey = "membership.lastSnapshot"
     private let churnAskSpentKey = "membership.churnAskSpent"
     private let pendingChurnKey = "membership.pendingChurnMoment"
@@ -61,7 +63,9 @@ final class SubscriptionService: NSObject, ObservableObject {
 
     override private init() {
         super.init()
+        #if DEBUG
         isPro = UserDefaults.standard.bool(forKey: localOverrideKey)
+        #endif
         pendingChurnMoment = UserDefaults.standard.string(forKey: pendingChurnKey)
             .flatMap(ChurnMoment.init(rawValue:))
     }
@@ -146,7 +150,9 @@ final class SubscriptionService: NSObject, ObservableObject {
 
     /// Dev/testing switch: flips Pro without a live RC key (Settings toggle).
     func setLocalOverride(isPro: Bool) {
+        #if DEBUG
         UserDefaults.standard.set(isPro, forKey: localOverrideKey)
+        #endif
         self.isPro = isPro
     }
 
@@ -359,7 +365,11 @@ final class SubscriptionService: NSObject, ObservableObject {
     private func apply(_ info: CustomerInfo) {
         let entitlement = Self.activeEntitlement(in: info)
         let entitled = entitlement != nil
+        #if DEBUG
         let override = UserDefaults.standard.bool(forKey: localOverrideKey)
+        #else
+        let override = false
+        #endif
         isPro = entitled || override
         membershipResolved = true
         isTrialing = entitled && entitlement?.periodType == .trial
