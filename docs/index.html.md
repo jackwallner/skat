@@ -167,5 +167,3 @@ abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
 Kostenlos im App Store. Vier Übungsräume, kein Konto. Skat+ optional.
 
 [Kostenlos laden](https://apps.apple.com/us/app/skat-trainer-learn-skat/id6796913722?pt=128748779&ct=jw-skat-home&mt=8)
-
-© 2026 Jack Wallner · Zuletzt aktualisiert 27. Oktober 2026
