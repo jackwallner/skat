@@ -6,7 +6,7 @@ Web page: https://jackwallner.com/ios/skat/skat-regeln-einfach-erklaert.html
 
 ## Skat Regeln einfach erklärt
 
-Von Jack Wallner · Zuletzt aktualisiert 21. Oktober 2026
+Von Jack Wallner · Zuletzt aktualisiert 28. Oktober 2026
 
 Skat ist ein Stichspiel für drei Personen, das mit 32 Karten gespielt wird. Beim Reizen wird ein Alleinspieler ermittelt, der den Skat aufnimmt, zwei Karten drückt und sein Spiel ansagt: ein Farbspiel, Grand oder Null. Im Farbspiel und im Grand gewinnt er mit 61 von 120 Augen, im Null, wenn er keinen Stich bekommt. Der Spielwert ist der Grundwert mal die Summe der Fälle, in die die Matadore (Spitzen) eingehen.
 

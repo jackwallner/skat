@@ -6,7 +6,7 @@ Web page: https://jackwallner.com/ios/skat/beste-skat-app.html
 
 ## Beste Skat App
 
-Von Jack Wallner · Zuletzt aktualisiert 21. Oktober 2026
+Von Jack Wallner · Zuletzt aktualisiert 28. Oktober 2026
 
 **Am besten zum Spielen gegen den Computer, mit Trainer und Analyse:** Skat LITE. **Am besten für Live-Partien gegen echte Spieler ohne Anmeldung:** Skat Palast. **Am besten für Online-Skat mit Liga und Deck-Auswahl:** Skat Treff. **Am besten zum Lernen ohne Internet:** Skat Offline Lernen. **Am besten für kurze Übungen zu Reizen, Spielart und Drücken mit Begründung:** Skat Trainer, die App, die ich entwickle.
 

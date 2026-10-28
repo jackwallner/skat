@@ -42,7 +42,7 @@
         "@graph": [
             {
                 "@type": "MobileApplication",
-                "dateModified": "2026-10-27",
+                "dateModified": "2026-10-28",
                 "@id": "https://jackwallner.com/ios/skat/#app",
                 "name": "Skat Trainer: Learn Skat",
                 "description": "Skat Trainer ist eine kostenlose App zum Skat lernen und üben für iPhone und iPad. Sie übt Kartenwerte, Reizen, die Spielarten Trumpf, Grand und Null, das Drücken und das Stichspiel in kurzen Einheiten mit vier Übungsräumen. Jede Antwort zeigt die Begründung, die App braucht kein Konto und läuft offline. Skat Trainer is a free app to learn Skat, the German card game.",
@@ -565,7 +565,7 @@
         color: #6e6e73;
       }
 
-      footer a {
+      footer a { display: inline-block; padding: 6px 0;
         color: #6e6e73;
         text-decoration: none;
         margin: 0 10px;
@@ -626,8 +626,8 @@
   <body>
     <nav>
       <div class="container">
-        <a class="nav-brand" href="./">
-          <img src="icon_256.webp" alt="Skat Trainer: Learn Skat" loading="lazy" decoding="async">
+        <a class="nav-brand" href="./" aria-label="Skat Trainer: Learn Skat">
+          <img src="icon_64.webp" alt="" width="32" height="32">
           <span>Skat Trainer: Learn Skat</span>
         </a>
         <a class="nav-link" href="https://apps.apple.com/us/app/skat-trainer-learn-skat/id6796913722?pt=128748779&amp;ct=jw-skat-home&amp;mt=8"
@@ -933,7 +933,7 @@
     </section>
 
     <footer>
-      <div class="divider">&copy; 2026 Jack Wallner · Zuletzt aktualisiert <time datetime="2026-10-27" data-updated>27. Oktober 2026</time></div>
+      <div class="divider">&copy; 2026 Jack Wallner · Zuletzt aktualisiert <time datetime="2026-10-28" data-updated>28. Oktober 2026</time></div>
       <div>
         <a href="skat-regeln-einfach-erklaert.html">Skat Regeln einfach erklärt</a>
         <a href="beste-skat-app.html">Beste Skat App</a>
