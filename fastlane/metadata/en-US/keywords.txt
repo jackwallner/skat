@@ -1,1 +1,1 @@
-skat,cards,german card game,learn,bidding,trump,grand,null,discard,tricks,quiz,strategy,rules
+card,game,german,bidding,trump,grand,null,discard,tricks,quiz,strategy,rules,coach,practice,lessons

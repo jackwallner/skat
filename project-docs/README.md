@@ -12,3 +12,7 @@ Developer notes and historical audits for this repository. The published site re
 ## Releases
 
 - [1.2.3-content.md](releases/1.2.3-content.md): contextual expert content and reviewer response.
+
+## ASO
+
+- [2026-10-28-aso-pass.md](aso/2026-10-28-aso-pass.md): US and German App Store metadata audit and updates.
