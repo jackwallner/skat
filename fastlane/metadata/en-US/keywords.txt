@@ -1,1 +1,1 @@
-card,game,german,bidding,trump,grand,null,discard,tricks,quiz,strategy,rules,coach,practice,lessons
+card,german,bidding,trump,grand,null,discard,tricks,quiz,strategy,rules,coach,offline,training
