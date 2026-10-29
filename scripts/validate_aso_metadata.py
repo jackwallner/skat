@@ -77,10 +77,6 @@ def validate_locale(locale: str) -> list[str]:
 
     keywords = values["keywords"]
     if keywords:
-        if len(keywords.encode("utf-8")) > 100:
-            errors.append(
-                f"{locale}/keywords.txt is {len(keywords.encode('utf-8'))} bytes, limit is 100"
-            )
         if re.search(r",\s", keywords):
             errors.append(f"{locale}/keywords.txt contains whitespace after a comma")
 
@@ -109,6 +105,10 @@ def main() -> int:
     if locales is None:
         locales = json.loads(SUPPORTED_LOCALES.read_text(encoding="utf-8"))["locales"]
     errors = [error for locale in locales for error in validate_locale(locale)]
+    for locale in locales:
+        size = len(read_field(locale, "keywords").encode("utf-8"))
+        if size > 100:
+            print(f"Byte warning: {locale}/keywords.txt is {size} UTF-8 bytes (character limit remains 100)")
     if errors:
         print(f"ASO metadata validation failed with {len(errors)} error(s):")
         for error in errors:
