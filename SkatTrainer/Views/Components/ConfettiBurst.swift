@@ -21,6 +21,7 @@ struct ConfettiBurst: View {
     /// The celebrated element, in the same coordinate space this view fills.
     var sourceRect: CGRect?
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var firedAt: Date?
     @State private var seed: Int = 0
     /// Snapshotted at fire time: the source can move (or vanish) mid-flight,
@@ -49,10 +50,17 @@ struct ConfettiBurst: View {
         }
         .allowsHitTesting(false)
         .onChange(of: trigger) { _, _ in
-            guard trigger > 0 else { return }
+            guard trigger > 0, !reduceMotion else { return }
             seed = trigger
             launchRect = sourceRect
             firedAt = Date()
+        }
+        // Drop the timeline once the burst is over, or it keeps redrawing
+        // every frame for as long as the screen stays open.
+        .task(id: firedAt) {
+            guard let fired = firedAt else { return }
+            try? await Task.sleep(for: .seconds(Self.duration))
+            if firedAt == fired { firedAt = nil }
         }
     }
 

@@ -44,6 +44,7 @@ struct PracticeRunView: View {
     @State private var secondsRemaining = Self.challengeSeconds
     @State private var confettiTrigger = 0
     @State private var confettiParticleCount = 30
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var flashOpacity: Double = 0
     @State private var answerRect: CGRect?
     @State private var streak = 0
@@ -92,9 +93,10 @@ struct PracticeRunView: View {
         guard let selection, selection != item.answerIndex, item.choiceNotes.indices.contains(selection) else { return nil }
         return item.choiceNotes[selection]
     }
-    /// Endless and timed runs are scored out of what was actually attempted,
-    /// not out of a deck size that does not exist.
-    private var gradedTotal: Int { mode == .review ? items.count : attempted }
+    /// Every run is scored out of what was actually attempted: endless and
+    /// timed runs have no deck size, and a review only completes once every
+    /// due question was answered.
+    private var gradedTotal: Int { attempted }
 
     private var completedDrill: Drill {
         switch mode {
@@ -277,8 +279,10 @@ struct PracticeRunView: View {
         confettiTrigger += 1
         Haptics.correctAnswer()
         SoundPlayer.play(.success)
-        flashOpacity = 0.14
-        withAnimation(.easeOut(duration: 0.5)) { flashOpacity = 0 }
+        if !reduceMotion {
+            flashOpacity = 0.14
+            withAnimation(.easeOut(duration: 0.5)) { flashOpacity = 0 }
+        }
     }
 
     private func particleCount(forStreak streak: Int) -> Int {
@@ -323,6 +327,12 @@ struct PracticeRunView: View {
         // A run the player quit before answering anything is not an
         // achievement; sending it to the completion screen would fake one.
         guard attempted > 0 else {
+            dismiss()
+            return
+        }
+        // Closing a review early is leaving, not finishing: the answers
+        // given are already recorded, but no session or streak day is.
+        if mode == .review, attempted < items.count {
             dismiss()
             return
         }

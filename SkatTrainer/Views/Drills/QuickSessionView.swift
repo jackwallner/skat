@@ -71,6 +71,7 @@ struct QuickSessionView: View {
 
     @State private var confettiTrigger = 0
     @State private var confettiParticleCount = 30
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var flashOpacity: Double = 0
     /// The correct answer row, published by `ChoiceList`. The celebration
     /// launches from there, not from the middle of the screen.
@@ -215,8 +216,10 @@ struct QuickSessionView: View {
         Haptics.correctAnswer()
         SoundPlayer.play(.success)
 
-        flashOpacity = 0.14
-        withAnimation(.easeOut(duration: 0.5)) { flashOpacity = 0 }
+        if !reduceMotion {
+            flashOpacity = 0.14
+            withAnimation(.easeOut(duration: 0.5)) { flashOpacity = 0 }
+        }
 
         guard Self.streakMilestones.contains(streak) else { return }
         Haptics.impact(.rigid, intensity: 1.0)
