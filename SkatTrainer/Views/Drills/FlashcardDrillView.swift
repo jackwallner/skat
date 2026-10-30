@@ -136,8 +136,18 @@ struct FlashcardDrillView: View {
                 .zIndex(Double(3 - slot))
                 .allowsHitTesting(slot == 0)
                 .gesture(dragGesture(size: size))
+                .accessibilityHidden(slot != 0)
                 .accessibilityAddTraits(.isButton)
                 .accessibilityHint(swipeAccessibilityHint)
+                // VoiceOver swipes move focus, so a plain card also grades
+                // through the actions rotor instead of the deck swipe.
+                .accessibilityAction { activateTopCard(size: size) }
+                .accessibilityActions {
+                    if slot == 0, isFlipped, !choiceAnswered {
+                        Button("Gewusst") { fling(direction: 1, size: size) }
+                        Button("Nochmal") { fling(direction: -1, size: size) }
+                    }
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -162,7 +172,15 @@ struct FlashcardDrillView: View {
         guard isFlipped else { return "Tippen, um die Antwort zu sehen" }
         return choiceAnswered
             ? "Tippe auf Weiter"
-            : "Nach rechts wischen, wenn du es wusstest, nach links für eine Wiederholung"
+            : "Nach rechts wischen oder die Aktion Gewusst wählen, nach links wischen oder Nochmal für eine Wiederholung"
+    }
+
+    private func activateTopCard(size: CGSize) {
+        if choiceAnswered {
+            fling(direction: 1, size: size)
+        } else {
+            flip()
+        }
     }
 
     /// KNEW IT / AGAIN stamps fade in with the drag so the swipe directions
@@ -418,14 +436,19 @@ struct FlipCardFace: View {
             back
         }
         .shine(trigger: shineTrigger, corner: Theme.deckCorner)
-        .accessibilityElement(children: isFlipped && onAdvance == nil ? .combine : .contain)
-        .accessibilityLabel(isFlipped ? "\(card.backTitle). \(card.backBody)" : card.frontTitle)
+        .accessibilityElement(children: card.choice == nil || (isFlipped && onAdvance == nil) ? .combine : .contain)
+        .accessibilityLabel(isFlipped ? "\(card.backTitle). \(card.backBody)" : frontAccessibilityLabel)
         .task(id: isFlipped) {
             // A correct call earns the slot-machine gleam once the flip lands.
             guard isFlipped, verdict?.correct == true else { return }
             try? await Task.sleep(nanoseconds: 450_000_000)
             shineTrigger += 1
         }
+    }
+
+    private var frontAccessibilityLabel: String {
+        ([card.frontTitle] + card.frontTiles.map(\.spokenName) + [card.frontSubtitle].compactMap { $0 })
+            .joined(separator: ", ")
     }
 
     private var front: some View {
