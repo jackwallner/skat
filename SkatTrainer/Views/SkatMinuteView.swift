@@ -211,7 +211,7 @@ struct SkatMinuteResultView: View {
             Text(result.score == result.total ? "Perfekte Minute!" : "Minute geschafft")
                 .font(Theme.display(28))
                 .foregroundStyle(Theme.ink)
-            Text("Skat-Minute \(result.shortDate)")
+            Text("Skat-Minute \(result.dateLabel)")
                 .font(.subheadline)
                 .foregroundStyle(Theme.inkSecondary)
         }

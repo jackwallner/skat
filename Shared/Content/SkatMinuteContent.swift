@@ -66,7 +66,7 @@ enum SkatMinuteContent {
         if last.count > 1 { questions.append(last[1]) }
 
         let parts = calendar.dateComponents([.month, .day], from: day)
-        let shortDate = String(format: "%02d/%02d", parts.month ?? 1, parts.day ?? 1)
+        let shortDate = String(format: "%02d.%02d.", parts.day ?? 1, parts.month ?? 1)
         return SkatMinuteChallenge(day: day, dayKey: dayKey, shortDate: shortDate, questions: questions)
     }
 

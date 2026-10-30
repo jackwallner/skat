@@ -20,9 +20,17 @@ struct SkatMinuteResult: Codable, Identifiable, Sendable {
         totalByCategory[category.rawValue, default: 0]
     }
 
+    /// German day label ("30.10."), derived from the key because results
+    /// saved by earlier builds stored the US form ("10/30") in `shortDate`.
+    var dateLabel: String {
+        let parts = dayKey.split(separator: "-")
+        guard parts.count == 3 else { return shortDate }
+        return "\(parts[2]).\(parts[1])."
+    }
+
     var shareText: String {
         let grid = answers.map { $0 ? "🟩" : "⬜️" }.joined()
-        return "Skat-Minute \(shortDate): \(score)/\(total)\n\(grid)\nSchaffst du mehr? \(AppStoreLinks.productURL.absoluteString)"
+        return "Skat-Minute \(dateLabel): \(score)/\(total)\n\(grid)\nSchaffst du mehr? \(AppStoreLinks.productURL.absoluteString)"
     }
 }
 

@@ -88,6 +88,12 @@ final class SkatMinuteContentTests: XCTestCase {
         XCTAssertEqual(result.score, 3)
         XCTAssertEqual(result.total, 5)
         XCTAssertTrue(result.shareText.contains("3/5"))
+        XCTAssertEqual(challenge.shortDate, "09.08.")
+        XCTAssertEqual(result.dateLabel, "09.08.")
+        XCTAssertTrue(result.shareText.hasPrefix("Skat-Minute 09.08.: 3/5"))
+        let legacy = SkatMinuteResult(dayKey: "2026-10-30", shortDate: "10/30", completedAt: .now, answers: [true],
+                                      correctByCategory: [:], totalByCategory: [:])
+        XCTAssertEqual(legacy.dateLabel, "30.10.")
         // Recording the same day twice must not double count it.
         XCTAssertEqual(store.record(challenge: challenge, answers: [true, true, true, true, true]).score, 3)
         store.resetAll()
