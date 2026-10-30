@@ -11,6 +11,40 @@ enum RevenueCatConfig {
 enum PurchaseOutcome: Sendable {
     case purchased
     case cancelled
+    /// Ask to Buy or a bank check: Apple will finish it later, and the
+    /// transaction listener unlocks Skat+ when it does.
+    case pending
+}
+
+/// RevenueCat's error descriptions are English only, so every purchase or
+/// restore failure the player sees goes through here.
+enum PurchaseErrorCopy {
+    static let pending = "Der Kauf wartet auf Bestätigung. \(Membership.name) wird freigeschaltet, sobald er bestätigt ist."
+
+    static func message(for error: Error) -> String {
+        if let error = error as? PurchaseError { return error.localizedDescription }
+        guard let code = error as? RevenueCat.ErrorCode else { return generic }
+        switch code {
+        case .paymentPendingError:
+            return pending
+        case .networkError, .offlineConnectionError:
+            return "Keine Verbindung zum App Store. Prüfe deine Internetverbindung und versuche es noch einmal."
+        case .purchaseNotAllowedError:
+            return "Käufe sind auf diesem Gerät nicht erlaubt. Prüfe die Bildschirmzeit-Einstellungen."
+        case .storeProblemError:
+            return "Der App Store antwortet gerade nicht. Versuche es gleich noch einmal."
+        case .productAlreadyPurchasedError:
+            return "Du hast das schon gekauft. Tippe auf Wiederherstellen."
+        case .productNotAvailableForPurchaseError:
+            return "Dieses Angebot ist gerade nicht verfügbar. Versuche es später noch einmal."
+        case .purchaseCancelledError:
+            return "Der Kauf wurde abgebrochen."
+        default:
+            return generic
+        }
+    }
+
+    private static let generic = "Das hat nicht geklappt. Versuche es noch einmal. Es wird nichts doppelt berechnet."
 }
 
 enum PurchaseError: LocalizedError {
@@ -317,7 +351,12 @@ final class SubscriptionService: NSObject, ObservableObject {
             return .purchased
         }
         guard let package else { throw PurchaseError.productsUnavailable }
-        let result = try await Purchases.shared.purchase(package: package)
+        let result: PurchaseResultData
+        do {
+            result = try await Purchases.shared.purchase(package: package)
+        } catch let error as RevenueCat.ErrorCode where error == .paymentPendingError {
+            return .pending
+        }
         // RevenueCat reports a user backing out of Apple's sheet as a normal
         // result, not an error. Treating it as a failure is what used to shove
         // a second paywall in front of someone who just said "not now".

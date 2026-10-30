@@ -642,9 +642,11 @@ struct OnboardingView: View {
                     }
                 case .cancelled:
                     break // They said no to Apple, not to the app. Stay put.
+                case .pending:
+                    purchaseError = PurchaseErrorCopy.pending
                 }
             } catch {
-                purchaseError = error.localizedDescription
+                purchaseError = PurchaseErrorCopy.message(for: error)
             }
         }
     }
@@ -662,7 +664,7 @@ struct OnboardingView: View {
                     purchaseError = "Für diesen Apple Account wurde kein früherer Kauf gefunden."
                 }
             } catch {
-                purchaseError = error.localizedDescription
+                purchaseError = PurchaseErrorCopy.message(for: error)
             }
         }
     }

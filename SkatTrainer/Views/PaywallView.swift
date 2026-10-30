@@ -457,6 +457,7 @@ struct PaywallView: View {
                 trialEligible = eligible
                 guard !changed || selectedPlan == .lifetime else { return }
                 let outcome = try await subscriptions.purchase(subscriptions.package(for: selectedPlan))
+                if outcome == .pending { message = PurchaseErrorCopy.pending }
                 guard outcome == .purchased else { return }
                 Haptics.success()
                 // The sheet dismisses itself the moment `isPro` flips. If the
@@ -469,7 +470,7 @@ struct PaywallView: View {
             } catch {
                 // A cancel never lands here (it's an outcome, not a throw), so
                 // anything that does is worth telling the player about.
-                message = error.localizedDescription
+                message = PurchaseErrorCopy.message(for: error)
             }
         }
     }
@@ -484,7 +485,7 @@ struct PaywallView: View {
                     message = "Für diesen Apple Account wurde kein früherer Kauf gefunden."
                 }
             } catch {
-                message = error.localizedDescription
+                message = PurchaseErrorCopy.message(for: error)
             }
         }
     }

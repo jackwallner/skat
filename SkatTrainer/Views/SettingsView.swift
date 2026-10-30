@@ -155,7 +155,7 @@ struct SettingsView: View {
                             ? "\(Membership.name) wurde wiederhergestellt."
                             : "Für diesen Apple Account wurde kein früherer Kauf gefunden."
                     } catch {
-                        restoreMessage = error.localizedDescription
+                        restoreMessage = PurchaseErrorCopy.message(for: error)
                     }
                 }
             } label: {
