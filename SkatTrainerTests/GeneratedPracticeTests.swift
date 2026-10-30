@@ -200,6 +200,15 @@ final class GeneratedPracticeTests: XCTestCase {
         }
     }
 
+    func testTrickPlayAnswerPositionVaries() {
+        let items = EndlessPractice.items(for: .trickPlay, count: 80)
+        XCTAssertGreaterThan(Set(items.map(\.answerIndex)).count, 1, "Bedienpflicht answer must not always sit in one row")
+        for item in items {
+            XCTAssertNil(item.choiceNotes[item.answerIndex])
+            XCTAssertTrue(item.choiceNotes.enumerated().allSatisfy { $0.offset == item.answerIndex || $0.element != nil })
+        }
+    }
+
     func testEverySkillGeneratesAndKeepsItsRoomAndPrefix() {
         for skill in PracticeSkill.allCases {
             XCTAssertNotNil(DrillLibrary.room(id: skill.roomID))

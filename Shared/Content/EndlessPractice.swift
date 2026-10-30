@@ -137,7 +137,8 @@ enum EndlessPractice {
                 answerIndex = 0
                 explanation = "\(card.spokenName) gehört nicht zur angespielten Farbe \(lead.displayName). Wenn du die Farbe nicht bedienen kannst, darfst du frei wählen."
             }
-            items.append(QuickItem(
+            // Written answer-first, so shuffle or the right row is always the top one.
+            items.append(SessionBuilder.prepared(QuickItem(
                 id: PracticeSkill.trickPlay.itemPrefix + UUID().uuidString,
                 prompt: "Angespielte Farbe: \(lead.displayName). Du hältst \(card.spokenName). Was ist richtig?",
                 tiles: [card],
@@ -148,7 +149,7 @@ enum EndlessPractice {
                 roomID: PracticeSkill.trickPlay.roomID,
                 choiceNotes: choices.indices.map { $0 == answerIndex ? nil : trickMissNote(follows: follows, lead: lead, card: card) },
                 isReviewable: false
-            ))
+            )))
         }
         return items
     }
