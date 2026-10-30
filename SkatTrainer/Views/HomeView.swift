@@ -349,9 +349,9 @@ struct HomeView: View {
         } label: {
             HStack(spacing: 8) {
                 statChip(value: progress.currentStreak(), icon: "flame.fill", color: Theme.coral,
-                         label: "\(progress.currentStreak()) Tage am Stück")
+                         label: "\(progress.currentStreak()) \(progress.currentStreak() == 1 ? "Tag" : "Tage") am Stück")
                 statChip(value: progress.totalSessions, icon: "checkmark.seal.fill", color: Theme.jade,
-                         label: "\(progress.totalSessions) Übungen abgeschlossen")
+                         label: "\(progress.totalSessions) \(progress.totalSessions == 1 ? "Übung" : "Übungen") abgeschlossen")
                 // Only ever positive. A week that went backwards is not news
                 // worth a chip; the ring already says where things stand.
                 if let gain = ledger.weeklyGain() {

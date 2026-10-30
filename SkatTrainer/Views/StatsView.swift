@@ -246,10 +246,10 @@ struct StatsView: View {
                 .frame(width: 38, height: 38)
                 .background(Theme.coral.opacity(0.13), in: Circle())
             VStack(alignment: .leading, spacing: 2) {
-                Text("\(progress.currentStreak()) Tage am Stück")
+                Text("\(progress.currentStreak()) \(progress.currentStreak() == 1 ? "Tag" : "Tage") am Stück")
                     .font(.headline)
                     .foregroundStyle(Theme.ink)
-                Text("\(progress.totalSessions) Übungen abgeschlossen")
+                Text("\(progress.totalSessions) \(progress.totalSessions == 1 ? "Übung" : "Übungen") abgeschlossen")
                     .font(.caption)
                     .foregroundStyle(Theme.inkSecondary)
             }

@@ -60,7 +60,7 @@ struct EndlessPickerView: View {
                     .font(.subheadline)
                     .foregroundStyle(Theme.inkSecondary)
                 if let record, record.attempts > 0 {
-                    Text("\(Int((record.accuracy * 100).rounded()))% bei \(record.attempts) Antworten")
+                    Text("\(Int((record.accuracy * 100).rounded()))% bei \(record.attempts) \(record.attempts == 1 ? "Antwort" : "Antworten")")
                         .font(.caption2)
                         .foregroundStyle(Theme.inkTertiary)
                 }

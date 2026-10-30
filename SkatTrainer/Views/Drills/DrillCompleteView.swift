@@ -52,7 +52,7 @@ struct DrillCompleteView: View {
             HStack(spacing: 6) {
                 Image(systemName: "flame.fill")
                     .foregroundStyle(Theme.coral)
-                Text("\(progress.currentStreak()) Tage am Stück")
+                Text("\(progress.currentStreak()) \(progress.currentStreak() == 1 ? "Tag" : "Tage") am Stück")
                     .font(.headline)
                     .foregroundStyle(Theme.ink)
             }
