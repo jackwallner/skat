@@ -1,28 +1,33 @@
-Learn Skat through short exercises for your next round. Practice bidding, game types, discarding and trick play. Each answer explains why.
-
-The four free rooms let you practice without opponents or an account. The app is in German and made for beginners and returning players.
+Skat Trainer is a practice app for learning Skat, the German card game, with short drills on bidding, game types, discarding and trick play. Every answer explains why. Four practice rooms are free, with no account, and the app is in German.
 
 FOUR FREE PRACTICE ROOMS
+• Cards and Bidding: the 32-card deck, card values, suits, bidding, the Skat and how a round starts
+• Game Types: recognise trump, Grand and Null, and match a hand to a game plan
+• Discarding: see twelve cards, choose two to put in the Skat, and compare with the trainer's explanation
+• Trick Play: following suit, trumping, the opening lead and planning your tricks
 
-CARDS & BIDDING
-Learn the 32-card Skat deck, card values, suits, bidding, the Skat, and the foundations of every round.
+HOW YOU PRACTICE
+• Swipeable coaching cards with the rule on the back, quizzes, teaching hands and discard scenarios
+• Streaks, progress for each room, and an optional daily reminder
+• No opponents to play against, so you can practise one decision at a time
 
-GAME TYPES
-Recognise trump, Grand, and Null. Match cards to a game plan and practise the rules that shape each decision.
+PRIVACY
+• No account, no ads and no cross-app tracking
+• Your progress is stored on your iPhone
 
-DISCARDING
-See twelve cards, choose two to discard, and compare your decision with the trainer's explanation.
+FREE AND SKAT+
+The four rooms above are free and do not expire. Skat+ is an optional upgrade, as a monthly or yearly subscription or a one-time lifetime purchase. Subscriptions include a free trial for eligible new subscribers, and the app shows its length before you start. Skat+ adds:
+• Endless practice with new patterns every time
+• Mistake review that brings back the questions you got wrong
+• A 90-second time challenge with a personal best
+• Skat Minute: five new questions each day
+• Skat night prep: a short mix before your next game, with an optional weekly reminder
+• Extra exercises in each of the four rooms
+• The Master Table: advanced discards, defence, counting game value, Null attack and rescue, and endgames
 
-TRICK PLAY
-Practise following suit, trump, opening lead, trick planning, and the small choices that decide a round.
+Prices appear in the app before you buy and vary by region. Subscriptions renew automatically unless canceled at least 24 hours before the current period ends. Manage or cancel in Settings > Apple ID > Subscriptions.
 
-SKAT+ (OPTIONAL)
-The four foundation rooms stay free. Skat+ adds new hands, mistake review, a 90-second Time Challenge, extra exercises, and the Master Table for tougher discards, defence, endplay, and strategy.
+Skat Trainer is an independent learning app. House rules differ, so agree on the rules at the table.
 
-MADE FOR LEARNING
-Swipeable coaching cards explain the rule on the back. Streaks, realistic teaching hands, and clear feedback make rules easier to remember when you sit down to play.
-
-Skat Trainer is an independent learning app. House rules can differ, so agree on the rules at the table.
-
-SUBSCRIPTIONS AND PURCHASES
-Skat+ is available as an auto-renewing subscription (Monthly or Yearly, both with a 7-day free trial) or as a one-time Lifetime purchase. Prices are shown in the app before you buy and vary by region. Payment is charged to your Apple ID at confirmation. Subscriptions renew automatically unless canceled at least 24 hours before the end of the current period. Manage or cancel anytime in Settings → Apple ID → Subscriptions. Terms of Use (Apple's standard EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Privacy Policy: https://jackwallner.github.io/skat/privacy-policy.
+Terms (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy: https://jackwallner.com/ios/skat/privacy-policy.html
