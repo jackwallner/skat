@@ -1,28 +1,33 @@
-Bereite dich mit kurzen Übungen auf deine nächste Skatrunde vor: Reizen, Spielarten, Drücken und Stichspiel. Jede Antwort erklärt, warum die Entscheidung richtig ist.
-
-Die vier Grundlagenräume sind kostenlos. Als Anfänger oder Wiedereinsteiger übst du ohne Gegner und ohne Konto.
+Skat Trainer ist eine Übungs-App für Skat mit kurzen Einheiten zu Reizen, Spielarten, Drücken und Stichspiel. Jede Antwort erklärt, warum sie stimmt. Vier Übungsräume sind kostenlos, ohne Konto.
 
 VIER KOSTENLOSE ÜBUNGSRÄUME
+• Karten & Reizen: das 32-Karten-Blatt, Kartenwerte, Farben, Reizen, der Skat und wie eine Runde beginnt
+• Spielarten: Trumpf, Grand und Null erkennen und ein Blatt der passenden Spielidee zuordnen
+• Drücken: zwölf Karten sehen, zwei in den Skat legen und mit der Erklärung des Trainers vergleichen
+• Stichspiel: Bedienpflicht, Trumpfen, Ausspiel und Stichplanung
 
-KARTEN & REIZEN
-Lerne das 32-Karten-Skatblatt, Kartenwerte, Farben, Reizen, Skat und die wichtigsten Grundlagen für jede Runde.
+SO ÜBST DU
+• Wischkarten mit der Regel auf der Rückseite, Quizfragen, Lehrhände und Drück-Aufgaben
+• Lernserien, Fortschritt pro Raum und eine optionale tägliche Erinnerung
+• Ohne Gegner, damit du eine Entscheidung nach der anderen üben kannst
 
-SPIELARTEN
-Erkenne Trumpf, Grand und Null. Ordne Karten einer Spielidee zu und übe die Regeln, die den Spielplan bestimmen.
+DATENSCHUTZ
+• Kein Konto, keine Werbung und kein App-übergreifendes Tracking
+• Dein Fortschritt bleibt auf deinem iPhone
 
-DRÜCKEN
-Sieh zwölf Karten, wähle zwei zum Drücken und vergleiche deine Entscheidung mit der Erklärung des Trainers.
+KOSTENLOS UND SKAT+
+Die vier Räume oben sind kostenlos und laufen nicht ab. Skat+ ist ein optionales Upgrade, als Monats- oder Jahresabo oder als einmaliger Lifetime-Kauf. Die Abos enthalten einen kostenlosen Testzeitraum für berechtigte Neukunden, dessen Länge die App vor dem Start anzeigt. Skat+ ergänzt:
+• Endlos üben mit immer neuen Mustern
+• Fehler wiederholen: Fragen, die du falsch beantwortet hast, kommen zurück
+• Zeitprüfung: 90 Sekunden für deinen Bestwert
+• Skat-Minute: fünf neue Fragen jeden Tag
+• Skatabend-Vorbereitung: eine kurze Mischung vor deiner nächsten Runde, mit optionaler wöchentlicher Erinnerung
+• Zusatzübungen in allen vier Räumen
+• Der Meistertisch: anspruchsvolles Drücken, Gegenspiel, Spielwert zählen, Null angreifen und retten, Endspiele
 
-STICHSPIEL
-Übe Bedienpflicht, Trumpf, Ausspiel, Stichplanung und die kleinen Entscheidungen, die über eine Runde entscheiden.
+Die Preise werden vor dem Kauf in der App angezeigt und unterscheiden sich je nach Region. Abos verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ende des laufenden Zeitraums gekündigt werden. Verwalten oder kündigen unter Einstellungen > Apple-ID > Abonnements.
 
-SKAT+ (OPTIONALE MITGLIEDSCHAFT)
-Die vier Grundlagenräume bleiben dauerhaft kostenlos. Skat+ ergänzt Endlos üben mit neuen Kartenstrukturen, Fehler wiederholen nach einem Lernplan, die Zeit-Challenge mit 90 Sekunden, Zusatzübungen und den Meistertisch für anspruchsvollere Entscheidungen.
+Skat Trainer ist eine unabhängige Lern-App. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
 
-FÜR EINSTEIGER GEMACHT
-Wischkarten erklären die Regel auf der Rückseite. Lernserien, Lehrhände und klare Rückmeldungen machen die Regeln leichter merkbar, wenn du wieder am Tisch sitzt.
-
-Skat Trainer ist eine unabhängige Lernapp. Hausregeln können abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
-
-ABONNEMENTS UND KÄUFE
-Skat+ ist als automatisch verlängerbares Abo (monatlich oder jährlich, beide mit 7 Tagen kostenlosem Test) oder als einmaliger Lifetime-Kauf erhältlich. Die Preise werden vor dem Kauf in der App angezeigt und unterscheiden sich je nach Region. Die Zahlung wird bei der Bestätigung über deine Apple-ID abgebucht. Abos verlängern sich automatisch, sofern sie nicht mindestens 24 Stunden vor Ende des laufenden Zeitraums gekündigt werden. Verwalten oder kündigen kannst du jederzeit unter Einstellungen → Apple-ID → Abos. Nutzungsbedingungen (Apples Standard-EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/. Datenschutzrichtlinie: https://jackwallner.github.io/skat/privacy-policy.
+Nutzungsbedingungen (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Datenschutz: https://jackwallner.com/ios/skat/privacy-policy.html
