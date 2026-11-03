@@ -19,4 +19,4 @@ Developer notes and historical audits for this repository. The published site re
 
 ## Marketing
 
-- [tiktok-kit/](marketing/tiktok-kit/): German TikTok slideshow kit generator (port of the Mahj kit); renders into iCloud `Skat TikTok Kit/`.
+- [tiktok-kit/](marketing/tiktok-kit/): German TikTok slideshow kit and 5 animated shorts (ports of the Mahj kit and shorts engine); renders into iCloud `Skat TikTok Kit/`.
