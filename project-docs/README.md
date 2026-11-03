@@ -16,3 +16,7 @@ Developer notes and historical audits for this repository. The published site re
 ## ASO
 
 - [2026-10-28-aso-pass.md](aso/2026-10-28-aso-pass.md): US and German App Store metadata audit and updates.
+
+## Marketing
+
+- [tiktok-kit/](marketing/tiktok-kit/): German TikTok slideshow kit generator (port of the Mahj kit); renders into iCloud `Skat TikTok Kit/`.
