@@ -8,6 +8,7 @@ Developer notes and historical audits for this repository. The published site re
 - [ios27SkatTrainer.md](audits/ios27SkatTrainer.md): iOS 27 compatibility audit: Skat Trainer
 - [mahj-parity-audit-2026-10-20.md](audits/mahj-parity-audit-2026-10-20.md): Mahj-inspired gap audit and what shipped
 - [mahj-parity-ui-findings-2026-10-20.md](audits/mahj-parity-ui-findings-2026-10-20.md): persona UI walkthrough
+- [state-machines-2026-11-06.md](audits/state-machines-2026-11-06.md): state machine audit (5 bugs, 4 proved by test) with repro suite `state-machines-2026-11-06-repro.swift`
 
 ## Releases
 
