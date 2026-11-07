@@ -8,7 +8,6 @@ protocol ReminderCenter {
     func add(_ request: UNNotificationRequest)
     func removePendingRequests(withIdentifiers ids: [String])
     func requestAuthorization() async -> Bool
-    func authorizationStatus() async -> UNAuthorizationStatus
 }
 
 struct SystemReminderCenter: ReminderCenter {
@@ -24,14 +23,6 @@ struct SystemReminderCenter: ReminderCenter {
         await withCheckedContinuation { continuation in
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
                 continuation.resume(returning: granted)
-            }
-        }
-    }
-
-    func authorizationStatus() async -> UNAuthorizationStatus {
-        await withCheckedContinuation { continuation in
-            UNUserNotificationCenter.current().getNotificationSettings { settings in
-                continuation.resume(returning: settings.authorizationStatus)
             }
         }
     }
@@ -205,31 +196,6 @@ final class AppSettings: ObservableObject {
     /// always current.
     static let dailyReminderBody = "Fünf Minuten Übung machen Drücken und Stichplanung sicherer."
     static let gameNightReminderBody = "Fünf persönliche Minuten jetzt, und der Tisch fühlt sich später ruhiger an."
-
-    // MARK: - Reconciling with iOS
-
-    /// iOS refuses `add` while notifications are off for the app, so a
-    /// reminder edited then (time, weekday) was dropped while its toggle still
-    /// read on, and stayed dead after notifications came back. Runs whenever
-    /// the app becomes active: while iOS allows it, every enabled reminder is
-    /// put back. Re-adding replaces a pending one with the same identifier.
-    /// A phone restored from a backup keeps the toggles but neither the
-    /// permission nor the pending requests, so iOS is asked again then. A
-    /// refusal leaves the toggles alone, so the reminders return with the
-    /// permission.
-    func reconcileReminders() async {
-        guard reminderEnabled || gameNightReminderEnabled else { return }
-        switch await center.authorizationStatus() {
-        case .notDetermined:
-            guard await center.requestAuthorization() else { return }
-        case .denied:
-            return
-        default:
-            break
-        }
-        if reminderEnabled { scheduleReminder() }
-        if gameNightReminderEnabled { scheduleGameNightReminder() }
-    }
 
     // MARK: - Daily reminder
 

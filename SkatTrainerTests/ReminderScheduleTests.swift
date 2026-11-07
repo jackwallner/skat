@@ -2,23 +2,12 @@ import UserNotifications
 import XCTest
 @testable import SkatTrainer
 
-/// Stands in for iOS: like the real center, it refuses `add` while
-/// notifications are off for the app.
+/// Stands in for iOS, with notifications allowed.
 @MainActor
 final class FakeReminderCenter: ReminderCenter {
-    var status: UNAuthorizationStatus = .authorized
-    /// What the player answers when iOS asks.
-    var grantsWhenAsked = true
-    private(set) var timesAsked = 0
     private(set) var pending: [String: UNNotificationRequest] = [:]
 
-    var authorized: Bool {
-        get { status == .authorized }
-        set { status = newValue ? .authorized : .denied }
-    }
-
     func add(_ request: UNNotificationRequest) {
-        guard authorized else { return }
         pending[request.identifier] = request
     }
 
@@ -26,15 +15,7 @@ final class FakeReminderCenter: ReminderCenter {
         ids.forEach { pending[$0] = nil }
     }
 
-    func requestAuthorization() async -> Bool {
-        if status == .notDetermined {
-            timesAsked += 1
-            status = grantsWhenAsked ? .authorized : .denied
-        }
-        return authorized
-    }
-
-    func authorizationStatus() async -> UNAuthorizationStatus { status }
+    func requestAuthorization() async -> Bool { true }
 
     func trigger(_ id: String) -> DateComponents? {
         (pending[id]?.trigger as? UNCalendarNotificationTrigger)?.dateComponents
@@ -42,7 +23,7 @@ final class FakeReminderCenter: ReminderCenter {
 }
 
 /// Reminder scheduling against a fake center (state machine audit
-/// 2026-11-06, B2 and B3).
+/// 2026-11-06, B3).
 @MainActor
 final class ReminderScheduleTests: XCTestCase {
     private let suite = "ReminderScheduleTests"
@@ -72,81 +53,6 @@ final class ReminderScheduleTests: XCTestCase {
         return AppSettings(defaults: defaults, center: center)
     }
 
-    /// Notifications off in iOS, the player edits both reminders (iOS drops
-    /// the new requests), then turns notifications back on and returns.
-    func testRemindersEditedWhileNotificationsWereOffComeBack() async {
-        let settings = makeSettings()
-        center.authorized = false
-        settings.reminderTime = settings.reminderTime.addingTimeInterval(3600)
-        settings.gameNightDay = .saturday
-        XCTAssertNil(center.pending[dailyID], "precondition: iOS refused the edited daily reminder")
-        XCTAssertNil(center.pending[gameNightID], "precondition: iOS refused the edited game night reminder")
-        XCTAssertTrue(settings.reminderEnabled && settings.gameNightReminderEnabled,
-                      "precondition: both toggles still read on")
-
-        center.authorized = true
-        await settings.reconcileReminders()
-        XCTAssertNotNil(center.pending[dailyID])
-        XCTAssertEqual(center.trigger(gameNightID)?.weekday, AppSettings.GameNightDay.saturday.rawValue)
-    }
-
-    /// A toggle persisted on with nothing pending (restored device, dropped
-    /// request) is scheduled again once the app is active and allowed.
-    func testEnabledRemindersWithNothingPendingAreScheduled() async {
-        let settings = makeSettings()
-        XCTAssertTrue(center.pending.isEmpty, "precondition: nothing pending")
-        await settings.reconcileReminders()
-        XCTAssertNotNil(center.pending[dailyID])
-        XCTAssertNotNil(center.pending[gameNightID])
-    }
-
-    /// Restored from a backup onto a new phone: the toggles came back, iOS's
-    /// permission and pending requests did not. iOS is asked once, and the
-    /// reminders are scheduled when the player allows them.
-    func testARestoredPhoneAsksAgainAndSchedules() async {
-        center.status = .notDetermined
-        let settings = makeSettings()
-        await settings.reconcileReminders()
-        XCTAssertEqual(center.timesAsked, 1)
-        XCTAssertNotNil(center.pending[dailyID])
-        XCTAssertNotNil(center.pending[gameNightID])
-    }
-
-    /// Refusing that question keeps the player's choice, so the reminders
-    /// come back if notifications are allowed later in iOS Settings.
-    func testARefusalOnARestoredPhoneKeepsTheToggles() async {
-        center.status = .notDetermined
-        center.grantsWhenAsked = false
-        let settings = makeSettings()
-        await settings.reconcileReminders()
-        XCTAssertTrue(center.pending.isEmpty)
-        XCTAssertTrue(settings.reminderEnabled && settings.gameNightReminderEnabled)
-
-        center.authorized = true
-        await settings.reconcileReminders()
-        XCTAssertNotNil(center.pending[dailyID])
-        XCTAssertEqual(center.timesAsked, 1)
-    }
-
-    func testDisabledRemindersStayUnscheduledAndNeverAsk() async {
-        center.status = .notDetermined
-        let settings = makeSettings(daily: false, gameNight: false)
-        await settings.reconcileReminders()
-        XCTAssertTrue(center.pending.isEmpty)
-        XCTAssertEqual(center.timesAsked, 0)
-    }
-
-    /// While iOS still says no, nothing changes: the toggle keeps the
-    /// player's choice so the reminder returns with the permission.
-    func testWhileNotificationsAreOffTheTogglesKeepTheirChoice() async {
-        center.authorized = false
-        let settings = makeSettings(gameNight: false)
-        await settings.reconcileReminders()
-        XCTAssertTrue(center.pending.isEmpty)
-        XCTAssertTrue(settings.reminderEnabled)
-        XCTAssertFalse(settings.reminderPermissionDenied)
-    }
-
     // MARK: - B3: the chosen wall-clock time survives a zone change
 
     private func hourAndMinute(_ date: Date) -> [Int?] {
@@ -173,7 +79,9 @@ final class ReminderScheduleTests: XCTestCase {
         settings.gameNightDay = .saturday
         let game = center.trigger(gameNightID)
         XCTAssertEqual([game?.hour, game?.minute, game?.weekday], [17, 0, 7])
-        await settings.reconcileReminders()
+        settings.reminderEnabled = false
+        settings.reminderEnabled = true
+        for _ in 0..<100 where center.pending[dailyID] == nil { await Task.yield() }
         let daily = center.trigger(dailyID)
         XCTAssertEqual([daily?.hour, daily?.minute], [7, 45])
     }

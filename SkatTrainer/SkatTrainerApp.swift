@@ -27,15 +27,11 @@ struct SkatTrainerApp: App {
                     // offline also retries every time the app comes back.
                     guard phase == .active else { return }
                     Task { await FeedbackService.shared.flushPending() }
-                    // Notifications may have been off when a reminder was
-                    // last scheduled, or switched back on since.
-                    Task { await settings.reconcileReminders() }
                 }
                 .onAppear {
                     subscriptions.start()
                     ConversionDiagnostics.recordAppOpen()
                     Task { await FeedbackService.shared.flushPending() }
-                    Task { await settings.reconcileReminders() }
                     #if DEBUG
                     if RevenueCatProbe.isEnabled {
                         // Same entry point the real paywall screens call, so
