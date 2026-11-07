@@ -9,6 +9,7 @@ Developer notes and historical audits for this repository. The published site re
 - [mahj-parity-audit-2026-10-20.md](audits/mahj-parity-audit-2026-10-20.md): Mahj-inspired gap audit and what shipped
 - [mahj-parity-ui-findings-2026-10-20.md](audits/mahj-parity-ui-findings-2026-10-20.md): persona UI walkthrough
 - [state-machines-2026-11-06.md](audits/state-machines-2026-11-06.md): state machine audit (5 bugs, 4 proved by test) with repro suite `state-machines-2026-11-06-repro.swift`
+- [state-machines-2026-11-06-review.md](audits/state-machines-2026-11-06-review.md): independent review of that audit (1 confirmed, 3 minor, 1 unverified, 0 false positives)
 
 ## Releases
 
