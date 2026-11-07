@@ -64,9 +64,12 @@ months old. Home shows the question once 0.9s after it is bare
 the existing `Mastery.swift` (`RoomMastery`; an item is known after two right
 answers in a row and until a full interval past due); there is no second
 mastery model. `weeklyGain()` drives the plum "+N" chip on Home and the "Diese
-Woche N Fragen mehr gefestigt" card on Dein Fortschritt. Home records only once
-`membershipResolved` is true, or a member's first entry of the day would drop
-every Skat+ item and fake a gain the next day. Nothing is baked into the
+Woche N Fragen mehr gefestigt" card on Dein Fortschritt. Home records through
+`record(from:)`, which always counts every item, Skat+ included, whatever the
+membership: a free-scope entry while a member was lapsed (or before RevenueCat
+answered) made a return count every Skat+ item again as this week's gain
+(audit 2026-11-06, B4). Free players cannot answer Skat+ items, so their count
+only moves with their own practice. Nothing is baked into the
 repeating reminders (`AppSettings.dailyReminderBody` is static and number-free;
 `ReminderCopyTests` guards it).
 

@@ -198,12 +198,11 @@ struct HomeView: View {
     }
 
     /// Today's mastery, written to the ledger so the week-over-week gain has
-    /// something to measure from. Cheap, and idempotent within a day.
+    /// something to measure from. Cheap, and idempotent within a day. The
+    /// count does not depend on membership, so neither an unresolved one nor
+    /// a lapse and return can fake a gain.
     private func recordMastery() {
-        // Before RevenueCat answers, a member reads as free and the day's
-        // entry would drop every Skat+ item, faking a gain the next day.
-        guard subscriptions.membershipResolved else { return }
-        ledger.record(records.masteryByRoom(isMember: subscriptions.isPro))
+        ledger.record(from: records)
     }
 
     /// The one question asked when a membership turns toward the exit. Waits
