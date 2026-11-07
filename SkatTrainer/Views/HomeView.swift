@@ -197,12 +197,22 @@ struct HomeView: View {
         }
     }
 
-    /// Today's mastery, written to the ledger so the week-over-week gain has
-    /// something to measure from. Cheap, and idempotent within a day. The
-    /// count does not depend on membership, so neither an unresolved one nor
-    /// a lapse and return can fake a gain.
     private func recordMastery() {
-        ledger.record(from: records)
+        Self.recordMastery(records: records, subscriptions: subscriptions, ledger: ledger)
+    }
+
+    /// Today's mastery, written to the ledger so the week-over-week gain has
+    /// something to measure from. Cheap, and idempotent within a day. Takes
+    /// the membership only so `HomeMasteryTests` can prove the count ignores
+    /// it: neither an unresolved membership nor a lapse and return may fake
+    /// a gain.
+    static func recordMastery(
+        records: PracticeRecordStore,
+        subscriptions _: SubscriptionService,
+        ledger: MasteryLedger,
+        now: Date = Date()
+    ) {
+        ledger.record(from: records, now: now)
     }
 
     /// The one question asked when a membership turns toward the exit. Waits
