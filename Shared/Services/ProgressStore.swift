@@ -73,23 +73,43 @@ final class ProgressStore: ObservableObject {
     /// drill is finished, so after a missed day it still held the old number
     /// and Home showed a streak the player had already lost.
     func currentStreak(now: Date = Date()) -> Int {
-        guard let last = defaults.object(forKey: Keys.lastActiveDay) as? Date else { return streakCount }
-        let calendar = Calendar.current
-        let gap = calendar.dateComponents(
-            [.day], from: calendar.startOfDay(for: last), to: calendar.startOfDay(for: now)
-        ).day ?? 0
-        return gap > 1 ? 0 : streakCount
+        guard let last = lastActiveDayKey else { return streakCount }
+        return Self.daysBetween(last, MasteryLedger.dayKey(now)) > 1 ? 0 : streakCount
+    }
+
+    /// The local calendar date of the last finished drill ("2026-11-06").
+    /// It used to be a start-of-day `Date` from the zone at write time, read
+    /// back in the zone at read time, so a flight across the date line made
+    /// one date look like two (audit 2026-11-06, B5). Those stored dates
+    /// still read: midday of the stored day lands on the same date in any
+    /// zone within twelve hours of the one that wrote it.
+    private var lastActiveDayKey: String? {
+        let stored = defaults.object(forKey: Keys.lastActiveDay)
+        if let key = stored as? String { return key }
+        guard let legacy = stored as? Date else { return nil }
+        return MasteryLedger.dayKey(legacy.addingTimeInterval(12 * 3600))
+    }
+
+    /// Whole days from one day key to another, counted on a fixed calendar
+    /// so neither the zone nor DST changes the answer.
+    private static func daysBetween(_ from: String, _ to: String) -> Int {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        func date(_ key: String) -> Date? {
+            let parts = key.split(separator: "-").compactMap { Int($0) }
+            guard parts.count == 3 else { return nil }
+            return calendar.date(from: DateComponents(year: parts[0], month: parts[1], day: parts[2]))
+        }
+        guard let start = date(from), let end = date(to) else { return 0 }
+        return calendar.dateComponents([.day], from: start, to: end).day ?? 0
     }
 
     /// Streak counts consecutive calendar days with at least one finished drill.
     private func bumpStreak(now: Date) {
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: now)
-        let last = defaults.object(forKey: Keys.lastActiveDay) as? Date
+        let today = MasteryLedger.dayKey(now)
 
-        if let last {
-            let lastDay = calendar.startOfDay(for: last)
-            let gap = calendar.dateComponents([.day], from: lastDay, to: today).day ?? 0
+        if let last = lastActiveDayKey {
+            let gap = Self.daysBetween(last, today)
             if gap == 1 {
                 streakCount += 1
             } else if gap > 1 {
