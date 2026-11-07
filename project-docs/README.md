@@ -10,7 +10,8 @@ Developer notes and historical audits for this repository. The published site re
 - [mahj-parity-ui-findings-2026-10-20.md](audits/mahj-parity-ui-findings-2026-10-20.md): persona UI walkthrough
 - [state-machines-2026-11-06.md](audits/state-machines-2026-11-06.md): state machine audit (5 bugs, 4 proved by test) with repro suite `state-machines-2026-11-06-repro.swift`
 - [state-machines-2026-11-06-review.md](audits/state-machines-2026-11-06-review.md): independent review of that audit (1 confirmed, 3 minor, 1 unverified, 0 false positives)
-- [state-machines-2026-11-06-fixes.md](audits/state-machines-2026-11-06-fixes.md): fixes for that review (7 fixed, 0 held, 1 upgrade-window residual skipped), all tests green
+- [state-machines-2026-11-06-fixes.md](audits/state-machines-2026-11-06-fixes.md): fixes for that review after the verify (5 fixed, 3 held for Jack, 0 skipped), all tests green
+- [state-machines-2026-11-06-verify.md](audits/state-machines-2026-11-06-verify.md): regression check of the first fixes pass (FAIL: B2 and G1 fixed unverified claims)
 
 ## Releases
 
