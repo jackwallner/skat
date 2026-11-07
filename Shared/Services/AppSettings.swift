@@ -1,6 +1,43 @@
 import SwiftUI
 import UserNotifications
 
+/// The parts of `UNUserNotificationCenter` the reminders use, so a test can
+/// stand in for iOS.
+@MainActor
+protocol ReminderCenter {
+    func add(_ request: UNNotificationRequest)
+    func removePendingRequests(withIdentifiers ids: [String])
+    func requestAuthorization() async -> Bool
+    func isAuthorized() async -> Bool
+}
+
+struct SystemReminderCenter: ReminderCenter {
+    func add(_ request: UNNotificationRequest) {
+        UNUserNotificationCenter.current().add(request)
+    }
+
+    func removePendingRequests(withIdentifiers ids: [String]) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
+    }
+
+    func requestAuthorization() async -> Bool {
+        await withCheckedContinuation { continuation in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+                continuation.resume(returning: granted)
+            }
+        }
+    }
+
+    func isAuthorized() async -> Bool {
+        let status: UNAuthorizationStatus = await withCheckedContinuation { continuation in
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                continuation.resume(returning: settings.authorizationStatus)
+            }
+        }
+        return status == .authorized || status == .provisional || status == .ephemeral
+    }
+}
+
 /// User-configurable app settings, persisted in UserDefaults.
 /// Appearance defaults to the warm light theme regardless of the device style.
 @MainActor
@@ -128,9 +165,11 @@ final class AppSettings: ObservableObject {
     }
 
     private let defaults: UserDefaults
+    private let center: any ReminderCenter
 
-    init(defaults: UserDefaults = .standard) {
+    init(defaults: UserDefaults = .standard, center: any ReminderCenter = SystemReminderCenter()) {
         self.defaults = defaults
+        self.center = center
         appearance = Appearance(rawValue: defaults.string(forKey: Keys.appearance) ?? "") ?? .light
         hapticsEnabled = defaults.object(forKey: Keys.haptics) as? Bool ?? true
         soundEnabled = defaults.object(forKey: Keys.sound) as? Bool ?? true
@@ -157,24 +196,35 @@ final class AppSettings: ObservableObject {
     static let dailyReminderBody = "Fünf Minuten Übung machen Drücken und Stichplanung sicherer."
     static let gameNightReminderBody = "Fünf persönliche Minuten jetzt, und der Tisch fühlt sich später ruhiger an."
 
+    // MARK: - Reconciling with iOS
+
+    /// iOS refuses `add` while notifications are off for the app, so a
+    /// reminder edited then (time, weekday) was dropped while its toggle still
+    /// read on, and stayed dead after notifications came back. Runs whenever
+    /// the app becomes active: while iOS allows it, every enabled reminder is
+    /// put back. Re-adding replaces a pending one with the same identifier.
+    func reconcileReminders() async {
+        guard reminderEnabled || gameNightReminderEnabled else { return }
+        guard await center.isAuthorized() else { return }
+        if reminderEnabled { scheduleReminder() }
+        if gameNightReminderEnabled { scheduleGameNightReminder() }
+    }
+
     // MARK: - Daily reminder
 
     private func requestPermissionAndSchedule() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
-            Task { @MainActor in
-                if granted {
-                    self.scheduleReminder()
-                } else {
-                    self.reminderEnabled = false
-                    self.reminderPermissionDenied = true
-                }
+        Task {
+            if await center.requestAuthorization() {
+                scheduleReminder()
+            } else {
+                reminderEnabled = false
+                reminderPermissionDenied = true
             }
         }
     }
 
     private func scheduleReminder() {
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: [Self.reminderID])
+        center.removePendingRequests(withIdentifiers: [Self.reminderID])
 
         let content = UNMutableNotificationContent()
         content.title = "Zeit für eine kurze Runde"
@@ -188,28 +238,24 @@ final class AppSettings: ObservableObject {
     }
 
     private func cancelReminder() {
-        UNUserNotificationCenter.current()
-            .removePendingNotificationRequests(withIdentifiers: [Self.reminderID])
+        center.removePendingRequests(withIdentifiers: [Self.reminderID])
     }
 
     // MARK: - Game night reminder
 
     private func requestPermissionAndScheduleGameNight() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
-            Task { @MainActor in
-                if granted {
-                    self.scheduleGameNightReminder()
-                } else {
-                    self.gameNightReminderEnabled = false
-                    self.reminderPermissionDenied = true
-                }
+        Task {
+            if await center.requestAuthorization() {
+                scheduleGameNightReminder()
+            } else {
+                gameNightReminderEnabled = false
+                reminderPermissionDenied = true
             }
         }
     }
 
     private func scheduleGameNightReminder() {
-        let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: [Self.gameNightReminderID])
+        center.removePendingRequests(withIdentifiers: [Self.gameNightReminderID])
 
         let content = UNMutableNotificationContent()
         content.title = "Deine Skatabend-Vorbereitung steht bereit"
@@ -228,7 +274,6 @@ final class AppSettings: ObservableObject {
     }
 
     func cancelGameNightReminder() {
-        UNUserNotificationCenter.current()
-            .removePendingNotificationRequests(withIdentifiers: [Self.gameNightReminderID])
+        center.removePendingRequests(withIdentifiers: [Self.gameNightReminderID])
     }
 }
