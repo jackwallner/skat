@@ -6,8 +6,16 @@ import XCTest
 /// notifications are off for the app.
 @MainActor
 final class FakeReminderCenter: ReminderCenter {
-    var authorized = true
+    var status: UNAuthorizationStatus = .authorized
+    /// What the player answers when iOS asks.
+    var grantsWhenAsked = true
+    private(set) var timesAsked = 0
     private(set) var pending: [String: UNNotificationRequest] = [:]
+
+    var authorized: Bool {
+        get { status == .authorized }
+        set { status = newValue ? .authorized : .denied }
+    }
 
     func add(_ request: UNNotificationRequest) {
         guard authorized else { return }
@@ -18,8 +26,15 @@ final class FakeReminderCenter: ReminderCenter {
         ids.forEach { pending[$0] = nil }
     }
 
-    func requestAuthorization() async -> Bool { authorized }
-    func isAuthorized() async -> Bool { authorized }
+    func requestAuthorization() async -> Bool {
+        if status == .notDetermined {
+            timesAsked += 1
+            status = grantsWhenAsked ? .authorized : .denied
+        }
+        return authorized
+    }
+
+    func authorizationStatus() async -> UNAuthorizationStatus { status }
 
     func trigger(_ id: String) -> DateComponents? {
         (pending[id]?.trigger as? UNCalendarNotificationTrigger)?.dateComponents
@@ -85,10 +100,40 @@ final class ReminderScheduleTests: XCTestCase {
         XCTAssertNotNil(center.pending[gameNightID])
     }
 
-    func testDisabledRemindersStayUnscheduled() async {
+    /// Restored from a backup onto a new phone: the toggles came back, iOS's
+    /// permission and pending requests did not. iOS is asked once, and the
+    /// reminders are scheduled when the player allows them.
+    func testARestoredPhoneAsksAgainAndSchedules() async {
+        center.status = .notDetermined
+        let settings = makeSettings()
+        await settings.reconcileReminders()
+        XCTAssertEqual(center.timesAsked, 1)
+        XCTAssertNotNil(center.pending[dailyID])
+        XCTAssertNotNil(center.pending[gameNightID])
+    }
+
+    /// Refusing that question keeps the player's choice, so the reminders
+    /// come back if notifications are allowed later in iOS Settings.
+    func testARefusalOnARestoredPhoneKeepsTheToggles() async {
+        center.status = .notDetermined
+        center.grantsWhenAsked = false
+        let settings = makeSettings()
+        await settings.reconcileReminders()
+        XCTAssertTrue(center.pending.isEmpty)
+        XCTAssertTrue(settings.reminderEnabled && settings.gameNightReminderEnabled)
+
+        center.authorized = true
+        await settings.reconcileReminders()
+        XCTAssertNotNil(center.pending[dailyID])
+        XCTAssertEqual(center.timesAsked, 1)
+    }
+
+    func testDisabledRemindersStayUnscheduledAndNeverAsk() async {
+        center.status = .notDetermined
         let settings = makeSettings(daily: false, gameNight: false)
         await settings.reconcileReminders()
         XCTAssertTrue(center.pending.isEmpty)
+        XCTAssertEqual(center.timesAsked, 0)
     }
 
     /// While iOS still says no, nothing changes: the toggle keeps the

@@ -8,7 +8,7 @@ protocol ReminderCenter {
     func add(_ request: UNNotificationRequest)
     func removePendingRequests(withIdentifiers ids: [String])
     func requestAuthorization() async -> Bool
-    func isAuthorized() async -> Bool
+    func authorizationStatus() async -> UNAuthorizationStatus
 }
 
 struct SystemReminderCenter: ReminderCenter {
@@ -28,13 +28,12 @@ struct SystemReminderCenter: ReminderCenter {
         }
     }
 
-    func isAuthorized() async -> Bool {
-        let status: UNAuthorizationStatus = await withCheckedContinuation { continuation in
+    func authorizationStatus() async -> UNAuthorizationStatus {
+        await withCheckedContinuation { continuation in
             UNUserNotificationCenter.current().getNotificationSettings { settings in
                 continuation.resume(returning: settings.authorizationStatus)
             }
         }
-        return status == .authorized || status == .provisional || status == .ephemeral
     }
 }
 
@@ -214,9 +213,20 @@ final class AppSettings: ObservableObject {
     /// read on, and stayed dead after notifications came back. Runs whenever
     /// the app becomes active: while iOS allows it, every enabled reminder is
     /// put back. Re-adding replaces a pending one with the same identifier.
+    /// A phone restored from a backup keeps the toggles but neither the
+    /// permission nor the pending requests, so iOS is asked again then. A
+    /// refusal leaves the toggles alone, so the reminders return with the
+    /// permission.
     func reconcileReminders() async {
         guard reminderEnabled || gameNightReminderEnabled else { return }
-        guard await center.isAuthorized() else { return }
+        switch await center.authorizationStatus() {
+        case .notDetermined:
+            guard await center.requestAuthorization() else { return }
+        case .denied:
+            return
+        default:
+            break
+        }
         if reminderEnabled { scheduleReminder() }
         if gameNightReminderEnabled { scheduleGameNightReminder() }
     }
