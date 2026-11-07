@@ -10,6 +10,9 @@ import XCTest
 /// "Antworten" count from `PracticeRecordStore.totalAttempts`, or "Noch keine
 /// Übung" when it is zero.
 ///
+/// P8 route: Home > Stichspiel > Stich-Entscheidungen > pick "Herz bedienen" >
+/// Weiter > undo > pick "Herz bedienen" again > Weiter > Dein Fortschritt.
+///
 /// Never hard-fails on navigation: records what it could not do in `problems`
 /// and asserts preconditions with messages, so a failure on the last assertion
 /// of each test is the claim itself.
@@ -65,6 +68,37 @@ final class DeckUndoUITests: XCTestCase {
         XCTAssertTrue(progressIsEmpty(), "after taking the answer back, Dein Fortschritt has no answers")
     }
 
+    // MARK: - Choice cards (P8)
+
+    /// Control: two choice cards picked and advanced count two answers, so
+    /// the reader below can tell one answer from two.
+    func testControlTwoChoiceCardsCountTwoAnswers() {
+        resetProgress()
+        guard openChoiceDeck() else { return XCTFail("could not open the choice deck: \(problems)") }
+        XCTAssertTrue(pickAndAdvance("Herz bedienen"), "precondition: the first card was picked and advanced")
+        XCTAssertTrue(pickAndAdvance("Frei wählen"), "precondition: the second card was picked and advanced")
+        goHome()
+        XCTAssertEqual(answerCount(), 2, "control: two picks count two answers")
+    }
+
+    /// Claim: a choice card picked, advanced, taken back and picked again is
+    /// one answer, not two.
+    func testChoiceCardPickedAgainAfterUndoCountsOnce() {
+        resetProgress()
+        guard openChoiceDeck() else { return XCTFail("could not open the choice deck: \(problems)") }
+        XCTAssertTrue(pickAndAdvance("Herz bedienen"), "precondition: the card was picked and advanced")
+        let undo = app.buttons["Letzte Antwort zurücknehmen"]
+        XCTAssertTrue(undo.waitForExistence(timeout: 3), "precondition: the undo button appeared")
+        undo.tap()
+        settle(1.0)
+        XCTAssertTrue(app.buttons["Herz bedienen"].waitForExistence(timeout: 3),
+                      "precondition: the choice card is back in front, unanswered")
+        XCTAssertTrue(pickAndAdvance("Herz bedienen"), "precondition: the card was picked again and advanced")
+        attach("choice_deck_after_second_pick", app.debugDescription)
+        goHome()
+        XCTAssertEqual(answerCount(), 1, "after undo and a second pick, the card counts one answer")
+    }
+
     // MARK: - Steps
 
     private func resetProgress() {
@@ -100,6 +134,49 @@ final class DeckUndoUITests: XCTestCase {
         from.press(forDuration: 0.15, thenDragTo: to)
         settle(1.2)
         return true
+    }
+
+    private func openChoiceDeck() -> Bool {
+        goHome()
+        for _ in 0..<5 {
+            let named = NSPredicate(format: "label CONTAINS %@", "Stichspiel")
+            let room = app.buttons.matching(named).firstMatch
+            let title = app.staticTexts.matching(named).firstMatch
+            if (room.exists && room.isHittable) || (title.exists && title.isHittable) { break }
+            app.swipeUp()
+            settle(0.6)
+        }
+        guard open("Stichspiel"), open("Stich-Entscheidungen") else { return false }
+        return true
+    }
+
+    private func pickAndAdvance(_ option: String) -> Bool {
+        let pick = app.buttons[option].firstMatch
+        guard pick.waitForExistence(timeout: 5) else { problems.append("no option \(option)"); return false }
+        pick.tap()
+        settle(1.2)
+        let next = app.buttons["Weiter"].firstMatch
+        guard next.waitForExistence(timeout: 5) else { problems.append("no Weiter after \(option)"); return false }
+        next.tap()
+        settle(1.2)
+        return true
+    }
+
+    /// The number above "Antworten" on Dein Fortschritt, or nil when the
+    /// screen shows no answers. Returns to Home afterwards.
+    private func answerCount() -> Int? {
+        goHome()
+        guard open("Tage am Stück") else { problems.append("no stats link"); return nil }
+        defer { goHome() }
+        let caption = app.staticTexts["Antworten"].firstMatch
+        guard caption.waitForExistence(timeout: 3) else { return nil }
+        attach("stats_answers", app.debugDescription)
+        let below = caption.frame
+        let value = app.staticTexts.allElementsBoundByIndex.first { text in
+            let frame = text.frame
+            return abs(frame.midX - below.midX) < 30 && frame.maxY <= below.minY + 2 && below.minY - frame.maxY < 40
+        }
+        return value.flatMap { Int($0.label) }
     }
 
     private func goHome() {

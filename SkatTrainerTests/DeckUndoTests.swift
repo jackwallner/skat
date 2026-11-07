@@ -4,7 +4,8 @@ import XCTest
 /// The deck's undo button ("Letzte Antwort zurücknehmen") takes the answer
 /// back, not only the card (state machine audit 2026-11-06, B1 and P8).
 /// The deck takes an `AnswerSnapshot` before each answer and restores it on
-/// undo; these tests run that pair against injected stores.
+/// undo; these tests run that pair against injected stores. The deck
+/// itself is driven in `DeckUndoUITests`.
 @MainActor
 final class DeckUndoTests: XCTestCase {
     private let suite = "DeckUndoTests"
@@ -84,14 +85,6 @@ final class DeckUndoTests: XCTestCase {
         XCTAssertEqual(after?.ease, before?.ease)
         XCTAssertTrue(progress.seenItems.contains(card))
         XCTAssertFalse(progress.missedItems.contains(card))
-    }
-
-    /// A choice card is graded at pick time. After undo the pick opens again,
-    /// so the second pick must be the only answer recorded (P8).
-    func testChoiceCardPickedAgainAfterUndoIsGradedOnce() {
-        undo(answer(false))
-        _ = answer(true)
-        XCTAssertEqual(records.totalAttempts, 1)
     }
 
     /// A card answered twice (missed, then back in front and picked again)
