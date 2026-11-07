@@ -40,6 +40,15 @@ final class MasteryLedger: ObservableObject {
         persist()
     }
 
+    /// Writes today's count of every known question, Skat+ sets included,
+    /// whatever the membership is today. A free scope dropped the Skat+ items
+    /// while a member was lapsed, so coming back counted all of them again
+    /// as this week's gain. Free players cannot answer Skat+ items, so the
+    /// count can only grow with their own practice.
+    func record(from records: PracticeRecordStore, now: Date = Date()) {
+        record(records.masteryByRoom(isMember: true, now: now), now: now)
+    }
+
     /// Questions locked in over the last `window` days, or nil when there is
     /// no earlier day to measure from. Negative deltas (items gone stale) are
     /// reported as nil: the chip is a nudge, not a scold.
