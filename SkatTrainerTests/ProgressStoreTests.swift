@@ -128,5 +128,61 @@ final class ProgressStoreTests: XCTestCase {
         XCTAssertTrue(store.hasOnboarded, "Reset must not re-trigger onboarding")
     }
 
+    // MARK: - Streak across zones (state machine audit 2026-11-06, B5)
+
+    private func utc(_ iso: String) -> Date {
+        ISO8601DateFormatter().date(from: iso)!
+    }
+
+    private func withZone(_ id: String, _ body: () -> Void) {
+        let saved = NSTimeZone.default
+        NSTimeZone.default = TimeZone(identifier: id)!
+        defer { NSTimeZone.default = saved }
+        body()
+    }
+
+    /// 6 Nov in Tokyo, then 6 Nov again in Los Angeles: one calendar date.
+    func testTwoSessionsOnOneDateAcrossZonesKeepTheStreak() {
+        withZone("Asia/Tokyo") { store.recordSession(drillID: "a", now: utc("2026-11-06T01:00:00Z")) }
+        XCTAssertEqual(store.streakCount, 1, "precondition: the first session starts a streak")
+        withZone("America/Los_Angeles") {
+            store.recordSession(drillID: "b", now: utc("2026-11-06T17:00:00Z"))
+            XCTAssertEqual(store.streakCount, 1)
+            XCTAssertEqual(store.currentStreak(now: utc("2026-11-06T18:00:00Z")), 1)
+            store.recordSession(drillID: "c", now: utc("2026-11-07T17:00:00Z"))
+            XCTAssertEqual(store.streakCount, 2, "the next local date still grows it")
+        }
+    }
+
+    /// Players updating from a build that stored the day as a start-of-day
+    /// Date keep their streak, in the same zone and a few hours either side.
+    func testAStreakStoredAsADateStillCounts() {
+        for zone in ["Europe/Berlin", "Europe/London", "Asia/Dubai"] {
+            defaults.removePersistentDomain(forName: "ProgressStoreTests")
+            var berlin = Calendar(identifier: .gregorian)
+            berlin.timeZone = TimeZone(identifier: "Europe/Berlin")!
+            let lastDay = berlin.startOfDay(for: utc("2026-11-05T12:00:00Z"))
+            defaults.set(lastDay, forKey: "progress.lastActiveDay")
+            defaults.set(4, forKey: "progress.streakCount")
+            withZone(zone) {
+                let upgraded = ProgressStore(defaults: defaults)
+                XCTAssertEqual(upgraded.currentStreak(now: utc("2026-11-06T12:00:00Z")), 4, zone)
+                upgraded.recordSession(drillID: "a", now: utc("2026-11-05T15:00:00Z"))
+                XCTAssertEqual(upgraded.streakCount, 4, "same day: \(zone)")
+                upgraded.recordSession(drillID: "a", now: utc("2026-11-06T12:00:00Z"))
+                XCTAssertEqual(upgraded.streakCount, 5, "next day: \(zone)")
+            }
+        }
+    }
+
+    func testAStreakSpanningADaylightSavingChangeGrows() {
+        withZone("Europe/Berlin") {
+            store.recordSession(drillID: "a", now: utc("2026-10-24T20:00:00Z"))
+            store.recordSession(drillID: "a", now: utc("2026-10-25T20:00:00Z"))
+            store.recordSession(drillID: "a", now: utc("2026-10-26T20:00:00Z"))
+            XCTAssertEqual(store.streakCount, 3)
+        }
+    }
+
     // Rating-ask rules live in ReviewPromptTracker; see ReviewPromptTrackerTests.
 }
