@@ -73,7 +73,7 @@ final class PracticeRecordStore: ObservableObject {
         isReviewable: Bool = true,
         now: Date = Date()
     ) {
-        let key = PracticeSkill.skill(forItemID: itemID).map(\.rawValue) ?? itemID
+        let key = Self.recordKey(forItem: itemID)
         let isGenerated = PracticeSkill.skill(forItemID: itemID) != nil
 
         var record = records[key] ?? PracticeRecord()
@@ -94,6 +94,21 @@ final class PracticeRecordStore: ObservableObject {
         }
         records[key] = record
         persist()
+    }
+
+    /// The stored row an answer to this item would change, or nil when it
+    /// has none yet. Pair with `restoreRecord` to take an answer back.
+    func savedRecord(forItem itemID: String) -> PracticeRecord? {
+        records[Self.recordKey(forItem: itemID)]
+    }
+
+    func restoreRecord(_ record: PracticeRecord?, forItem itemID: String) {
+        records[Self.recordKey(forItem: itemID)] = record
+        persist()
+    }
+
+    private static func recordKey(forItem itemID: String) -> String {
+        PracticeSkill.skill(forItemID: itemID).map(\.rawValue) ?? itemID
     }
 
     /// SM-2, trimmed to what a drill app needs: a miss resets the interval and
@@ -186,5 +201,26 @@ final class PracticeRecordStore: ObservableObject {
         bestChallengeScore = 0
         defaults.removeObject(forKey: Keys.records)
         defaults.removeObject(forKey: Keys.bestChallenge)
+    }
+}
+
+/// What one answer is about to change in both stores, taken before it is
+/// recorded, so the deck's undo can take the answer back and not just the card.
+struct AnswerSnapshot {
+    let itemID: String
+    let marks: ProgressStore.ItemMarks
+    let record: PracticeRecord?
+
+    @MainActor
+    init(itemID: String, progress: ProgressStore, records: PracticeRecordStore) {
+        self.itemID = itemID
+        marks = progress.marks(forItem: itemID)
+        record = records.savedRecord(forItem: itemID)
+    }
+
+    @MainActor
+    func restore(progress: ProgressStore, records: PracticeRecordStore) {
+        progress.restoreMarks(marks, forItem: itemID)
+        records.restoreRecord(record, forItem: itemID)
     }
 }
