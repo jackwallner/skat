@@ -81,13 +81,6 @@ final class SubscriptionService: NSObject, ObservableObject {
     /// and not yet asked about. Home presents the one-question prompt and
     /// clears it. Survives a launch: the ask is stored, not just published.
     @Published private(set) var pendingChurnMoment: ChurnMoment?
-    /// A customer record answered in the last few minutes shows no
-    /// membership. `isPro` turning false only catches a lapse seen while the
-    /// app runs; a membership that ended while it was closed starts free and
-    /// never changes, so Skat+ reminders kept firing. An older cached record
-    /// cannot say it: RevenueCat judges one more than three days old against
-    /// today, so a member who renewed since would read as lapsed.
-    @Published private(set) var confirmedNotMember = false
 
     private var isConfigured = false
     #if DEBUG
@@ -418,7 +411,6 @@ final class SubscriptionService: NSObject, ObservableObject {
         #endif
         isPro = entitled || override
         membershipResolved = true
-        confirmedNotMember = Self.confirmsNoMembership(isPro: isPro, answeredAt: info.requestDate, now: Date())
         isTrialing = entitled && entitlement?.periodType == .trial
         expirationDate = entitled ? entitlement?.expirationDate : nil
         observe(MembershipSnapshot.observed(
@@ -429,10 +421,6 @@ final class SubscriptionService: NSObject, ObservableObject {
             willRenew: entitlement?.willRenew == true || entitlement?.billingIssueDetectedAt != nil,
             expirationDate: entitlement?.expirationDate
         ), answeredAt: info.requestDate)
-    }
-
-    static func confirmsNoMembership(isPro: Bool, answeredAt: Date, now: Date) -> Bool {
-        !isPro && now.timeIntervalSince(answeredAt) <= freshBaselineAge
     }
 
     /// The active entitlement to read trial, renewal and expiry from. Every

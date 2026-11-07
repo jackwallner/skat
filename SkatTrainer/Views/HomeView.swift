@@ -127,13 +127,6 @@ struct HomeView: View {
                     settings.gameNightReminderEnabled = false
                 }
             }
-            // Also a lapse that happened while the app was closed, which
-            // never shows up as `isPro` changing.
-            .onChange(of: subscriptions.confirmedNotMember, initial: true) { _, notMember in
-                if notMember, settings.gameNightReminderEnabled {
-                    settings.gameNightReminderEnabled = false
-                }
-            }
             .onChange(of: showPaywall) { _, isShowing in
                 if !isShowing, !subscriptions.isPro { pendingAfterUpgrade = nil }
                 if !isShowing { homeIsBareAgain() }
