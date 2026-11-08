@@ -99,6 +99,27 @@ final class DeckUndoUITests: XCTestCase {
         XCTAssertEqual(answerCount(), 1, "after undo and a second pick, the card counts one answer")
     }
 
+    /// Claim: a quick second tap on Weiter while the card is still flying off
+    /// advances once. It used to start a second fling, whose commit graded
+    /// the next card, unseen, as known (presubmit review 2026-11-08).
+    func testWeiterTappedTwiceDuringTheFlingCountsOnce() {
+        resetProgress()
+        guard openChoiceDeck() else { return XCTFail("could not open the choice deck: \(problems)") }
+        let pick = app.buttons["Herz bedienen"].firstMatch
+        XCTAssertTrue(pick.waitForExistence(timeout: 5), "precondition: the first choice card is in front")
+        pick.tap()
+        settle(1.2)
+        let next = app.buttons["Weiter"].firstMatch
+        XCTAssertTrue(next.waitForExistence(timeout: 5), "precondition: Weiter appeared after the pick")
+        next.doubleTap()
+        settle(1.2)
+        XCTAssertTrue(app.buttons["Frei wählen"].waitForExistence(timeout: 3),
+                      "the second card is in front, unanswered")
+        attach("choice_deck_after_double_weiter", app.debugDescription)
+        goHome()
+        XCTAssertEqual(answerCount(), 1, "a double tap on Weiter records one answer")
+    }
+
     // MARK: - Steps
 
     private func resetProgress() {
