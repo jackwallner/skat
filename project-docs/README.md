@@ -12,6 +12,7 @@ Developer notes and historical audits for this repository. The published site re
 - [state-machines-2026-11-06-review.md](audits/state-machines-2026-11-06-review.md): independent review of that audit (1 confirmed, 3 minor, 1 unverified, 0 false positives)
 - [state-machines-2026-11-06-fixes.md](audits/state-machines-2026-11-06-fixes.md): fixes for that review after the verify (5 fixed, 3 held for Jack, 0 skipped), all tests green
 - [state-machines-2026-11-06-verify.md](audits/state-machines-2026-11-06-verify.md): independent check of the second fixes pass (PASS: B1, P8, B3, B4, B5 fail without their fixes, suite green, B2 and G1 back at base)
+- [presubmit-review-2026-11-07.md](audits/presubmit-review-2026-11-07.md): pre-submit review of 1.3.2 against live 1.3.1 (no P0 or P1, 4 P2 noted, no code changed)
 
 ## Releases
 
