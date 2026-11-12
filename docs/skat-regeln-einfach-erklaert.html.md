@@ -6,7 +6,7 @@ Web page: https://jackwallner.com/ios/skat/skat-regeln-einfach-erklaert.html
 
 ## Skat Regeln einfach erklärt
 
-Von Jack Wallner · Zuletzt aktualisiert 28. Oktober 2026
+Von Jack Wallner · Zuletzt aktualisiert 12. November 2026
 
 Skat ist ein Stichspiel für drei Personen, das mit 32 Karten gespielt wird. Beim Reizen wird ein Alleinspieler ermittelt, der den Skat aufnimmt, zwei Karten drückt und sein Spiel ansagt: ein Farbspiel, Grand oder Null. Im Farbspiel und im Grand gewinnt er mit 61 von 120 Augen, im Null, wenn er keinen Stich bekommt. Der Spielwert ist der Grundwert mal die Summe der Fälle, in die die Matadore (Spitzen) eingehen.
 
@@ -74,6 +74,19 @@ Beispiele:
 **5. Karo mit einem, 77 Augen, gereizt 23.** Der Spielwert wäre 2 × 9 = 18, das deckt die 23 nicht. Man ist überreizt, auch bei 77 Augen. Es zählt das nächste Vielfache von 9, das 23 erreicht, also 27, doppelt abgeschrieben: **minus 54**.
 
 Prüfe den Reizwert deshalb vor dem Ansagen: Grundwert × Summe der Fälle muss mindestens den gereizten Wert erreichen.
+
+## Wie hoch darf man reizen? Die Reiztabelle
+
+So hoch, wie dein Spiel sicher wert ist: Grundwert mal Spitzen plus 1. Die Tabelle zeigt den Wert eines gewonnenen Spiels ohne Hand, Schneider oder Schwarz. Jede dieser Stufen hebt den Wert um einen weiteren Grundwert, zum Beispiel Kreuz mit einem Hand: 3 × 12 = 36 statt 24.
+
+| Spitzen | Fälle | Karo | Herz | Pik | Kreuz | Grand |
+| --- | --- | --- | --- | --- | --- | --- |
+| mit oder ohne 1 | 2 | 18 | 20 | 22 | 24 | 48 |
+| mit oder ohne 2 | 3 | 27 | 30 | 33 | 36 | 72 |
+| mit oder ohne 3 | 4 | 36 | 40 | 44 | 48 | 96 |
+| mit oder ohne 4 | 5 | 45 | 50 | 55 | 60 | 120 |
+
+Hast du Kreuz-Bube und Pik-Bube, aber nicht den Herz-Buben, spielst du „mit zwei“: Herz ist dann 30 wert, also reizt du sicher bis 30. Mehr nur, wenn du mit Schneider rechnest.
 
 ## So hilft Skat Trainer
 
