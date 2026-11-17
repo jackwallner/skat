@@ -137,7 +137,11 @@ final class ProgressStoreTests: XCTestCase {
     private func withZone(_ id: String, _ body: () -> Void) {
         let saved = NSTimeZone.default
         NSTimeZone.default = TimeZone(identifier: id)!
-        defer { NSTimeZone.default = saved }
+        Calendar.zoneOverride = TimeZone(identifier: id)!
+        defer {
+            NSTimeZone.default = saved
+            Calendar.zoneOverride = nil
+        }
         body()
     }
 
