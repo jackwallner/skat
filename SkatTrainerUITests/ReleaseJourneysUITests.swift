@@ -47,8 +47,7 @@ final class ReleaseJourneysUITests: XCTestCase {
         app.buttons["Weiter"].tap()
         let exit = app.buttons["Loslegen"]
         XCTAssertTrue(exit.waitForExistence(timeout: 10))
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "€")).firstMatch
-            .waitForExistence(timeout: 30), "the trial page shows the billed price")
+        requirePrice(in: app, "the trial page shows the billed price")
         QA.checkpoint(app, "onboarding-trial-offer", paywall: true)
         exit.tap()
         let skipTour = label("Tour überspringen", in: app.buttons)
@@ -80,8 +79,7 @@ final class ReleaseJourneysUITests: XCTestCase {
         QA.checkpoint(app, "settings")
         discover.tap()
         XCTAssertTrue(app.buttons["Schließen"].waitForExistence(timeout: 10))
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "€")).firstMatch
-            .waitForExistence(timeout: 30), "the paywall shows the billed price")
+        requirePrice(in: app, "the paywall shows the billed price")
         QA.checkpoint(app, "paywall", paywall: true)
         app.buttons["Schließen"].tap()
         XCTAssertTrue(app.buttons["Fertig"].waitForExistence(timeout: 10))
@@ -160,6 +158,7 @@ final class ReleaseJourneysUITests: XCTestCase {
     private func open(_ text: String, in app: XCUIApplication) {
         let button = label(text, in: app.buttons)
         let title = label(text, in: app.staticTexts)
+        _ = button.waitForExistence(timeout: 5)
         for _ in 0..<8 {
             if (button.exists && button.isHittable) || (title.exists && title.isHittable) { break }
             QA.swipe(app.windows.firstMatch, .up)
@@ -171,7 +170,22 @@ final class ReleaseJourneysUITests: XCTestCase {
         Thread.sleep(forTimeInterval: 1.2)
     }
 
+    private func requirePrice(in app: XCUIApplication, _ message: String) {
+        let price = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "€")).firstMatch
+        if !price.waitForExistence(timeout: 30) { attach("no-price-tree", app.debugDescription) }
+        XCTAssertTrue(price.exists, message)
+    }
+
+    private func attach(_ name: String, _ text: String) {
+        let item = XCTAttachment(string: text)
+        item.name = name
+        item.lifetime = .keepAlways
+        add(item)
+    }
+
     private func scroll(until target: XCUIElement, in app: XCUIApplication) {
+        // The sheet is still sliding in; swiping now would scroll past the row.
+        _ = target.waitForExistence(timeout: 10)
         for _ in 0..<10 {
             if target.exists, target.isHittable { return }
             QA.swipe(app.windows.firstMatch, .up)
@@ -186,11 +200,12 @@ final class ReleaseJourneysUITests: XCTestCase {
         goHome(app)
         open("Tage am Stück", in: app)
         defer { goHome(app) }
-        let value = app.staticTexts["stats.answers"]
-        if value.waitForExistence(timeout: 5) {
+        let value = app.descendants(matching: .any)["stats.answers"].firstMatch
+        if value.waitForExistence(timeout: 8) {
             QA.checkpoint(app, "progress", journey: journey)
             return Int(value.label) ?? -1
         }
+        attach("progress-tree", app.debugDescription)
         XCTAssertTrue(app.staticTexts["Noch keine Übung"].exists, "Dein Fortschritt shows neither a count nor its empty state")
         QA.checkpoint(app, "progress-empty", journey: journey)
         return 0

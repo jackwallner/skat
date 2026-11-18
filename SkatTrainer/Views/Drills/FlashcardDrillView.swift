@@ -623,6 +623,9 @@ private struct SkatCardFace<Content: View>: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
                 .clipShape(RoundedRectangle(cornerRadius: Theme.deckCorner, style: .continuous))
                 .allowsHitTesting(false)
+                // Decoration only: its unclipped frame stretched the card's
+                // accessibility frame 58pt past the screen edge.
+                .accessibilityHidden(true)
         }
         .overlay {
             RoundedRectangle(cornerRadius: Theme.deckCorner, style: .continuous)
