@@ -562,7 +562,7 @@ extension SubscriptionService {
             numberOfPeriods: 1, type: .introductory
         )
         func make(_ id: String, _ price: Decimal, _ text: String,
-                  _ period: SubscriptionPeriod?, _ intro: Bool) -> StoreProduct {
+                  _ period: RevenueCat.SubscriptionPeriod?, _ intro: Bool) -> StoreProduct {
             TestStoreProduct(
                 localizedTitle: "Skat+", price: price, currencyCode: "EUR",
                 localizedPriceString: text, productIdentifier: id,
