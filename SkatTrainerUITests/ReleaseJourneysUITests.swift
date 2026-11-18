@@ -29,7 +29,6 @@ final class ReleaseJourneysUITests: XCTestCase {
         let app = XCUIApplication(bundleIdentifier: bundleID)
         QA.launch(app, arguments: [
             "-progress.hasOnboarded", "NO",
-            "-skat.skillLevel", "",
             "-skat.suppressWhatsNew", "YES",
         ])
         XCTAssertTrue(app.buttons["Weiter"].waitForExistence(timeout: 20))
@@ -160,11 +159,8 @@ final class ReleaseJourneysUITests: XCTestCase {
         let button = label(text, in: app.buttons)
         let title = label(text, in: app.staticTexts)
         _ = button.waitForExistence(timeout: 5)
-        for _ in 0..<8 {
-            if (button.exists && button.isHittable) || (title.exists && title.isHittable) { break }
-            QA.swipe(app.windows.firstMatch, .up)
-            Thread.sleep(forTimeInterval: 0.5)
-        }
+        let anchor = button.exists ? button : title
+        scroll(until: anchor, in: app)
         let target = button.exists ? button : title
         XCTAssertTrue(target.waitForExistence(timeout: 10), "could not find \(text)")
         target.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
@@ -185,15 +181,19 @@ final class ReleaseJourneysUITests: XCTestCase {
         add(item)
     }
 
+    /// Drags the page the way the target lies until it can be tapped: down when
+    /// it sits above the visible area, up when it is below.
     private func scroll(until target: XCUIElement, in app: XCUIApplication) {
         // The sheet is still sliding in; swiping now would scroll past the row.
         _ = target.waitForExistence(timeout: 10)
-        for _ in 0..<10 {
+        let page = app.windows.firstMatch
+        for _ in 0..<12 {
             if target.exists, target.isHittable { return }
-            QA.swipe(app.windows.firstMatch, .up)
+            let above = target.exists && target.frame.midY < page.frame.height * 0.3
+            QA.swipe(page, above ? .down : .up)
             Thread.sleep(forTimeInterval: 0.5)
         }
-        XCTAssertTrue(target.exists, "never scrolled to \(target)")
+        XCTAssertTrue(target.exists && target.isHittable, "never scrolled to \(target)")
     }
 
     /// The answers shown on Dein Fortschritt, 0 while it shows its empty
