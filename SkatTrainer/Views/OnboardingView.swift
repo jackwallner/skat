@@ -50,6 +50,8 @@ struct OnboardingView: View {
                     .transition(.move(edge: .trailing).combined(with: .opacity))
             }
         }
+        // The slide between stages must not show the white window behind it.
+        .background(Theme.background.ignoresSafeArea())
         .animation(.spring(response: 0.45, dampingFraction: 0.85), value: stage)
     }
 
@@ -316,7 +318,6 @@ struct OnboardingView: View {
                 trialHeader
                 trialBenefits
                 if !subscriptions.isPro {
-                    priceSlot
                     softExit
                     legalRow
                 }
@@ -470,6 +471,11 @@ struct OnboardingView: View {
         let reservesTrialSlots = !dynamicTypeSize.isAccessibilitySize
         return VStack(spacing: 8) {
             pageDots
+            // At accessibility sizes the page scrolls, so the billed price is
+            // pinned here rather than left below the fold.
+            if !reservesTrialSlots && onTrialPage && !subscriptions.isPro {
+                priceSlot
+            }
             // Soft free exit sits ABOVE the primary so the trial CTA owns the
             // Continue slot. "Get Started" (not "Skip"/"No trial") on purpose,
             // matching the approved fleet apps: it's the free way in, worded so

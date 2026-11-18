@@ -1,0 +1,2 @@
+{"created": "2026-11-18T14:13:46+00:00", "id": "Q001", "match": "cta-jump|test1FirstRunThroughOnboardingToHome|onboarding-trial-offer|# tage kostenlos starten", "reason": "AX3 only: the button is taller because its label wraps; its bottom edge is pinned to the same inset", "status": "accepted"}
+{"created": "2026-11-18T14:13:46+00:00", "id": "Q002", "match": "cta-jump|test1FirstRunThroughOnboardingToHome|onboarding-tour|zeig es mir", "reason": "AX3 only: the button is taller because its label wraps", "status": "accepted"}

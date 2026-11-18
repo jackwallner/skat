@@ -195,10 +195,18 @@ final class ReleaseJourneysUITests: XCTestCase {
             guard target.exists else { break }
             let frame = target.frame
             if frame.minY >= bar, frame.maxY <= page.frame.maxY { return }
-            QA.swipe(page, frame.minY < bar ? .down : .up)
+            nudge(page, down: frame.minY < bar)
             Thread.sleep(forTimeInterval: 0.5)
         }
         XCTAssertTrue(target.exists, "never found \(target)")
+    }
+
+    /// A slow half-screen drag. The fast swipe flings a long list past the
+    /// row, so the helper oscillated and ended away from the target.
+    private func nudge(_ page: XCUIElement, down: Bool) {
+        let from = page.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: down ? 0.35 : 0.7))
+        let to = page.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: down ? 0.6 : 0.45))
+        from.press(forDuration: 0.05, thenDragTo: to, withVelocity: .slow, thenHoldForDuration: 0.3)
     }
 
     /// The answers shown on Dein Fortschritt, 0 while it shows its empty

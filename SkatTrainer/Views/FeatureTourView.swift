@@ -60,7 +60,8 @@ struct FeatureTourView: View {
             }
             buttons(isLast: isLast, pageCount: pages.count)
         }
-        .padding()
+        .padding([.horizontal, .top])
+        .padding(.bottom, 0)
         .frame(maxWidth: Theme.readableContentWidth)
         .frame(maxWidth: .infinity)
         .background(Theme.background)
@@ -103,7 +104,7 @@ struct FeatureTourView: View {
     // prompt: by the time someone has tapped through a trial page and a tour,
     // "let me just use the app" is a fair ask.
     private func buttons(isLast: Bool, pageCount: Int) -> some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 0) {
             Button {
                 advance(pageCount: pageCount)
             } label: {
@@ -116,8 +117,12 @@ struct FeatureTourView: View {
                 Text(isLast ? "Überspringen und zur App" : "Tour überspringen")
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(Theme.inkSecondary)
+                    .frame(minWidth: 44, minHeight: 44)
+                    .contentShape(Rectangle())
             }
         }
+        // Same side inset as the trial step's button, so it does not jump.
+        .padding(.horizontal, 8)
     }
 
     private var quickSession: some View {

@@ -614,17 +614,19 @@ private struct SkatCardFace<Content: View>: View {
                 .fill(Theme.card)
         }
         .overlay {
-            // Watermark sits above the surface but below the frame.
-            Text("♣")
-                .font(.system(size: 190, weight: .bold))
-                .foregroundStyle(accent.opacity(0.05))
-                .rotationEffect(.degrees(-10))
-                .offset(x: 60, y: 70)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+            // Watermark sits above the surface but below the frame. The clip
+            // wraps a card-sized container and the glyph is offset inside it,
+            // so the card's accessibility frame never reaches past the screen.
+            Color.clear
+                .overlay(alignment: .bottomTrailing) {
+                    Text("♣")
+                        .font(.system(size: 190, weight: .bold))
+                        .foregroundStyle(accent.opacity(0.05))
+                        .rotationEffect(.degrees(-10))
+                        .offset(x: 60, y: 70)
+                }
                 .clipShape(RoundedRectangle(cornerRadius: Theme.deckCorner, style: .continuous))
                 .allowsHitTesting(false)
-                // Decoration only: its unclipped frame stretched the card's
-                // accessibility frame 58pt past the screen edge.
                 .accessibilityHidden(true)
         }
         .overlay {
