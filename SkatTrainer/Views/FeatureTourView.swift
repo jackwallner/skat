@@ -123,6 +123,10 @@ struct FeatureTourView: View {
         }
         // Same side inset as the trial step's button, so it does not jump.
         .padding(.horizontal, 8)
+        // The trial step stacks 8 + 20 + 10 = 38pt under its button; this
+        // stack has the 44pt skip button alone. Sharing the 6pt keeps the
+        // main button on one y between the two screens.
+        .padding(.bottom, dynamicTypeSize.isAccessibilitySize ? 0 : -6)
     }
 
     private var quickSession: some View {

@@ -614,20 +614,27 @@ private struct SkatCardFace<Content: View>: View {
                 .fill(Theme.card)
         }
         .overlay {
-            // Watermark sits above the surface but below the frame. The clip
-            // wraps a card-sized container and the glyph is offset inside it,
-            // so the card's accessibility frame never reaches past the screen.
-            Color.clear
-                .overlay(alignment: .bottomTrailing) {
+            // Watermark sits above the surface but below the frame. Drawn in a
+            // Canvas, which cannot paint outside its bounds: an offset Text
+            // inside a clipped container still widened the card's
+            // accessibility frame past the screen (see ShineSweep).
+            Canvas { context, size in
+                context.clip(to: Path(
+                    roundedRect: CGRect(origin: .zero, size: size),
+                    cornerRadius: Theme.deckCorner,
+                    style: .continuous
+                ))
+                let glyph = context.resolve(
                     Text("♣")
                         .font(.system(size: 190, weight: .bold))
                         .foregroundStyle(accent.opacity(0.05))
-                        .rotationEffect(.degrees(-10))
-                        .offset(x: 60, y: 70)
-                }
-                .clipShape(RoundedRectangle(cornerRadius: Theme.deckCorner, style: .continuous))
-                .allowsHitTesting(false)
-                .accessibilityHidden(true)
+                )
+                context.translateBy(x: size.width - 40, y: size.height - 20)
+                context.rotate(by: .degrees(-10))
+                context.draw(glyph, at: .zero, anchor: .center)
+            }
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
         }
         .overlay {
             RoundedRectangle(cornerRadius: Theme.deckCorner, style: .continuous)

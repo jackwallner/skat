@@ -74,6 +74,10 @@ final class ReleaseJourneysUITests: XCTestCase {
         let app = launchOnboarded()
         app.buttons["Einstellungen"].tap()
         let discover = label("Skat+ entdecken", in: app.buttons)
+        XCTAssertTrue(discover.waitForExistence(timeout: 10), "the membership row is shown")
+        // The row is the third section. Return to the top first so the scroll
+        // below never starts from a list already past it.
+        for _ in 0..<3 { nudge(app.windows.firstMatch, down: true) }
         scroll(until: discover, in: app)
         QA.checkpoint(app, "settings")
         discover.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
