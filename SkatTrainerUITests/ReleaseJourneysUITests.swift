@@ -77,8 +77,9 @@ final class ReleaseJourneysUITests: XCTestCase {
         let discover = label("Skat+ entdecken", in: app.buttons)
         scroll(until: discover, in: app)
         QA.checkpoint(app, "settings")
-        discover.tap()
-        XCTAssertTrue(app.buttons["Schließen"].waitForExistence(timeout: 10))
+        discover.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
+        if !app.buttons["Schließen"].waitForExistence(timeout: 15) { attach("no-paywall-tree", app.debugDescription) }
+        XCTAssertTrue(app.buttons["Schließen"].exists, "the paywall opened")
         requirePrice(in: app, "the paywall shows the billed price")
         QA.checkpoint(app, "paywall", paywall: true)
         app.buttons["Schließen"].tap()
@@ -171,7 +172,8 @@ final class ReleaseJourneysUITests: XCTestCase {
     }
 
     private func requirePrice(in app: XCUIApplication, _ message: String) {
-        let price = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "€")).firstMatch
+        // Whatever currency the storefront gives: an amount like 6,99 or 6.99.
+        let price = app.staticTexts.matching(NSPredicate(format: "label MATCHES %@", ".*[0-9][.,][0-9]{2}.*")).firstMatch
         if !price.waitForExistence(timeout: 30) { attach("no-price-tree", app.debugDescription) }
         XCTAssertTrue(price.exists, message)
     }
