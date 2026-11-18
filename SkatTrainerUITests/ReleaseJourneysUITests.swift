@@ -27,10 +27,10 @@ final class ReleaseJourneysUITests: XCTestCase {
 
     func test1FirstRunThroughOnboardingToHome() {
         let app = XCUIApplication(bundleIdentifier: bundleID)
-        QA.launch(app, arguments: [
-            "-progress.hasOnboarded", "NO",
-            "-skat.suppressWhatsNew", "YES",
-        ])
+        // No onboarding keys here: a launch argument pins the default for the
+        // whole run, so finishing onboarding would never reach Home. A fresh
+        // install starts at the first page by itself.
+        QA.launch(app, arguments: ["-skat.suppressWhatsNew", "YES"])
         XCTAssertTrue(app.buttons["Weiter"].waitForExistence(timeout: 20))
         QA.checkpoint(app, "onboarding-welcome")
         for page in 1...2 {
@@ -128,7 +128,8 @@ final class ReleaseJourneysUITests: XCTestCase {
     }
 
     private func homeShown(_ app: XCUIApplication) {
-        XCTAssertTrue(app.buttons["Einstellungen"].waitForExistence(timeout: 20), "Home never rendered")
+        if !app.buttons["Einstellungen"].waitForExistence(timeout: 20) { attach("no-home-tree", app.debugDescription) }
+        XCTAssertTrue(app.buttons["Einstellungen"].exists, "Home never rendered")
     }
 
     private var homeMarker: NSPredicate { NSPredicate(format: "label BEGINSWITH %@", "DIE R") }
@@ -181,19 +182,23 @@ final class ReleaseJourneysUITests: XCTestCase {
         add(item)
     }
 
-    /// Drags the page the way the target lies until it can be tapped: down when
-    /// it sits above the visible area, up when it is below.
+    /// Drags the page the way the target lies until it sits clear of the
+    /// navigation bar and inside the window: down when it is above, up when it
+    /// is below. `isHittable` is no help, SwiftUI rows and cards often report
+    /// false while plainly on screen.
     private func scroll(until target: XCUIElement, in app: XCUIApplication) {
         // The sheet is still sliding in; swiping now would scroll past the row.
         _ = target.waitForExistence(timeout: 10)
         let page = app.windows.firstMatch
         for _ in 0..<12 {
-            if target.exists, target.isHittable { return }
-            let above = target.exists && target.frame.midY < page.frame.height * 0.3
-            QA.swipe(page, above ? .down : .up)
+            let bar = app.navigationBars.allElementsBoundByIndex.map { $0.frame.maxY }.max() ?? 0
+            guard target.exists else { break }
+            let frame = target.frame
+            if frame.minY >= bar, frame.maxY <= page.frame.maxY { return }
+            QA.swipe(page, frame.minY < bar ? .down : .up)
             Thread.sleep(forTimeInterval: 0.5)
         }
-        XCTAssertTrue(target.exists && target.isHittable, "never scrolled to \(target)")
+        XCTAssertTrue(target.exists, "never found \(target)")
     }
 
     /// The answers shown on Dein Fortschritt, 0 while it shows its empty
