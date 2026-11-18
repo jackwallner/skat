@@ -429,8 +429,14 @@ struct PaywallView: View {
         return layout {
             Button("Wiederherstellen") { restore() }
                 .disabled(restoring || purchasing)
+                .frame(minHeight: 44)
+                .contentShape(Rectangle())
             Link("Nutzungsbedingungen", destination: PaywallLinks.terms)
+                .frame(minHeight: 44)
+                .contentShape(Rectangle())
             Link("Datenschutz", destination: PaywallLinks.privacy)
+                .frame(minHeight: 44)
+                .contentShape(Rectangle())
         }
         .font(.caption)
         .foregroundStyle(Theme.inkSecondary)

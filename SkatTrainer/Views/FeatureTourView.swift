@@ -38,31 +38,35 @@ struct FeatureTourView: View {
                 }
             }
             .padding(.top, 10)
-            if dynamicTypeSize.isAccessibilitySize {
-                // At the largest sizes a page outgrows the screen and pushed
-                // Show me and Skip below it with no way to reach them. The
-                // page scrolls there, from the top on every page; the
-                // buttons stay put.
-                ScrollView { card(page) }
-                    .id(index)
-            } else {
-                // Centred where it fits; scrolls on a small phone rather than
-                // pushing the buttons off the screen.
-                ViewThatFits(in: .vertical) {
-                    VStack(spacing: 0) {
-                        Spacer(minLength: 0)
-                        card(page)
-                        Spacer(minLength: 0)
-                    }
+            Group {
+                if dynamicTypeSize.isAccessibilitySize {
+                    // At the largest sizes a page outgrows the screen and pushed
+                    // Show me and Skip below it with no way to reach them. The
+                    // page scrolls there, from the top on every page; the
+                    // buttons stay put.
                     ScrollView { card(page) }
                         .id(index)
-                }
+                } else {
+                    // Centred where it fits; scrolls on a small phone rather than
+                    // pushing the buttons off the screen.
+                    ViewThatFits(in: .vertical) {
+                        VStack(spacing: 0) {
+                            Spacer(minLength: 0)
+                            card(page)
+                            Spacer(minLength: 0)
+                        }
+                        ScrollView { card(page) }
+                            .id(index)
+                    }
             }
+            }
+            .frame(maxWidth: Theme.readableContentWidth)
+            // Full width like the trial step's button, so it does not jump
+            // on the iPad and the unfolded Duo.
             buttons(isLast: isLast, pageCount: pages.count)
         }
         .padding([.horizontal, .top])
         .padding(.bottom, 0)
-        .frame(maxWidth: Theme.readableContentWidth)
         .frame(maxWidth: .infinity)
         .background(Theme.background)
         .overlay { ConfettiBurst(trigger: confettiTrigger, origin: .init(x: 0.5, y: 0.35)) }

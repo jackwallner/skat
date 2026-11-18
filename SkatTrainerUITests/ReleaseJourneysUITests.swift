@@ -73,7 +73,13 @@ final class ReleaseJourneysUITests: XCTestCase {
     func test3PaywallShownAndDismissed() {
         let app = launchOnboarded()
         app.buttons["Einstellungen"].tap()
-        let discover = label("Skat+ entdecken", in: app.buttons)
+        if !app.buttons["Fertig"].waitForExistence(timeout: 10) {
+            // The first tap can land while Home is still settling.
+            app.buttons["Einstellungen"].tap()
+        }
+        XCTAssertTrue(app.buttons["Fertig"].waitForExistence(timeout: 10), "Settings opened")
+        // Home has its own Skat+ row; only the Settings row carries this id.
+        let discover = app.buttons["settings.membership"]
         XCTAssertTrue(discover.waitForExistence(timeout: 10), "the membership row is shown")
         // The row is the third section. Return to the top first so the scroll
         // below never starts from a list already past it.

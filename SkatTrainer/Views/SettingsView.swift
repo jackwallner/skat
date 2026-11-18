@@ -143,6 +143,7 @@ struct SettingsView: View {
                 } label: {
                     Label("\(Membership.name) entdecken", systemImage: "sparkles")
                 }
+                .accessibilityIdentifier("settings.membership")
             }
             Button {
                 guard !restoring else { return }
