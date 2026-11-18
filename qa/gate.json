@@ -1,0 +1,19 @@
+{
+  "project": "SkatTrainer.xcodeproj",
+  "scheme": "SkatTrainerUITests",
+  "uitests_dir": "SkatTrainerUITests",
+  "journeys": [
+    "SkatTrainerUITests/ReleaseJourneysUITests"
+  ],
+  "personas": [
+    "newcomer",
+    "accessibility",
+    "reduce-motion",
+    "german",
+    "duo",
+    "ipad-portrait",
+    "ipad-landscape"
+  ],
+  "persona_overrides": {},
+  "slot": null
+}

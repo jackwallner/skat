@@ -94,7 +94,7 @@ struct StatsView: View {
         HStack(spacing: 0) {
             metric(value: percent(records.overallAccuracy), caption: "Genauigkeit", color: Theme.jade)
             divider
-            metric(value: "\(records.totalAttempts)", caption: "Antworten", color: Theme.ink)
+            metric(value: "\(records.totalAttempts)", caption: "Antworten", color: Theme.ink, identifier: "stats.answers")
             // A free player cannot reach the timed challenge, so a 0 here
             // reads as a score they failed to earn.
             if records.bestChallengeScore > 0 {
@@ -108,12 +108,13 @@ struct StatsView: View {
         .padding(.top, 12)
     }
 
-    private func metric(value: String, caption: String, color: Color) -> some View {
+    private func metric(value: String, caption: String, color: Color, identifier: String? = nil) -> some View {
         VStack(spacing: 3) {
             Text(value)
                 .font(Theme.display(26))
                 .foregroundStyle(color)
                 .monospacedDigit()
+                .accessibilityIdentifier(identifier ?? "")
             Text(caption)
                 .font(.caption)
                 .foregroundStyle(Theme.inkSecondary)

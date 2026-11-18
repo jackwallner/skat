@@ -94,6 +94,7 @@ schemes:
         SkatTrainerUITests: [test]
     test:
       config: Debug
+      storeKitConfiguration: SkatTrainer/SkatTrainer.storekit
       targets:
         - SkatTrainerUITests
     run:

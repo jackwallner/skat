@@ -67,6 +67,11 @@ final class SubscriptionService: NSObject, ObservableObject {
 
     @Published private(set) var isPro = false
     @Published private(set) var offerings: Offerings?
+    #if DEBUG && targetEnvironment(simulator)
+    /// Debug simulator builds never configure RevenueCat, so these stand in
+    /// for the offering and the paywall can show real prices.
+    @Published private(set) var simulatorPackages: [PaywallPlan: Package] = [:]
+    #endif
     /// False until a customer record has actually been read, from
     /// RevenueCat's on-device cache or the network. `isPro` is false before
     /// that for members too, so nothing may treat "not a member" as a lapse,
@@ -120,6 +125,9 @@ final class SubscriptionService: NSObject, ObservableObject {
             // No store at all (simulator, screenshots): nothing will ever
             // load, so what we have is the answer.
             membershipResolved = true
+            #if DEBUG && targetEnvironment(simulator)
+            Task { await loadSimulatorPackages() }
+            #endif
             return
         }
         // The last record RevenueCat saw, from the first frame: a member is a
@@ -289,6 +297,9 @@ final class SubscriptionService: NSObject, ObservableObject {
     }
 
     func package(for plan: PaywallPlan) -> Package? {
+        #if DEBUG && targetEnvironment(simulator)
+        if offerings == nil, let simulated = simulatorPackages[plan] { return simulated }
+        #endif
         guard let offering = offerings?.current else { return nil }
         switch plan {
         case .yearly: return offering.annual
@@ -507,6 +518,64 @@ enum RevenueCatProbe {
     /// half of the funnel record is exercised and not just the impression half.
     static var wantsPurchase: Bool {
         ProcessInfo.processInfo.arguments.contains("-rcfunnelprobepurchase")
+    }
+}
+#endif
+
+#if DEBUG && targetEnvironment(simulator)
+extension SubscriptionService {
+    /// Fills `simulatorPackages` from StoreKit Testing (the scheme's
+    /// `SkatTrainer.storekit`) and falls back to the same catalog as fixtures
+    /// when StoreKit has none. RevenueCat is never configured here, so the
+    /// production project gains no customers. Purchases stay simulated.
+    func loadSimulatorPackages() async {
+        guard simulatorPackages.isEmpty else { return }
+        let ids = [
+            PaywallPlan.monthly: "com.jackwallner.skat.monthly",
+            PaywallPlan.yearly: "com.jackwallner.skat.yearly",
+            PaywallPlan.lifetime: "com.jackwallner.skat.lifetime",
+        ]
+        let live = (try? await Product.products(for: Set(ids.values))) ?? []
+        let products: [String: StoreProduct] = live.isEmpty
+            ? Self.fixtureProducts()
+            : Dictionary(uniqueKeysWithValues: live.map { ($0.id, StoreProduct(sk2Product: $0)) })
+        var packages: [PaywallPlan: Package] = [:]
+        for (plan, id) in ids {
+            guard let product = products[id] else { continue }
+            let type: PackageType = plan == .monthly ? .monthly : plan == .yearly ? .annual : .lifetime
+            packages[plan] = Package(
+                identifier: id,
+                packageType: type,
+                storeProduct: product,
+                offeringIdentifier: "default",
+                webCheckoutUrl: nil
+            )
+        }
+        simulatorPackages = packages
+    }
+
+    private static func fixtureProducts() -> [String: StoreProduct] {
+        let locale = Locale(identifier: "de_DE")
+        let trial = TestStoreProductDiscount(
+            identifier: "free_trial", price: 0, localizedPriceString: "0,00 €",
+            paymentMode: .freeTrial, subscriptionPeriod: .init(value: 1, unit: .week),
+            numberOfPeriods: 1, type: .introductory
+        )
+        func make(_ id: String, _ price: Decimal, _ text: String,
+                  _ period: SubscriptionPeriod?, _ intro: Bool) -> StoreProduct {
+            TestStoreProduct(
+                localizedTitle: "Skat+", price: price, currencyCode: "EUR",
+                localizedPriceString: text, productIdentifier: id,
+                productType: period == nil ? .nonConsumable : .autoRenewableSubscription,
+                localizedDescription: "Skat+", subscriptionPeriod: period,
+                introductoryDiscount: intro ? trial : nil, locale: locale
+            ).toStoreProduct()
+        }
+        return [
+            "com.jackwallner.skat.monthly": make("com.jackwallner.skat.monthly", 6.99, "6,99 €", .init(value: 1, unit: .month), true),
+            "com.jackwallner.skat.yearly": make("com.jackwallner.skat.yearly", 29.99, "29,99 €", .init(value: 1, unit: .year), true),
+            "com.jackwallner.skat.lifetime": make("com.jackwallner.skat.lifetime", 69.99, "69,99 €", nil, false),
+        ]
     }
 }
 #endif
