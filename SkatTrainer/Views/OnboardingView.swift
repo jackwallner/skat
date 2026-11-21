@@ -29,8 +29,15 @@ struct OnboardingView: View {
     @State private var trialEligible = true
     @AppStorage("skat.skillLevel") private var skillLevel = ""
 
-    private enum Stage: Equatable { case pages, tour, howToPlay }
-    @State private var stage: Stage = .pages
+    private enum Stage: String, Equatable { case pages, tour, howToPlay }
+    @State private var stage: Stage
+
+    /// A trial starter who quit during the primer or tour resumes there; see
+    /// `ProgressStore.onboardingResumeStage`.
+    init() {
+        let saved = ProgressStore.shared.onboardingResumeStage.flatMap(Stage.init(rawValue:))
+        _stage = State(initialValue: saved ?? .pages)
+    }
 
     private let lastPage = 4
     private let skillPage = 3
@@ -53,6 +60,12 @@ struct OnboardingView: View {
         // The slide between stages must not show the white window behind it.
         .background(Theme.background.ignoresSafeArea())
         .animation(.spring(response: 0.45, dampingFraction: 0.85), value: stage)
+        .onChange(of: stage) { _, newStage in
+            // Only a member resumes past the pitch: someone who tapped
+            // Loslegen still sees the trial page again, as before.
+            guard newStage != .pages, subscriptions.isPro else { return }
+            progress.onboardingResumeStage = newStage.rawValue
+        }
     }
 
     private var pagesBody: some View {
@@ -697,6 +710,7 @@ struct OnboardingView: View {
         WhatsNew.markCurrentAsBaseline()
         // The tour's closing practice does not count toward Home's extras.
         progress.sessionsAtOnboarding = progress.totalSessions
+        progress.onboardingResumeStage = nil
         progress.hasOnboarded = true
     }
 }

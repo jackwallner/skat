@@ -23,6 +23,7 @@ final class ProgressStore: ObservableObject {
         static let missedItems = "progress.missedItems"
         static let lastQuickSessionDay = "progress.lastQuickSessionDay"
         static let sessionsAtOnboarding = "progress.sessionsAtOnboarding"
+        static let onboardingResumeStage = "progress.onboardingResumeStage"
     }
 
     init(defaults: UserDefaults = .standard) {
@@ -37,6 +38,14 @@ final class ProgressStore: ObservableObject {
     var hasOnboarded: Bool {
         get { defaults.bool(forKey: Keys.hasOnboarded) }
         set { defaults.set(newValue, forKey: Keys.hasOnboarded) }
+    }
+
+    /// Where a paid trial starter left onboarding ("howToPlay" or "tour"), so a
+    /// relaunch resumes there instead of replaying the pitch they already
+    /// answered. Cleared when onboarding finishes. Nil for everyone else.
+    var onboardingResumeStage: String? {
+        get { defaults.string(forKey: Keys.onboardingResumeStage) }
+        set { defaults.set(newValue, forKey: Keys.onboardingResumeStage) }
     }
 
     /// Sessions finished before onboarding ended: the tour's closing
