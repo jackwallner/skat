@@ -18,6 +18,7 @@ struct HomeView: View {
     @State private var membershipWaitOver = false
     @StateObject private var records = PracticeRecordStore.shared
     @StateObject private var minuteStore = SkatMinuteStore.shared
+    @StateObject private var clock = DayClock()
     @StateObject private var ledger = MasteryLedger.shared
     @State private var path: [AppDestination] = []
     @State private var showPaywall = false
@@ -190,7 +191,7 @@ struct HomeView: View {
 
     @ViewBuilder
     private var todaySession: some View {
-        if progress.quickSessionCompletedToday() {
+        if progress.quickSessionCompletedToday(now: clock.now) {
             getStartedDoneCard
         } else {
             getStartedCard
@@ -357,8 +358,8 @@ struct HomeView: View {
             StatsView()
         } label: {
             HStack(spacing: 8) {
-                statChip(value: progress.currentStreak(), icon: "flame.fill", color: Theme.coral,
-                         label: "\(progress.currentStreak()) \(progress.currentStreak() == 1 ? "Tag" : "Tage") am Stück")
+                statChip(value: progress.currentStreak(now: clock.now), icon: "flame.fill", color: Theme.coral,
+                         label: "\(progress.currentStreak(now: clock.now)) \(progress.currentStreak(now: clock.now) == 1 ? "Tag" : "Tage") am Stück")
                 statChip(value: progress.totalSessions, icon: "checkmark.seal.fill", color: Theme.jade,
                          label: "\(progress.totalSessions) \(progress.totalSessions == 1 ? "Übung" : "Übungen") abgeschlossen")
                 // Only ever positive. A week that went backwards is not news
@@ -553,7 +554,7 @@ struct HomeView: View {
             title: "Skat\nMinute",
             icon: "calendar.badge.clock",
             color: Theme.coral,
-            badge: minuteStore.result(for: Date()).map { "\($0.score)/\($0.total) heute" } ?? "Täglich"
+            badge: minuteStore.result(for: clock.now).map { "\($0.score)/\($0.total) heute" } ?? "Täglich"
         ) {
             SkatMinuteView()
         }

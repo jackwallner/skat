@@ -2,8 +2,9 @@ import SwiftUI
 
 struct SkatMinuteView: View {
     @StateObject private var store = SkatMinuteStore.shared
+    @StateObject private var clock = DayClock()
 
-    private var today: Date { Date() }
+    private var today: Date { clock.now }
     private var challenge: SkatMinuteChallenge { SkatMinuteContent.challenge(for: today) }
     private var todayResult: SkatMinuteResult? { store.result(for: today) }
 
@@ -59,7 +60,7 @@ struct SkatMinuteView: View {
     }
 
     private var weeklyRhythm: some View {
-        let completed = min(store.completedThisWeek(), 5)
+        let completed = min(store.completedThisWeek(now: today), 5)
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
@@ -98,7 +99,7 @@ struct SkatMinuteView: View {
     }
 
     private var archive: some View {
-        let dates = store.archiveDates()
+        let dates = store.archiveDates(before: today)
         return VStack(alignment: .leading, spacing: 10) {
             Text("ARCHIV")
                 .font(.caption.weight(.heavy))
