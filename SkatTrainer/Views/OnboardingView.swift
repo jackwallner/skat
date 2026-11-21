@@ -676,11 +676,11 @@ struct OnboardingView: View {
         Task {
             defer { restoring = false }
             do {
-                try await subscriptions.restore()
+                let hadEarlierPurchase = try await subscriptions.restore()
                 if subscriptions.isPro {
                     startTour()
                 } else {
-                    purchaseError = "Für diesen Apple Account wurde kein früherer Kauf gefunden."
+                    purchaseError = PurchaseErrorCopy.notRestored(hadEarlierPurchase: hadEarlierPurchase)
                 }
             } catch {
                 purchaseError = PurchaseErrorCopy.message(for: error)

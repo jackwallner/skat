@@ -24,6 +24,14 @@ final class PurchaseErrorCopyTests: XCTestCase {
         XCTAssertTrue(PurchaseErrorCopy.message(for: bridged).contains("Keine Verbindung"))
     }
 
+    /// Catalog B2 (2026-11-20): a lapsed subscriber was told no earlier
+    /// purchase existed.
+    func testRestoreTellsALapsedMemberTheirMembershipExpired() {
+        XCTAssertEqual(PurchaseErrorCopy.notRestored(hadEarlierPurchase: true), "Dein Skat+ ist abgelaufen.")
+        XCTAssertEqual(PurchaseErrorCopy.notRestored(hadEarlierPurchase: false),
+                       "Für diesen Apple Account wurde kein früherer Kauf gefunden.")
+    }
+
     func testOwnErrorsKeepTheirCopy() {
         XCTAssertEqual(PurchaseErrorCopy.message(for: PurchaseError.productsUnavailable),
                        PurchaseError.productsUnavailable.localizedDescription)

@@ -486,9 +486,9 @@ struct PaywallView: View {
         Task {
             defer { restoring = false }
             do {
-                try await subscriptions.restore()
+                let hadEarlierPurchase = try await subscriptions.restore()
                 if !subscriptions.isPro {
-                    message = "Für diesen Apple Account wurde kein früherer Kauf gefunden."
+                    message = PurchaseErrorCopy.notRestored(hadEarlierPurchase: hadEarlierPurchase)
                 }
             } catch {
                 message = PurchaseErrorCopy.message(for: error)

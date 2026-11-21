@@ -151,10 +151,10 @@ struct SettingsView: View {
                 Task {
                     defer { restoring = false }
                     do {
-                        try await subscriptions.restore()
+                        let hadEarlierPurchase = try await subscriptions.restore()
                         restoreMessage = subscriptions.isPro
                             ? "\(Membership.name) wurde wiederhergestellt."
-                            : "Für diesen Apple Account wurde kein früherer Kauf gefunden."
+                            : PurchaseErrorCopy.notRestored(hadEarlierPurchase: hadEarlierPurchase)
                     } catch {
                         restoreMessage = PurchaseErrorCopy.message(for: error)
                     }

@@ -21,6 +21,15 @@ enum PurchaseOutcome: Sendable {
 enum PurchaseErrorCopy {
     static let pending = "Der Kauf wartet auf Bestätigung. \(Membership.name) wird freigeschaltet, sobald er bestätigt ist."
 
+    /// What Restore says when it finds no active membership. An account whose
+    /// record holds an expired entitlement did buy before, so it must not be
+    /// told that no earlier purchase exists.
+    static func notRestored(hadEarlierPurchase: Bool) -> String {
+        hadEarlierPurchase
+            ? "Dein \(Membership.name) ist abgelaufen."
+            : "Für diesen Apple Account wurde kein früherer Kauf gefunden."
+    }
+
     static func message(for error: Error) -> String {
         if let error = error as? PurchaseError { return error.localizedDescription }
         guard let code = error as? RevenueCat.ErrorCode else { return generic }
@@ -401,10 +410,14 @@ final class SubscriptionService: NSObject, ObservableObject {
         return isPro
     }
 
-    func restore() async throws {
-        guard isConfigured else { return }
+    /// Returns whether the restored record holds any entitlement at all, active
+    /// or expired, so callers can tell a lapsed member from a new customer.
+    @discardableResult
+    func restore() async throws -> Bool {
+        guard isConfigured else { return false }
         let info = try await Purchases.shared.restorePurchases()
         apply(info)
+        return !info.entitlements.all.isEmpty
     }
 
     /// There is one paid tier, so any active entitlement means Skat+.
