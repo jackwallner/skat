@@ -104,6 +104,9 @@ final class ProgressStore: ObservableObject {
         return calendar.dateComponents([.day], from: start, to: end).day ?? 0
     }
 
+    /// The most a flight can move the local date back (UTC+14 to UTC-12).
+    private static let maxTravelDayShift = 2
+
     /// Streak counts consecutive calendar days with at least one finished drill.
     private func bumpStreak(now: Date) {
         let today = MasteryLedger.dayKey(now)
@@ -114,6 +117,12 @@ final class ProgressStore: ObservableObject {
                 streakCount += 1
             } else if gap > 1 {
                 streakCount = 1
+            } else if gap < -Self.maxTravelDayShift {
+                // The stored day is further ahead than any zone change can
+                // explain: the clock was set ahead and put back. Adopt today
+                // so the streak counts again, and leave the count as it is.
+                defaults.set(today, forKey: Keys.lastActiveDay)
+                return
             } else if gap < 0 {
                 // The clock went backwards (travel, a manual change). Keep the
                 // later day so the streak is not counted twice on the way back.

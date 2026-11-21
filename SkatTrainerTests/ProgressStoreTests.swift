@@ -92,6 +92,32 @@ final class ProgressStoreTests: XCTestCase {
         XCTAssertEqual(store.streakCount, 2, "Returning to the real date must not count the same day twice")
     }
 
+    /// Catalog B4 (2026-11-20): a date set a month ahead and put back froze
+    /// the streak at 1 until the real date caught up.
+    func testStreakCountsAgainAfterTheClockWasSetAheadAndRestored() {
+        let day1 = Date(timeIntervalSince1970: 1_750_000_000)
+        store.recordSession(drillID: "a", now: day1)
+        store.recordSession(drillID: "a", now: day1.addingTimeInterval(86_400))
+        let ahead = day1.addingTimeInterval(86_400 * 30)
+        store.recordSession(drillID: "a", now: ahead)
+        for day in 2...11 {
+            store.recordSession(drillID: "a", now: day1.addingTimeInterval(86_400 * Double(day)))
+        }
+        XCTAssertGreaterThanOrEqual(store.streakCount, 10, "Ten daily drills after the clock is right again must count")
+        XCTAssertEqual(store.currentStreak(now: day1.addingTimeInterval(86_400 * 11)), store.streakCount)
+    }
+
+    func testAFlightAcrossTheDateLineStillKeepsTheLaterDay() {
+        let day1 = Date(timeIntervalSince1970: 1_750_000_000)
+        store.recordSession(drillID: "a", now: day1)
+        store.recordSession(drillID: "a", now: day1.addingTimeInterval(86_400))
+        store.recordSession(drillID: "a", now: day1.addingTimeInterval(86_400 * 2))
+        store.recordSession(drillID: "a", now: day1.addingTimeInterval(86_400))
+        XCTAssertEqual(store.streakCount, 3)
+        store.recordSession(drillID: "a", now: day1.addingTimeInterval(86_400 * 3))
+        XCTAssertEqual(store.streakCount, 4, "A one day step back must not be counted twice")
+    }
+
     func testRoomProgress() {
         guard let room = DrillLibrary.rooms.first else { return XCTFail("no rooms") }
         XCTAssertEqual(store.roomProgress(room), 0)
