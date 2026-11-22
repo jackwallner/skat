@@ -39,6 +39,11 @@ struct PracticeRunView: View {
     /// generated so far).
     @State private var attempted = 0
     @State private var finished = false
+    /// The timed clock ran out with nothing answered. That run has no score
+    /// to show, but it still needs an ending rather than a silent dismiss.
+    @State private var timedOutEmpty = false
+    /// Set once when the clock first runs and kept if the task restarts.
+    @State private var deadline: Date?
     @State private var selection: Int?
 
     @State private var secondsRemaining = Self.challengeSeconds
@@ -80,11 +85,67 @@ struct PracticeRunView: View {
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .background(Theme.background)
+        } else if timedOutEmpty {
+            timeUpScreen
         } else if finished {
             DrillCompleteView(drill: completedDrill, score: score, total: gradedTotal)
         } else {
             runBody
         }
+    }
+
+    private var timeUpScreen: some View {
+        VStack(spacing: 18) {
+            Spacer()
+            Image(systemName: "timer")
+                .font(.system(size: 48))
+                .foregroundStyle(Theme.coral)
+                .accessibilityHidden(true)
+            Text("Zeit ist um")
+                .font(Theme.display(30))
+                .foregroundStyle(Theme.ink)
+                .accessibilityAddTraits(.isHeader)
+            Spacer()
+            Button {
+                retryTimed()
+            } label: {
+                Text("Nochmal").primaryCTA()
+            }
+            Button { dismiss() } label: {
+                Text("Fertig")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(Theme.jade)
+                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .contentShape(Rectangle())
+            }
+        }
+        .padding()
+        .frame(maxWidth: Theme.readableContentWidth)
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
+        .background(Theme.background)
+        .navigationTitle(title)
+        .navigationBarTitleDisplayMode(.inline)
+        .task {
+            try? await Task.sleep(nanoseconds: 500_000_000)
+            guard !Task.isCancelled else { return }
+            AccessibilityNotification.Announcement(String(localized: "Zeit ist um")).post()
+        }
+    }
+
+    /// A fresh deal and a fresh clock, started at once: the player just asked
+    /// for it.
+    private func retryTimed() {
+        Haptics.impact(.rigid)
+        items = EndlessPractice.mixedItems(count: Self.batchSize)
+        index = 0
+        selection = nil
+        score = 0
+        streak = 0
+        attempted = 0
+        deadline = nil
+        secondsRemaining = Self.challengeSeconds
+        timedOutEmpty = false
     }
 
     private var item: QuickItem { items[min(index, items.count - 1)] }
@@ -151,7 +212,8 @@ struct PracticeRunView: View {
                 trigger: confettiTrigger,
                 origin: .init(x: 0.5, y: 0.35),
                 particleCount: confettiParticleCount,
-                sourceRect: answerRect
+                sourceRect: answerRect,
+                scope: index
             )
         }
         .navigationTitle(title)
@@ -237,15 +299,31 @@ struct PracticeRunView: View {
 
     // MARK: - Clock
 
+    /// Ganze Sekunden bis `deadline`, aufgerundet: die Uhr zeigt 90 zu Beginn
+    /// und 0 erst, wenn die Zeit wirklich um ist.
+    static func secondsLeft(until deadline: Date, now: Date = Date()) -> Int {
+        max(0, Int(deadline.timeIntervalSince(now).rounded(.up)))
+    }
+
+    /// The challenge ends at a wall-clock deadline, not after ninety sleeps:
+    /// time in another app counts, so every run is the same 90 seconds and a
+    /// best score is comparable. A tap after the deadline does not score.
     private func runClock() async {
         guard mode == .timed else { return }
-        while secondsRemaining > 0 && !finished {
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
+        let end = deadline ?? Date().addingTimeInterval(TimeInterval(Self.challengeSeconds))
+        deadline = end
+        while !finished {
+            secondsRemaining = Self.secondsLeft(until: end)
+            if secondsRemaining == 0 { break }
+            try? await Task.sleep(nanoseconds: 250_000_000)
             guard !Task.isCancelled else { return }
-            secondsRemaining -= 1
         }
         guard !finished else { return }
         Haptics.impact(.rigid)
+        guard attempted > 0 else {
+            timedOutEmpty = true
+            return
+        }
         finish()
     }
 
@@ -253,6 +331,9 @@ struct PracticeRunView: View {
 
     private func grade(_ pick: Int) {
         guard selection == nil else { return }
+        // The clock ticks between checks; a tap after the deadline but before
+        // the next tick does not score.
+        if mode == .timed, let deadline, Date() >= deadline { return }
         selection = pick
         attempted += 1
         let correct = pick == item.answerIndex

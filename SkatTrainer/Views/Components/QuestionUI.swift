@@ -184,10 +184,10 @@ struct ChoiceList: View {
                     if isAnswer {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.body.weight(.bold))
-                            .foregroundStyle(Theme.bamGreen)
-                            .scaleEffect(landed ? 1.2 : 0.4)
+                            .foregroundStyle(Theme.gradeCorrect)
+                            .scaleEffect(landed ? 1.2 : 1)
                     } else if isMiss {
-                        Image(systemName: "xmark.circle.fill").foregroundStyle(Theme.crakRed)
+                        Image(systemName: "xmark.circle.fill").foregroundStyle(Theme.gradeWrong)
                     }
                 }
             }
