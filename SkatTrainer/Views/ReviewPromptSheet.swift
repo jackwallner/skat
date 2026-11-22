@@ -34,24 +34,21 @@ struct ReviewPromptSheet: View {
 
     var body: some View {
         NavigationStack {
-            // Scrolls, so the largest text sizes and the keyboard can never
-            // push Send out of reach.
+            // Scrolls, so the largest text sizes and the keyboard never hide
+            // the question, the chips or the box.
             ScrollView {
                 switch step {
                 case .feedback:
                     composer(
-                        kind: .general,
                         question: "Was würde Skat Trainer für dich besser machen?",
                         chips: [],
                         thanks: "Danke. Es ist direkt beim Entwickler angekommen."
                     )
                 case .churn(let moment):
                     composer(
-                        kind: .churn,
                         question: churnQuestion(moment),
                         chips: churnChips(moment),
-                        thanks: "Danke, dass du es sagst. Das hilft mehr, als man denkt.",
-                        context: ["moment": moment.rawValue]
+                        thanks: "Danke, dass du es sagst. Das hilft mehr, als man denkt."
                     )
                 }
             }
@@ -64,6 +61,21 @@ struct ReviewPromptSheet: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(sendOutcome == nil ? "Später" : "Fertig") { dismiss() }
                     .foregroundStyle(Theme.inkSecondary)
+                }
+                // Send lives up here, never just above the keyboard: there a
+                // reach for the suggestion bar after the first word landed on
+                // it and sent "I'm" or "The" on its own.
+                ToolbarItem(placement: .confirmationAction) {
+                    if sendOutcome == nil {
+                        if sending {
+                            ProgressView()
+                        } else {
+                            Button("Senden") { send() }
+                                .fontWeight(.semibold)
+                                .foregroundStyle(canSend ? Theme.jade : Theme.inkTertiary)
+                                .disabled(!canSend)
+                        }
+                    }
                 }
             }
         }
@@ -81,11 +93,9 @@ struct ReviewPromptSheet: View {
     // MARK: - Composer (feedback, churn)
 
     private func composer(
-        kind: FeedbackKind,
         question: String,
         chips: [String],
-        thanks: String,
-        context: [String: String] = [:]
+        thanks: String
     ) -> some View {
         VStack(alignment: .leading, spacing: 14) {
             if let sendOutcome {
@@ -118,20 +128,6 @@ struct ReviewPromptSheet: View {
                 Text("Geht direkt an den Entwickler, eine echte Person. Kein Konto, keine E-Mail nötig.")
                     .font(.caption)
                     .foregroundStyle(Theme.inkSecondary)
-                Button {
-                    send(kind: kind, context: context)
-                } label: {
-                    Group {
-                        if sending {
-                            ProgressView().tint(Theme.onFill)
-                        } else {
-                            Text("Senden")
-                        }
-                    }
-                    .primaryCTA()
-                }
-                .disabled(!canSend || sending)
-                .opacity(canSend ? 1 : 0.5)
             }
         }
         .padding(24)
@@ -240,7 +236,16 @@ struct ReviewPromptSheet: View {
         chosenChip != nil || !trimmedFeedback.isEmpty
     }
 
-    private func send(kind: FeedbackKind, context: [String: String]) {
+    private func send() {
+        let kind: FeedbackKind
+        var context: [String: String] = [:]
+        switch step {
+        case .feedback:
+            kind = .general
+        case .churn(let moment):
+            kind = .churn
+            context["moment"] = moment.rawValue
+        }
         guard canSend, !sending else { return }
         sending = true
         feedbackFocused = false
