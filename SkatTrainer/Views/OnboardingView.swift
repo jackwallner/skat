@@ -19,6 +19,7 @@ struct OnboardingView: View {
     @EnvironmentObject private var progress: ProgressStore
     @EnvironmentObject private var subscriptions: SubscriptionService
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var page = 0
     @State private var purchasing = false
     @State private var restoring = false
@@ -51,15 +52,15 @@ struct OnboardingView: View {
                 // Skip lands on Home, not on the next onboarding step: the
                 // whole point of an escape hatch is that it escapes.
                 HowToPlayView(onDone: { stage = .tour }, onSkip: { finish() })
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                    .transition(reduceMotion ? .opacity : .move(edge: .trailing).combined(with: .opacity))
             case .tour:
                 FeatureTourView { finish() }
-                    .transition(.move(edge: .trailing).combined(with: .opacity))
+                    .transition(reduceMotion ? .opacity : .move(edge: .trailing).combined(with: .opacity))
             }
         }
         // The slide between stages must not show the white window behind it.
         .background(Theme.background.ignoresSafeArea())
-        .animation(.spring(response: 0.45, dampingFraction: 0.85), value: stage)
+        .animation(reduceMotion ? nil : .spring(response: 0.45, dampingFraction: 0.85), value: stage)
         .onChange(of: stage) { _, newStage in
             // Only a member resumes past the pitch: someone who tapped
             // Loslegen still sees the trial page again, as before.
@@ -96,7 +97,7 @@ struct OnboardingView: View {
             // walks off the first screen straight into the trial page's price,
             // Restore, Terms and Privacy controls before they are visible.
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .animation(.easeInOut, value: page)
+            .animation(reduceMotion ? nil : .easeInOut, value: page)
             footer
         }
         .background(Theme.background)
@@ -591,7 +592,7 @@ struct OnboardingView: View {
                 Capsule()
                     .fill(dot == page ? Theme.jade : Theme.jade.opacity(0.22))
                     .frame(width: dot == page ? 20 : 7, height: 7)
-                    .animation(.snappy(duration: 0.22), value: page)
+                    .animation(reduceMotion ? nil : .snappy(duration: 0.22), value: page)
             }
         }
         .padding(.bottom, 2)
