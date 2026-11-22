@@ -14,6 +14,7 @@ struct HowToPlayView: View {
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @AppStorage("skat.skillLevel") private var skillLevel = ""
     @AppStorage("skat.recommendedRoomHint") private var recommendedRoomHint = ""
     /// Read to the end once: Home stops showing the primer card, and the
@@ -79,7 +80,7 @@ struct HowToPlayView: View {
             .onEnded { value in
                 let travel = value.translation.width
                 let flung = abs(travel) > 60 || abs(value.predictedEndTranslation.width) > 160
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) { drag = 0 }
+                withAnimation(reduceMotion ? nil : .spring(response: 0.3, dampingFraction: 0.8)) { drag = 0 }
                 guard flung else { return }
                 if travel < 0, !isLast {
                     advance()
@@ -95,7 +96,7 @@ struct HowToPlayView: View {
                 Capsule()
                     .fill(dot == index ? Theme.jade : Theme.jade.opacity(0.22))
                     .frame(width: dot == index ? 20 : 7, height: 7)
-                    .animation(.snappy(duration: 0.22), value: index)
+                    .animation(reduceMotion ? nil : .snappy(duration: 0.22), value: index)
             }
         }
         .padding(.top, 6)
@@ -150,7 +151,7 @@ struct HowToPlayView: View {
             .id(page.id)
             .offset(x: drag)
             .rotationEffect(.degrees(Double(drag / 40)), anchor: .bottom)
-            .transition(goingForward
+            .transition(reduceMotion ? .opacity : goingForward
                 ? .asymmetric(
                     insertion: .move(edge: .trailing).combined(with: .opacity),
                     removal: .move(edge: .leading).combined(with: .opacity)
@@ -255,7 +256,7 @@ struct HowToPlayView: View {
         guard !isFirst else { return }
         Haptics.impact(.soft, intensity: 0.5)
         goingForward = false
-        withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) {
+        withAnimation(reduceMotion ? nil : .spring(response: 0.4, dampingFraction: 0.85)) {
             index -= 1
         }
         fireShine()
@@ -275,7 +276,7 @@ struct HowToPlayView: View {
         }
         Haptics.impact(.soft, intensity: 0.6)
         goingForward = true
-        withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) {
+        withAnimation(reduceMotion ? nil : .spring(response: 0.4, dampingFraction: 0.85)) {
             index += 1
         }
         if index == pages.count - 1 {

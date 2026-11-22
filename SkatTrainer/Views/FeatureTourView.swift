@@ -10,6 +10,7 @@ struct FeatureTourView: View {
     @EnvironmentObject private var subscriptions: SubscriptionService
     @EnvironmentObject private var progress: ProgressStore
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var index = 0
     @State private var shineTrigger = 0
     @State private var confettiTrigger = 0
@@ -34,7 +35,7 @@ struct FeatureTourView: View {
                     Capsule()
                         .fill(dot == index ? Theme.jade : Theme.jade.opacity(0.22))
                         .frame(width: dot == index ? 20 : 7, height: 7)
-                        .animation(.snappy(duration: 0.22), value: index)
+                        .animation(reduceMotion ? nil : .snappy(duration: 0.22), value: index)
                 }
             }
             .padding(.top, 10)
@@ -98,7 +99,7 @@ struct FeatureTourView: View {
         .themedCard(corner: 22)
         .shine(trigger: shineTrigger, corner: 22)
         .id(index)
-        .transition(.asymmetric(
+        .transition(reduceMotion ? .opacity : .asymmetric(
             insertion: .move(edge: .trailing).combined(with: .opacity),
             removal: .move(edge: .leading).combined(with: .opacity)
         ))
@@ -311,7 +312,7 @@ struct FeatureTourView: View {
             return
         }
         Haptics.impact(.soft, intensity: 0.6)
-        withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) {
+        withAnimation(reduceMotion ? nil : .spring(response: 0.4, dampingFraction: 0.85)) {
             index += 1
         }
         if tourPages[index].accentGold {
