@@ -78,3 +78,16 @@ repeating reminders (`AppSettings.dailyReminderBody` is static and number-free;
 Trial-end reminder screen (Mahj removed it from the frozen trial flow), the
 per-question report link, and the daily and monthly challenge (only its remote
 switch exists).
+
+## Mahj parity batch (2026-11-22)
+
+Ported from Mahj's 2026-11-20 experience audit (`~/mahj` commit `dc083f5`):
+confetti falls under real gravity, waits 0.35s for the graded row and is
+cancelled by Next (`ConfettiBurst.scope`); grade marks use `Theme.gradeCorrect`
+/ `gradeWrong`, readable on dark rows, at full size from the first graded
+frame; the swipe stamp rides the outgoing card; under Reduce Motion a
+released card fades upright; a timed run with nothing answered ends on a
+Time's up screen (Try again, Done) and a tap after the deadline does not
+score. Home rooms show `MasteryRing` (questions right twice running, not
+drills opened) and Your Progress's Work on card opens its room. Parity
+matrix: `~/bridge/project-docs/research/2026-11-22-mahj-parity.md`.

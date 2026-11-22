@@ -24,7 +24,9 @@ struct StatsView: View {
                     if let gain = ledger.weeklyGain() {
                         weekCard(gain)
                     }
-                    if let weakest = records.weakestRoom(), roomStats.count > 1 {
+                    if let focus = records.roomToWorkOn(isMember: subscriptions.isPro) {
+                        workOnCard(focus)
+                    } else if let weakest = records.weakestRoom(), roomStats.count > 1 {
                         weakSpotCard(weakest)
                     }
                     masteryCard
@@ -129,6 +131,45 @@ struct StatsView: View {
             .frame(width: 1, height: 34)
     }
 
+    /// The room to practise next, one tap from here: a recommendation that
+    /// left the player on this screen had no destination.
+    @ViewBuilder
+    private func workOnCard(_ mastery: RoomMastery) -> some View {
+        if let room = DrillLibrary.room(id: mastery.roomID) {
+            NavigationLink {
+                RoomView(room: room)
+            } label: {
+                HStack(spacing: 12) {
+                    Image(systemName: "target")
+                        .font(.body.weight(.semibold))
+                        .foregroundStyle(Theme.coral)
+                        .frame(width: 38, height: 38)
+                        .background(Theme.coral.opacity(0.13), in: Circle())
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Übe als Nächstes: \(room.name)")
+                            .font(.headline)
+                            .foregroundStyle(Theme.ink)
+                            .multilineTextAlignment(.leading)
+                        Text("\(mastery.known) von \(mastery.total) Fragen sitzen. \(mastery.level.nextStep)")
+                            .font(.caption)
+                            .foregroundStyle(Theme.inkSecondary)
+                            .multilineTextAlignment(.leading)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 4)
+                    Image(systemName: "chevron.right")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(Theme.inkTertiary)
+                        .accessibilityHidden(true)
+                }
+                .padding(14)
+                .themedCard(corner: 16)
+            }
+            .buttonStyle(PressableCardStyle())
+            .accessibilityHint("Öffnet den Raum")
+        }
+    }
+
     private func weakSpotCard(_ stat: PracticeRecordStore.RoomStat) -> some View {
         HStack(spacing: 12) {
             Image(systemName: "target")
@@ -178,13 +219,6 @@ struct StatsView: View {
                     }
                     .accessibilityElement(children: .combine)
                 }
-            }
-            if let next = records.roomToWorkOn(isMember: subscriptions.isPro),
-               let room = DrillLibrary.room(id: next.roomID) {
-                Text("\(room.name): \(next.level.nextStep)")
-                    .font(.caption)
-                    .foregroundStyle(Theme.inkSecondary)
-                    .fixedSize(horizontal: false, vertical: true)
             }
             Text("Eine Frage gilt als gefestigt, wenn du sie zweimal hintereinander richtig beantwortet hast.")
                 .font(.caption2)
