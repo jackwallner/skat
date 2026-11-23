@@ -61,6 +61,9 @@ struct OnboardingView: View {
         // The slide between stages must not show the white window behind it.
         .background(Theme.background.ignoresSafeArea())
         .animation(reduceMotion ? nil : .spring(response: 0.45, dampingFraction: 0.85), value: stage)
+        // Nothing inside onboarding may fade or slide under Reduce Motion, the
+        // Continue button's dim and label swap included.
+        .transaction { if reduceMotion { $0.animation = nil } }
         .onChange(of: stage) { _, newStage in
             // Only a member resumes past the pitch: someone who tapped
             // Loslegen still sees the trial page again, as before.
@@ -549,6 +552,7 @@ struct OnboardingView: View {
             }
             .disabled(purchasing || restoring || (page == skillPage && skillLevel.isEmpty))
             .opacity(page == skillPage && skillLevel.isEmpty ? 0.5 : 1)
+            .transaction { if reduceMotion { $0.animation = nil } }
             // Legal footer slot, reserved on every page.
             if reservesTrialSlots {
                 legalRow
