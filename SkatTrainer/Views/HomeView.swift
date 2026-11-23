@@ -9,6 +9,7 @@ import SwiftUI
 /// leaves: the stats ride beside the title instead of eating a row of their
 /// own, and the primer card disappears the moment it has been read.
 struct HomeView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @EnvironmentObject private var progress: ProgressStore
     @EnvironmentObject private var subscriptions: SubscriptionService
     @EnvironmentObject private var settings: AppSettings
@@ -300,12 +301,12 @@ struct HomeView: View {
         guard DrillLibrary.rooms.contains(where: { $0.id == roomID }) else { return }
         Task { @MainActor in
             try? await Task.sleep(nanoseconds: 400_000_000)
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.85)) {
+            withAnimation(reduceMotion ? nil : .spring(response: 0.5, dampingFraction: 0.85)) {
                 proxy.scrollTo(roomID, anchor: .center)
                 highlightedRoomID = roomID
             }
             try? await Task.sleep(nanoseconds: 2_200_000_000)
-            withAnimation(.easeOut(duration: 0.4)) { highlightedRoomID = nil }
+            withAnimation(reduceMotion ? nil : .easeOut(duration: 0.4)) { highlightedRoomID = nil }
         }
     }
 
@@ -799,6 +800,7 @@ struct MasteryRing: View {
     /// 9pt by default, growing with text size but capped at 12pt: wider and the
     /// level word took the width from the room name beside it.
     @ScaledMetric(relativeTo: .caption2) private var captionSize: CGFloat = 9
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         VStack(spacing: 3) {
@@ -809,7 +811,7 @@ struct MasteryRing: View {
                     .trim(from: 0, to: mastery.fraction)
                     .stroke(color, style: StrokeStyle(lineWidth: 3, lineCap: .round))
                     .rotationEffect(.degrees(-90))
-                    .animation(.spring(response: 0.5, dampingFraction: 0.8), value: mastery.fraction)
+                    .animation(reduceMotion ? nil : .spring(response: 0.5, dampingFraction: 0.8), value: mastery.fraction)
                 switch mastery.level {
                 case .sharp:
                     Image(systemName: "star.fill")

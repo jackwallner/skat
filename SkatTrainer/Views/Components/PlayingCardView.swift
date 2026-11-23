@@ -61,6 +61,7 @@ struct PlayingCardView: View {
 
 /// A wrapping row of playing cards, ordered for a quick visual scan.
 struct CardHandView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let tiles: [PlayingCard]
     var tileWidth: CGFloat = 44
     var highlightedIndices: Set<Int> = []
@@ -109,7 +110,7 @@ struct CardHandView: View {
                 }
             }
             .offset(y: selected ? -8 : 0)
-            .animation(.spring(duration: 0.25), value: selected)
+            .animation(reduceMotion ? nil : .spring(duration: 0.25), value: selected)
         if let onTap {
             card
                 .onTapGesture { onTap(index) }

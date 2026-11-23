@@ -5,6 +5,7 @@ struct RootView: View {
     // onboarding flips this live. Branching (not a cover) means Home never
     // flashes behind onboarding on first launch.
     @AppStorage("progress.hasOnboarded") private var hasOnboarded = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     var body: some View {
         ZStack {
@@ -16,6 +17,6 @@ struct RootView: View {
                     .transition(.asymmetric(insertion: .identity, removal: .opacity))
             }
         }
-        .animation(.easeInOut(duration: 0.35), value: hasOnboarded)
+        .animation(reduceMotion ? nil : .easeInOut(duration: 0.35), value: hasOnboarded)
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 /// positive moment (`requestsReview(after:)`), and feedback is open to
 /// everyone without standing in front of it.
 struct ReviewPromptSheet: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     enum Step: Identifiable, Hashable {
         case feedback
         case churn(ChurnMoment)
@@ -205,7 +206,7 @@ struct ReviewPromptSheet: View {
                 // Back to the form with the text intact, so a refused send
                 // never costs the player what they wrote.
                 Button {
-                    withAnimation(.easeOut(duration: 0.25)) { sendOutcome = nil }
+                    withAnimation(reduceMotion ? nil : .easeOut(duration: 0.25)) { sendOutcome = nil }
                 } label: {
                     Text("Erneut versuchen")
                         .font(.subheadline.weight(.semibold))
@@ -260,7 +261,7 @@ struct ReviewPromptSheet: View {
             )
             sending = false
             if outcome == .sent { Haptics.success() }
-            withAnimation(.easeOut(duration: 0.25)) { sendOutcome = outcome }
+            withAnimation(reduceMotion ? nil : .easeOut(duration: 0.25)) { sendOutcome = outcome }
             // The Senden button VoiceOver was on is gone: say what happened.
             AccessibilityNotification.Announcement(Self.announcement(outcome)).post()
         }
