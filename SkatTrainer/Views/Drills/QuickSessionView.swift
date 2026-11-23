@@ -102,6 +102,10 @@ struct QuickSessionView: View {
 
     private var item: QuickItem { items[index] }
     private var answered: Bool { selection != nil }
+    private var missNote: String? {
+        guard let selection, selection != item.answerIndex, item.choiceNotes.indices.contains(selection) else { return nil }
+        return item.choiceNotes[selection]
+    }
 
     private var drillBody: some View {
         VStack(spacing: 16) {
@@ -113,7 +117,8 @@ struct QuickSessionView: View {
                     tiles: item.tiles,
                     explanation: item.explanation,
                     answered: answered,
-                    eyebrow: item.sourceLabel.uppercased()
+                    eyebrow: item.sourceLabel.uppercased(),
+                    missNote: missNote
                 ) {
                     ChoiceList(labels: item.choices, selection: selection, answerIndex: item.answerIndex) { pick in
                         grade(pick)
