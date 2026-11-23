@@ -69,35 +69,61 @@ struct OnboardingView: View {
         }
     }
 
-    private var pagesBody: some View {
-        VStack(spacing: 0) {
+    /// Paged swipe normally; with Reduce Motion the current page alone, since
+    /// the paged TabView always slides between pages.
+    @ViewBuilder
+    private var pager: some View {
+        if reduceMotion {
+            pageContent(page)
+                .id(page)
+                .transition(.opacity)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else {
             TabView(selection: $page) {
-                infoPage(
-                    icon: "rectangle.portrait.on.rectangle.portrait.angled",
-                    title: "Zwischen den Runden sicherer werden",
-                    body: "Skat gerät zwischen zwei Runden schnell aus dem Kopf. Skat Trainer gibt dir fünfminütige Übungen für Karten, Reizen, Drücken und Stiche.",
-                    tiles: [.c(7), .d(10), .h(14), .s(11)]
-                ).tag(0).accessibilityHidden(page != 0)
-                infoPage(
-                    icon: "rectangle.stack.fill",
-                    title: "Üben ohne Druck",
-                    body: "Wische durch Karteikarten, erkenne Trumpfstrukturen, entscheide über den Skat und spiele Stichsituationen durch, immer mit der Erklärung dahinter.",
-                    tiles: [.c(11), .d(14), .h(10), .s(8)]
-                ).tag(1).accessibilityHidden(page != 1)
-                infoPage(
-                    icon: "figure.walk",
-                    title: "Sicher an den Tisch",
-                    body: "Kenne die Kartenwerte, erkenne Trumpf, Grand und Null schneller und drücke mit einem Plan. Übe in deinem Tempo und ohne Gegner.",
-                    tiles: [.c(14), .d(11), .h(7)]
-                ).tag(2).accessibilityHidden(page != 2)
-                skillLevelPage.tag(3).accessibilityHidden(page != 3)
-                trialPage.tag(4).accessibilityHidden(page != 4)
+                ForEach(0...lastPage, id: \.self) { index in
+                    pageContent(index).tag(index).accessibilityHidden(page != index)
+                }
             }
             // A paged TabView keeps every page built, so without this VoiceOver
             // walks off the first screen straight into the trial page's price,
             // Restore, Terms and Privacy controls before they are visible.
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .animation(reduceMotion ? nil : .easeInOut, value: page)
+            .animation(.easeInOut, value: page)
+        }
+    }
+
+    @ViewBuilder
+    private func pageContent(_ index: Int) -> some View {
+        switch index {
+        case 0:
+            infoPage(
+                        icon: "rectangle.portrait.on.rectangle.portrait.angled",
+                        title: "Zwischen den Runden sicherer werden",
+                        body: "Skat gerät zwischen zwei Runden schnell aus dem Kopf. Skat Trainer gibt dir fünfminütige Übungen für Karten, Reizen, Drücken und Stiche.",
+                        tiles: [.c(7), .d(10), .h(14), .s(11)]
+                    )
+        case 1:
+            infoPage(
+                        icon: "rectangle.stack.fill",
+                        title: "Üben ohne Druck",
+                        body: "Wische durch Karteikarten, erkenne Trumpfstrukturen, entscheide über den Skat und spiele Stichsituationen durch, immer mit der Erklärung dahinter.",
+                        tiles: [.c(11), .d(14), .h(10), .s(8)]
+                    )
+        case 2:
+            infoPage(
+                        icon: "figure.walk",
+                        title: "Sicher an den Tisch",
+                        body: "Kenne die Kartenwerte, erkenne Trumpf, Grand und Null schneller und drücke mit einem Plan. Übe in deinem Tempo und ohne Gegner.",
+                        tiles: [.c(14), .d(11), .h(7)]
+                    )
+        case 3: skillLevelPage
+        default: trialPage
+        }
+    }
+
+    private var pagesBody: some View {
+        VStack(spacing: 0) {
+            pager
             footer
         }
         .background(Theme.background)
