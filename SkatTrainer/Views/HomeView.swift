@@ -67,6 +67,18 @@ struct HomeView: View {
             .background(Theme.background)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        ReferenceView()
+                    } label: {
+                        // The label sits on the image: a toolbar NavigationLink
+                        // reads the symbol name ("book") and drops a label set on
+                        // the link itself.
+                        Image(systemName: "book")
+                            .foregroundStyle(Theme.inkSecondary)
+                            .accessibilityLabel("Glossar")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         showSettings = true
                     } label: {
