@@ -23,6 +23,26 @@ final class SkatMinuteContentTests: XCTestCase {
         XCTAssertEqual(first.items.map(\.tiles), second.items.map(\.tiles))
     }
 
+    /// The Minute's dealt hands coach a miss like Endless does, and the notes
+    /// stay with their choices through the shuffle.
+    func testHandReadingQuestionsCoachEveryMiss() {
+        for offset in 0..<20 {
+            let day = calendar.date(byAdding: .day, value: offset, to: date(2026, 8, 9))!
+            let challenge = SkatMinuteContent.challenge(for: day, calendar: calendar)
+            for question in challenge.questions where question.category == .handReading {
+                let item = question.item
+                XCTAssertEqual(item.choiceNotes.count, item.choices.count)
+                for (index, note) in item.choiceNotes.enumerated() {
+                    if index == item.answerIndex {
+                        XCTAssertNil(note)
+                    } else {
+                        XCTAssertFalse(note?.isEmpty ?? true, item.id)
+                    }
+                }
+            }
+        }
+    }
+
     func testChallengeHasThePromisedFiveQuestionMix() {
         let challenge = SkatMinuteContent.challenge(for: date(2026, 8, 9), calendar: calendar)
         let categories = Dictionary(grouping: challenge.questions, by: \.category).mapValues(\.count)

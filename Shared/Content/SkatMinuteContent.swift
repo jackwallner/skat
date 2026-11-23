@@ -95,6 +95,7 @@ enum SkatMinuteContent {
                 sourceLabel: "Skat-Minute: Blattlesen",
                 roomID: PracticeSkill.handReading.roomID,
                 trackingID: PracticeSkill.handReading.rawValue,
+                choiceNotes: hand.choices.map { $0 == hand.answer ? nil : HandGenerator.missNote(for: hand.tiles, picked: $0) },
                 isReviewable: false
             )
             return SkatMinuteQuestion(category: .handReading, item: SessionBuilder.prepared(item))
