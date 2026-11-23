@@ -507,23 +507,14 @@ struct FlipCardFace: View {
     private var back: some View {
         SkatCardFace(accent: accent, eyebrow: "DEINE ENTSCHEIDUNG") {
             VStack(spacing: 14) {
-                if let verdict {
-                    verdictBanner(verdict)
+                // At the largest text sizes the verdict and the rule outgrow
+                // the fixed card, so they scroll inside it and Weiter stays
+                // pinned below instead of being pushed off the card.
+                ViewThatFits(in: .vertical) {
+                    backText(spaced: true)
+                    ScrollView { backText(spaced: false) }
+                        .scrollBounceBehavior(.basedOnSize)
                 }
-                Spacer(minLength: 0)
-                Text(card.backTitle)
-                    .font(Theme.display(22))
-                    .foregroundStyle(accent)
-                    .multilineTextAlignment(.center)
-                Rectangle()
-                    .fill(Theme.rule)
-                    .frame(width: 44, height: 2)
-                Text(card.backBody)
-                    .font(.body)
-                    .foregroundStyle(Theme.ink)
-                    .multilineTextAlignment(.center)
-                    .fixedSize(horizontal: false, vertical: true)
-                Spacer(minLength: 0)
                 if showsSwipeHints {
                     if let onAdvance {
                         Button(action: onAdvance) {
@@ -536,6 +527,28 @@ struct FlipCardFace: View {
                     }
                 }
             }
+        }
+    }
+
+    private func backText(spaced: Bool) -> some View {
+        VStack(spacing: 14) {
+            if let verdict {
+                verdictBanner(verdict)
+            }
+            if spaced { Spacer(minLength: 0) }
+            Text(card.backTitle)
+                .font(Theme.display(22))
+                .foregroundStyle(accent)
+                .multilineTextAlignment(.center)
+            Rectangle()
+                .fill(Theme.rule)
+                .frame(width: 44, height: 2)
+            Text(card.backBody)
+                .font(.body)
+                .foregroundStyle(Theme.ink)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+            if spaced { Spacer(minLength: 0) }
         }
     }
 
