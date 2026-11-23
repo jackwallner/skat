@@ -127,7 +127,7 @@ struct QuickSessionView: View {
                 footer
             }
             .id(item.id)
-            .transition(.asymmetric(
+            .transition(reduceMotion ? .opacity : .asymmetric(
                 insertion: .move(edge: .trailing).combined(with: .opacity),
                 removal: .move(edge: .leading).combined(with: .opacity)
             ))
@@ -151,7 +151,7 @@ struct QuickSessionView: View {
             if let streakBannerText {
                 StreakBanner(text: streakBannerText)
                     .padding(.top, 6)
-                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .transition(reduceMotion ? .opacity : .move(edge: .top).combined(with: .opacity))
             }
         }
         .navigationTitle(purpose.navigationTitle)
@@ -244,7 +244,7 @@ struct QuickSessionView: View {
     private func announceStreak(_ streak: Int) {
         streakBannerTrigger += 1
         let trigger = streakBannerTrigger
-        withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+        withAnimation(reduceMotion ? .easeInOut(duration: 0.2) : .spring(response: 0.4, dampingFraction: 0.7)) {
             streakBannerText = "\(streak) richtig hintereinander!"
         }
         Task { @MainActor in
@@ -268,7 +268,7 @@ struct QuickSessionView: View {
 
     private func advance() {
         if index + 1 < items.count {
-            withAnimation(.spring(response: 0.4, dampingFraction: 0.85)) {
+            withAnimation(reduceMotion ? .easeInOut(duration: 0.2) : .spring(response: 0.4, dampingFraction: 0.85)) {
                 selection = nil
                 index += 1
             }
