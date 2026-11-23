@@ -550,11 +550,13 @@ struct FlipCardFace: View {
             Image(systemName: verdict.correct ? "checkmark.circle.fill" : "xmark.circle.fill")
             Text(verdict.correct ? "\(verdict.text). Richtig!" : "\(verdict.text). Diesmal nicht.")
                 .font(.footnote.weight(.semibold))
+                .multilineTextAlignment(.leading)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .foregroundStyle(verdict.correct ? Theme.jade : Theme.coral)
         .padding(.horizontal, 12)
         .padding(.vertical, 7)
-        .background((verdict.correct ? Theme.jade : Theme.coral).opacity(0.13), in: Capsule())
+        .background((verdict.correct ? Theme.jade : Theme.coral).opacity(0.13), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 
     /// Displays the two options in a deterministic, per-card shuffled order

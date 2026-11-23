@@ -34,6 +34,7 @@ private let questionExplanationID = "question-explanation"
 /// Shared question scaffolding: prompt + tiles + choices + explanation, the
 /// shape every choice-based drill uses (Quiz, Hand Match, Quick Session).
 struct QuestionPager<Choices: View>: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let prompt: String
     let tiles: [PlayingCard]
     let explanation: String
@@ -112,7 +113,7 @@ struct QuestionPager<Choices: View>: View {
                 guard isAnswered else { return }
                 // Bring the coaching note into view rather than leaving it
                 // parked below the fold behind the Next button.
-                withAnimation(.easeOut(duration: 0.35)) {
+                withAnimation(reduceMotion ? nil : .easeOut(duration: 0.35)) {
                     proxy.scrollTo(questionExplanationID, anchor: .bottom)
                 }
             }
@@ -130,6 +131,7 @@ struct QuestionPager<Choices: View>: View {
 /// `.disabled()` to stop taps after grading, because SwiftUI dims disabled
 /// button labels, and that dimming hit the winning row.
 struct ChoiceList: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let labels: [String]
     let selection: Int?
     let answerIndex: Int
@@ -154,11 +156,11 @@ struct ChoiceList: View {
                 shakes = 0
                 return
             }
-            withAnimation(.spring(response: 0.35, dampingFraction: 0.5).delay(0.05)) {
+            withAnimation(reduceMotion ? nil : .spring(response: 0.35, dampingFraction: 0.5).delay(0.05)) {
                 landed = true
             }
             shineTrigger += 1
-            if selection != answerIndex {
+            if selection != answerIndex, !reduceMotion {
                 withAnimation(.linear(duration: 0.4)) { shakes = 2 }
             }
         }
@@ -214,7 +216,7 @@ struct ChoiceList: View {
             .scaleEffect(answered && isAnswer && landed ? 1.035 : 1)
             .modifier(ShakeEffect(travels: isMiss ? shakes : 0))
             .opacity(recedes ? 0.72 : 1)
-            .animation(.spring(response: 0.3, dampingFraction: 0.8), value: answered)
+            .animation(reduceMotion ? nil : .spring(response: 0.3, dampingFraction: 0.8), value: answered)
         }
         .buttonStyle(.plain)
         .allowsHitTesting(!answered)
