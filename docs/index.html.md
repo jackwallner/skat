@@ -63,7 +63,7 @@ Included with Skat+
 
 ### Zwischen den Runden üben
 
-Lernserien, Fehlerwiederholung und Raumfortschritt halten die
+Lernserien und Raumfortschritt halten die
 wichtigen Fähigkeiten bereit.
 
 ## Braucht Skat Trainer ein Konto?
@@ -99,6 +99,8 @@ der App angezeigt und unterscheiden sich je nach Region.
 
 **Zusatzübungen.** Ein zweiter Satz Fragen, Hände und
 Entscheidungen in jedem Raum.
+
+**Übungsmodi.** Endlos üben bringt immer neue Aufgaben, Fehler wiederholen holt Unsicheres zurück, bis es sitzt, die Zeitprüfung gibt dir 90 Sekunden für deinen Bestwert, Skat Minute stellt fünf neue Fragen am Tag und Skatabend planen mischt eine kurze Runde für dein nächstes Spiel.
 
 **Der Meistertisch.** Anspruchsvolle Drück-Strategie,
 Verteidigung, Endspiel und Expertenwissen.
