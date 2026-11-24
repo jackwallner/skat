@@ -42,7 +42,7 @@
         "url": "https://jackwallner.com/"
       },
       "datePublished": "2026-10-12",
-      "dateModified": "2026-11-12",
+      "dateModified": "2026-11-24",
       "mainEntityOfPage": "https://jackwallner.com/ios/skat/skat-regeln-einfach-erklaert.html",
       "image": "https://jackwallner.github.io/skat/appstore-screenshot-01.png",
       "about": {
@@ -187,6 +187,14 @@ th { font-size: 13px; text-transform: uppercase; letter-spacing: 0.4px; color: #
 footer { text-align: center; padding: 20px 24px; font-size: 12px; color: #6e6e73; border-top: 1px solid rgba(0,0,0,0.06); }
 footer a { display: inline-block; padding: 6px 0; color: #6e6e73; text-decoration: none; margin: 0 10px; }
 @media (max-width: 768px) { article h1 { font-size: 28px; } article { padding: 40px 0 60px; } article h2 { font-size: 21px; } }
+.store-badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+.store-badges.start { justify-content: flex-start; }
+.play-badge { display: inline-flex; transition: opacity 0.15s; }
+.play-badge:hover { opacity: 0.85; }
+.play-badge img { display: block; height: 46px; width: auto; }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.nav-actions .play-badge img { height: 36px; }
+@media (max-width: 480px) { .nav-actions .play-badge { display: none; } }
 </style>
 </head>
 <body>
@@ -196,14 +204,15 @@ footer a { display: inline-block; padding: 6px 0; color: #6e6e73; text-decoratio
 <img src="icon_64.webp" alt="" width="32" height="32">
 <span>Skat Trainer</span>
 </a>
-<a class="nav-link" href="https://apps.apple.com/us/app/skat-trainer-learn-skat/id6796913722?pt=128748779&amp;ct=jw-skat-skat-regeln-einfach-erklaert&amp;mt=8">Laden</a>
+<div class="nav-actions"><a class="nav-link" href="https://apps.apple.com/us/app/skat-trainer-learn-skat/id6796913722?pt=128748779&amp;ct=jw-skat-skat-regeln-einfach-erklaert&amp;mt=8">Laden</a>
+<a class="play-badge" href="https://play.google.com/store/apps/details?id=com.jackwallner.skat" rel="noopener"><img src="google-play-badge.webp" alt="Jetzt bei Google Play" width="121" height="36"></a></div>
 </div>
 </nav>
 
 <article>
 <div class="container">
 <h1>Skat Regeln einfach erklärt</h1>
-<p class="meta">Von Jack Wallner &middot; Zuletzt aktualisiert <time datetime="2026-11-12" data-updated>12. November 2026</time></p>
+<p class="meta">Von Jack Wallner &middot; Zuletzt aktualisiert <time datetime="2026-11-24" data-updated>24. November 2026</time></p>
 
 <div class="answer"><p>Skat ist ein Stichspiel für drei Personen, das mit 32 Karten gespielt wird. Beim Reizen wird ein Alleinspieler ermittelt, der den Skat aufnimmt, zwei Karten drückt und sein Spiel ansagt: ein Farbspiel, Grand oder Null. Im Farbspiel und im Grand gewinnt er mit 61 von 120 Augen, im Null, wenn er keinen Stich bekommt. Der Spielwert ist der Grundwert mal die Summe der Fälle, in die die Matadore (Spitzen) eingehen.</p></div>
 

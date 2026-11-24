@@ -9,7 +9,7 @@ Web page: https://jackwallner.com/ios/skat/
 Skat Trainer ist eine App zum Skat lernen für iPhone und iPad: Karten lesen, reizen,
 drücken und Stiche spielen, in kurzen Übungen. Ohne Gegner und ohne Konto.
 
-iPhone · Vier Übungsräume · Offline nutzbar
+iPhone · Android · Vier Übungsräume · Offline nutzbar
 
 [Kostenlos laden](https://apps.apple.com/us/app/skat-trainer-learn-skat/id6796913722?pt=128748779&ct=jw-skat-home&mt=8)
 
@@ -166,6 +166,6 @@ abweichen, deshalb gilt am Tisch die gemeinsam vereinbarte Regel.
 
 ## Üben, bevor du spielst
 
-Kostenlos im App Store. Vier Übungsräume, kein Konto. Skat+ optional.
+Kostenlos im App Store und bei Google Play. Vier Übungsräume, kein Konto. Skat+ optional.
 
 [Kostenlos laden](https://apps.apple.com/us/app/skat-trainer-learn-skat/id6796913722?pt=128748779&ct=jw-skat-home&mt=8)
